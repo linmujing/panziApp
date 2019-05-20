@@ -8,7 +8,20 @@ page {
 }
 
 .person_info {
-    height: 320rpx;
+    height: 330rpx;
+}
+
+.person_info .info_title {
+    display: flex;
+    padding-right: 20rpx;
+    position: absolute;
+    top: 10rpx;
+    right: 0;
+    color: #fff;
+}
+
+.person_info .info_title image {
+    width: 40rpx;
 }
 
 .person_info .personInfo_bg {
@@ -19,25 +32,37 @@ page {
     z-index: -1;
 }
 
-.person_info .user_info {
+.person_info .info_details {
     display: flex;
-    margin: 30rpx 0 0 30rpx;
+    align-items: center;
+    padding: 60rpx 0 0 30rpx;
 }
 
-.person_info .user_info image {
+.person_info .info_details .details_left {
+    margin-right: 20rpx;
+}
+
+.person_info .info_details .details_left image {
     width: 160rpx;
     height: 160rpx;
     border-radius: 50%;
-    /* border: 1px solid #000; */
 }
 
-.VIP_center {
+.person_info .info_details .qiandao {
+    margin-top: 20rpx;
+}
+
+.person_info .info_details .qiandao image {
+    width: 160rpx;
+}
+
+.person_info .info_details .VIP_center {
     position: absolute;
     right: 30rpx;
     top: 18%;
 }
 
-.VIP_center image {
+.person_info .info_details .VIP_center image {
     width: 135rpx;
 }
 
@@ -53,12 +78,12 @@ page {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #eee;
     padding-bottom: 20rpx;
 }
 
-.my_order .order_title>view {
-    font-weight: 500;
+.my_order .order_title .title_left {
+    font-size: 34rpx;
 }
 
 .my_order .look_all {
@@ -81,12 +106,14 @@ page {
 }
 
 .my_order .order_list>view view {
-    font-size: 30rpx;
+    font-size: 24rpx;
+    margin-top: 10rpx;
+    color: #666;
 }
 
 .my_order .order_list image {
     width: 50rpx;
-    height: 50rpx;
+    height: 45rpx;
 }
 
 .my_list {
@@ -103,7 +130,7 @@ page {
     align-items: center;
     font-size: 30rpx;
     font-weight: 500;
-    padding: 30rpx 20rpx;
+    padding: 20rpx;
 }
 
 .my_list .my_list_item>view image {
@@ -115,6 +142,8 @@ page {
 .my_list .my_list_item image {
     width: 15rpx;
 }
+
+
 
 
 

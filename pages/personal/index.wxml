@@ -1,19 +1,28 @@
 <view class="container" wx:if="{{!login_state}}">
     <view class="person_info">
-        <image mode="widthFix" class="personInfo_bg" src="../../img/person_topPic.png" />
-        <view class="user_info">
-            <image src="{{userInfo.avatarUrl}}" />
-            <view class="user_info_right">
-                <view class="">{{userInfo.nickName}}</view>
-            </view>
+        <view class="info_title">
+            <view>设置</view>
+            <!-- <image mode="widthFix" class="" src="../../img/buy-server.jpg" /> -->
         </view>
-        <view class="VIP_center">
-            <image mode="widthFix" src="../../img/huiyuan.png" />
+        <view class="info_details">
+            <image mode="widthFix" class="personInfo_bg" src="../../img/person_topPic.png" />
+            <view class="details_left">
+                <image src="{{userInfo.avatarUrl}}" />
+            </view>
+            <view class="details_right">
+                <view class="user_info_name">{{userInfo.nickName}}</view>
+                <view class="qiandao">
+                    <image mode="widthFix" src="../../img/qiandao.png" />
+                </view>
+            </view>
+            <view class="VIP_center">
+                <image mode="widthFix" src="../../img/huiyuan.png" />
+            </view>
         </view>
     </view>
     <view class="my_order">
         <view class="order_title">
-            <view>我的订单</view>
+            <view class="title_left">我的订单</view>
             <view class="look_all">
                 查看全部
                 <image mode="widthFix" src="../../img/enter_.png" />
@@ -68,6 +77,20 @@
             <view>
                 <image mode="widthFix" src="../../img/coupons.png" />
                 <text bind:tap="to">排行榜</text>
+            </view>
+            <image mode="widthFix" src="../../img/enter_.png" />
+        </view>
+        <view class="my_list_item">
+            <view>
+                <image mode="widthFix" src="../../img/coupons.png" />
+                <text bind:tap="to">我的收藏</text>
+            </view>
+            <image mode="widthFix" src="../../img/enter_.png" />
+        </view>
+        <view class="my_list_item">
+            <view>
+                <image mode="widthFix" src="../../img/coupons.png" />
+                <text bind:tap="to">关于我们</text>
             </view>
             <image mode="widthFix" src="../../img/enter_.png" />
         </view>
