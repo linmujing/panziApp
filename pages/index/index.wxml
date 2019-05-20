@@ -51,6 +51,43 @@
     </view>
   </view>
 </view>
+<!-- 视频 -->
+<view class='video_box'>
+  <image mode='widthFix' src='{{videoData}}' class='w100'></image>
+</view>
+<!-- 明星体验师 -->
+<view>
+  <view class='ta_c mt_20 '>
+    <image mode='widthFix' src='{{experience}}' class='w60'></image>
+  </view>
+  <view class='experiencer df jc_sb fw_w'>
+    <view wx:for='{{hotList}}' wx:key='{{i}}' class='item'>
+      <image src="{{item.img}}" />
+      <view class='txt ta_c'>
+        <view>
+          <text>{{item.xilie}} | </text>
+          <text>{{item.title}}</text>
+        </view>
+        <image src='/img/right_arrow.png' class='icon'></image>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 每周客片 -->
+<view>
+  <view class='title'>
+    <view>每周客片</view>
+    <view>GUEST SHEET EVERY WEEK</view>
+  </view>
+  <view class='hot_topic df jc_sb fw_w'>
+    <view wx:for='{{weekData.weekList}}' wx:key='{{i}}' class='item'>
+      <image src="{{item.img}}" />
+      <view class='txt df jc_sb ai_c'>
+        <image src='{{weekData.week_logo}}' class='icon'></image>
+      </view>
+    </view>
+  </view>
+</view>
 
 
 

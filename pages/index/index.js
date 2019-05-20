@@ -31,7 +31,18 @@ Page({
         title: '琉璃翠',
         img: app.globalData.imgUrl + 'ad3.jpg'
       }
-    ]
+    ],
+    videoData: app.globalData.imgUrl + 'video.jpg',
+    experience: app.globalData.imgUrl + 'experience.jpg',
+    weekData: {
+      weekList: [
+        { img: app.globalData.imgUrl + 'week1.jpg' },
+        { img: app.globalData.imgUrl + 'week2.jpg' },
+        { img: app.globalData.imgUrl + 'week3.jpg' },
+        { img: app.globalData.imgUrl + 'week4.jpg' }
+      ],
+      week_logo: app.globalData.imgUrl + 'week_logo.jpg'
+    },
 
   },
   onLoad: function () {
