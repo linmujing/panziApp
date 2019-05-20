@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "盘子app",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "default"
+  },
+  "tabBar": {
+    "color": "#B3B3B3",
+    "selectedColor": "#F4B6C5",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/index/index",
+        "iconPath": "img/_tab1.jpg",
+        "selectedIconPath": "img/_tab1.jpg"
+      },
+      {
+        "text": "主题",
+        "pagePath": "pages/index/index",
+        "iconPath": "img/tab2.jpg",
+        "selectedIconPath": "img/tab2.jpg"
+      },
+      {
+        "text": "社区",
+        "pagePath": "pages/index/index",
+        "iconPath": "img/tab3.jpg",
+        "selectedIconPath": "img/tab3.jpg"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/index/index",
+        "iconPath": "img/tab4.jpg",
+        "selectedIconPath": "img/tab4.jpg"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
