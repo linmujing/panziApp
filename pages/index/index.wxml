@@ -14,21 +14,23 @@
   </view>
 </view>
 <!-- 轮播 -->
-<view class='bg_ff'>
-  <swiper autoplay indicatorDots circular current="0" indicator-active-color='{{cindicatorColor}}'>
+<view class='carouse bg_ff ta_c'>
+  <swiper autoplay indicatorDots circular indicator-active-color='#fff' previous-margin='80rpx' next-margin='80rpx' bindchange='change' current='{{current}}'>
     <view wx:for="{{carouselData}}" wx:key='{{i}}'>
-      <swiper-item>
-        <image class='w100 h100' src="{{item}}" />
+      <swiper-item class=' df ai_c'>
+        <view class='box' animation="{{index == current?animationData:animationData2}}">
+          <image src="{{item}}" class='w100 h100'/>
+        </view>
       </swiper-item>
     </view>
   </swiper>
 </view>
 <!-- 导航 -->
 <view class='nav df jc_sb fw_w bg_ff'>
-  <block wx:for='{{10}}' wx:key='{{i}}'>
+  <block wx:for='{{navData}}' wx:key='{{i}}'>
     <view class='w20 mt_10'>
-      <image src='/img/nav1.jpg'></image>
-      <view>门店</view>
+      <image src='{{item.img}}'></image>
+      <view class='ft_12 mt_5'>{{item.title}}</view>
     </view>
   </block>
 </view>
@@ -79,11 +81,56 @@
     <view>每周客片</view>
     <view>GUEST SHEET EVERY WEEK</view>
   </view>
-  <view class='hot_topic df jc_sb fw_w'>
+  <view class='week df jc_sb fw_w'>
     <view wx:for='{{weekData.weekList}}' wx:key='{{i}}' class='item'>
-      <image src="{{item.img}}" />
-      <view class='txt df jc_sb ai_c'>
-        <image src='{{weekData.week_logo}}' class='icon'></image>
+      <image mode='widthFix' src="{{item.img}}" />
+      <view class='txt ta_c'>
+        <image mode='widthFix' src='{{weekData.week_logo}}'></image>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 全国门店 -->
+<view>
+  <view class='title'>
+    <view>全国门店</view>
+    <view>STORE ENVIRONMENT</view>
+  </view>
+  <view class='w100'>
+    <image mode='widthFix' src='{{storeData.banner}}' class='w100'></image>
+  </view>
+  <view class='store bg_ff'>
+    <scroll-view class="df fw_w" scroll-x style="width: auto;overflow:hidden;">
+      <view wx:for='{{storeData.storeList}}' wx:key='{{i}}' class='item'>
+        <image src="{{item.img}}" />
+        <view class='txt ta_c'>{{item.name}}</view>
+      </view>
+    </scroll-view>
+    <!-- <swiper autoplay indicatorDots circular current="0" indicator-active-color='#F8B3C4' display-multiple-items='6' class='df fw_w'>
+      <view wx:for="{{storeData.storeList}}" wx:key='{{i}}'>
+        <swiper-item>
+          <image src="{{item.img}}" />
+          <view class='txt ta_c'>{{item.name}}</view>
+        </swiper-item>
+      </view>
+    </swiper> -->
+  </view>
+</view>
+<!-- 客户评价 -->
+<view>
+  <view class='title'>
+    <view>客户评价</view>
+    <view>HOT COMMENTS</view>
+  </view>
+  <view class='comments df jc_sb fw_w'>
+    <view wx:for='{{commentsList}}' wx:key='{{i}}' class='item'>
+      <image mode='widthFix' src="{{item.img}}" />
+      <view class='txt'>
+        <view class='twoline'>{{item.info}}</view>
+        <view class='df ai_c mt_10'>
+          <image src="{{item.img}}"></image>
+          <text class='pl_5'>{{item.name}}</text>
+        </view>
       </view>
     </view>
   </view>

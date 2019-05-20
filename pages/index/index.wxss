@@ -58,22 +58,43 @@
   font-size: 14rpx;
   color: #5A5A5A;
 }
+.carouse swiper{height: 300rpx;}
+.carouse .box{width: 96%;height: 300rpx;display: inline-block;}
+.carouse .box image{border-radius: 12rpx;}
+.video_box{margin-top: 20rpx;}
 
 .hot_topic{margin: 20rpx;}
-.hot_topic .item{width: 350rpx;background: #fff;border-radius: 8rpx;margin-bottom: 20rpx;overflow: hidden;}
+.hot_topic .item{width: 350rpx;background: #fff;border-radius: 8rpx;margin-bottom: 20rpx;overflow: hidden;box-shadow:0px 10rpx 30rpx -5rpx rgba(0,0,0,0.3);}
 .hot_topic .item image{width: 100%;height: 220rpx;}
 .hot_topic .item .txt{padding: 20rpx 10rpx;font-size: 24rpx;}
 .hot_topic .item .txt text:last-child{font-weight: bold;}
 .hot_topic .item .icon{width: 40rpx; height: 40rpx;}
 
 .experiencer{margin: 20rpx;}
-.experiencer .item{width: 710rpx;background: #fff;border-radius: 8rpx;margin-bottom: 20rpx;overflow: hidden;}
+.experiencer .item{width: 710rpx;background: #fff;border-radius: 8rpx;margin-bottom: 20rpx;overflow: hidden;box-shadow:0px 10rpx 30rpx -5rpx rgba(0,0,0,0.3);}
 .experiencer .item image{width: 100%;height: 300rpx;}
 .experiencer .item .txt{padding: 20rpx 10rpx;font-size: 24rpx;position: relative}
 .experiencer .item .txt text:last-child{font-weight: bold;}
 .experiencer .item .icon{width: 40rpx; height: 40rpx;position: absolute;right: 10rpx;top: 16rpx;}
 
-.video_box{margin-top: 20rpx;}
+.week{margin: 20rpx;}
+.week .item{width: 346rpx;background: #fff;border-radius: 8rpx;margin-bottom: 20rpx;overflow: hidden;box-shadow:0px 10rpx 30rpx -5rpx rgba(0,0,0,0.3);}
+.week .item image{width: 100%;height: 300rpx;}
+.week .item .txt{padding: 20rpx 10rpx;}
+.week .item .txt image{width: 85%;}
+
+.store{width: 100%;height: 320rpx;overflow: hidden;padding: 10rpx;background: #fff;white-space: nowrap;}
+.store .item{width: 180rpx;display: inline-block;text-align: center;}
+.store .item image{width: 160rpx;height: 160rpx;}
+/* .store{margin: 20rpx;width: 100%;height: 420rpx;padding: 10rpx;background: #fff;}
+.store image{width: 160rpx;height: 160rpx;} */
+
+.comments{margin: 20rpx;}
+.comments .item{width: 346rpx;background: #fff;border-radius: 8rpx;margin-bottom: 20rpx;overflow: hidden;box-shadow:0px 10rpx 30rpx -5rpx rgba(0,0,0,0.3);}
+.comments .item image{width: 100%;height: 300rpx;}
+.comments .item .txt{padding: 20rpx 10rpx;font-size: 24rpx;}
+.comments .item .txt image{width: 40rpx;height: 40rpx;border-radius: 50%;}
+
 
 
 
