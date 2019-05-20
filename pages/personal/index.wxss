@@ -1,1 +1,177 @@
-/* pages/personal/index.wxss */
+page {
+    background: #F5F5F5
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.person_info {
+    height: 320rpx;
+}
+
+.person_info .personInfo_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.person_info .user_info {
+    display: flex;
+    margin: 30rpx 0 0 30rpx;
+}
+
+.person_info .user_info image {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;
+    /* border: 1px solid #000; */
+}
+
+.VIP_center {
+    position: absolute;
+    right: 30rpx;
+    top: 18%;
+}
+
+.VIP_center image {
+    width: 135rpx;
+}
+
+.my_order {
+    background: #fff;
+    border-radius: 20rpx;
+    margin: 0 30rpx;
+    padding: 20rpx;
+    box-shadow: 0px 0px 9px 0px #ccc;
+}
+
+.my_order .order_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20rpx;
+}
+
+.my_order .order_title>view {
+    font-weight: 500;
+}
+
+.my_order .look_all {
+    font-size: 26rpx;
+    color: #666;
+}
+
+.my_order .look_all image {
+    width: 12rpx;
+}
+
+.my_order .order_list {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20rpx;
+}
+
+.my_order .order_list>view {
+    text-align: center;
+}
+
+.my_order .order_list>view view {
+    font-size: 30rpx;
+}
+
+.my_order .order_list image {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.my_list {
+    background: #fff;
+    margin: 20rpx 30rpx 0;
+    border-radius: 30rpx;
+    padding: 20rpx;
+    box-shadow: 0px 0px 9px 0px #ccc;
+}
+
+.my_list .my_list_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30rpx;
+    font-weight: 500;
+    padding: 30rpx 20rpx;
+}
+
+.my_list .my_list_item>view image {
+    width: 40rpx;
+    margin-right: 15rpx;
+    /* vertical-align: middle; */
+}
+
+.my_list .my_list_item image {
+    width: 15rpx;
+}
+
+
+
+/* 登录框 */
+.popup {
+    position: fixed;
+    background: rgba(0, 0, 0, 0.1);
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: none
+}
+
+.popup.active {
+    display: block;
+}
+
+.popup .biaoti {
+    height: 60rpx;
+    color: #030303;
+    line-height: 60rpx;
+    text-align: center;
+    margin-top: 40rpx;
+}
+
+.popup_nr {
+    position: absolute;
+    top: 30%;
+    width: 540rpx;
+    background: #fff;
+    left: 15%;
+    text-align: center;
+    box-shadow: 0rpx 8rpx 40rpx 0rpx rgba(0, 0, 0, 0.1);
+    border-radius: 24rpx;
+}
+
+.popup_nrs {
+    font-size: 28rpx;
+    color: #9B9B9B;
+    margin: 32rpx 50rpx 20rpx;
+}
+
+.popup .an {
+    border-top: 1rpx solid #ccc;
+}
+
+.popup .an button {
+    padding-top: 10rpx;
+    font-weight: bold;
+    padding-bottom: 10rpx;
+    background: none;
+    color: #FD93B3;
+    font-size: 34rpx;
+}
+
+.popup .an button::after {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}

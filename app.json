@@ -15,8 +15,7 @@
     "selectedColor": "#F4B6C5",
     "borderStyle": "black",
     "backgroundColor": "#ffffff",
-    "list": [
-      {
+    "list": [{
         "text": "首页",
         "pagePath": "pages/index/index",
         "iconPath": "img/tab1.png",
@@ -36,7 +35,7 @@
       },
       {
         "text": "我的",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/personal/index",
         "iconPath": "img/tab4.png",
         "selectedIconPath": "img/_tab4.png"
       }

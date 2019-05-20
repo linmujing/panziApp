@@ -1,2 +1,86 @@
-<!--pages/personal/index.wxml-->
-<text>pages/personal/index.wxml</text>
+<view class="container" wx:if="{{!login_state}}">
+    <view class="person_info">
+        <image mode="widthFix" class="personInfo_bg" src="../../img/person_topPic.png" />
+        <view class="user_info">
+            <image src="{{userInfo.avatarUrl}}" />
+            <view class="user_info_right">
+                <view class="">{{userInfo.nickName}}</view>
+            </view>
+        </view>
+        <view class="VIP_center">
+            <image mode="widthFix" src="../../img/huiyuan.png" />
+        </view>
+    </view>
+    <view class="my_order">
+        <view class="order_title">
+            <view>我的订单</view>
+            <view class="look_all">
+                查看全部
+                <image mode="widthFix" src="../../img/enter_.png" />
+            </view>
+        </view>
+        <view class="order_list">
+            <view>
+                <image src="../../img/money1.png" />
+                <view>待付款</view>
+            </view>
+            <view>
+                <image src="../../img/money2.png" />
+                <view>待发货</view>
+            </view>
+            <view>
+                <image src="../../img/money3.png" />
+                <view>待收货</view>
+            </view>
+            <view>
+                <image src="../../img/money4.png" />
+                <view>评论</view>
+            </view>
+            <view>
+                <image src="../../img/money5.png" />
+                <view>退换/售后</view>
+            </view>
+        </view>
+    </view>
+    <view class="my_list">
+        <view class="my_list_item">
+            <view>
+                <image mode="widthFix" src="../../img/coupons.png" />
+                <text>我的优惠券</text>
+            </view>
+            <image mode="widthFix" src="../../img/enter_.png" />
+        </view>
+        <view class="my_list_item">
+            <view>
+                <image mode="widthFix" src="../../img/coupons.png" />
+                <text>我的积分</text>
+            </view>
+            <image mode="widthFix" src="../../img/enter_.png" />
+        </view>
+        <view class="my_list_item">
+            <view>
+                <image mode="widthFix" src="../../img/coupons.png" />
+                <text>我发布的</text>
+            </view>
+            <image mode="widthFix" src="../../img/enter_.png" />
+        </view>
+        <view class="my_list_item">
+            <view>
+                <image mode="widthFix" src="../../img/coupons.png" />
+                <text bind:tap="to">排行榜</text>
+            </view>
+            <image mode="widthFix" src="../../img/enter_.png" />
+        </view>
+    </view>
+</view>
+<view class='popup {{login_state===true?"active":""}}'>
+    <view class='popup_nr'>
+        <view class='biaoti'>温馨提示</view>
+        <view class='popup_nrs'>为了更好的体验小程序，请登录</view>
+        <view class='an'>
+            <button open-type="getUserInfo" bindgetuserinfo="click_UserInfo">
+                <text>登录</text>
+            </button>
+        </view>
+    </view>
+</view>

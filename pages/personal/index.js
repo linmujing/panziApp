@@ -5,15 +5,60 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    login_state: false,
+    userInfo: {},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var userInfo = wx.getStorageSync('userInfo');
+    console.log(userInfo)
+    if (userInfo) {
+      this.setData({
+        login_state: false,
+        userInfo: userInfo
+      })
+    } else {
+      this.setData({
+        login_state: true,
+      })
+    }
   },
+
+  // 授权登录
+  click_UserInfo: function (e) {
+    // console.log(e)
+    var that = this;
+    wx.login({
+      success: res => {
+        // 如果需要，res里面可以拿到登录成功的code
+        var code = res.code
+        var userInfo = e.detail.userInfo;
+        console.log(code)
+        wx.setStorageSync('userInfoToken', code);
+        // 用户信息
+        if (userInfo) {
+          wx.showToast({
+            title: '登录中……',
+            icon: 'none',
+            duration: 300
+          })
+          that.setData({
+            // token: code,
+            login_state: false,
+            userInfo: userInfo
+          })
+        } else {
+          wx.showModal({
+            title: "为了您更好的体验,请先同意授权",
+          });
+        }
+      }
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
