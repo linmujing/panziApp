@@ -76,7 +76,7 @@
   left: auto;
   right: 40rpx;
   bottom: 180rpx;
-  /* width:70rpx; */
+  width:70rpx;
 }
 
 .service_an button {
