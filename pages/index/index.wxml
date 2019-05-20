@@ -38,6 +38,18 @@
     <view>热门主题</view>
     <view>THE LATEST TOPIC</view>
   </view>
+  <view class='hot_topic'>
+    <view class='item'>
+      <image src="https://res2.pznrfsy.com/picture/f83a590334d550115725da19b2c50744.jpeg" />
+      <view class='df jc_sb ai_c'>
+        <view class='txt'>
+          <text>个人写真系列 | </text>
+          <text>琉璃翠</text>
+        </view>
+        <image src='/img/message.png' class='icon'></image>
+      </view>
+    </view>
+  </view>
 </view>
 
 
