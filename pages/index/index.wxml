@@ -16,9 +16,9 @@
 <!-- 轮播 -->
 <view class='bg_ff'>
   <swiper autoplay indicatorDots circular current="0" indicator-active-color='{{cindicatorColor}}'>
-    <view wx:for="{{3}}" wx:key='{{i}}'>
+    <view wx:for="{{carouselData}}" wx:key='{{i}}'>
       <swiper-item>
-        <image class='w100 h100' src="https://res2.pznrfsy.com/picture/f83a590334d550115725da19b2c50744.jpeg" />
+        <image class='w100 h100' src="{{item}}" />
       </swiper-item>
     </view>
   </swiper>
@@ -38,13 +38,13 @@
     <view>热门主题</view>
     <view>THE LATEST TOPIC</view>
   </view>
-  <view class='hot_topic'>
-    <view class='item'>
-      <image src="https://res2.pznrfsy.com/picture/f83a590334d550115725da19b2c50744.jpeg" />
-      <view class='df jc_sb ai_c'>
-        <view class='txt'>
-          <text>个人写真系列 | </text>
-          <text>琉璃翠</text>
+  <view class='hot_topic df jc_sb fw_w'>
+    <view wx:for='{{hotList}}' wx:key='{{i}}' class='item'>
+      <image src="{{item.img}}" />
+      <view class='txt df jc_sb ai_c'>
+        <view>
+          <text>{{item.xilie}} | </text>
+          <text>{{item.title}}</text>
         </view>
         <image src='/img/message.png' class='icon'></image>
       </view>

@@ -19,26 +19,26 @@
       {
         "text": "首页",
         "pagePath": "pages/index/index",
-        "iconPath": "img/_tab1.jpg",
-        "selectedIconPath": "img/_tab1.jpg"
+        "iconPath": "img/tab1.png",
+        "selectedIconPath": "img/_tab1.png"
       },
       {
         "text": "主题",
         "pagePath": "pages/index/index",
-        "iconPath": "img/tab2.jpg",
-        "selectedIconPath": "img/tab2.jpg"
+        "iconPath": "img/tab2.png",
+        "selectedIconPath": "img/_tab2.png"
       },
       {
         "text": "社区",
         "pagePath": "pages/index/index",
-        "iconPath": "img/tab3.jpg",
-        "selectedIconPath": "img/tab3.jpg"
+        "iconPath": "img/tab3.png",
+        "selectedIconPath": "img/_tab3.png"
       },
       {
         "text": "我的",
         "pagePath": "pages/index/index",
-        "iconPath": "img/tab4.jpg",
-        "selectedIconPath": "img/tab4.jpg"
+        "iconPath": "img/tab4.png",
+        "selectedIconPath": "img/_tab4.png"
       }
     ]
   },

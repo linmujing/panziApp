@@ -72,6 +72,7 @@ App({
     //版本是否有更新 end
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    imgUrl: 'http://app.pznrfsy.com/static/panziApp/'
   }
 })

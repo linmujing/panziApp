@@ -60,10 +60,10 @@
 }
 
 .hot_topic{margin: 20rpx;}
-.hot_topic .item{width: 48%;background: #fff;border-radius: 8rpx;}
-.hot_topic .item image{width: 340rpx;height: 220rpx;border-radius: 8rpx;}
+.hot_topic .item{width: 350rpx;background: #fff;border-radius: 8rpx;margin-bottom: 20rpx;overflow: hidden;}
+.hot_topic .item image{width: 100%;height: 220rpx;}
 .hot_topic .item .icon{width: 30rpx; height: 30rpx;}
-.hot_topic .item .txt{padding: 10rpx;font-size: 24rpx;}
+.hot_topic .item .txt{padding: 20rpx 10rpx;font-size: 24rpx;}
 .hot_topic .item .txt text:last-child{font-weight: bold;}
 
 
