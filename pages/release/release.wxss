@@ -1,0 +1,98 @@
+/* pages/release/release.wxss */
+page {
+    background: #fff;
+}
+
+.top_title {
+    display: flex;
+    justify-content: space-between;
+    background: #eee;
+    padding: 20rpx 40rpx;
+    /* border-bottom: 1px solid #eee; */
+}
+
+.top_title view {
+    font-size: 32rpx;
+}
+
+.content {
+    padding: 30rpx;
+}
+
+.upload_btn {
+    width: 210rpx;
+    height: 210rpx;
+    background: #eee;
+    text-align: center;
+}
+
+.upload_btn image {
+    width: 73rpx;
+    margin-top: 60rpx;
+}
+
+.upload_btn view {
+    color: #ccc;
+    font-size: 30rpx;
+}
+
+.upload_content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.img_show {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+}
+
+.small_imageBox {
+    width: 210rpx;
+    height: 210rpx;
+    margin: 0 15rpx 15rpx 0;
+    position: relative;
+}
+
+.small_image {
+    width: 210rpx;
+    height: 210rpx;
+}
+
+.close_image {
+    position: absolute;
+    top: -15rpx;
+    right: -15rpx;
+    width: 38rpx;
+}
+
+.foot_list {
+    padding: 0 20rpx;
+    margin-top: 80rpx;
+}
+
+.list_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx 0;
+}
+
+.item_left {
+    display: flex;
+    align-items: center;
+}
+
+.item_left image {
+    width: 35rpx;
+    margin-right: 30rpx;
+    vertical-align: middle;
+}
+
+.item_right image {
+    width: 14rpx;
+}
+
+.active {
+    color: aquamarine;
+}

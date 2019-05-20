@@ -1,0 +1,48 @@
+<!-- pages/release/release.wxml -->
+<view class="container">
+    <view class="top_title">
+        <view bind:tap="cancel" class="cancel">取消</view>
+        <view class="release">发布</view>
+    </view>
+    <view class="content">
+        <textarea bindinput="handleContentInput" placeholder="说点什么吧..." placeholder-style="color:#b3b3b3;font-size:18px;"></textarea>
+        <view class="upload_content">
+            <view class="img_show">
+                <block wx:for="{{images}}" wx:key="*this">
+                    <view class="small_imageBox">
+                        <!-- 图片缩略图 -->
+                        <image class="small_image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+                        <!-- 移除图片的按钮 -->
+                        <image mode="widthFix" class="close_image" data-idx="{{index}}" bindtap="removeImage" src="../../img/close.png" />
+                    </view>
+                </block>
+            </view>
+            <view class="img_upload">
+                <view class="upload_btn" bindtap="chooseImage">
+                    <image mode="widthFix" src="../../img/camera.png" />
+                    <view>照片/视频</view>
+                </view>
+            </view>
+        </view>
+        <view class="foot_list">
+            <view class="list_item">
+                <view class="item_left">
+                    <image mode="widthFix" src="../../img/biaoqian.png" />
+                    <text>添加标签</text>
+                </view>
+                <view class="item_right">
+                    <image mode="widthFix" src="../../img/enter_.png" />
+                </view>
+            </view>
+            <view class="list_item" bind:tap="getPosition">
+                <view class="item_left">
+                    <image mode="widthFix" src="../../img/weizhi.png" />
+                    <text class='{{slecte ? "active":""}}'>{{position}}</text>
+                </view>
+                <view class="item_right">
+                    <image mode="widthFix" src="../../img/enter_.png" />
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

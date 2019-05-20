@@ -1,0 +1,124 @@
+<!-- pages/community/community.wxml -->
+<view class="container">
+    <view class="top_nav">
+        <view>
+            <image mode="widthFix" src="../../img/xiaoxi.png" />
+        </view>
+        <view>
+            <image mode="widthFix" src="../../img/fangdajing.png" />
+            <image class="dongtai" bind:tap="link_to" mode="widthFix" src="../../img/xiangji.png" />
+        </view>
+    </view>
+    <scroll-view class="tab" scroll-x="true" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
+        <block wx:for="{{goodsData}}" wx:key="{{index}}">
+            <view class="tab_item {{currentTab==index ? 'active' :'' }}" data-current='{{index}}' bindtap='switchNav'>
+                {{item.name}}
+            </view>
+        </block>
+    </scroll-view>
+    <view class="content">
+        <swiper duration="300" current="{{currentTab}}" bindchange="houseChange" style="height: {{winHeight +'px'}}">
+            <block wx:for="{{goodsData}}" wx:key="index" wx:for-item="dt">
+                <swiper-item class="content-item">
+                    <scroll-view scroll-y="{{true}}" style="height: {{winHeight+'px'}}">
+                        <view wx:if="{{dt.type == 1}}">
+                            <block wx:for="{{detail}}" wx:for-item="dd" wx:for-index='index' wx:key="{{index}}">
+                                <view class="Popular">
+                                    <view class="Popular_title">
+                                        <view class="pTitle_left">
+                                            <image class="Popular_headerImg" src="{{dd.headerUrl}}" />
+                                            <view class="">
+                                                <view class="Popular_name">{{dd.name}}</view>
+                                                <view class="Popular_time">{{dd.time}}</view>
+                                            </view>
+                                        </view>
+                                        <view class="pTitle_right">
+                                            <view class="guanzhu">+关注</view>
+                                            <view bind:tap="close" class="close_btn" data-index='{{index}}'>
+                                                <image mode="widthFix" src="../../img/delate.png" />
+                                            </view>
+                                        </view>
+                                    </view>
+                                    <view class="Popular_content">{{dd.content}}</view>
+                                    <view class="Popular_picBox" data-id="{{index}}" bind:tap="toIndex">
+                                        <image class="Popular_bigPic" wx:for="{{dd.bigUrl}}" wx:key="index" src="{{item}}" data-index="{{index}}" data-current='{{index}}' data-id="{{id}}" bind:tap="handleImagePreview" />
+                                    </view>
+                                    <view class="Popular_foot">
+                                        <view>
+                                            <button plain="true" open-type="share">
+                                                <image mode="widthFix" src="../../img/zhuanfa.png" />
+                                            </button>
+                                            <text>{{dd.zhuanfa}}</text>
+                                        </view>
+                                        <view>
+                                            <image mode="widthFix" src="../../img/huifu.png" />
+                                            <text>{{dd.huifu}}</text>
+                                        </view>
+                                        <view>
+                                            <image class="praise {{dd.hasChange? 'changed': ''}}" hover-class="hover_praise" bindtap="praiseThis" data-curIndex="{{index}}" mode="widthFix" src="{{dd.hasChange?'../../img/love-active.png':'../../img/dianzan.png'}}" />
+                                            <text>{{dd.dianzan}}</text>
+                                        </view>
+                                    </view>
+                                </view>
+                            </block>
+                        </view>
+                        <view wx:if="{{dt.type == 2}}">
+                            <view>{{dt.name}}</view>
+                        </view>
+                    </scroll-view>
+                </swiper-item>
+            </block>
+            <!-- <block wx:for="{{goodsData}}" wx:key="index" wx:for-item="dt">
+            <swiper-item class="content-item">
+                <scroll-view scroll-y="{{true}}" style="height: {{winHeight+'px'}}">
+                    <view wx:if="{{dt.type == 1}}">
+                        <block wx:for="{{dt.detail}}" wx:for-item="dd" data-index='{{index}}' wx:key="{{index}}">
+                            <view class="Popular" wx:if="{{!show}}">
+                                <view class="Popular_title">
+                                    <view class="pTitle_left">
+                                        <image class="Popular_headerImg" src="{{dd.headerUrl}}" />
+                                        <view class="">
+                                            <view class="Popular_name">{{dd.name}}</view>
+                                            <view class="Popular_time">{{dd.time}}</view>
+                                        </view>
+                                    </view>
+                                    <view class="pTitle_right">
+                                        <view class="guanzhu">+关注</view>
+                                        <view bind:tap="close" class="close_btn" data-idx='{{index}}'>
+                                            ×
+                                        </view>
+                                    </view>
+                                </view>
+                                <view class="Popular_content">{{dd.content}}</view>
+                                <view class="Popular_picBox">
+                                    <image class="Popular_bigPic" wx:for="{{dd.bigUrl}}" wx:key="index" src="{{item}}" />
+                                </view>
+                                <view class="Popular_foot">
+                                    <view>
+                                        <button plain="true" open-type="share">
+                                            <image mode="widthFix" src="../../image/zhuanfa.png" />
+                                        </button>
+                                       
+                                        <text>{{dd.zhuanfa}}</text>
+                                    </view>
+                                    <view>
+                                        <image mode="widthFix" src="../../image/huifu.png" />
+                                        <text>{{dd.huifu}}</text>
+                                    </view>
+                                    <view>
+                                        <image mode="widthFix" src="../../image/dianzan.png" />
+                                        <text>{{dd.dianzan}}</text>
+                                    </view>
+                                </view>
+                            </view>
+                        </block>
+                    </view>
+                    <view wx:if="{{dt.type == 2}}">
+                        <view>{{dt.name}}</view>
+                    </view>
+                </scroll-view>
+            </swiper-item>
+        </block> -->
+        </swiper>
+    </view>
+</view>

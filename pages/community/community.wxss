@@ -1,0 +1,187 @@
+/* pages/community/community.wxss */
+page {
+    background: #F6F6F6;
+}
+
+.top_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx 30rpx;
+    background: #fff;
+}
+
+.top_nav image {
+    width: 40rpx;
+    vertical-align: middle;
+}
+
+.top_nav .dongtai {
+    margin-left: 40rpx;
+}
+
+.tab {
+    /* height: 80rpx; */
+    width: 100%;
+    padding: 20rpx 40rpx;
+    box-sizing: border-box;
+    overflow: hidden;
+    /* line-height: 80rpx; */
+    font-size: 30rpx;
+    white-space: nowrap;
+    /* position: fixed;
+    top: 0;
+    left: 0; */
+    z-index: 99;
+    background: #fff;
+}
+
+.tab .tab_item {
+    margin-right: 90rpx;
+    /* width: 20%; */
+    display: inline-block;
+    text-align: center;
+    padding-bottom: 5rpx;
+}
+
+
+.tab .active {
+    border-bottom: 2px solid #FD93B3;
+    color: #FD93B3;
+    padding-bottom: 2rpx;
+}
+
+.content {
+    margin-top: 30rpx;
+    background: #fff;
+}
+
+.content .Popular {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 30rpx 30rpx 0 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.content .Popular_title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content .pTitle_left {
+    display: flex;
+    align-items: center;
+}
+
+.content .pTitle_left .Popular_headerImg {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    margin-right: 20rpx;
+}
+
+.content .pTitle_left .Popular_name {
+    font-weight: bold;
+}
+
+.content .pTitle_left .Popular_time {
+    color: #ccc;
+    font-size: 28rpx;
+    margin-top: 10rpx;
+}
+
+.content .pTitle_right {
+    display: flex;
+}
+
+.content .pTitle_right .guanzhu {
+    border: 1px solid #FD93B3;
+    height: 60rpx;
+    padding: 0 20rpx;
+    line-height: 60rpx;
+    font-size: 30rpx;
+    color: #FD93B3;
+    border-radius: 10rpx;
+    margin-right: 20rpx;
+}
+
+.content .close_btn image {
+    width: 20rpx;
+}
+
+.content .Popular_content {
+    margin: 30rpx 0;
+    font-size: 34rpx;
+    /* overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal; */
+}
+
+.content .Popular_bigPic {
+    width: 250rpx;
+    height: 220rpx;
+    border-radius: 10rpx;
+    margin-right: 10rpx;
+}
+
+.content .Popular_foot {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #eee;
+    margin-top: 30rpx;
+    padding: 30rpx 0;
+}
+
+.content .Popular_foot>view {
+    display: flex;
+    align-items: center;
+}
+
+.content .Popular_foot button {
+    border: none;
+    padding: 0 !important;
+}
+
+.content .Popular_foot image {
+    width: 32rpx;
+    margin-right: 10rpx;
+}
+
+.content .Popular_foot text {
+    color: #666;
+    font-size: 30rpx;
+}
+
+.praise {
+    /* width: 50px;
+    height: 50px;
+    background: #999;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    left: 10px;
+    transition: 0.5s;
+    color: #000;
+    background: #fff; */
+}
+
+/* 点赞按钮样式 */
+.hover_praise,
+.changed {
+    transition: 0.5s;
+    /* background: #ccc; */
+    /* background: red; */
+    /* color: red; */
+}
+
+/* 隐藏右侧滚动条 */
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}

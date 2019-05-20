@@ -16,12 +16,16 @@ const formatNumber = n => {
 
 // const urlFront = 'https://ljj.pznrfsy.com/index/';
 const url = {
+
   // login: urlFront + 'login/login',
   // send_sms: urlFront + 'sms/send_sms',
   // bind_tel: urlFront + 'sms/bind_tel',
 }
+
 function _post(url, data, success, isLoading = true) {
-  var header = { "content-type": "application/json" };
+  var header = {
+    "content-type": "application/json"
+  };
   wx.request({
     url: url,
     data: data,
@@ -49,6 +53,7 @@ function _post(url, data, success, isLoading = true) {
     }
   });
 }
+
 function showFais(title = "网络超时", duration = 2000) {
   wx.showToast({
     title: title,
@@ -56,6 +61,7 @@ function showFais(title = "网络超时", duration = 2000) {
     duration: (duration <= 0) ? 2000 : duration
   });
 }
+
 function showFail(title = "网络超时", duration = 2000) {
   wx.showToast({
     title: title,
