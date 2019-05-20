@@ -1,16 +1,63 @@
 /**index.wxss**/
-.search_box{padding: 20rpx 40rpx;}
-.search_box image{width: 40rpx;height: 40rpx}
-.search_box .search{width: 500rpx;background: #EEEEEE;border-radius: 6rpx;padding: 10rpx;}
-.search_box .shop{position: relative}
-.search_box .point{position: absolute;top: -20rpx;right: -18rpx;width: 34rpx;height: 34rpx;background: #FA9DB4;color: #fff;border-radius: 50%;text-align: center;font-size: 24rpx;}
+.search_box {
+  padding: 20rpx 40rpx;
+}
 
-.nav{padding: 10rpx 20rpx;text-align: center;}
-.nav image{width: 100rpx;height: 100rpx;display: block;margin: 0 auto;}
+.search_box image {
+  width: 40rpx;
+  height: 40rpx
+}
 
-.title{text-align: center;padding: 20rpx;}
-.title view:first-child{font-weight: bold;font-size: 30rpx;}
-.title view:last-child{font-size: 14rpx;color: #5A5A5A;}
+.search_box .search {
+  width: 500rpx;
+  background: #EEEEEE;
+  border-radius: 6rpx;
+  padding: 10rpx;
+}
+
+.search_box .shop {
+  position: relative
+}
+
+.search_box .point {
+  position: absolute;
+  top: -20rpx;
+  right: -18rpx;
+  width: 34rpx;
+  height: 34rpx;
+  background: #FA9DB4;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.nav {
+  padding: 10rpx 20rpx;
+  text-align: center;
+}
+
+.nav image {
+  width: 100rpx;
+  height: 100rpx;
+  display: block;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  padding: 20rpx;
+}
+
+.title view:first-child {
+  font-weight: bold;
+  font-size: 30rpx;
+}
+
+.title view:last-child {
+  font-size: 14rpx;
+  color: #5A5A5A;
+}
 
 .hot_topic{margin: 20rpx;}
 .hot_topic .item{width: 48%;background: #fff;border-radius: 8rpx;}
@@ -23,14 +70,28 @@
 
 
 
-.service_an{
-  position:fixed;
-  top:auto;
-  left:auto;
-  right:40rpx;
-  bottom:180rpx;
-  width:70rpx;
+.service_an {
+  position: fixed;
+  top: auto;
+  left: auto;
+  right: 40rpx;
+  bottom: 180rpx;
+  /* width:70rpx; */
 }
-.service_an button{padding:0;border-radius:0;background:none;width:100%;height:100%;}
-.service_an button:after{border:none;}
-.service_an image{width:100%;height:100%;}
+
+.service_an button {
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  width: 100%;
+  height: 100%;
+}
+
+.service_an button:after {
+  border: none;
+}
+
+.service_an image {
+  width: 100%;
+  height: 100%;
+}
