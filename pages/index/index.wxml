@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class='search_box df jc_sb ai_c'>
+<view class='search_box df jc_sb ai_c bg_ff'>
   <view class='search df ai_c'>
     <image src='/img/search.png'></image>
     <input placeholder="搜索主题风格 最新主题" placeholder-style='color: #B4B4B4' bindinput="blur_search"/>
@@ -14,15 +14,17 @@
   </view>
 </view>
 <!-- 轮播 -->
-<swiper autoplay indicatorDots circular current="0" indicator-active-color='{{cindicatorColor}}'>
-  <view wx:for="{{3}}" wx:key='{{i}}'>
-    <swiper-item>
-      <image class='w100 h100' src="https://res2.pznrfsy.com/picture/f83a590334d550115725da19b2c50744.jpeg" />
-    </swiper-item>
-  </view>
-</swiper>
+<view class='bg_ff'>
+  <swiper autoplay indicatorDots circular current="0" indicator-active-color='{{cindicatorColor}}'>
+    <view wx:for="{{3}}" wx:key='{{i}}'>
+      <swiper-item>
+        <image class='w100 h100' src="https://res2.pznrfsy.com/picture/f83a590334d550115725da19b2c50744.jpeg" />
+      </swiper-item>
+    </view>
+  </swiper>
+</view>
 <!-- 导航 -->
-<view class='nav df jc_sb fw_w'>
+<view class='nav df jc_sb fw_w bg_ff'>
   <block wx:for='{{10}}' wx:key='{{i}}'>
     <view class='w20 mt_10'>
       <image src='/img/nav1.jpg'></image>
@@ -32,7 +34,7 @@
 </view>
 <!-- 热门主题 -->
 <view>
-  <view class='title'>
+  <view class='title bg_ff'>
     <view>热门主题</view>
     <view>THE LATEST TOPIC</view>
   </view>
