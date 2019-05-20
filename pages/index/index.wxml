@@ -46,7 +46,7 @@
           <text>{{item.xilie}} | </text>
           <text>{{item.title}}</text>
         </view>
-        <image src='/img/message.png' class='icon'></image>
+        <image src='/img/right_arrow.png' class='icon'></image>
       </view>
     </view>
   </view>
