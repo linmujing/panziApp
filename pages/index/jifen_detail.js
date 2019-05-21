@@ -1,11 +1,23 @@
 // pages/index/jifen_detail.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    isIPX: getApp().globalData.isIPX,
+    detailData: {
+      img: app.globalData.imgUrl + 'week1.jpg',
+      name: '盘子女人坊古装艺术写真油画布框',
+      info: '古装艺术写真油画布框辅助介绍',
+      jifen: 2000,
+      sale: 997,
+      pay: 2,
+      kucun: 2255
+    },
+    popup_state: true,
+    gift: app.globalData.imgUrl + 'gift.jpg',
   },
 
   /**
@@ -28,7 +40,17 @@ Page({
   onShow: function () {
 
   },
-
+  click_dui: function (e) {
+    var popup_state = this.data.popup_state
+    this.setData({
+      popup_state: !popup_state
+    })
+  },
+  click_index: function (e) {
+    wx.switchTab({
+      url: 'index',
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

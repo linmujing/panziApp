@@ -11,10 +11,10 @@ Page({
       current: 0,
     },
     productList: [
-      { img: app.globalData.imgUrl + 'week1.jpg', name: '盘子女人坊艺术写真', price: 276, yPrice: 24278, pay: 30 },
-      { img: app.globalData.imgUrl + 'week2.jpg', name: '盘子女人坊艺术写真', price: 156, yPrice: 4278, pay: 30 },
-      { img: app.globalData.imgUrl + 'week3.jpg', name: '盘子女人坊艺术写真', price: 1766, yPrice: 33278, pay: 30 },
-      { img: app.globalData.imgUrl + 'week4.jpg', name: '盘子女人坊艺术写真', price: 236, yPrice: 2278, pay: 30 }
+      { img: app.globalData.imgUrl + 'week1.jpg', name: '盘子女人坊古装艺术写真油画布框', price: 276, yPrice: 24278, pay: 30 },
+      { img: app.globalData.imgUrl + 'week2.jpg', name: '盘子女人坊古装艺术写真油画布框', price: 156, yPrice: 4278, pay: 30 },
+      { img: app.globalData.imgUrl + 'week3.jpg', name: '盘子女人坊古装艺术写真油画布框', price: 1766, yPrice: 33278, pay: 30 },
+      { img: app.globalData.imgUrl + 'week4.jpg', name: '盘子女人坊古装艺术写真油画布框', price: 236, yPrice: 2278, pay: 30 }
     ],
   },
 
@@ -47,6 +47,12 @@ Page({
     var index = e.currentTarget.dataset.index;
     this.setData({
       'sortData.current': index,
+    })
+  },
+  click_detail: function (e) {
+    var index = e.currentTarget.dataset.index;
+    wx.navigateTo({
+      url: 'jifen_detail',
     })
   },
   /**
