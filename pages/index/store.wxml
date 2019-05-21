@@ -1,0 +1,13 @@
+<!--pages/index/store.wxml-->
+<view class='search_box bg_ff'>
+  <view class='search df ai_c'>
+    <image mode='widthFix' src='/img/search.png'></image>
+    <input placeholder="搜索你的城市" placeholder-style='color: #B4B4B4' bindinput="blur_search"/>
+  </view>
+</view>
+<view class='bg_ff store df fw_w'>
+  <view wx:for="{{storeList}}" wx:key='index' class='item'>
+    <image mode='widthFix' src='{{item.img}}'></image>
+    <text>{{item.name}}</text>
+  </view>
+</view>

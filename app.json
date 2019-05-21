@@ -2,6 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/personal/my_order",
+    "pages/index/store",
+    "pages/index/jifen_mall",
+    "pages/index/jifen_detail",
+    "pages/theme/index",
+    "pages/release/release",
 
     "pages/community/dongtai_details",
     "pages/community/release",
@@ -10,6 +15,9 @@
     "pages/community/search",
     "pages/community/searchLink"
 
+  ],
+  "navigateToMiniProgramAppIdList": [
+    "wx5ba0b0241434741e"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -31,7 +39,7 @@
       },
       {
         "text": "主题",
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/theme/index",
         "iconPath": "img/tab2.png",
         "selectedIconPath": "img/_tab2.png"
       },

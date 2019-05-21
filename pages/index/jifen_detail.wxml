@@ -1,0 +1,42 @@
+<!--pages/index/jifen_detail.wxml-->
+<image mode='widthFix' src='{{detailData.img}}'class='w100'></image>
+<view class='info bg_ff'>
+  <view class='df jc_sb ai_c'>
+    <view>
+      <view class='font_blod'>{{detailData.name}}</view>
+      <view class='ft_12 color_5b mt_5'>{{detailData.info}}</view>
+      <view class='mt_10 df ai_c'>
+        <text class='color_jifen ft_16'>{{detailData.jifen}} </text>
+        <text class='color_5b ft_12 pl_5'>积分</text>
+        <text class='tag'>积分商品</text>
+      </view>
+    </view>
+    <image mode='widthFix' src='/img/share-1.png' class='zf'></image>
+  </view>
+  <view class='mt_10 ft_12 color_5b df jc_sb'>
+    <text>仅限：{{detailData.sale}}</text>
+    <text>已参与：{{detailData.pay}}</text>
+    <text>库存：{{detailData.kucun}}</text>
+  </view>
+</view>
+
+
+<view class='duihuan' bindtap='click_dui'>
+  <view class='btn_title'>立即兑换</view>
+  <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
+</view>
+
+<!-- 兑换成功弹窗 -->
+<view hidden='{{popup_state}}' class='popup'>
+  <view class='box df fd_c jc_sa'>
+    <view class='color_title'>恭喜您，兑换成功!</view>
+    <view>
+      <image mode='widthFix' src='{{gift}}' class='w50'></image>
+      <view class='color_99 ft_12'>订单已交至后台处理</view>
+    </view>
+    <view class='btn'>
+      <view class='btn_title'>查看订单</view>
+      <view class='btn_plain color_title mt_20' bindtap='click_index'>返回首页</view>
+    </view>
+  </view>
+</view>

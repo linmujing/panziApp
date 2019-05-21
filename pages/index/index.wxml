@@ -16,7 +16,7 @@
 <!-- 轮播 -->
 <view class='carouse bg_ff ta_c'>
   <swiper autoplay indicatorDots circular indicator-active-color='#fff' previous-margin='80rpx' next-margin='80rpx' bindchange='change' current='{{current}}'>
-    <view wx:for="{{carouselData}}" wx:key='{{i}}'>
+    <view wx:for="{{carouselData}}" wx:key='{{index}}'>
       <swiper-item class=' df ai_c'>
         <view class='box' animation="{{index == current?animationData:animationData2}}">
           <image src="{{item}}" class='w100 h100'/>
@@ -27,8 +27,8 @@
 </view>
 <!-- 导航 -->
 <view class='nav df jc_sb fw_w bg_ff'>
-  <block wx:for='{{navData}}' wx:key='{{i}}'>
-    <view class='w20 mt_10'>
+  <block wx:for='{{navData}}' wx:key='{{index}}'>
+    <view class='w20 mt_10' bindtap='click_nav' data-index='{{index}}'>
       <image src='{{item.img}}'></image>
       <view class='ft_12 mt_5'>{{item.title}}</view>
     </view>
@@ -41,7 +41,7 @@
     <view>THE LATEST TOPIC</view>
   </view>
   <view class='hot_topic df jc_sb fw_w'>
-    <view wx:for='{{hotList}}' wx:key='{{i}}' class='item'>
+    <view wx:for='{{hotList}}' wx:key='{{index}}' class='item'>
       <image src="{{item.img}}" />
       <view class='txt df jc_sb ai_c'>
         <view>
@@ -63,7 +63,7 @@
     <image mode='widthFix' src='{{experience}}' class='w60'></image>
   </view>
   <view class='experiencer df jc_sb fw_w'>
-    <view wx:for='{{hotList}}' wx:key='{{i}}' class='item'>
+    <view wx:for='{{hotList}}' wx:key='{{index}}' class='item'>
       <image src="{{item.img}}" />
       <view class='txt ta_c'>
         <view>
@@ -82,7 +82,7 @@
     <view>GUEST SHEET EVERY WEEK</view>
   </view>
   <view class='week df jc_sb fw_w'>
-    <view wx:for='{{weekData.weekList}}' wx:key='{{i}}' class='item'>
+    <view wx:for='{{weekData.weekList}}' wx:key='{{index}}' class='item'>
       <image mode='widthFix' src="{{item.img}}" />
       <view class='txt ta_c'>
         <image mode='widthFix' src='{{weekData.week_logo}}'></image>
@@ -101,7 +101,7 @@
   </view>
   <view class='store bg_ff'>
     <scroll-view class="df fw_w" scroll-x style="width: auto;overflow:hidden;">
-      <view wx:for='{{storeData.storeList}}' wx:key='{{i}}' class='item'>
+      <view wx:for='{{storeData.storeList}}' wx:key='{{index}}' class='item'>
         <image src="{{item.img}}" />
         <view class='txt ta_c'>{{item.name}}</view>
       </view>
@@ -123,7 +123,7 @@
     <view>HOT COMMENTS</view>
   </view>
   <view class='comments df jc_sb fw_w'>
-    <view wx:for='{{commentsList}}' wx:key='{{i}}' class='item'>
+    <view wx:for='{{commentsList}}' wx:key='{{index}}' class='item'>
       <image mode='widthFix' src="{{item.img}}" />
       <view class='txt'>
         <view class='twoline'>{{item.info}}</view>
