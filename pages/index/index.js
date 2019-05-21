@@ -121,5 +121,15 @@ Page({
       animationData2: animation2.export()
     })
   },
+  click_nav: function (e) {
+    var index = e.currentTarget.dataset.index;
+    console.log(index)
+    switch (index) {
+      case 1:
+        wx.switchTab({
+          url: '../theme/index',
+        })
+    }
+  },
 
 })

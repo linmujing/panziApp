@@ -1,0 +1,31 @@
+<!--pages/theme/index.wxml-->
+<view class='search_box bg_ff'>
+  <view class='search df ai_c'>
+    <image mode='widthFix' src='/img/search.png'></image>
+    <input placeholder="搜索主题关键词" placeholder-style='color: #B4B4B4' bindinput="blur_search"/>
+  </view>
+</view>
+<view class='banner'>
+  <image src='{{banner}}'></image>
+</view>
+<!-- 导航栏 -->
+<view class='nav'>
+  <scroll-view scroll-x class='df' scroll-with-animation style="width: auto;">
+    <view wx:for='{{navData.navList}}' wx:key='index' class='item {{navData.current==index?"active":""}}' data-index='{{index}}' bindtap='click_nav'>{{item}}</view>
+  </scroll-view>
+</view>
+<!-- 列表 -->
+<view class='themeList'>
+  <view wx:for="{{themeList}}" wx:key='index' class='item'>
+    <image mode='widthFix' src='{{item.img}}'></image>
+    <view class='df jc_sb ai_c'>
+      <view>{{item.name}}</view>
+      <view class='df ai_c txt'>
+        <view class='heart'></view>
+        <text class='oneline'>{{item.collect}}</text>
+        <image mode='widthFix' src='/img/eye.png'></image>
+        <text class='oneline'>{{item.look}}</text>
+      </view>
+    </view>
+  </view>
+</view>

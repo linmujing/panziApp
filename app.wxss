@@ -113,6 +113,7 @@ page{font-size: 28rpx;color:#333;background: #F7F7F7;}
     white-space: normal;
 }
 
+
 .navi-bar-view-IPX {
   height:34px;background:#fff;
   /* 其他样式值 */
