@@ -1,10 +1,14 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/release/release",
-    "pages/community/community",
-    "pages/personal/index"
+    "pages/personal/my_order",
 
+    "pages/community/dongtai_details",
+    "pages/community/release",
+    "pages/community/community",
+    "pages/personal/index",
+    "pages/community/search",
+    "pages/community/searchLink"
 
   ],
   "window": {
@@ -47,12 +51,8 @@
   },
   "sitemapLocation": "sitemap.json",
   "permission": {
-
     "scope.userLocation": {
-
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
-
     }
-
   }
 }

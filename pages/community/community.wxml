@@ -5,17 +5,17 @@
             <image mode="widthFix" src="../../img/xiaoxi.png" />
         </view>
         <view>
-            <image mode="widthFix" src="../../img/fangdajing.png" />
+            <image bind:tap="link_search" mode="widthFix" src="../../img/fangdajing.png" />
             <image class="dongtai" bind:tap="link_to" mode="widthFix" src="../../img/xiangji.png" />
         </view>
     </view>
-    <scroll-view class="tab" scroll-x="true" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
+    <!-- <scroll-view class="tab" scroll-x="true" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
         <block wx:for="{{goodsData}}" wx:key="{{index}}">
             <view class="tab_item {{currentTab==index ? 'active' :'' }}" data-current='{{index}}' bindtap='switchNav'>
                 {{item.name}}
             </view>
         </block>
-    </scroll-view>
+    </scroll-view> -->
     <view class="content">
         <swiper duration="300" current="{{currentTab}}" bindchange="houseChange" style="height: {{winHeight +'px'}}">
             <block wx:for="{{goodsData}}" wx:key="index" wx:for-item="dt">
@@ -39,7 +39,9 @@
                                             </view>
                                         </view>
                                     </view>
-                                    <view class="Popular_content">{{dd.content}}</view>
+                                    <view class="Popular_content" bind:tap="link_details">
+                                        {{dd.content}}
+                                    </view>
                                     <view class="Popular_picBox" data-id="{{index}}" bind:tap="toIndex">
                                         <image class="Popular_bigPic" wx:for="{{dd.bigUrl}}" wx:key="index" src="{{item}}" data-index="{{index}}" data-current='{{index}}' data-id="{{id}}" bind:tap="handleImagePreview" />
                                     </view>

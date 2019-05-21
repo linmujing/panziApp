@@ -153,11 +153,22 @@ Page({
       }
     }
   },
-
+  // 跳转动态详情页面
+  link_details() {
+    wx.navigateTo({
+      url: './dongtai_details'
+    })
+  },
+  // 跳转搜索页面
+  link_search() {
+    wx.navigateTo({
+      url: './search'
+    })
+  },
   // 跳转发布动态页面
   link_to: function () {
     wx.navigateTo({
-      url: '../upload/upload'
+      url: './release'
     })
   },
   // 删除动态

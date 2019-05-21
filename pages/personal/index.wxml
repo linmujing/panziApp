@@ -23,7 +23,7 @@
     <view class="my_order">
         <view class="order_title">
             <view class="title_left">我的订单</view>
-            <view class="look_all">
+            <view class="look_all" bind:tap="link_allOrder">
                 查看全部
                 <image mode="widthFix" src="../../img/enter_.png" />
             </view>

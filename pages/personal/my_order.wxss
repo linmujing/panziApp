@@ -1,0 +1,99 @@
+/* pages/personal/my_order.wxss */
+.nav {
+    position: fixed;
+    width: 750rpx;
+    height: 80rpx;
+    z-index: 999;
+    background: #fff;
+    top: 0;
+    padding-bottom: 10rpx;
+}
+
+.tab {
+    padding: 30rpx 20rpx 0 20rpx;
+    /* background: #EEEEEE; */
+    font-size: 30rpx;
+    display: flex;
+    justify-content: space-around;
+}
+
+.tab view {
+    padding-bottom: 4rpx;
+}
+
+.tab .active {
+    border-bottom: 2px solid #F4B6C5;
+    color: #F4B6C5;
+    padding-bottom: 4rpx;
+    font-size: 30rpx;
+}
+
+.order_list {
+    margin-top: 100rpx;
+}
+
+.order_item {
+    margin-top: 30rpx;
+    background: #fff;
+}
+
+.order_item .item_title {
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx;
+}
+
+.order_item .item_content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.order_item .item_content .content_left {
+    display: flex;
+}
+
+.order_item .item_content .content_left image {
+    width: 130rpx;
+    margin-right: 20rpx;
+}
+
+.order_item .item_content .content_left .content_title {
+    margin-bottom: 10rpx;
+    font-weight: 600;
+    font-size: 30rpx;
+}
+
+.order_item .item_content .content_right>view {
+    margin-bottom: 10rpx;
+}
+
+.order_item .content_total {
+    text-align: right;
+    padding: 20rpx;
+}
+
+.order_item .content_btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20rpx;
+}
+
+.order_item .content_btn .wuliu {
+    border-radius: 50rpx;
+    border: 1px solid #666;
+    /* color: #F4B6C5; */
+    padding: 10rpx 20rpx;
+    margin-left: 20rpx;
+}
+
+.order_item .content_btn .shouhuo {
+    border-radius: 50rpx;
+    border: 1px solid #F4B6C5;
+    color: #F4B6C5;
+    padding: 12rpx 20rpx;
+    margin-left: 20rpx;
+}

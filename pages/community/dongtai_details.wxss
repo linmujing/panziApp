@@ -1,0 +1,218 @@
+.container {
+    padding-bottom: 100rpx;
+}
+
+.details_top {
+    padding: 30rpx;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.details_title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title_left {
+    display: flex;
+    align-items: center;
+}
+
+.title_left image {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+}
+
+.title_left .title_info {
+    margin-left: 30rpx;
+}
+
+.title_right image {
+    width: 120rpx;
+}
+
+.details_content .content_text {
+    margin-top: 20rpx;
+
+}
+
+.details_content .img_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 10rpx 0;
+}
+
+.details_content .img_box image {
+    width: 220rpx;
+    height: 220rpx;
+    border-radius: 10rpx;
+    margin-top: 10rpx;
+}
+
+.details_main {
+    background: #fff;
+    margin-top: 30rpx;
+}
+
+.details_main .main_title {
+    display: flex;
+    justify-content: space-between;
+    padding: 30rpx;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #ccc;
+}
+
+.details_main .main_title .main_title_left {
+    display: flex;
+    align-items: center;
+}
+
+.details_main .main_title .main_title_left .zhuanfa {
+    margin-right: 50rpx;
+}
+
+.details_main .main_content .main_input {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30rpx;
+}
+
+.details_main .main_content {
+    margin-top: 50rpx;
+}
+
+.details_main .main_content .main_input>image {
+    width: 67rpx;
+    height: 67rpx;
+    margin-left: 30rpx;
+}
+
+.details_main .main_content .input_text {
+    border-radius: 50rpx;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    margin-left: 30rpx;
+    padding: 20rpx 40rpx;
+}
+
+.details_main .main_content .input_text .pen {
+    width: 28rpx;
+    margin-right: 30rpx;
+}
+
+.details_main .main_content .input_text input {
+    width: 360rpx;
+}
+
+.details_main .main_content .input_text .biaoqing {
+    width: 48rpx;
+}
+
+.main_content .main_list .item_left image {
+    width: 77rpx;
+    height: 77rpx;
+}
+
+.main_content .main_list .list_item {
+    padding: 30rpx;
+    display: flex;
+    border-bottom: 1px solid #dad5d5;
+}
+
+.main_content .main_list .list_item .item_left {
+    margin-right: 30rpx;
+}
+
+.main_content .main_list .item_right .item_name,
+.main_content .main_list .item_right .item_content {
+    margin-bottom: 10rpx;
+}
+
+.main_content .main_list .item_right .item_name {
+    font-weight: 600;
+}
+
+.main_content .main_list .item_right .Comment {
+    background: #eee;
+    padding: 10rpx;
+    display: flex;
+    width: 520rpx;
+}
+
+.main_content .main_list .item_right .Comment .Comment_title {
+    color: #F4B6C5;
+}
+
+.main_content .main_list .item_right .item_foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20rpx;
+}
+
+.main_content .main_list .item_right .item_btn {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+}
+
+.main_content .main_list .item_right .item_btn image {
+    width: 28rpx;
+}
+
+.main_content .main_list .item_right .item_btn>view {
+    margin-left: 30rpx;
+    display: flex;
+    align-items: center;
+}
+
+.main_content .main_list .item_right .item_btn>view text {
+    margin-left: 10rpx;
+}
+
+.details_footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+}
+
+.details_foot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.details_foot>view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+    border-right: 1px solid #ccc;
+    margin: 30rpx 0;
+}
+
+.details_foot image {
+    width: 32rpx;
+    margin-right: 10rpx;
+}
+
+.details_foot button {
+    border: none;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1;
+}
+
+/* 点赞按钮样式 */
+.hover_praise,
+.changed {
+    transition: 0.5s;
+    /* background: #ccc; */
+    /* background: red; */
+    /* color: red; */
+}

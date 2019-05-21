@@ -1,0 +1,97 @@
+<view class="container">
+    <view class="details_top">
+        <view class="details_title">
+            <view class="title_left">
+                <image src="{{details.headerUrl}}" />
+                <view class="title_info">
+                    <view>{{details.name}}</view>
+                    <view>{{details.time}}</view>
+                </view>
+            </view>
+            <view class="title_right">
+                <image mode="widthFix" src="../../img/guanzhu.png" />
+            </view>
+        </view>
+        <view class="details_content">
+            <view class="content_text">{{details.content}}</view>
+            <view class="img_box">
+                <image wx:for="{{details.bigUrl}}" src="{{item}}" wx:key="index" />
+            </view>
+        </view>
+    </view>
+    <view class="details_main">
+        <view class="main_title">
+            <view class="main_title_left">
+                <view class="zhuanfa">
+                    <text>18</text>
+                    转发
+                </view>
+                <view class="pinglun">
+                    <text>57</text>
+                    评论
+                </view>
+            </view>
+            <view class="like">
+                <text>417</text>
+                喜欢
+            </view>
+        </view>
+        <view class="main_content">
+            <view class="main_input">
+                <image src="../../img/header.png" />
+                <view class="input_text">
+                    <image class="pen" mode="widthFix" src="../../img/pen.png" />
+                    <input placeholder="点击发表你的看法" />
+                    <image class="biaoqing" mode="widthFix" src="../../img/biaoqing.png" />
+                </view>
+            </view>
+            <view class="main_list">
+                <view class="list_item" wx:for="{{comment}}" wx:key="index">
+                    <view class="item_left">
+                        <image src="{{item.headerUrl}}" />
+                    </view>
+                    <view class="item_right">
+                        <view class="item_name">{{item.name}}</view>
+                        <view class="item_content">{{item.content}}</view>
+                        <view class="Comment" wx:for="{{item.huifu}}" wx:key="index">
+                            <view class="Comment_title">{{item.Comment_title}}：</view>
+                            <view class="Comment_text">{{item.Comment_text}}</view>
+                        </view>
+                        <view class="item_foot">
+                            <view class="item_time">{{item.time}}</view>
+                            <view class="item_btn">
+                                <image mode="widthFix" src="../../img/zhuanfa.png" />
+                                <view class="">
+                                    <image mode="widthFix" src="../../img/huifu.png" />
+                                    <text class="">2</text>
+                                </view>
+                                <view class="">
+                                    <image mode="widthFix" src="../../img/zan.png" />
+                                    <text>54</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="details_footer">
+        <view class="details_foot">
+            <view class="share">
+                <button plain="true" open-type="share">
+                    <image mode="widthFix" src="../../img/zhuanfa.png" />
+                </button>
+                <view>转发</view>
+            </view>
+            <view class="">
+                <image mode="widthFix" src="../../img/huifu.png" />
+                评论
+            </view>
+            <view class="">
+                <image class="praise {{details.hasChange? 'changed': ''}}" hover-class="hover_praise" bindtap="praiseThis" data-curIndex="{{index}}" mode="widthFix" src="{{details.hasChange?'../../img/love-active.png':'../../img/dianzan.png'}}" />
+                喜欢
+            </view>
+        </view>
+    </view>
+</view>

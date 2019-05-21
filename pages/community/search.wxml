@@ -1,0 +1,20 @@
+<view class="container">
+    <view class="search_nav">
+        <view class="search_wrap">
+            <image class="search_logo" mode="widthFix" src="../../img/search.png" />
+            <input class="search" type="text" placeholder="搜索：明星同款" value="{{value}}" bindconfirm="onSearch" bindblur="onBlur" />
+        </view>
+        <text class="search_nav_text" bind:tap="onSearch" word="{{searchWord}}">搜索</text>
+    </view>
+    <view class="search_history">
+        <view class="history_title">搜索历史</view>
+        <text wx:for="{{history}}" wx:key="index" class="history_text">{{item}}</text>
+    </view>
+    <view class="hot_recommend">
+        <view class="recommend_title">热门推荐</view>
+        <view wx:for="{{recommend}}" wx:key="index" class="recommend_text">
+            <image mode="widthFix" src="../../img/hot_logo.png" />
+            {{item}}
+        </view>
+    </view>
+</view>

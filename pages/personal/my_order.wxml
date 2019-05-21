@@ -1,0 +1,40 @@
+<!-- pages/personal/my_order.wxml -->
+<!-- 导航 -->
+<view class="nav">
+    <view class='tab'>
+        <block wx:for="{{goodsData}}" wx:key="{{index}}">
+            <view class="{{currentTab==index ? 'active' :'' }}" data-current='{{index}}' bindtap='switchNav' data-name='{{item.name}}'>
+                {{item.name}}
+            </view>
+        </block>
+    </view>
+</view>
+<view class="order_list">
+    <view class="order_item" wx:for="{{allOrder}}">
+        <view class="item_title">
+            <view>积分商城</view>
+            <view>已发货</view>
+        </view>
+        <view class="item_content">
+            <view class="content_left">
+                <image mode="widthFix" src="{{item.img}}" />
+                <view class="">
+                    <view class="content_title">{{item.title}}</view>
+                    <view>{{item.tips}}</view>
+                </view>
+            </view>
+            <view class="content_right">
+                <view class="price">{{item.price}}积分</view>
+                <view class="price_">{{item.price_}}积分</view>
+                <view class="num">×{{item.num}}</view>
+            </view>
+        </view>
+        <view class="content_total">合计:{{item.total}}积分</view>
+        <view class="content_btn">
+            <text>更多</text>
+            <view class="wuliu">查看物流</view>
+            <view class="yanchang shouhuo">延长收货</view>
+            <view class="queren shouhuo">确认收货</view>
+        </view>
+    </view>
+</view>

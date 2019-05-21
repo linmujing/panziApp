@@ -58,7 +58,11 @@ Page({
       }
     })
   },
-
+  link_allOrder() {
+    wx.navigateTo({
+      url: './my_order'
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
