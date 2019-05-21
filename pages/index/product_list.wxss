@@ -1,0 +1,26 @@
+/* pages/index/product_list.wxss */
+.search_box {
+  padding: 20rpx 40rpx;
+}
+
+.search_box image {
+  width: 40rpx;
+  height: 40rpx
+}
+
+.search_box .search {
+  width: 100%;
+  background: #EEEEEE;
+  border-radius: 30rpx;
+  padding: 10rpx;
+}
+.sort .item{padding: 20rpx 30rpx;font-size: 30rpx;}
+.sort .item image{width: 35rpx;}
+.sort .item text{padding: 0 10rpx;}
+.sort .item .active{background: #FA9EB6;color: #fff;border-radius: 30rpx;padding: 0 10rpx;}
+
+.product{margin: 20rpx;}
+.product .item{width: 346rpx;background: #fff;border-radius: 8rpx;margin-bottom: 20rpx;overflow: hidden;}
+.product .item>image{width: 100%;}
+.product .item .txtBox{padding: 10rpx;}
+.product .item .txtBox image{width: 40rpx;}

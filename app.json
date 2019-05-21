@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/index/product_list",
     "pages/theme/index",
     "pages/release/release",
     "pages/community/community",

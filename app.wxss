@@ -11,6 +11,7 @@ page{font-size: 28rpx;color:#333;background: #F7F7F7;}
 .bg_title{background: #FD93B3}
 /**字体大小**/
 .ft_10{font-size: 20rpx;}
+.ft_11{font-size: 22rpx;}
 .ft_12{font-size: 24rpx;}
 .ft_13{font-size: 26rpx;}
 .ft_14{font-size: 28rpx;}
@@ -20,6 +21,7 @@ page{font-size: 28rpx;color:#333;background: #F7F7F7;}
 
 /**字体颜色**/
 .color_ff{color: #fff}
+.color_5b{color: #5B5B5B}
 
 /**背景色**/
 .bg_ff{background: #fff}

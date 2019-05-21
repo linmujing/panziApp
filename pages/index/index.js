@@ -129,6 +129,12 @@ Page({
         wx.switchTab({
           url: '../theme/index',
         })
+        break
+      case 7:
+        wx.navigateTo({
+          url: 'product_list',
+        })
+        break
     }
   },
 
