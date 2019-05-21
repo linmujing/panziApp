@@ -1,0 +1,19 @@
+/* pages/index/store.wxss */
+.search_box {
+  padding: 20rpx 40rpx;
+}
+
+.search_box image {
+  width: 40rpx;
+  height: 40rpx
+}
+
+.search_box .search {
+  width: 100%;
+  background: #EEEEEE;
+  border-radius: 30rpx;
+  padding: 10rpx;
+}
+.store{margin: 20rpx;}
+.store .item{text-align: center;width: 25%;margin-bottom: 40rpx;}
+.store .item image{width: 150rpx;}

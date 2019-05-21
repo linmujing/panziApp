@@ -21,7 +21,8 @@
     <view class='df jc_sb ai_c'>
       <view>{{item.name}}</view>
       <view class='df ai_c txt'>
-        <view class='heart'></view>
+        <view wx:if='{{item.zan == 1}}' class='heart'></view>
+        <image wx:else mode='widthFix' src='/img/dianzan.png' class='xin'></image>
         <text class='oneline'>{{item.collect}}</text>
         <image mode='widthFix' src='/img/eye.png'></image>
         <text class='oneline'>{{item.look}}</text>

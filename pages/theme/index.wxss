@@ -28,11 +28,12 @@
 .themeList .item view image{width: 40rpx;}
 .themeList .item .txt{padding: 20rpx 0;}
 .themeList .item .txt text{width: 100rpx;padding-left: 10rpx;}
+.themeList .item .xin{width: 34rpx;}
 
 /* 爱心 */
 .heart {
   position: relative;
-  width: 40rpx;
+  width: 38rpx;
   height: 28rpx;
 }
 .heart:before,

@@ -1,5 +1,4 @@
-// pages/theme/index.js
-//获取应用实例
+// pages/index/store.js
 const app = getApp()
 Page({
 
@@ -7,16 +6,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    banner: app.globalData.imgUrl + 'ad3.jpg',
-    navData: {
-      navList: ['最新', '热拍', '影视', '情侣', '闺蜜', '亲子', '外景'],
-      current: 0,
-    },
-    themeList: [
-      { img: app.globalData.imgUrl + 'ad1.jpg', name: '明星同款主题【竹】', collect: 276, look: 24278, zan: 1 },
-      { img: app.globalData.imgUrl + 'ad2.jpg', name: '明星同款主题【竹】', collect: 156, look: 4278, zan: 0 },
-      { img: app.globalData.imgUrl + 'ad3.jpg', name: '明星同款主题【竹】', collect: 1766, look: 33278, zan: 1 },
-      { img: app.globalData.imgUrl + 'ad4.jpg', name: '明星同款主题【竹】', collect: 236, look: 2278, zan: 0 }
+    storeList: [
+      { img: app.globalData.imgUrl + 'store1.jpg', name: '北京总店' },
+      { img: app.globalData.imgUrl + 'store2.jpg', name: '北京朝阳' },
+      { img: app.globalData.imgUrl + 'store3.jpg', name: '上海总店' },
+      { img: app.globalData.imgUrl + 'store1.jpg', name: '北京总店' },
+      { img: app.globalData.imgUrl + 'store2.jpg', name: '北京朝阳' },
+      { img: app.globalData.imgUrl + 'store3.jpg', name: '上海总店' },
+      { img: app.globalData.imgUrl + 'store1.jpg', name: '北京总店' },
+      { img: app.globalData.imgUrl + 'store2.jpg', name: '北京朝阳' },
+      { img: app.globalData.imgUrl + 'store3.jpg', name: '上海总店' },
+      { img: app.globalData.imgUrl + 'store4.jpg', name: '上海静安' }
     ],
   },
 
@@ -44,12 +44,6 @@ Page({
     // this.setData({
     //   'tel': e.detail.value
     // })
-  },
-  click_nav: function(e){
-    var index = e.currentTarget.dataset.index;
-    this.setData({
-      'navData.current': index,
-    })
   },
   /**
    * 生命周期函数--监听页面隐藏

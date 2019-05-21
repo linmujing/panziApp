@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/index/store",
     "pages/index/product_list",
     "pages/theme/index",
     "pages/release/release",
@@ -8,6 +9,9 @@
     "pages/personal/index"
 
 
+  ],
+  "navigateToMiniProgramAppIdList": [
+    "wx5ba0b0241434741e"
   ],
   "window": {
     "backgroundTextStyle": "light",

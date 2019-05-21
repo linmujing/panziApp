@@ -121,10 +121,16 @@ Page({
       animationData2: animation2.export()
     })
   },
+  // 导航列表
   click_nav: function (e) {
     var index = e.currentTarget.dataset.index;
     console.log(index)
     switch (index) {
+      case 0:
+        wx.navigateTo({
+          url: 'store',
+        })
+        break
       case 1:
         wx.switchTab({
           url: '../theme/index',
@@ -135,6 +141,18 @@ Page({
           url: 'product_list',
         })
         break
+      case 8:
+        wx.navigateToMiniProgram({
+          appId: 'wx5ba0b0241434741e',
+          path: 'page/home/index',
+          envVersion: 'release',
+          success(res) {
+            // 打开成功
+          },
+          fail(res) {
+            console.log(res)
+          }
+        })
     }
   },
 
