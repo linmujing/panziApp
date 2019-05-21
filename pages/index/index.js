@@ -138,7 +138,7 @@ Page({
         break
       case 7:
         wx.navigateTo({
-          url: 'product_list',
+          url: 'jifen_mall',
         })
         break
       case 8:

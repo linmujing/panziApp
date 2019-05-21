@@ -2,7 +2,7 @@
 <view class='search_box bg_ff'>
   <view class='search df ai_c'>
     <image mode='widthFix' src='/img/search.png'></image>
-    <input placeholder="搜索主题关键词" placeholder-style='color: #B4B4B4' bindinput="blur_search"/>
+    <input placeholder="搜索店内宝贝" placeholder-style='color: #B4B4B4' bindinput="blur_search"/>
   </view>
 </view>
 
@@ -20,16 +20,14 @@
 <view class='product df jc_sb fw_w'>
   <view wx:for="{{productList}}" wx:key='index' class='item'>
     <image mode='widthFix' src='{{item.img}}'></image>
-    <view class='txtBox df jc_sb ai_c'>
-      <view>
-        <view class='ft_13'>{{item.name}}</view>
-        <view class='mt_5'>
-          <text class='color_title ft_16'>￥{{item.price}}</text>
-          <text class='ft_10 color_5b pl_10'>￥{{item.yPrice}}</text>
+    <view class='txtBox'>
+      <view class='ft_13'>{{item.name}}</view>
+      <view class='mt_5 df jc_sb ai_fe'>
+        <view class='ft_11'>
+          <text class='color_jifen ft_14'>{{item.price}} </text>积分
         </view>
-        <view class='ft_11 color_5b'>{{item.pay}}人已付款</view>
+        <text class='ft_10 color_5b pl_10'>{{item.yPrice}}万人想要</text>
       </view>
-      <image mode='widthFix' src='/img/cart.png'></image>
     </view>
   </view>
 </view>

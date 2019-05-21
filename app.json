@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/index/store",
-    "pages/index/product_list",
+    "pages/index/jifen_mall",
+    "pages/index/jifen_detail",
     "pages/theme/index",
     "pages/release/release",
     "pages/community/community",
