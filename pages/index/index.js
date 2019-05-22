@@ -81,8 +81,8 @@ Page({
     animationData2: {}
   },
   onLoad: function () {
-    this.stretch(150)
-    this.shrink(130)
+    this.stretch(300 + 'rpx')
+    this.shrink(260 + 'rpx')
   },
   blur_search: function (e) {
     // this.setData({
@@ -93,9 +93,8 @@ Page({
     this.setData({
       current: e.detail.current
     })
-    this.stretch(150)
-    
-    this.shrink(130)
+    this.stretch(300 + 'rpx')
+    this.shrink(260 + 'rpx')
   },
   // 收缩
   stretch(h){

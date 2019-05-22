@@ -15,7 +15,7 @@
 </view>
 <!-- 轮播 -->
 <view class='carouse bg_ff ta_c'>
-  <swiper autoplay indicatorDots circular indicator-active-color='#fff' previous-margin='80rpx' next-margin='80rpx' bindchange='change' current='{{current}}'>
+  <swiper autoplay indicatorDots circular interval='3000' indicator-active-color='#fff' previous-margin='80rpx' next-margin='80rpx' bindchange='change' current='{{current}}'>
     <view wx:for="{{carouselData}}" wx:key='{{index}}'>
       <swiper-item class=' df ai_c'>
         <view class='box' animation="{{index == current?animationData:animationData2}}">
