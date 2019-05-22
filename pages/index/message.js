@@ -58,14 +58,13 @@ Page({
         x: e.changedTouches[0].clientX,
         y: e.changedTouches[0].clientY
       }
-
-      if (data.x + 150 < slide.x ) {
+      if (data.x + 50 < slide.x ) {
         console.log('向左滑')
         this.setData({
           active: index
         })
 
-      } else if (data.x - 150 > slide.x ) {
+      } else if (data.x - 50 > slide.x ) {
         console.log('向右滑')
         this.setData({
           active: false
@@ -81,6 +80,15 @@ Page({
         // })
       }
     }
+  },
+  // 删除消息
+  click_del: function(e){
+    var index = e.currentTarget.dataset.index;
+    var list = this.data.msgData
+    list.splice(index, 1)
+    this.setData({
+      msgData: list
+    })
   },
   /**
    * 生命周期函数--监听页面隐藏

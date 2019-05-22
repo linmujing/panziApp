@@ -2,10 +2,9 @@
 <view class='news mt_10 bg_ff'>
   <view class='title df ai_c'>
     <image mode='widthFix' src='/img/new.png'></image>
-    <text class='pl_5'>最新消息</text>
+    <text class='pl_5 ft_16'>最新消息</text>
   </view>
   <view class='list'>
-    
     <view wx:for='{{msgData}}' wx:key='{{index}}' class='item {{index===active?"active":""}}' data-index='{{index}}' bindtouchstart="touchS" bindtouchend="touchE">
       <view class='df'>
         <view class='pbox'>
@@ -15,15 +14,13 @@
         </view>
         <view class='info'>
           <view class='df jc_sb ai_c'>
-            <text class='blod'>{{item.title}}</text>
+            <text class='blod ft_15'>{{item.title}}</text>
             <text class='color_99 ft_11'>{{item.date}}</text>
           </view>
           <view class='color_99 ft_13 txt oneline'>{{item.info}}</view>
         </view>
       </view>
-
-      <view class='del df ai_c jc_c'>删除</view>
-
+      <view class='del df ai_c jc_c' bindtap='click_del' data-index='{{index}}'>删除</view>
     </view>
   </view>
 </view>
