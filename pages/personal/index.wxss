@@ -15,13 +15,14 @@ page {
     display: flex;
     padding-right: 20rpx;
     position: absolute;
-    top: 10rpx;
+    top: 20rpx;
     right: 0;
     color: #fff;
 }
 
 .person_info .info_title image {
     width: 40rpx;
+    margin-left: 20rpx;
 }
 
 .person_info .personInfo_bg {
@@ -131,6 +132,11 @@ page {
     font-size: 30rpx;
     font-weight: 500;
     padding: 20rpx;
+}
+
+.my_list .my_list_item>view {
+    display: flex;
+    align-items: center;
 }
 
 .my_list .my_list_item>view image {

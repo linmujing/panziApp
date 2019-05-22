@@ -7,14 +7,15 @@
     "pages/index/jifen_detail",
     "pages/theme/index",
     "pages/release/release",
-
     "pages/community/dongtai_details",
     "pages/community/release",
     "pages/community/community",
     "pages/personal/index",
     "pages/community/search",
-    "pages/community/searchLink"
-
+    "pages/community/searchLink",
+    "pages/personal/zh_setting",
+    "pages/personal/personal_info",
+    "pages/personal/my_fabu"
   ],
   "navigateToMiniProgramAppIdList": [
     "wx5ba0b0241434741e"

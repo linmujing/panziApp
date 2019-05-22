@@ -1,0 +1,33 @@
+/* pages/personal/personal_info.wxss */
+.container {
+    background: #fff;
+    padding: 0 30rpx;
+    margin-top: 30rpx;
+}
+
+.container>view {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25rpx 0;
+}
+
+.container>view:not(:last-of-type) {
+    border-bottom: 1px solid #eee;
+}
+
+.header {
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+}
+
+.enter_ {
+    width: 16rpx;
+    margin-left: 20rpx;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+}

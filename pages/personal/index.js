@@ -37,7 +37,9 @@ Page({
         var code = res.code
         var userInfo = e.detail.userInfo;
         console.log(code)
+        console.log(userInfo)
         wx.setStorageSync('userInfoToken', code);
+        wx.setStorageSync('userInfo', userInfo);
         // 用户信息
         if (userInfo) {
           wx.showToast({
@@ -58,12 +60,24 @@ Page({
       }
     })
   },
+  // 跳转所有订单
   link_allOrder() {
     wx.navigateTo({
       url: './my_order'
     })
   },
-
+  // 跳转设置
+  link_setting() {
+    wx.navigateTo({
+      url: './zh_setting'
+    })
+  },
+  // 跳转我发布的
+  link_release() {
+    wx.navigateTo({
+      url: './my_fabu'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -12,11 +12,6 @@ Page({
         detail: []
       },
       {
-        name: '待付款',
-        type: 2,
-        detail: []
-      },
-      {
         name: '待发货',
         type: 3,
         detail: []
@@ -31,6 +26,14 @@ Page({
       }
     ],
     allOrder: [{
+      img: "../../img/order_hd.png",
+      title: "盘子女人坊古装艺术写真",
+      tips: "套装组合",
+      price: "2000",
+      price_: "3000",
+      num: 1,
+      total: 2000
+    }, {
       img: "../../img/order_hd.png",
       title: "盘子女人坊古装艺术写真",
       tips: "套装组合",

@@ -10,7 +10,7 @@
     </view>
 </view>
 <view class="order_list">
-    <view class="order_item" wx:for="{{allOrder}}">
+    <view class="order_item" wx:for="{{allOrder}}" wx:key="index">
         <view class="item_title">
             <view>积分商城</view>
             <view>已发货</view>
