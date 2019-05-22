@@ -1,8 +1,8 @@
 <view class="container" wx:if="{{!login_state}}">
     <view class="person_info">
         <view class="info_title">
-            <view>设置</view>
-            <!-- <image mode="widthFix" class="" src="../../img/buy-server.jpg" /> -->
+            <view bind:tap="link_setting">设置</view>
+            <image mode="widthFix" class="" src="../../img/mesg.png" />
         </view>
         <view class="info_details">
             <image mode="widthFix" class="personInfo_bg" src="../../img/person_topPic.png" />
@@ -29,67 +29,67 @@
             </view>
         </view>
         <view class="order_list">
-            <view>
+            <!-- <view>
                 <image src="../../img/money1.png" />
                 <view>待付款</view>
-            </view>
-            <view>
+            </view> -->
+            <view bind:tap="link_allOrder">
                 <image src="../../img/money2.png" />
                 <view>待发货</view>
             </view>
-            <view>
+            <view bind:tap="link_allOrder">
                 <image src="../../img/money3.png" />
                 <view>待收货</view>
             </view>
-            <view>
+            <view bind:tap="link_allOrder">
                 <image src="../../img/money4.png" />
                 <view>评论</view>
             </view>
-            <view>
+            <view bind:tap="link_allOrder">
                 <image src="../../img/money5.png" />
                 <view>退换/售后</view>
             </view>
         </view>
     </view>
     <view class="my_list">
-        <view class="my_list_item">
+        <!-- <view class="my_list_item">
             <view>
                 <image mode="widthFix" src="../../img/coupons.png" />
                 <text>我的优惠券</text>
             </view>
             <image mode="widthFix" src="../../img/enter_.png" />
-        </view>
+        </view> -->
         <view class="my_list_item">
             <view>
-                <image mode="widthFix" src="../../img/coupons.png" />
+                <image mode="widthFix" src="../../img/center-02.jpg" />
                 <text>我的积分</text>
             </view>
             <image mode="widthFix" src="../../img/enter_.png" />
         </view>
         <view class="my_list_item">
-            <view>
-                <image mode="widthFix" src="../../img/coupons.png" />
+            <view bind:tap="link_release">
+                <image mode="widthFix" src="../../img/center-03.jpg" />
                 <text>我发布的</text>
             </view>
             <image mode="widthFix" src="../../img/enter_.png" />
         </view>
         <view class="my_list_item">
             <view>
-                <image mode="widthFix" src="../../img/coupons.png" />
+                <image mode="widthFix" src="../../img/center-04.jpg" />
                 <text bind:tap="to">排行榜</text>
             </view>
             <image mode="widthFix" src="../../img/enter_.png" />
         </view>
         <view class="my_list_item">
             <view>
-                <image mode="widthFix" src="../../img/coupons.png" />
+                <image mode="widthFix" src="../../img/center-05.jpg" />
                 <text bind:tap="to">我的收藏</text>
             </view>
             <image mode="widthFix" src="../../img/enter_.png" />
         </view>
         <view class="my_list_item">
             <view>
-                <image mode="widthFix" src="../../img/coupons.png" />
+                <image mode="widthFix" src="../../img/center-06.jpg" />
                 <text bind:tap="to">关于我们</text>
             </view>
             <image mode="widthFix" src="../../img/enter_.png" />

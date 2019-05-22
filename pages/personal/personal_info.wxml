@@ -1,0 +1,45 @@
+<!-- pages/personal/personal_info.wxml -->
+<view class="container">
+    <view class="my_header">
+        <view>我的头像</view>
+        <view class="right">
+            <image class="header" src="{{userInfo.avatarUrl}}" />
+            <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
+        </view>
+    </view>
+    <view class="Member_name">
+        <view>会员名</view>
+        <view class="right">
+            <view>盘子最帅</view>
+            <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
+        </view>
+    </view>
+    <view class="name">
+        <view>昵称</view>
+        <view class="right">
+            <view>{{userInfo.nickName}}</view>
+            <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
+        </view>
+    </view>
+    <view class="weixin">
+        <view>微信号</view>
+        <view class="right">
+            <view>88888888</view>
+            <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
+        </view>
+    </view>
+    <view class="gender">
+        <view>性别</view>
+        <view class="right">
+            <view>未知</view>
+            <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
+        </view>
+    </view>
+    <view class="data">
+        <view>出生日期</view>
+        <view class="right">
+            <view>2000-08-24</view>
+            <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
+        </view>
+    </view>
+</view>

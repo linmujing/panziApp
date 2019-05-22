@@ -1,0 +1,18 @@
+<!-- pages/personal/my_fabu.wxml -->
+<view class="container">
+    <view class="list_item" wx:for="{{list}}">
+        <view class="item_details">
+            <image mode="widthFix" src="{{item.imgUrl}}" />
+            <view>
+                <view class="item_title">{{item.title}}</view>
+            </view>
+        </view>
+        <view class="item_foot">
+            <view class="time">{{item.time}}</view>
+            <view class="btn_box">
+                <view class="btn">编辑</view>
+                <view class="btn More">更多</view>
+            </view>
+        </view>
+    </view>
+</view>

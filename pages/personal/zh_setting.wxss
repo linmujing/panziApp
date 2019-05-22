@@ -1,0 +1,54 @@
+/* pages/personal/zh_setting.wxss */
+.container {
+    background: #fff;
+}
+
+.userInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx;
+    margin-top: 30rpx;
+}
+
+.userInfo .info_details {
+    display: flex;
+    align-items: center;
+}
+
+.userInfo .info_details>image {
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+    margin-right: 10rpx;
+}
+
+.userInfo .info_details .info_name {
+    margin-bottom: 10rpx;
+}
+
+.userInfo .enter {
+    width: 18rpx;
+}
+
+.address {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20rpx;
+    border-top: 1px solid #eee;
+}
+
+.address image {
+    width: 18rpx;
+}
+
+.btn {
+    position: fixed;
+    bottom: 200rpx;
+    width: 100%;
+    text-align: center;
+    background: #fff;
+    font-size: 30rpx;
+    padding: 20rpx 0;
+}

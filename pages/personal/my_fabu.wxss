@@ -1,0 +1,50 @@
+/* pages/personal/my_fabu.wxss */
+.container {}
+
+.list_item {
+    background: #fff;
+    margin-top: 30rpx;
+    padding: 0 30rpx;
+}
+
+.list_item .item_details {
+    display: flex;
+    padding: 30rpx 0;
+    border-bottom: 1px solid #eee;
+}
+
+.list_item .item_details image {
+    width: 260rpx;
+    margin-right: 30rpx;
+}
+
+.list_item .item_details .item_title {
+    font-weight: 600;
+    font-size: 30rpx;
+}
+
+.list_item .item_foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30rpx 0;
+}
+
+.list_item .item_foot .btn_box {
+    display: flex;
+    align-items: center;
+}
+
+.list_item .item_foot .btn {
+    padding: 10rpx 20rpx;
+    border: 1px solid #ccc;
+    border-radius: 8rpx;
+}
+
+.list_item .item_foot .time {
+    color: #999;
+}
+
+.list_item .item_foot .More {
+    margin-left: 30rpx;
+}
