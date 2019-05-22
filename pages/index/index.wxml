@@ -4,10 +4,10 @@
     <image src='/img/search.png'></image>
     <input placeholder="搜索主题风格 最新主题" placeholder-style='color: #B4B4B4' bindinput="blur_search"/>
   </view>
-  <view class='shop'>
+  <!-- <view class='shop'>
     <image src='/img/shopping.png'></image>
     <view class='point'>3</view>
-  </view>
+  </view> -->
   <view class='shop'>
     <image src='/img/message.png'></image>
     <view class='point'>1</view>
@@ -28,7 +28,7 @@
 <!-- 导航 -->
 <view class='nav df jc_sb fw_w bg_ff'>
   <block wx:for='{{navData}}' wx:key='{{index}}'>
-    <view class='w20 mt_10' bindtap='click_nav' data-index='{{index}}'>
+    <view class='w20 mt_10' bindtap='click_nav' data-index='{{index}}' data-title='{{item.title}}'>
       <image src='{{item.img}}'></image>
       <view class='ft_12 mt_5'>{{item.title}}</view>
     </view>

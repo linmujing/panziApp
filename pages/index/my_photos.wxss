@@ -1,0 +1,18 @@
+/* pages/index/my_photos.wxss */
+.photo{margin: 20rpx;}
+.list{padding-bottom: 100rpx;}
+.list .item{margin-bottom: 20rpx;position: relative;}
+.list .item .img_box{width:225rpx;height:225rpx;overflow: hidden;}
+.list .item .img_box image{width: 100%;}
+.list .item .check{position: absolute;bottom: 0;left: 0;padding: 10rpx;}
+
+.upload{position: fixed;bottom: 0;width: 100%;font-size: 32rpx;background: #fff;line-height: 100rpx;}
+.upload .ck{margin-left: 20rpx;}
+.upload .ck text{position: relative;top: 5rpx;}
+.btn{width:300rpx;text-align: center;background: #F89FB5;color: #fff;}
+
+/* checkbox未选中时样式 */
+.list checkbox .wx-checkbox-input{border-radius: 20rpx;height: 36rpx;width: 36rpx;margin-top: -18rpx;background-color: #fff;} 
+/* checkbox选中时样式 */
+.list checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {border-radius: 20rpx;height: 36rpx;width: 36rpx;line-height: 36rpx;text-align: center;font-size: 28rpx;color: #fff;transform: translate(-50%, -50%) scale(1);-webkit-transform: translate(-50%, -50%) scale(1);background-color: #F89FB5;border: 1rpx solid #F89FB5;
+}

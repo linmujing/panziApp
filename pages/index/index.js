@@ -124,7 +124,7 @@ Page({
   // 导航列表
   click_nav: function (e) {
     var index = e.currentTarget.dataset.index;
-    console.log(index)
+    var title = e.currentTarget.dataset.title;
     switch (index) {
       case 0:
         wx.navigateTo({
@@ -152,6 +152,16 @@ Page({
           fail(res) {
             console.log(res)
           }
+        })
+        break
+      case 9:
+        wx.navigateTo({
+          url: 'my_photos',
+        })
+        break
+      default:
+        wx.navigateTo({
+          url: 'star?title=' + title
         })
     }
   },
