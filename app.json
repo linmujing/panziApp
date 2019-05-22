@@ -1,6 +1,8 @@
 {
   "pages": [
+    "pages/index/message",
     "pages/index/index",
+    
     "pages/index/star",
     "pages/index/my_photos",
     "pages/personal/my_order",

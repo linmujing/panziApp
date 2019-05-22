@@ -8,7 +8,7 @@
     <image src='/img/shopping.png'></image>
     <view class='point'>3</view>
   </view> -->
-  <view class='shop'>
+  <view class='shop' bindtap='click_msg'>
     <image src='/img/message.png'></image>
     <view class='point'>1</view>
   </view>

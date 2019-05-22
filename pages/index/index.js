@@ -165,5 +165,10 @@ Page({
         })
     }
   },
+  click_msg: function(){
+    wx.navigateTo({
+      url: 'message'
+    })
+  },
 
 })

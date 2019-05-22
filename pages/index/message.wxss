@@ -1,0 +1,20 @@
+/* pages/index/message.wxss */
+.news{padding: 30rpx;}
+.news .title{color: #999}
+.news .title image{width: 40rpx;height: 40rpx;}
+.list{margin-top: 20rpx;}
+.list .item{padding-top: 30rpx;position: relative;width:100%;
+}
+.list .item .pbox{position: relative;display: inline-block;}
+.list .item image{width: 80rpx;height: 80rpx;}
+
+.list .item .point{position: absolute;right: -8rpx;top: -8rpx;display: inline-block;border-radius: 50%;background: #F799B4;border: 2rpx solid #fff;width: 14rpx;height: 14rpx;}
+.list .item .num{position: absolute;right: -12rpx;top: -12rpx;display: inline-block;padding: 0 4rpx;border-radius: 30rpx;background: #F799B4;color: #fff;font-size: 18rpx;border: 2rpx solid #fff;}
+
+.list .item .info{width: 570rpx;border-bottom: 1rpx solid #EEEEEE;padding-bottom: 30rpx;margin-left: 30rpx;}
+.list .item .info .txt{margin-top: 14rpx;}
+
+.list .active{margin-left:-200rpx;}
+
+.del{position:absolute;width:200rpx;top:0;bottom:0;left:auto;right:-230rpx;background: #E64340;color: #fff;}
+
