@@ -1,0 +1,24 @@
+<!--pages/index/my_photos.wxml-->
+<view class='photo'>
+  <checkbox-group bindchange="checkboxChange">
+      <view class='list df jc_sb fw_w'>
+        <view wx:for='{{imgData}}' wx:key='{{index}}' class='item'>
+          <view class='img_box'>
+            <image lazy-load mode='widthFix' src='{{item.img}}'></image>
+          </view>
+          <view class='check'>
+            <checkbox value='{{item.img}}' checked='{{item.check}}' />
+          </view>
+        </view> 
+      </view>
+  </checkbox-group>
+</view>
+<view class='upload df jc_sb'>
+  <checkbox-group bindchange="checkboxAll">
+    <label class='ck'>
+      <checkbox checked="{{allCheck}}" color='#F89FB5'/>
+      <text>全选</text>
+    </label>
+  </checkbox-group>
+  <view class='btn' bindtap='savePic'>保存图片</view>
+</view>

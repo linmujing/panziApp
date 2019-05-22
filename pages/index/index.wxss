@@ -9,7 +9,7 @@
 }
 
 .search_box .search {
-  width: 500rpx;
+  width: 560rpx;
   background: #EEEEEE;
   border-radius: 6rpx;
   padding: 10rpx;
