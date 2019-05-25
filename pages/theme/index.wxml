@@ -2,30 +2,36 @@
 <view class='search_box bg_ff'>
   <view class='search df ai_c'>
     <image mode='widthFix' src='/img/search.png'></image>
-    <input placeholder="搜索主题关键词" placeholder-style='color: #B4B4B4' bindinput="blur_search"/>
+    <input placeholder="搜索主题关键词" confirm-type='search' placeholder-style='color: #B4B4B4' bindinput="blur_search" bindconfirm='confirm_search' class='w90'/>
   </view>
 </view>
-<view class='banner'>
-  <image src='{{banner}}'></image>
+<view class='banner bg_ff'>
+  <swiper autoplay circular interval='3000'>
+    <view wx:for="{{banner}}" wx:key='{{index}}'>
+      <swiper-item>
+        <image src="{{item}}" class='w100 h100'/>
+      </swiper-item>
+    </view>
+  </swiper>
 </view>
 <!-- 导航栏 -->
-<view class='nav'>
+<view class='nav bg_ff'>
   <scroll-view scroll-x class='df' scroll-with-animation style="width: auto;">
-    <view wx:for='{{navData.navList}}' wx:key='index' class='item {{navData.current==index?"active":""}}' data-index='{{index}}' bindtap='click_nav'>{{item}}</view>
+    <view wx:for='{{themeData.navList}}' wx:key='index' class='item {{themeData.current==index?"active":""}}' data-index='{{index}}' bindtap='click_nav' data-id='{{item.id}}'>{{item.name}}</view>
   </scroll-view>
 </view>
 <!-- 列表 -->
-<view class='themeList'>
-  <view wx:for="{{themeList}}" wx:key='index' class='item'>
-    <image mode='widthFix' src='{{item.img}}'></image>
-    <view class='df jc_sb ai_c'>
-      <view>{{item.name}}</view>
+<view class='themeList bg_ff'>
+  <view wx:for="{{themeData.themeList}}" wx:key='index' class='item'>
+    <image mode='widthFix' src='{{item.fm_img}}'></image>
+    <view class='df jc_sb ai_c pl_10'>
+      <view class='blod'>{{item.title}}</view>
       <view class='df ai_c txt'>
         <view wx:if='{{item.zan == 1}}' class='heart'></view>
         <image wx:else mode='widthFix' src='/img/dianzan.png' class='xin'></image>
-        <text class='oneline'>{{item.collect}}</text>
+        <text class='oneline'>{{item.zan}}</text>
         <image mode='widthFix' src='/img/eye.png'></image>
-        <text class='oneline'>{{item.look}}</text>
+        <text class='oneline'>{{item.view}}</text>
       </view>
     </view>
   </view>

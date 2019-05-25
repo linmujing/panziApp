@@ -1,30 +1,32 @@
 // pages/theme/index.js
 //获取应用实例
-const app = getApp()
+var util = require('../../utils/util.js');
+const app = getApp()  
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    banner: app.globalData.imgUrl + 'ad3.jpg',
-    navData: {
-      navList: ['最新', '热拍', '影视', '情侣', '闺蜜', '亲子', '外景'],
+    banner: [],
+    themeData: {
+      navList: [
+        {'name': '全部', id: ''}
+      ],
       current: 0,
+      search: '',
+      page: 1,
+      themeList: [],
+      cid: ''
     },
-    themeList: [
-      { img: app.globalData.imgUrl + 'ad1.jpg', name: '明星同款主题【竹】', collect: 276, look: 24278, zan: 1 },
-      { img: app.globalData.imgUrl + 'ad2.jpg', name: '明星同款主题【竹】', collect: 156, look: 4278, zan: 0 },
-      { img: app.globalData.imgUrl + 'ad3.jpg', name: '明星同款主题【竹】', collect: 1766, look: 33278, zan: 1 },
-      { img: app.globalData.imgUrl + 'ad4.jpg', name: '明星同款主题【竹】', collect: 236, look: 2278, zan: 0 }
-    ],
+    Page_slide: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getTheme()
   },
 
   /**
@@ -41,14 +43,86 @@ Page({
 
   },
   blur_search: function (e) {
-    // this.setData({
-    //   'tel': e.detail.value
-    // })
+    this.setData({
+      'themeData.search': e.detail.value
+    })
+  },
+  confirm_search: function () {
+    this.setData({
+      'themeData.themeList': [],
+      'themeData.page': 1,
+      'themeData.cid': '',
+      'themeData.current': 0
+    })
+    this.getThemeList()
   },
   click_nav: function(e){
     var index = e.currentTarget.dataset.index;
+    var id = e.currentTarget.dataset.id;
     this.setData({
-      'navData.current': index,
+      'themeData.current': index,
+      'themeData.search': '',
+      'themeData.themeList': [],
+      'themeData.page': 1,
+      'themeData.cid': id,
+      Page_slide: true
+    })
+    this.getThemeList()
+  },
+  getTheme:function(){
+    var that = this
+    var reqBody = {
+      id: 3
+    };
+    util.post(util.url.themeCat, reqBody, (res) => {
+      console.log(res)
+      if (res.state == 1) {
+        // wx.setNavigationBarTitle({
+        //   title: res.data.title
+        // })
+        var list = that.data.themeData.navList
+        list = list.concat(res.data);
+        that.getThemeList()
+        that.setData({
+          banner: res.banner,
+          'themeData.navList': list
+        })
+      }
+    })
+  },
+  getThemeList: function () {
+    var that = this
+    var reqBody = {
+      pageNum: that.data.themeData.page,
+      seach: that.data.themeData.search,
+      cid: that.data.themeData.cid
+    };
+    wx.showLoading({
+      title: '加载中',
+    })
+    util.post(util.url.themeList, reqBody, (res) => {
+      wx.hideLoading()
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+      if (res.state == 1) {
+        var list = that.data.themeData.themeList
+        list = list.concat(res.data);
+        that.setData({
+          'themeData.themeList': list,
+          'themeData.page': that.data.themeData.page + 1
+        })
+        // 判断上拉加载
+        var leg = that.data.themeData.themeList.length
+        if (leg < res.count) {
+          this.setData({
+            Page_slide: true
+          })
+        }else{
+          this.setData({
+            Page_slide: false
+          })
+        }
+      }
     })
   },
   /**
@@ -69,14 +143,26 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({
+      'themeData.search': '',
+      'themeData.themeList': [],
+      'themeData.page': 1,
+      'themeData.cid': '',
+      'themeData.current': 0
+    })
+    this.getTheme()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if (this.data.Page_slide) {
+      this.setData({
+        Page_slide: false
+      })
+      this.getThemeList()
+    }
   },
 
   /**

@@ -1,0 +1,54 @@
+<!--pages/index/store_detail.wxml-->
+<view wx:if='{{}}' class='video-box'>
+  <video id='myVideo' src='{{info.video}}' objectFit='fill' autoplay></video>
+</view>
+<view class='box'>
+  <view class='ta_c mt_20'>
+    <image mode='widthFix' src='{{info.title_img}}' class='w100'></image>
+    <view class='mt_20'><text class='blod ft_15'>| 地址 |</text> {{info.address}}</view>
+    <view class='mt_10' bindtap='callUp'><text class='blod ft_15'>| 电话 |</text> {{info.tel}}</view>
+    <view class='mt_5'><text class='blod ft_15'>| 官网 |</text> {{info.url}}</view>
+  </view>
+  <view class='line df ai_c jc_sb'>
+    <text class='d'></text>
+    <text>POETIC ORIENTIC BEAUTY</text>
+    <text class='d'></text>
+  </view>
+  <view class='cont'>
+    <rich-text class='w100' nodes="{{info.content}}"></rich-text>  
+  </view>
+  <view class='topic'>
+    <view class='title'>
+      <view>门店客片</view>
+      <view>THE LATEST TOPIC</view>
+    </view>
+    <view class='triangle'></view>
+    <view class='line df ai_c jc_sb'>
+      <text class='d'></text>
+      <text>POETIC ORIENTIC BEAUTY</text>
+      <text class='d'></text>
+    </view>
+    <view wx:for='{{info.kp_content}}' wx:key='index'>
+      <image mode='widthFix' src='{{item}}' class='w100'></image>
+    </view>
+  </view>
+</view> 
+<!-- 新人好礼 -->
+<view class='gift bg_ff'>
+  <image mode='widthFix' src='{{logo}}' class='w40'></image>
+  <view class='lines df ai_c jc_sb'>
+    <text class='d'></text>
+    <text>新人专属好礼</text>
+    <text class='d'></text>
+  </view>
+  <view class='mt_20'>
+    <input placeholder="姓名" bindinput="blur_name"/>
+    <input placeholder="电话" bindinput="blur_tel" class='mt_20'/>
+    <view class='btn_title'>提交信息</view>
+  </view>
+  <view class='ta_c'>
+    <view>免费咨询售后</view>
+    <view bindtap='callSale' class='blod mt_5'>400-9011-888</view>
+    <image mode='widthFix' src='{{copyright}}' class='w85 mt_20'></image>
+  </view>
+</view>

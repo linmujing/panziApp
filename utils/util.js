@@ -14,12 +14,16 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-// const urlFront = 'https://ljj.pznrfsy.com/index/';
+const urlFront = 'https://vip2.pznrfsy.com/index/';
 const url = {
+  index: urlFront + 'Content/column',
 
-  // login: urlFront + 'login/login',
-  // send_sms: urlFront + 'sms/send_sms',
-  // bind_tel: urlFront + 'sms/bind_tel',
+  storeList: urlFront + 'Content/storeList',
+  storeInfo: urlFront + 'Content/storeInfo',
+
+  themeCat: urlFront + 'Content/themeCat',
+  themeList: urlFront + 'Content/themeList',
+  
 }
 
 function _post(url, data, success, isLoading = true) {

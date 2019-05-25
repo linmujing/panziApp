@@ -2,7 +2,7 @@
 <view class='search_box bg_ff'>
   <view class='search df ai_c'>
     <image mode='widthFix' src='/img/search.png'></image>
-    <input placeholder="搜索主题关键词" placeholder-style='color: #B4B4B4' bindinput="blur_search"/>
+    <input placeholder="搜索主题关键词" placeholder-style='color: #B4B4B4' bindinput="blur_search" class='w90'/>
   </view>
 </view>
 <view class='banner'>

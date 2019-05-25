@@ -1,6 +1,7 @@
 /* pages/theme/index.wxss */
 .search_box {
   padding: 20rpx 40rpx;
+  line-height: 60rpx;
 }
 
 .search_box image {
@@ -11,13 +12,15 @@
 .search_box .search {
   width: 100%;
   background: #EEEEEE;
-  border-radius: 30rpx;
+  border-radius: 60rpx;
   padding: 10rpx;
+  box-sizing:border-box;
+
 }
 .banner{margin: 20rpx;}
 .banner image{width: 710rpx;border-radius: 8rpx;height: 300rpx;}
 
-.nav{border-bottom: 1px solid #AAAAAA;}
+.nav{border-bottom: 1px solid #AAAAAA;overflow: hidden;}
 .nav scroll-view{width:100%;white-space: nowrap;}
 .nav scroll-view .item{display: inline-block;margin: 0 20rpx;padding-bottom: 20rpx;font-size: 30rpx;}
 .nav scroll-view .active{border-bottom: 3px solid #FA9EB6;}

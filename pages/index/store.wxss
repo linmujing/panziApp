@@ -1,6 +1,7 @@
 /* pages/index/store.wxss */
 .search_box {
   padding: 20rpx 40rpx;
+  line-height: 60rpx;
 }
 
 .search_box image {
@@ -11,9 +12,11 @@
 .search_box .search {
   width: 100%;
   background: #EEEEEE;
-  border-radius: 30rpx;
+  border-radius: 60rpx;
   padding: 10rpx;
+  box-sizing:border-box;
+
 }
-.store{margin: 20rpx;}
+.store{margin: 20rpx;padding-top: 20rpx;}
 .store .item{text-align: center;width: 25%;margin-bottom: 40rpx;}
 .store .item image{width: 150rpx;}

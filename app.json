@@ -6,6 +6,7 @@
     "pages/index/my_photos",
     "pages/personal/my_order",
     "pages/index/store",
+    "pages/index/store_detail",
     "pages/index/jifen_mall",
     "pages/index/jifen_detail",
     "pages/theme/index",

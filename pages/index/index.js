@@ -1,32 +1,17 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+var util = require('../../utils/util.js');
 Page({
   data: {
+    imgUrl: app.globalData.imgUrl2,
     indicatorDots: true,
     cindicatorColor: '#fff',
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    carouselData: [
-      app.globalData.imgUrl + 'ad1.jpg',
-      app.globalData.imgUrl + 'ad2.jpg',
-      app.globalData.imgUrl + 'ad3.jpg',
-      app.globalData.imgUrl + 'ad4.jpg',
-    ],
-    navData: [
-      { img: app.globalData.imgUrl + 'nav1.png', title: '门店' },
-      { img: app.globalData.imgUrl + 'nav2.png', title: '主题' },
-      { img: app.globalData.imgUrl + 'nav3.png', title: '客片' },
-      { img: app.globalData.imgUrl + 'nav4.png', title: '视频' },
-      { img: app.globalData.imgUrl + 'nav5.png', title: '汉服' },
-      { img: app.globalData.imgUrl + 'nav6.png', title: '影视合作' },
-      { img: app.globalData.imgUrl + 'nav7.png', title: '明星合作' },
-      { img: app.globalData.imgUrl + 'nav8.png', title: '积分兑换' },
-      { img: app.globalData.imgUrl + 'nav9.png', title: '变一变' },
-      { img: app.globalData.imgUrl + 'nav10.png',title: '我的照片'},
-    ],
+    carouselData: [],
+    navData: [],
     hotList: [
       {
         xilie: '个人写真系列' ,
@@ -83,6 +68,20 @@ Page({
   onLoad: function () {
     this.stretch(300 + 'rpx')
     this.shrink(260 + 'rpx')
+    this.getIndex()
+  },
+  getIndex: function(){
+    var that = this
+    var reqBody = {};
+    util.post(util.url.index, reqBody, (res) => {
+      // console.log(res)
+      if (res.state == 1){
+        that.setData({
+          carouselData: res.banner,
+          navData: res.data
+        })
+      }
+    })
   },
   blur_search: function (e) {
     // this.setData({

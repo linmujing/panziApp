@@ -19,7 +19,7 @@
     <view wx:for="{{carouselData}}" wx:key='{{index}}'>
       <swiper-item class=' df ai_c'>
         <view class='box' animation="{{index == current?animationData:animationData2}}">
-          <image src="{{item}}" class='w100 h100'/>
+          <image src="{{item.img}}" class='w100 h100'/>
         </view>
       </swiper-item>
     </view>
@@ -29,7 +29,7 @@
 <view class='nav df jc_sb fw_w bg_ff'>
   <block wx:for='{{navData}}' wx:key='{{index}}'>
     <view class='w20 mt_10' bindtap='click_nav' data-index='{{index}}' data-title='{{item.title}}'>
-      <image src='{{item.img}}'></image>
+      <image src='{{item.title_img}}'></image>
       <view class='ft_12 mt_5'>{{item.title}}</view>
     </view>
   </block>
@@ -91,7 +91,7 @@
   </view>
 </view>
 <!-- 全国门店 -->
-<view>
+<view class='store_box'>
   <view class='title'>
     <view>全国门店</view>
     <view>STORE ENVIRONMENT</view>
@@ -106,14 +106,6 @@
         <view class='txt ta_c'>{{item.name}}</view>
       </view>
     </scroll-view>
-    <!-- <swiper autoplay indicatorDots circular current="0" indicator-active-color='#F8B3C4' display-multiple-items='6' class='df fw_w'>
-      <view wx:for="{{storeData.storeList}}" wx:key='{{i}}'>
-        <swiper-item>
-          <image src="{{item.img}}" />
-          <view class='txt ta_c'>{{item.name}}</view>
-        </swiper-item>
-      </view>
-    </swiper> -->
   </view>
 </view>
 <!-- 客户评价 -->
