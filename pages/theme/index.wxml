@@ -30,8 +30,8 @@
         <view class='df ai_c' bindtap='click_zan' data-index='{{index}}'>
           <view wx:if='{{item.check}}' class='heart'></view>
           <image wx:else mode='widthFix' src='/img/dianzan.png' class='xin'></image>
+          <text class='oneline'>{{item.zan}}</text>
         </view>
-        <text class='oneline'>{{item.zan}}</text>
         <image mode='widthFix' src='/img/eye.png'></image>
         <text class='oneline'>{{item.view}}</text>
       </view>

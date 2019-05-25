@@ -106,6 +106,9 @@ Page({
           })
         } else if (e.detail.errMsg == "getPhoneNumber:fail user deny") {
           console.log('不同意')
+          this.setData({
+            phone: true
+          })
         }
       }
     })

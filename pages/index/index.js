@@ -129,17 +129,17 @@ Page({
     switch (index) {
       case 0:
         wx.navigateTo({
-          url: 'store',
+          url: '/pages/index/store',
         })
         break
       case 1:
         wx.switchTab({
-          url: '../theme/index',
+          url: '/pages/theme/index',
         })
         break
       case 7:
         wx.navigateTo({
-          url: 'jifen_mall',
+          url: '/pages/index/jifen_mall',
         })
         break
       case 8:
@@ -157,12 +157,12 @@ Page({
         break
       case 9:
         wx.navigateTo({
-          url: 'my_photos',
+          url: '/pages/index/my_photos',
         })
         break
       default:
         wx.navigateTo({
-          url: 'star?title=' + title
+          url: '/pages/index/star?title=' + title
         })
     }
   },
