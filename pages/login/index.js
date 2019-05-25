@@ -51,7 +51,27 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    var userInfo = wx.getStorageSync('userInfo');
+    if (userInfo) {
+      this.setData({
+        userInfo
+      })
+      if (!userInfo.tel) {
+        this.setData({
+          phone: true
+        })
+      } else {
+        wx.switchTab({
+          url: '/pages/index/index'
+        })
+      }
+    } else {
+
+      this.setData({
+        login_state: true,
+      })
+
+    }
   },
   click_userInfo: function (e) {
     var that = this;

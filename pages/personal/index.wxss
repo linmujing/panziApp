@@ -43,9 +43,13 @@ page {
     margin-right: 20rpx;
 }
 
+.person_info .info_details .details_right {
+    color: #fff;
+}
+
 .person_info .info_details .details_left image {
-    width: 160rpx;
-    height: 160rpx;
+    width: 140rpx;
+    height: 140rpx;
     border-radius: 50%;
 }
 
@@ -150,63 +154,3 @@ page {
 }
 
 
-
-
-
-/* 登录框 */
-.popup {
-    position: fixed;
-    background: rgba(0, 0, 0, 0.1);
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    display: none
-}
-
-.popup.active {
-    display: block;
-}
-
-.popup .biaoti {
-    height: 60rpx;
-    color: #030303;
-    line-height: 60rpx;
-    text-align: center;
-    margin-top: 40rpx;
-}
-
-.popup_nr {
-    position: absolute;
-    top: 30%;
-    width: 540rpx;
-    background: #fff;
-    left: 15%;
-    text-align: center;
-    box-shadow: 0rpx 8rpx 40rpx 0rpx rgba(0, 0, 0, 0.1);
-    border-radius: 24rpx;
-}
-
-.popup_nrs {
-    font-size: 28rpx;
-    color: #9B9B9B;
-    margin: 32rpx 50rpx 20rpx;
-}
-
-.popup .an {
-    border-top: 1rpx solid #ccc;
-}
-
-.popup .an button {
-    padding-top: 10rpx;
-    font-weight: bold;
-    padding-bottom: 10rpx;
-    background: none;
-    color: #FD93B3;
-    font-size: 34rpx;
-}
-
-.popup .an button::after {
-    border: none;
-    background-color: rgba(0, 0, 0, 0);
-}

@@ -5,7 +5,6 @@
     "pages/index/message",
     "pages/index/star",
     "pages/index/my_photos",
-    "pages/personal/my_order",
     "pages/index/store",
     "pages/index/store_detail",
     "pages/index/jifen_mall",
@@ -16,11 +15,13 @@
     "pages/community/dongtai_details",
     "pages/community/release",
     "pages/community/community",
-    "pages/personal/index",
     "pages/community/search",
     "pages/community/searchLink",
+    "pages/personal/index",
+    "pages/personal/my_order",
     "pages/personal/zh_setting",
     "pages/personal/personal_info",
+    "pages/personal/task_center",
     "pages/personal/my_fabu"
   ],
   "navigateToMiniProgramAppIdList": [

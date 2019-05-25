@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    login_state: true,
     userInfo: {},
   },
 
@@ -14,51 +13,14 @@ Page({
    */
   onLoad: function (options) {
     var userInfo = wx.getStorageSync('userInfo');
-    console.log(userInfo)
-    if (userInfo) {
-      this.setData({
-        login_state: false,
-        userInfo: userInfo
-      })
-    } else {
-      this.setData({
-        login_state: true,
+    this.setData({
+      userInfo: userInfo
+    })
+    if (!userInfo) {
+      wx.navigateTo({
+        url: '/page/login/index',
       })
     }
-  },
-
-  // 授权登录
-  click_UserInfo: function (e) {
-    // console.log(e)
-    var that = this;
-    wx.login({
-      success: res => {
-        // 如果需要，res里面可以拿到登录成功的code
-        var code = res.code
-        var userInfo = e.detail.userInfo;
-        console.log(code)
-        console.log(userInfo)
-        wx.setStorageSync('userInfoToken', code);
-        wx.setStorageSync('userInfo', userInfo);
-        // 用户信息
-        if (userInfo) {
-          wx.showToast({
-            title: '登录中……',
-            icon: 'none',
-            duration: 300
-          })
-          that.setData({
-            // token: code,
-            login_state: false,
-            userInfo: userInfo
-          })
-        } else {
-          wx.showModal({
-            title: "为了您更好的体验,请先同意授权",
-          });
-        }
-      }
-    })
   },
   // 跳转所有订单
   link_allOrder() {
@@ -76,6 +38,12 @@ Page({
   link_release() {
     wx.navigateTo({
       url: './my_fabu'
+    })
+  },
+  // 跳转任务中心
+  link_task() {
+    wx.navigateTo({
+      url: 'task_center'
     })
   },
   /**
