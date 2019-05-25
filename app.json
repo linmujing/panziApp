@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/login/index",
     "pages/index/index",
     "pages/index/message",
     "pages/index/star",
@@ -10,6 +11,7 @@
     "pages/index/jifen_mall",
     "pages/index/jifen_detail",
     "pages/theme/index",
+    "pages/theme/detail",
     "pages/release/release",
     "pages/community/dongtai_details",
     "pages/community/release",

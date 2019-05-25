@@ -14,16 +14,19 @@ Page({
     navData: [],
     hotList: [
       {
+        id: 4,
         xilie: '个人写真系列' ,
         title: '琉璃翠',
         img: app.globalData.imgUrl + 'ad1.jpg'
       },
       {
+        id: 4,
         xilie: '个人写真系列',
         title: '琉璃翠',
         img: app.globalData.imgUrl + 'ad2.jpg'
       },
       {
+        id: 4,
         xilie: '个人写真系列',
         title: '琉璃翠',
         img: app.globalData.imgUrl + 'ad3.jpg'
@@ -168,5 +171,10 @@ Page({
       url: 'message'
     })
   },
-
+  click_theme: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../theme/detail?id=' + id
+    })
+  },
 })

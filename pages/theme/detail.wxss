@@ -1,0 +1,5 @@
+/* pages/theme/detail.wxss */
+page{background: #fff;}
+.title{margin: 60rpx;text-align: center;font-size: 40rpx;}
+.box{margin: 20rpx;}
+.hp{margin: 60rpx;}

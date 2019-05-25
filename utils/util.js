@@ -23,6 +23,8 @@ const url = {
 
   themeCat: urlFront + 'Content/themeCat',
   themeList: urlFront + 'Content/themeList',
+  themeInfo: urlFront + 'Content/themeInfo',
+  themeZan: urlFront + 'Content/themeZan',
   
 }
 

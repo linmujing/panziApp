@@ -1,0 +1,24 @@
+<!--pages/login/index.wxml-->
+<view class='popup {{phone===true && !userInfo.tel?"active":""}}'>
+  <view class='popup_nr'>
+    <view class='biaoti'>温馨提示</view>
+    <view class='popup_nrs'>为了更好的体验小程序，同时保障账户的安全性，请先绑定手机号</view>
+    <view class='an'>
+      <button  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        <text>立即绑定</text>
+      </button>
+    </view>
+  </view>
+</view>
+
+<view class='popup {{login_state===true?"active":""}}'>
+  <view class='popup_nr'>
+    <view class='biaoti'>温馨提示</view>
+    <view class='popup_nrs'>为了更好的体验小程序，请登录</view>
+    <view class='an'>
+      <button open-type="getUserInfo" bindgetuserinfo="click_userInfo">
+        <text>登录</text>
+      </button>
+    </view>
+  </view>
+</view>

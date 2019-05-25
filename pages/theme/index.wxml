@@ -23,12 +23,14 @@
 <!-- 列表 -->
 <view class='themeList bg_ff'>
   <view wx:for="{{themeData.themeList}}" wx:key='index' class='item'>
-    <image mode='widthFix' src='{{item.fm_img}}'></image>
+    <image mode='widthFix' src='{{item.fm_img}}' bindtap='click_detail' data-id='{{item.id}}'></image>
     <view class='df jc_sb ai_c pl_10'>
-      <view class='blod'>{{item.title}}</view>
+      <view class='blod' bindtap='click_detail' data-id='{{item.id}}'>{{item.title}}</view>
       <view class='df ai_c txt'>
-        <view wx:if='{{item.zan == 1}}' class='heart'></view>
-        <image wx:else mode='widthFix' src='/img/dianzan.png' class='xin'></image>
+        <view class='df ai_c' bindtap='click_zan' data-index='{{index}}'>
+          <view wx:if='{{item.check}}' class='heart'></view>
+          <image wx:else mode='widthFix' src='/img/dianzan.png' class='xin'></image>
+        </view>
         <text class='oneline'>{{item.zan}}</text>
         <image mode='widthFix' src='/img/eye.png'></image>
         <text class='oneline'>{{item.view}}</text>

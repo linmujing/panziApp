@@ -75,7 +75,6 @@ Page({
       id: 3
     };
     util.post(util.url.themeCat, reqBody, (res) => {
-      console.log(res)
       if (res.state == 1) {
         // wx.setNavigationBarTitle({
         //   title: res.data.title
@@ -105,6 +104,9 @@ Page({
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
       if (res.state == 1) {
+        for(var i=0;i<res.data.length;i++){
+          res.data[i].check = false
+        }
         var list = that.data.themeData.themeList
         list = list.concat(res.data);
         that.setData({
@@ -123,6 +125,38 @@ Page({
           })
         }
       }
+    })
+  },
+  // 点赞
+  click_zan: function(e){
+    var that = this
+    var index = e.currentTarget.dataset.index;
+    var list = that.data.themeData.themeList
+    var type = 'add'
+    if (list[index].check){
+      type = 'del'
+      --list[index].zan
+    }else{
+      type = 'add'
+      ++list[index].zan
+    }
+    list[index].check = !list[index].check
+    var reqBody = {
+      id: list[index].id,
+      type: type
+    };
+    util.post(util.url.themeZan, reqBody, (res) => {
+      if (res.state == 1) {
+        that.setData({
+          'themeData.themeList': list
+        })
+      }
+    })
+  },
+  click_detail: function(e){
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: 'detail?id=' + id,
     })
   },
   /**

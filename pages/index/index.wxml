@@ -41,7 +41,7 @@
     <view>THE LATEST TOPIC</view>
   </view>
   <view class='hot_topic df jc_sb fw_w'>
-    <view wx:for='{{hotList}}' wx:key='{{index}}' class='item'>
+    <view wx:for='{{hotList}}' wx:key='{{index}}' class='item' bindtap='click_theme' data-id='{{item.id}}'>
       <image src="{{item.img}}" />
       <view class='txt df jc_sb ai_c'>
         <view>
