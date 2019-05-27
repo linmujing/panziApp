@@ -41,3 +41,21 @@
   border: 1rpx solid #F6AFC1;
   box-sizing: border-box;
 }
+.tip{width: 100%;margin: 20rpx;color: #999;}
+.tip .poi1{display: inline-block;width: 16rpx;height: 16rpx;background: #F6AFC1;border-radius: 50%;}
+.tip .poi2{display: inline-block;width: 16rpx;height: 16rpx;background: #AFA99D;border-radius: 50%;}
+.tip .poi3{display: inline-block;width: 16rpx;height: 16rpx;border-radius: 50%;border: 1rpx solid #F6AFC1;box-sizing: border-box;}
+
+.active{margin: 30rpx auto;box-shadow:0px 10rpx 30rpx -5rpx rgba(0,0,0,0.3);background: #fff;padding: 20rpx;box-sizing: border-box;border-radius:12rpx;}
+.active .title{font-size: 34rpx;font-weight: bold;margin-bottom: 20rpx;}
+.active .btn_title{width: 100rpx;height: 40rpx;text-align: center;}
+.active .list{padding: 20rpx 0;border-bottom: 1rpx solid #F0F0F0;}
+.active .list image{width: 100rpx;height: 100rpx;border-radius: 50%;}
+
+/* 弹窗 */
+.modal{position:fixed;background:rgba(0,0,0,0.7);top:0;right:0;left:0;bottom:0;}
+.modal .cont{background: #fff;width: 520rpx;margin: 0 auto;text-align: center;border-radius: 16rpx;overflow: hidden;margin-top: 30%;}
+.modal .cont .head{background: #FAA4AD;color: #fff;padding: 40rpx;}
+.modal .cont .head image{width: 70rpx;}
+.modal .cont .body{padding: 40rpx;}
+.modal .cont .btn_title{width: 200rpx;margin: 40rpx auto;line-height: 50rpx;}

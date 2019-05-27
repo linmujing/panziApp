@@ -1,4 +1,6 @@
 // pages/personal/task_center.js
+var util = require('../../utils/util.js');
+const app = getApp()
 Page({
 
   /**
@@ -10,7 +12,12 @@ Page({
     lastDay: null,
     firstDay: null,
     weekArr: ['日', '一', '二', '三', '四', '五', '六'],
-    year: null
+    year: null,
+    active: [
+      { name: '新用户大礼包', jf: 100, img: app.globalData.imgUrl + 'msg4.png', info: '第一次注册并登陆' }, 
+      { name: '新用户大礼包', jf: 100, img: app.globalData.imgUrl + 'msg2.png', info: '第一次注册并登陆'}
+    ],
+    popup_state: true
   },
 
   /**
@@ -72,7 +79,21 @@ Page({
     let firstDay = new Date(year, month, 1);
     this.data.firstDay = firstDay.getDay();
   },
-
+  click_jifen: function(){
+    wx.navigateTo({
+      url: '/pages/index/jifen_mall',
+    })
+  },
+  click_close: function () {
+    this.setData({
+      popup_state: true
+    })
+  },
+  click_checkIn: function () {
+    this.setData({
+      popup_state: false
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

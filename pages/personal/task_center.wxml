@@ -2,7 +2,7 @@
 <view class='top'>
   <view class='ta_r ft_12'>签到规则</view>
   <view class='qd ta_c'>
-    <view class='btn df ai_c jc_c'>
+    <view class='btn df ai_c jc_c' bindtap='click_checkIn'>
       <image mode='widthFix' src='/img/checkin.png'></image>
       <text class='pl_5'> 签 到 </text>
     </view>
@@ -12,11 +12,52 @@
 <view class='date'>
   <view class='box' style='width: {{ sysW * 7 }}px'>
     <view class='dateBox'>{{ year }} / {{ month}}</view>
+    
     <block wx:for='{{ weekArr }}' wx:key='{{index}}'>
       <view style='width: {{ sysW }}px; height: {{ sysW }}px; line-height: {{ sysW }}px;'>{{ item }}</view>
     </block>
     <block wx:for='{{ arr }}' wx:key='{{index}}'>
       <view style='{{ index == 0 ? "margin-left:" + sysW * marLet + "px;" : "" }}width: {{ sysW }}px; height: {{ sysW }}px; line-height: {{ sysW }}px;'><text class='{{ item ==  getDate ? "dateOn" : ""}}'>{{ item }}</text></view>
     </block>
+    <view class='tip df jc_sb'>
+      <view class='df'>
+        <view class='ft_11'><text class='poi1'></text> 已签到</view>
+        <view class='ft_11 pl_10'><text class='poi2'></text> 未签到</view>
+        <view class='ft_11 pl_10'><text class='poi3'></text> 今日</view>
+      </view>
+      <view class='color_title ft_11'>签到记录</view>
+    </view>
+  </view>
+
+  <view class='active' style='width: {{ sysW * 7 }}px'>
+    <view class='title'>其他活动</view>
+    <view wx:for='{{active}}' wx:key='{{index}}' class='list df jc_sb ai_c'>
+      <view class='df ai_c'>
+        <image mode='widthFix' src='{{item.img}}'></image>
+        <view class='pl_10'>
+          <view class='ft_16'>{{item.name}}</view>
+          <view class='color_99 ft_12 mt_5'>{{item.info}}</view>
+          <view class='color_title ft_12 mt_5'>积分+{{item.jf}}</view>
+        </view>
+      </view>
+      <view class='btn_title'>领取</view>
+    </view>
+  </view>
+</view>
+<!-- 弹窗 -->
+<view hidden='{{popup_state}}' class='modal'>
+  <view class='cont'>
+    <view class='head'>
+      <image mode='widthFix' src='/img/checkin.png'></image>
+      <view class='mt_5 ft_15'>签到成功</view>
+    </view>
+    <view class='body'>
+      <view>恭喜获得</view>
+      <view>积分+10，积分可兑换礼品</view>
+    </view>
+    <view class='btn_title' bindtap='click_jifen'>去积分商城</view>
+  </view>
+  <view class='mt_20 ta_c'>
+    <icon type="cancel" size="36" color="#fff" bindtap='click_close'/>
   </view>
 </view>
