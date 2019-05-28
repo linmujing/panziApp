@@ -18,6 +18,7 @@ const urlFront = 'https://vip2.pznrfsy.com/index/';
 const url = {
   login: urlFront + 'index/login',
   settel: urlFront + 'Player/settel',
+  playerssign: urlFront + 'Player/playerssign',
 
   index: urlFront + 'Content/column',
 
@@ -28,6 +29,9 @@ const url = {
   themeList: urlFront + 'Content/themeList',
   themeInfo: urlFront + 'Content/themeInfo',
   themeZan: urlFront + 'Content/themeZan',
+
+  slicesList: urlFront + 'Content/slicesList',
+  slicesInfo: urlFront + 'Content/slicesInfo',
   
 }
 

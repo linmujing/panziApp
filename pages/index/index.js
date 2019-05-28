@@ -137,6 +137,11 @@ Page({
           url: '/pages/theme/index',
         })
         break
+      case 2:
+        wx.navigateTo({
+          url: '/pages/index/showcase',
+        })
+        break
       case 3:
         wx.navigateTo({
           url: '/pages/index/video',

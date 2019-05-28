@@ -156,7 +156,7 @@ Page({
   click_detail: function(e){
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: 'detail?id=' + id,
+      url: 'detail?id=' + id + '&type=1',
     })
   },
   /**

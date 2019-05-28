@@ -95,6 +95,7 @@ Page({
           util.post(util.url.login, reqBody, (res) => {
             // console.log(res)
             if (res.state == 1) {
+              userInfo.token = res.data.token
               wx.setStorageSync('userInfo', userInfo);
               that.setData({
                 login_state: false,
@@ -127,8 +128,7 @@ Page({
         if (e.detail.errMsg == "getPhoneNumber:ok") {
           var reqBody = {
             code: res.code,
-            encryptedData: e.detail.encryptedData,
-            iv: e.detail.iv
+            token: this.data.userInfo.token
           };
           util.post(util.url.settel, reqBody, (res) => {
             // console.log(res)

@@ -4,7 +4,7 @@
   <view class='qd ta_c'>
     <view class='btn df ai_c jc_c' bindtap='click_checkIn'>
       <image mode='widthFix' src='/img/checkin.png'></image>
-      <text class='pl_5'> 签 到 </text>
+      <text class='pl_5'> {{checkIn_text}} </text>
     </view>
     <view class='mt_10'>已经连续签到2天，继续加油!</view>
   </view>

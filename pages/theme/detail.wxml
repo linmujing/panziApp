@@ -1,13 +1,24 @@
 <!--pages/theme/detail.wxml-->
 <view class='title'>{{info.title}}</view>
 <view class='box'>
-  <view wx:for='{{info.shu_img}}' wx:key='{{index}}'>
-    <image mode='widthFix' src='{{item}}' class='w100 mt_5'></image>
+  <view wx:if='{{info.shu_img}}' wx:for="{{info.shu_img}}" wx:key='index' class='list'>
+    <view>
+      <image mode='widthFix' src='{{item}}'></image>
+    </view>
+    <view class='tip'>
+      <image mode='widthFix' src='{{img.heng}}'></image>
+    </view>
   </view>
+  
   <view class='hp'>
     <image mode='widthFix' src='{{img.hengping}}' class='w100'></image>
   </view>
-  <view wx:for='{{info.heng_img}}' wx:key='{{index}}'>
-    <image mode='widthFix' src='{{item}}' class='w100 mt_5'></image>
+  <view wx:if='{{info.heng_img}}' wx:for="{{info.heng_img}}" wx:key='index' class='list'>
+    <view>
+      <image mode='widthFix' src='{{item}}'></image>
+    </view>
+    <view class='tip'>
+      <image mode='widthFix' src='{{img.shu}}'></image>
+    </view>
   </view>
 </view>

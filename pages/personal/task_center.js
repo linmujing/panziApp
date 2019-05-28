@@ -17,7 +17,8 @@ Page({
       { name: '新用户大礼包', jf: 100, img: app.globalData.imgUrl + 'msg4.png', info: '第一次注册并登陆' }, 
       { name: '新用户大礼包', jf: 100, img: app.globalData.imgUrl + 'msg2.png', info: '第一次注册并登陆'}
     ],
-    popup_state: true
+    popup_state: true,
+    checkIn_text: '签 到'
   },
 
   /**
@@ -90,8 +91,15 @@ Page({
     })
   },
   click_checkIn: function () {
-    this.setData({
-      popup_state: false
+    var reqBody = {};
+    util.post(util.url.playerssign, reqBody, (res) => {
+      console.log(res)
+      if (res.state == 1) {
+        this.setData({
+          popup_state: false,
+          checkIn_text: '已签到'
+        })
+      }
     })
   },
   /**

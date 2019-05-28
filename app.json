@@ -2,6 +2,7 @@
   "pages": [
     "pages/login/index",
     "pages/index/video",
+    "pages/index/showcase",
     "pages/index/index",
     "pages/index/message",
     "pages/index/star",
