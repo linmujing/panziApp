@@ -18,6 +18,10 @@ Page({
     lists: [],
     allCheck: false,
     percent_n: 0,
+    preview: {
+      preview_state: true,
+      imgSrc: ''
+    }
   },
 
   /**
@@ -71,6 +75,20 @@ Page({
       allCheck: !allCheck,
       imgData: imgData,
       imgArr: lists
+    })
+  },
+  // 预览图片
+  previewImg: function(e){
+    var src = e.currentTarget.dataset.src
+    this.setData({
+      'preview.preview_state': false,
+      'preview.imgSrc': src
+    })
+  },
+  hide: function (e) {
+    this.setData({
+      'preview.preview_state': true,
+      'preview.imgSrc': ''
     })
   },
   // 下载图片

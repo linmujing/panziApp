@@ -3,17 +3,17 @@
   <checkbox-group bindchange="checkboxChange">
       <view class='list df jc_sb fw_w'>
         <view wx:for='{{imgData}}' wx:key='{{index}}' class='item'>
-          <view class='img_box'>
+          <view class='img_box' bindtap='previewImg' data-src='{{item.img}}'>
             <image lazy-load mode='widthFix' src='{{item.img}}'></image>
           </view>
-          <view class='check'>
+          <!-- <view class='check'>
             <checkbox value='{{item.img}}' checked='{{item.check}}' />
-          </view>
+          </view> -->
         </view> 
       </view>
   </checkbox-group>
 </view>
-<view class='upload df jc_sb'>
+<!-- <view class='upload df jc_sb'>
   <checkbox-group bindchange="checkboxAll">
     <label class='ck'>
       <checkbox checked="{{allCheck}}" color='#F89FB5'/>
@@ -21,4 +21,8 @@
     </label>
   </checkbox-group>
   <view class='btn' bindtap='savePic'>保存图片</view>
+</view> -->
+
+<view hidden='{{preview.preview_state}}' class='preview df ai_c jc_c' bindtap='hide'>
+  <image mode='widthFix' src='{{preview.imgSrc}}'></image>
 </view>

@@ -1,5 +1,5 @@
 <!--pages/index/store_detail.wxml-->
-<view wx:if='{{}}' class='video-box'>
+<view wx:if='{{info.video}}' class='video-box'>
   <video id='myVideo' src='{{info.video}}' objectFit='fill' autoplay></video>
 </view>
 <view class='box'>
