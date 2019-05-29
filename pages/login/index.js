@@ -79,23 +79,36 @@ Page({
     wx.login({
       success: res => {
         var userInfo = e.detail.userInfo;
+        // console.log(userInfo)
         if (userInfo) {
           wx.showToast({
             title: '登录中……',
             icon: 'none',
             duration: 500
           })
-          codes = res.code;
-          wx.setStorageSync('userInfo', userInfo);
-          that.setData({
-            login_state: false,
-            userInfo: userInfo
+          var reqBody = {
+            code: res.code,
+            userInfo: userInfo,
+            encryptedData: e.detail.encryptedData,
+            iv: e.detail.iv
+          };
+          util.post(util.url.login, reqBody, (res) => {
+            // console.log(res)
+            if (res.state == 1) {
+              userInfo.token = res.data.token
+              wx.setStorageSync('userInfo', userInfo);
+              that.setData({
+                login_state: false,
+                userInfo: userInfo
+              })
+              if (!userInfo.tel) {
+                this.setData({
+                  phone: true
+                })
+              }
+            }
           })
-          if (!userInfo.tel) {
-            this.setData({
-              phone: true
-            })
-          }
+
         } else {
           wx.showModal({
             title: "为了您更好的体验,请先同意授权",
@@ -112,18 +125,26 @@ Page({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         var code = res.code
-        console.log(code)
         if (e.detail.errMsg == "getPhoneNumber:ok") {
-          console.log(res)
-          this.setData({
-            'userInfo.tel': 15200896810
+          var reqBody = {
+            code: res.code,
+            token: this.data.userInfo.token
+          };
+          util.post(util.url.settel, reqBody, (res) => {
+            // console.log(res)
+            if (res.state == 0 || res.state == 1) {
+              this.setData({
+                'userInfo.tel': res.tel
+              })
+              var userInfo = this.data.userInfo
+              console.log(userInfo)
+              wx.setStorageSync('userInfo', userInfo);
+              wx.switchTab({
+                url: '/pages/index/index'
+              })
+            }
           })
-          var userInfo = this.data.userInfo
-          console.log(userInfo)
-          wx.setStorageSync('userInfo', userInfo);
-          wx.switchTab({
-            url: '/pages/index/index'
-          })
+         
         } else if (e.detail.errMsg == "getPhoneNumber:fail user deny") {
           console.log('不同意')
           this.setData({

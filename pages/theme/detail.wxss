@@ -3,3 +3,7 @@ page{background: #fff;}
 .title{margin: 60rpx;text-align: center;font-size: 40rpx;}
 .box{margin: 20rpx;}
 .hp{margin: 60rpx;}
+
+.list{padding: 8rpx;border: 1rpx solid #C8C8C8;margin-bottom: 40rpx;}
+.list image{width: 100%;}
+.list .tip{margin: 20rpx 100rpx;}

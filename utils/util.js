@@ -16,6 +16,10 @@ const formatNumber = n => {
 
 const urlFront = 'https://vip2.pznrfsy.com/index/';
 const url = {
+  login: urlFront + 'index/login',
+  settel: urlFront + 'Player/settel',
+  playerssign: urlFront + 'Player/playerssign',
+
   index: urlFront + 'Content/column',
 
   storeList: urlFront + 'Content/storeList',
@@ -27,6 +31,9 @@ const url = {
   themeZan: urlFront + 'Content/themeZan',
 
   category: urlFront + 'sns/category',
+  slicesList: urlFront + 'Content/slicesList',
+  slicesInfo: urlFront + 'Content/slicesInfo',
+
 }
 
 function _post(url, data, success, isLoading = true) {

@@ -7,11 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    banner: app.globalData.imgUrl + 'ad3.jpg',
-    navData: {
-      navList: ['最新', '热拍', '影视', '情侣', '闺蜜', '亲子', '外景'],
-      current: 0,
-    },
+    banner: app.globalData.imgUrl + 'star.png',
     themeList: [
       { img: app.globalData.imgUrl + 'ad1.jpg', name: '明星同款主题【竹】', collect: 276, look: 24278, zan: 1 },
       { img: app.globalData.imgUrl + 'ad2.jpg', name: '明星同款主题【竹】', collect: 156, look: 4278, zan: 0 },

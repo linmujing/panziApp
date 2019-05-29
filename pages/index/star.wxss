@@ -1,59 +1,10 @@
 /* pages/theme/index.wxss */
-.search_box {
-  padding: 20rpx 40rpx;
-  line-height: 60rpx;
-}
-
-.search_box image {
-  width: 40rpx;
-  height: 40rpx
-}
-
-.search_box .search {
-  width: 100%;
-  background: #EEEEEE;
-  border-radius: 60rpx;
-  padding: 10rpx;
-  box-sizing:border-box;
-
-}
-.banner{margin: 20rpx;}
-.banner image{width: 710rpx;border-radius: 8rpx;height: 300rpx;}
-
-.nav{border-bottom: 1px solid #AAAAAA;overflow: hidden;}
-.nav scroll-view{width:100%;white-space: nowrap;}
-.nav scroll-view .item{display: inline-block;margin: 0 20rpx;padding-bottom: 20rpx;font-size: 30rpx;}
-.nav scroll-view .active{border-bottom: 3px solid #FA9EB6;}
+page{background: #fff;}
+.top{margin: 40rpx;text-align: center;}
+.top image{width: 200rpx;}
 
 .themeList{margin: 20rpx;}
-.themeList .item{margin-bottom: 20rpx;}
+.themeList .item{margin-bottom: 40rpx;box-shadow:0px 10rpx 30rpx -5rpx rgba(0,0,0,0.3);}
+.themeList .item .dd{padding: 30rpx;}
 .themeList .item>image{width: 100%;}
-.themeList .item view image{width: 40rpx;}
-.themeList .item .txt{padding: 20rpx 0;}
-.themeList .item .txt text{width: 100rpx;padding-left: 10rpx;}
-.themeList .item .xin{width: 34rpx;}
-
-/* 爱心 */
-.heart {
-  position: relative;
-  width: 38rpx;
-  height: 28rpx;
-}
-.heart:before,
-.heart:after {
-  position: absolute;
-  content: "";
-  left: 16rpx;
-  top: 0;
-  width: 16rpx;
-  height: 28rpx;
-  background: #FDA2B3;
-  border-radius: 16rpx 16rpx 0 0;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-}
-.heart:after {
-  left: 0;
-  transform: rotate(45deg);
-  transform-origin: 100% 100%;
-}
+.themeList .item .icon{width: 40rpx; height: 40rpx;}

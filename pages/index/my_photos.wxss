@@ -16,3 +16,6 @@
 /* checkbox选中时样式 */
 .list checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {border-radius: 20rpx;height: 36rpx;width: 36rpx;line-height: 36rpx;text-align: center;font-size: 28rpx;color: #fff;transform: translate(-50%, -50%) scale(1);-webkit-transform: translate(-50%, -50%) scale(1);background-color: #F89FB5;border: 1rpx solid #F89FB5;
 }
+
+/* 弹窗 */
+.preview{position:fixed;background:rgba(0,0,0,0.7);top:0;right:0;left:0;bottom:0;}

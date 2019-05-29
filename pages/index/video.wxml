@@ -1,0 +1,19 @@
+<!--pages/index/video.wxml-->
+<view class='list' wx:for='{{videoData.list}}' wx:key='{{index}}'>
+  <view class='block'>
+    <view class='title'>
+      <view class='ft_16'>{{item.title}}</view>
+      <view class='ft_12 mt_10'>| {{item.info}} |</view>
+      <view class='arrow'></view>
+    </view>
+    <view id="{{index}}" class="cover" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
+      <!-- 视频图层 -->
+      <image class="videoVideo2" src="{{item.img}}" mode="scaleToFill">
+        <!-- 视频按钮 -->
+        <image class="videoPlay" src="/img/play.png" mode="scaleToFill"></image>
+      </image>
+    </view>
+  </view>
+  <!-- 视频 -->
+  <video src="{{item.url}}" id="{{index}}" class='video' wx:if="{{_index == index}}"></video>
+</view>

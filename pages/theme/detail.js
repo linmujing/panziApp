@@ -9,7 +9,9 @@ Page({
   data: {
     info: {},
     img:{
-      hengping: app.globalData.imgUrl + 'henping.png'
+      hengping: app.globalData.imgUrl + 'henping.png',
+      heng: app.globalData.imgUrl + 'heng.png',
+      shu: app.globalData.imgUrl + 'shu.png',
     }
   },
 
@@ -17,7 +19,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.themeInfo(options.id)
+    // console.log(options)
+    this.themeInfo(options.id, options.type)
   },
 
   /**
@@ -33,12 +36,21 @@ Page({
   onShow: function () {
 
   },
-  themeInfo: function (id) {
+  themeInfo: function (id, type) {
     var that = this
+    var url = ''
+    switch (type){
+      case '1':
+        url = util.url.themeInfo;
+        break;
+      case '2':
+        url = util.url.slicesInfo;
+        break;
+    }
     var reqBody = {
       id: id
     };
-    util.post(util.url.themeInfo, reqBody, (res) => {
+    util.post(url, reqBody, (res) => {
       if (res.state == 1) {
         wx.setNavigationBarTitle({
           title: res.data.title
