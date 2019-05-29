@@ -51,8 +51,9 @@ Page({
       }
     })
     var userInfo = wx.getStorageSync('userInfo');
+    console.log(userInfo)
     var reqBody = {
-      token: userInfo
+      token: userInfo.token
     };
     util.post(util.url.category, reqBody, (res) => {
       console.log(res)
