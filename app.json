@@ -1,5 +1,6 @@
 {
   "pages": [
+
     "pages/login/index",
     "pages/index/index",
     "pages/index/message",
@@ -11,7 +12,6 @@
     "pages/index/jifen_detail",
     "pages/theme/index",
     "pages/theme/detail",
-    "pages/release/release",
     "pages/community/dongtai_details",
     "pages/community/release",
     "pages/community/community",
@@ -22,7 +22,8 @@
     "pages/personal/zh_setting",
     "pages/personal/personal_info",
     "pages/personal/task_center",
-    "pages/personal/my_fabu"
+    "pages/personal/my_fabu",
+    "pages/personal/order_comment"
   ],
   "navigateToMiniProgramAppIdList": [
     "wx5ba0b0241434741e"

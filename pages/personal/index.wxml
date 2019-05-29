@@ -41,7 +41,7 @@
                 <image src="/img/money3.png" />
                 <view>待收货</view>
             </view>
-            <view bind:tap="link_allOrder">
+            <view bind:tap="link_orderComment">
                 <image src="/img/money4.png" />
                 <view>评论</view>
             </view>
@@ -66,8 +66,8 @@
             </view>
             <image mode="widthFix" src="/img/enter_.png" />
         </view>
-        <view class="my_list_item">
-            <view bind:tap="link_release">
+        <view class="my_list_item" bind:tap="link_release">
+            <view>
                 <image mode="widthFix" src="/img/center-03.jpg" />
                 <text>我发布的</text>
             </view>

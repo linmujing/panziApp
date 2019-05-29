@@ -1,4 +1,5 @@
 // pages/community/community.js
+var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -49,6 +50,28 @@ Page({
         });
       }
     })
+    var userInfo = wx.getStorageSync('userInfo');
+    var reqBody = {
+      token: userInfo
+    };
+    util.post(util.url.category, reqBody, (res) => {
+      console.log(res)
+      if (res.state == 1) {
+        // wx.setNavigationBarTitle({
+        //   title: res.data.title
+        // })
+        // var list = that.data.themeData.navList
+        // list = list.concat(res.data);
+        // that.getThemeList()
+        // that.setData({
+        //   banner: res.banner,
+        //   'themeData.navList': list
+        // })
+      }
+    })
+
+
+
     that.detail = [{
         headerUrl: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2146046871,2611785107&fm=27&gp=0.jpg",
         name: "我是昵称",

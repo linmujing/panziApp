@@ -1,0 +1,94 @@
+/* pages/personal/order_comment.wxss */
+.btn {
+    text-align: right;
+    margin-right: 20rpx;
+    color: #F4B6C5;
+}
+
+.top_comment {
+    display: flex;
+    align-items: center;
+    margin: 30rpx;
+}
+
+.top_comment>image {
+    width: 180rpx;
+}
+
+.comment1-description {
+    padding: 20rpx 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.stars {
+    background: url("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3019982409,351386315&fm=26&gp=0.jpg");
+    width: 40rpx;
+    height: 40rpx;
+    background-size: 40rpx 40rpx;
+    margin-left: 30rpx;
+    transition: 600ms;
+}
+
+.on {
+    background: url("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2512269370,3559403453&fm=26&gp=0.jpg");
+    width: 40rpx;
+    height: 40rpx;
+    background-size: 40rpx 40rpx;
+    transition: 1s;
+    transform: scale(1, 1)
+}
+
+.share_title {
+    margin-top: 30rpx;
+    padding: 20rpx 30rpx;
+    background: #eee;
+}
+
+.weui-cells_after-title {
+    width: 92%;
+    margin: 0 auto;
+    /* border: 1px solid #ddd; */
+    padding: 30rpx;
+}
+
+.upLoad_pic {
+    margin: 20rpx;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upLoad_pic image {
+    width: 80rpx;
+    margin-top: 40rpx;
+}
+
+.upLoad_pic>view {
+    margin: 20rpx 0 40rpx;
+}
+
+.upLoad_pic .num {
+    color: #F4B6C5;
+}
+
+.foot_title {
+    margin-top: 30rpx;
+    padding: 20rpx 30rpx;
+    background: #eee;
+}
+
+.service_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20rpx 30rpx 0;
+}
+
+.fuwu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 40rpx 0 50rpx;
+}

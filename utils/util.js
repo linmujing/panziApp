@@ -25,7 +25,8 @@ const url = {
   themeList: urlFront + 'Content/themeList',
   themeInfo: urlFront + 'Content/themeInfo',
   themeZan: urlFront + 'Content/themeZan',
-  
+
+  category: urlFront + 'sns/category',
 }
 
 function _post(url, data, success, isLoading = true) {
