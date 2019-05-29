@@ -1,6 +1,5 @@
 <!-- pages/personal/order_comment.wxml -->
-<view class="container">
-    <view class="btn">提交</view>
+<view class="container bg_ff">
     <view class="top_comment">
         <image mode="widthFix" src="../../img/order_hd.png" />
         <view class="comment1-description">
@@ -76,4 +75,8 @@
             </view>
         </view>
     </view>
+</view>
+<view class='tijiao' bindtap='click_dui'>
+  <view class='btn_title'>提 交</view>
+  <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
 </view>

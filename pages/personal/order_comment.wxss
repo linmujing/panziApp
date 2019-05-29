@@ -1,4 +1,7 @@
 /* pages/personal/order_comment.wxss */
+.container{
+  margin-bottom: 100rpx;
+}
 .btn {
     text-align: right;
     margin-right: 20rpx;
@@ -22,7 +25,7 @@
 }
 
 .stars {
-    background: url("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3019982409,351386315&fm=26&gp=0.jpg");
+    background: url("https://app.pznrfsy.com/static/panziApp/star2.png");
     width: 40rpx;
     height: 40rpx;
     background-size: 40rpx 40rpx;
@@ -31,7 +34,7 @@
 }
 
 .on {
-    background: url("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2512269370,3559403453&fm=26&gp=0.jpg");
+    background: url("https://app.pznrfsy.com/static/panziApp/star.png");
     width: 40rpx;
     height: 40rpx;
     background-size: 40rpx 40rpx;
@@ -92,3 +95,5 @@
     justify-content: space-between;
     margin: 0 40rpx 0 50rpx;
 }
+.tijiao{position: fixed;bottom: 0;z-index: 1;width: 100%;text-align: center;font-size: 32rpx;line-height: 80rpx;box-sizing: border-box;}
+.tijiao .btn_title{border-radius: 0;}

@@ -90,7 +90,11 @@ Page({
   onShow: function () {
 
   },
-
+  click_comment: function (e) {
+    wx.navigateTo({
+      url: 'order_comment',
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

@@ -10,7 +10,7 @@
                 <image src="{{userInfo.avatarUrl}}" />
             </view>
             <view class="details_right">
-                <view class="user_info_name">{{userInfo.nickName}}{{userInfo.tel}}</view>
+                <view class="user_info_name">{{userInfo.nickName}}</view>
                 <view class="qiandao" bindtap='link_task'>
                     <image mode="widthFix" src="/img/qiandao.png" />
                 </view>
