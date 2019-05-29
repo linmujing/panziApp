@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userInfo: {},
     arr: [],
+    date: {},
     sysW: null,
     lastDay: null,
     firstDay: null,
@@ -18,13 +20,27 @@ Page({
       { name: '新用户大礼包', jf: 100, img: app.globalData.imgUrl + 'msg2.png', info: '第一次注册并登陆'}
     ],
     popup_state: true,
-    checkIn_text: '签 到'
+    is_sign: 0,
+    days: 0,
+    score: 0,
+    Height: wx.getSystemInfoSync().windowHeight
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      userInfo: userInfo
+    })
+    if (!userInfo) {
+      wx.navigateTo({
+        url: '/pages/login/index',
+      })
+    }
+
+    this.signData();
     this.dataTime();
 
     //根据得到今月的最后一天日期遍历 得到所有日期
@@ -36,7 +52,7 @@ Page({
       //更具屏幕宽度变化自动设置宽度
       sysW: res.windowHeight * 0.95 / 12,
       marLet: this.data.firstDay,
-      arr: this.data.arr,
+      // arr: this.data.arr,
       year: this.data.year,
       getDate: this.data.getDate,
       month: this.data.month
@@ -54,7 +70,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
   //获取日历相关参数
   dataTime: function () {
@@ -91,13 +107,36 @@ Page({
     })
   },
   click_checkIn: function () {
-    var reqBody = {};
-    util.post(util.url.playerssign, reqBody, (res) => {
+    if (this.data.is_sign == 1){
+      return
+    }
+    var reqBody = {
+      token: this.data.userInfo.token
+    };
+    util.post(util.url.checkIn, reqBody, (res) => {
       console.log(res)
       if (res.state == 1) {
         this.setData({
           popup_state: false,
-          checkIn_text: '已签到'
+          is_sign: 1,
+          days: res.data.days,
+          score: res.data.score
+        })
+      }
+    })
+  },
+  signData: function () {
+    var that = this
+    var reqBody = {
+      token: that.data.userInfo.token
+    };
+    util.post(util.url.signData, reqBody, (res) => {
+      var data = res.data
+      if (res.state == 1) {
+        that.setData({
+          date: data.arrlist,
+          is_sign: data.is_sign,
+          days: data.days,
         })
       }
     })

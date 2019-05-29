@@ -4,9 +4,10 @@
   <view class='qd ta_c'>
     <view class='btn df ai_c jc_c' bindtap='click_checkIn'>
       <image mode='widthFix' src='/img/checkin.png'></image>
-      <text class='pl_5'> {{checkIn_text}} </text>
+      <text wx:if='{{is_sign == 0}}' class='pl_5'> 签到 </text>
+      <text wx:else class='pl_5'> 已签到 </text>
     </view>
-    <view class='mt_10'>已经连续签到2天，继续加油!</view>
+    <view wx:if='{{days > 0}}' class='mt_10'>已经连续签到{{days}}天，继续加油!</view>
   </view>
 </view>
 <view class='date'>
@@ -16,8 +17,9 @@
     <block wx:for='{{ weekArr }}' wx:key='{{index}}'>
       <view style='width: {{ sysW }}px; height: {{ sysW }}px; line-height: {{ sysW }}px;'>{{ item }}</view>
     </block>
-    <block wx:for='{{ arr }}' wx:key='{{index}}'>
-      <view style='{{ index == 0 ? "margin-left:" + sysW * marLet + "px;" : "" }}width: {{ sysW }}px; height: {{ sysW }}px; line-height: {{ sysW }}px;'><text class='{{ item ==  getDate ? "dateOn" : ""}}'>{{ item }}</text></view>
+    <block wx:for='{{ date }}' wx:key='{{index}}'>
+      <!-- <view style='{{ index == 0 ? "margin-left:" + sysW * marLet + "px;" : "" }}width: {{ sysW }}px; height: {{ sysW }}px; line-height: {{ sysW }}px;'><text class='{{ item.day ==  getDate ? "dateOn" : ""}}'>{{ item.day }}</text></view> -->
+      <view style='{{ index == 0 ? "margin-left:" + sysW * marLet + "px;" : "" }}width: {{ sysW }}px; height: {{ sysW }}px; line-height: {{ sysW }}px;'><text class='{{item.style}}'>{{ item.day }}</text></view>
     </block>
     <view class='tip df jc_sb'>
       <view class='df'>
@@ -25,7 +27,7 @@
         <view class='ft_11 pl_10'><text class='poi2'></text> 未签到</view>
         <view class='ft_11 pl_10'><text class='poi3'></text> 今日</view>
       </view>
-      <view class='color_title ft_11'>签到记录</view>
+      <!-- <view class='color_title ft_11'>签到记录</view> -->
     </view>
   </view>
 
@@ -53,7 +55,7 @@
     </view>
     <view class='body'>
       <view>恭喜获得</view>
-      <view>积分+10，积分可兑换礼品</view>
+      <view>积分+{{score}}，积分可兑换礼品</view>
     </view>
     <view class='btn_title' bindtap='click_jifen'>去积分商城</view>
   </view>
@@ -61,3 +63,4 @@
     <icon type="cancel" size="36" color="#fff" bindtap='click_close'/>
   </view>
 </view>
+
