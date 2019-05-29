@@ -33,9 +33,10 @@ const url = {
   themeInfo: urlFront + 'Content/themeInfo',
   themeZan: urlFront + 'Content/themeZan',
 
+  category: urlFront + 'sns/category',
   slicesList: urlFront + 'Content/slicesList',
   slicesInfo: urlFront + 'Content/slicesInfo',
-  
+
 }
 
 function _post(url, data, success, isLoading = true) {

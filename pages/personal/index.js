@@ -28,6 +28,11 @@ Page({
       url: './my_order'
     })
   },
+  link_orderComment() {
+    wx.navigateTo({
+      url: './order_comment'
+    })
+  },
   // 跳转设置
   link_setting() {
     wx.navigateTo({

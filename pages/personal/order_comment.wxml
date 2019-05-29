@@ -1,0 +1,79 @@
+<!-- pages/personal/order_comment.wxml -->
+<view class="container">
+    <view class="btn">提交</view>
+    <view class="top_comment">
+        <image mode="widthFix" src="../../img/order_hd.png" />
+        <view class="comment1-description">
+            <view class="star-pos" style="display:flex;flex-direction:row;">
+                <view class="stars  {{flag>=1? 'on': ''}}" bindtap="changeColor1"></view>
+                <view class="stars  {{flag>=2? 'on': ''}}" bindtap="changeColor2"></view>
+                <view class="stars  {{flag>=3? 'on': ''}}" bindtap="changeColor3"></view>
+                <view class="stars  {{flag>=4? 'on': ''}}" bindtap="changeColor4"></view>
+                <view class="stars  {{flag>=5? 'on': ''}}" bindtap="changeColor5"></view>
+            </view>
+        </view>
+    </view>
+    <view class="share_title">分享你的购买体验吧</view>
+    <!-- 文本域 -->
+    <view class="weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <textarea class="weui-textarea" bindinput="bindTextAreaChange" placeholder="宝贝符合您的期待吗？说说你的体验感，分享心得给其他用户可领取积分噢~" style="height: 8em" value="{{info}}" maxlength="{{noteMaxLen}}" focus />
+                <!-- <view class="weui-textarea-counter">{{noteNowLen}}/{{noteMaxLen}}</view> -->
+            </view>
+        </view>
+    </view>
+    <view class="upLoad_pic">
+        <image mode="widthFix" src="../../img/camera.png" />
+        <view>
+            上传体验图片/视频即可获得
+            <text class="num">10</text>
+            积分
+        </view>
+    </view>
+    <view class="foot_title">继续评价，赢更多积分</view>
+    <view class="service_title">
+        <view class="title_left">售后服务评价</view>
+        <view class="">
+            评价有机会获得
+            <text class="num">10</text>
+            积分
+        </view>
+    </view>
+    <view class="huazhuang fuwu">
+        <view>化妆服务</view>
+        <view class="comment1-description">
+            <view class="star-pos" style="display:flex;flex-direction:row;">
+                <view class="stars  {{flag>=1? 'on': ''}}" bindtap="changeColor1"></view>
+                <view class="stars  {{flag>=2? 'on': ''}}" bindtap="changeColor2"></view>
+                <view class="stars  {{flag>=3? 'on': ''}}" bindtap="changeColor3"></view>
+                <view class="stars  {{flag>=4? 'on': ''}}" bindtap="changeColor4"></view>
+                <view class="stars  {{flag>=5? 'on': ''}}" bindtap="changeColor5"></view>
+            </view>
+        </view>
+    </view>
+    <view class="paishe fuwu">
+        <view>拍摄服务</view>
+        <view class="comment1-description">
+            <view class="star-pos" style="display:flex;flex-direction:row;">
+                <view class="stars  {{flag>=1? 'on': ''}}" bindtap="changeColor1"></view>
+                <view class="stars  {{flag>=2? 'on': ''}}" bindtap="changeColor2"></view>
+                <view class="stars  {{flag>=3? 'on': ''}}" bindtap="changeColor3"></view>
+                <view class="stars  {{flag>=4? 'on': ''}}" bindtap="changeColor4"></view>
+                <view class="stars  {{flag>=5? 'on': ''}}" bindtap="changeColor5"></view>
+            </view>
+        </view>
+    </view>
+    <view class="xiupian fuwu">
+        <view>后期修片</view>
+        <view class="comment1-description">
+            <view class="star-pos" style="display:flex;flex-direction:row;">
+                <view class="stars  {{flag>=1? 'on': ''}}" bindtap="changeColor1"></view>
+                <view class="stars  {{flag>=2? 'on': ''}}" bindtap="changeColor2"></view>
+                <view class="stars  {{flag>=3? 'on': ''}}" bindtap="changeColor3"></view>
+                <view class="stars  {{flag>=4? 'on': ''}}" bindtap="changeColor4"></view>
+                <view class="stars  {{flag>=5? 'on': ''}}" bindtap="changeColor5"></view>
+            </view>
+        </view>
+    </view>
+</view>
