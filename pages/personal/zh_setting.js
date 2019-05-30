@@ -24,6 +24,11 @@ Page({
       url: './personal_info'
     })
   },
+  click_addr: function(){
+    wx.navigateTo({
+      url: 'address'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

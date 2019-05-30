@@ -1,0 +1,65 @@
+<!--pages/personal/add_address.wxml-->
+<view class='list df ai_c jc_sb'>
+  <view class='biaoti df ai_c jc_fs'>收货人：</view>
+  <view class='rightnr'>
+    <input class='df ai_c jc_sb' placeholder='请输入收货人' value='{{page_data.userName}}' bindblur="click_userName" type='text'></input>
+  </view>
+</view>
+<!--  -->
+<view class='list  df ai_c jc_sb'>
+  <view class='biaoti  df ai_c jc_fs'>联系电话：</view>
+  <view class='rightnr'>
+    <input class='df ai_c jc_sb' placeholder='请输入联系电话' value='{{page_data.phoneNum}}'  bindblur="click_phoneNum" type='number' maxlength="11"></input>
+  </view>
+</view>
+<!--  -->
+<view class='list  df ai_c jc_sb'>  
+  <view class='biaoti  df ai_c jc_fs'>所在地区：</view>
+  <view class='rightnr'>
+    <view bindtap='click_Area_window' class="weui-input df ai_c">{{regionr[0].name}} - {{regionr[1].name}} - {{regionr[2].name}}</view>
+   <!-- <picker class='rightnr df ai_c' bindchange="bindPickerChange" mode="region" value="{{region}}">
+  </picker> -->
+  </view>
+</view>
+<!--  -->
+<view class='list  df ai_c jc_sb'>
+  <view class='biaoti  df ai_c jc_fs'><text>详细地址：</text></view>
+  <view class='rightnr'>
+    <input placeholder='请输入详细地址'  value='{{page_data.address}}'  bindblur="click_address" type='text'></input>
+  </view>
+</view>
+<!--  -->
+<view class='list  df ai_c jc_sb listr'>
+  <view class='biaoti  df ai_c jc_fs'>默认地址　</view>
+  <view class='rightnr df ai_c jc_fe'>
+    <view bindtap='click_mrdz' class="mrdzbj {{page_data.isDefault?'active':''}}">
+      <text></text>
+    </view>
+  </view>
+</view>
+<!--  -->
+<view class='dibuan'>
+  <view class='dibuan_nr df ai_c jc_sa'>
+    <text bindtap='click_qx' class='df ai_c jc_c'>取消</text>
+    <text bindtap='click_bc' class='baoc df ai_c jc_c'>保存</text>
+  </view>
+  <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
+</view>
+
+<view class='Area_window df fd_c jc_fe' wx-if='{{area_state}}'>
+  <view class='qxscan df jc_sb'>
+    <text bindtap='click_dqsjqx'>取消</text>
+    <text class='qdcocor' bindtap='click_dqsjqd'>确定</text>
+  </view>
+  <picker-view indicator-style="height:50px;" style="width: 100%;height:240px;"  mode="{{province}}" value="{{value}}" bindchange="bindChange">
+  <picker-view-column>
+    <view wx:for="{{province}}"  wx:key="index" style="line-height: 50px">{{item.pName}}</view>
+  </picker-view-column>
+  <picker-view-column>
+      <view wx:for="{{city}}" wx:key ="index" style="line-height: 50px">{{item.cName}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{area}}" wx:key ="index" style="line-height: 50px">{{item.xName}}</view>
+    </picker-view-column>
+</picker-view>
+</view>
