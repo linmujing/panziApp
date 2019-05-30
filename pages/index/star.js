@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    banner: app.globalData.imgUrl + 'star.png',
+    banner: app.globalData.imgUrl + 'c-star.png',
     themeList: [
       { img: app.globalData.imgUrl + 'ad1.jpg', name: '明星同款主题【竹】', collect: 276, look: 24278, zan: 1 },
       { img: app.globalData.imgUrl + 'ad2.jpg', name: '明星同款主题【竹】', collect: 156, look: 4278, zan: 0 },

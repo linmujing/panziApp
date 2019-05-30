@@ -14,5 +14,5 @@
         <view>地址管理</view>
         <image mode="widthFix" src="../../img/enter_.png" />
     </view>
-    <view class="btn">退出当前账户</view>
+    <!-- <view class="btn">退出当前账户</view> -->
 </view>

@@ -96,14 +96,25 @@ Page({
             // console.log(res)
             if (res.state == 1) {
               userInfo.token = res.data.token
+              if (res.data.tel == 0 || res.data.tel == ''){
+                that.setData({
+                  phone: true
+                })
+              }else{
+                userInfo.tel = res.data.tel
+              }
               wx.setStorageSync('userInfo', userInfo);
               that.setData({
                 login_state: false,
                 userInfo: userInfo
               })
               if (!userInfo.tel) {
-                this.setData({
+                that.setData({
                   phone: true
+                })
+              }else{
+                wx.switchTab({
+                  url: '/pages/index/index'
                 })
               }
             }

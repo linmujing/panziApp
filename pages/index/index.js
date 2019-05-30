@@ -75,9 +75,13 @@ Page({
   },
   getIndex: function(){
     var that = this
+    wx.showLoading({
+      title: '加载中',
+    })
     var reqBody = {};
     util.post(util.url.index, reqBody, (res) => {
       // console.log(res)
+      wx.hideLoading()
       if (res.state == 1){
         that.setData({
           carouselData: res.banner,

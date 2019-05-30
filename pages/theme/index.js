@@ -10,9 +10,7 @@ Page({
   data: {
     banner: [],
     themeData: {
-      navList: [
-        {'name': '全部', id: ''}
-      ],
+      navList: [],
       current: 0,
       search: '',
       page: 1,
@@ -40,7 +38,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getTheme()
   },
   blur_search: function (e) {
     this.setData({
@@ -79,7 +77,9 @@ Page({
         // wx.setNavigationBarTitle({
         //   title: res.data.title
         // })
-        var list = that.data.themeData.navList
+        var list = [
+          {name: '全部', id: ''}
+        ]
         list = list.concat(res.data);
         that.getThemeList()
         that.setData({
