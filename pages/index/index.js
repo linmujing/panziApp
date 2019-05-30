@@ -4,7 +4,7 @@ const app = getApp()
 var util = require('../../utils/util.js');
 Page({
   data: {
-    imgUrl: app.globalData.imgUrl2,
+    service: app.globalData.imgUrl + 'zx.png',
     indicatorDots: true,
     cindicatorColor: '#fff',
     autoplay: true,

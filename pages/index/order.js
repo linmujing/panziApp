@@ -1,4 +1,4 @@
-// pages/index/jifen_detail.js
+// pages/index/order.js
 const app = getApp()
 Page({
 
@@ -7,16 +7,9 @@ Page({
    */
   data: {
     isIPX: getApp().globalData.isIPX,
-    detailData: {
-      img: app.globalData.imgUrl + 'week1.jpg',
-      name: '盘子女人坊古装艺术写真油画布框',
-      info: '古装艺术写真油画布框辅助介绍',
-      jifen: 2000,
-      sale: 997,
-      pay: 2,
-      kucun: 2255
-    },
-    
+    popup_state: true,
+    gift: app.globalData.imgUrl + 'gift.jpg',
+    num: 1
   },
 
   /**
@@ -39,18 +32,37 @@ Page({
   onShow: function () {
 
   },
-  click_dui: function (e) {
-    // var popup_state = this.data.popup_state
+  blur_remark: function (e) {
     // this.setData({
-    //   popup_state: !popup_state
+    //   'tel': e.detail.value
     // })
-    wx.navigateTo({
-      url: 'order',
-    })
   },
-  click_index: function (e) {
-    wx.switchTab({
-      url: 'index',
+  //增加数量
+  click_plus: function () {
+    var that = this;
+    var num = that.data.num;
+    num++;
+    that.setData({ num: num })
+  },
+  //减少数量
+  click_minus: function () {
+    var that = this;
+    var num = that.data.num;
+    if (num <= 1) {
+      wx.showToast({
+        title: '已经不能再少啦~',
+        icon: 'none',
+        duration: 800
+      })
+      return false
+    }
+    num--;
+    that.setData({ num: num })
+  },
+  click_tijiao: function (e) {
+    var popup_state = this.data.popup_state
+    this.setData({
+      popup_state: !popup_state
     })
   },
   /**

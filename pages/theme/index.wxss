@@ -45,7 +45,7 @@
   content: "";
   left: 16rpx;
   top: 0;
-  width: 16rpx;
+  width: 18rpx;
   height: 28rpx;
   background: #FDA2B3;
   border-radius: 16rpx 16rpx 0 0;

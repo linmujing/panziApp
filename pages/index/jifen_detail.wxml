@@ -26,17 +26,3 @@
   <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
 </view>
 
-<!-- 兑换成功弹窗 -->
-<view hidden='{{popup_state}}' class='popup'>
-  <view class='box df fd_c jc_sa'>
-    <view class='color_title'>恭喜您，兑换成功!</view>
-    <view>
-      <image mode='widthFix' src='{{gift}}' class='w50'></image>
-      <view class='color_99 ft_12'>订单已交至后台处理</view>
-    </view>
-    <view class='btn'>
-      <view class='btn_title'>查看订单</view>
-      <view class='btn_plain color_title mt_20' bindtap='click_index'>返回首页</view>
-    </view>
-  </view>
-</view>

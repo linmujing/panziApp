@@ -132,7 +132,7 @@
 
 <view class='service_an'>
   <button open-type="contact">
-    <image mode='widthFix' src='/img/zx.png'></image>
+    <image mode='widthFix' src='{{service}}'></image>
   </button>
 </view>
 

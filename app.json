@@ -3,6 +3,7 @@
 
     "pages/login/index",
     "pages/index/video",
+    "pages/index/order",
     "pages/index/showcase",
     "pages/index/index",
     "pages/index/message",
