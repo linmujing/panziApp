@@ -189,6 +189,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #fff;
+    z-index: 999;
 }
 
 .details_foot>view {

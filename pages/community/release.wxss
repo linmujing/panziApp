@@ -51,7 +51,7 @@ page {
     width: 160rpx;
     height: 160rpx;
     margin: 0 60rpx 20rpx 0;
-    /* position: relative; */
+    position: relative;
 }
 
 .small_image {

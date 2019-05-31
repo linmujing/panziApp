@@ -10,6 +10,16 @@ Page({
     currentTab: 0,
     navScrollLeft: 0,
     show: false,
+    pics: [],
+    themeData: {
+      navList: [],
+      current: 0,
+      search: '',
+      page: 1,
+      themeList: [],
+      cid: ''
+    },
+    Page_slide: true,
     goodsData: [{
       name: '热门',
       type: 1,
@@ -41,6 +51,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    that.getThemeList()
     // 获取设备可视窗口高度
     wx.getSystemInfo({
       success: function (res) {
@@ -82,15 +93,59 @@ Page({
       console.log(res)
       if (res.state == 1) {
         var list = res.data
+        // that.setData({
+        //   detail: list
+        // })
+        that.detail = list
         that.setData({
-          detail: list
+          detail: this.detail
         })
       }
     })
   },
 
-
-
+  getThemeList: function () {
+    var userInfo = wx.getStorageSync('userInfo');
+    var that = this
+    var reqBody = {
+      token: userInfo.token,
+      pageSize: 8,
+      pageNumber: that.data.themeData.page,
+      // pageNum: that.data.themeData.page,
+      // seach: that.data.themeData.search,
+      // cid: that.data.themeData.cid
+    };
+    wx.showLoading({
+      title: '加载中',
+    })
+    util.post(util.url.index_list, reqBody, (res) => {
+      wx.hideLoading()
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+      if (res.state == 1) {
+        for (var i = 0; i < res.data.length; i++) {
+          res.data[i].check = false
+        }
+        var list = that.data.themeData.themeList
+        list = list.concat(res.data);
+        that.setData({
+          'themeData.themeList': list,
+          'themeData.page': that.data.themeData.page + 1
+        })
+        // 判断上拉加载
+        var leg = that.data.themeData.themeList.length
+        if (leg < res.count) {
+          this.setData({
+            Page_slide: true
+          })
+        } else {
+          this.setData({
+            Page_slide: false
+          })
+        }
+      }
+    })
+  },
   // that.detail = [{
   //     headerUrl: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2146046871,2611785107&fm=27&gp=0.jpg",
   //     name: "我是昵称",
@@ -117,6 +172,12 @@ Page({
   // that.setData({
   //   detail: this.detail
   // })
+
+
+
+
+
+
 
 
 
@@ -192,6 +253,21 @@ Page({
       path: '/pages/community/community',
       success: function (res) {
         console.log('成功', res)
+        var userInfo = wx.getStorageSync('userInfo');
+        var reBody = {
+          token: userInfo.token,
+          id: id,
+          type: 'zan'
+        };
+        util.post(util.url.edit_sns, reBody, (res) => {
+          console.log(res)
+          // if (res.state == 1) {
+          //   var list = res.data
+          //   this.setData({
+          //     details: list
+          //   })
+          // }
+        })
       }
     }
   },
@@ -259,14 +335,26 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({
+      'themeData.search': '',
+      'themeData.themeList': [],
+      'themeData.page': 1,
+      'themeData.cid': '',
+      'themeData.current': 0
+    })
+    this.getThemeList()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if (this.data.Page_slide) {
+      this.setData({
+        Page_slide: false
+      })
+      this.getThemeList()
+    }
   },
 
   /**

@@ -40,6 +40,7 @@ const url = {
   add_content: urlFront + 'sns/add_content',
   upload_img: urlFront + 'sns/upimg_base64',
   add_sns: urlFront + 'sns/add_sns',
+  edit_sns: urlFront + 'sns/edit_sns',
 
   slicesList: urlFront + 'Content/slicesList',
   slicesInfo: urlFront + 'Content/slicesInfo',
