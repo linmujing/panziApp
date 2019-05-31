@@ -42,3 +42,5 @@
   border-right: 8rpx solid transparent;
   border-top: 10rpx solid #313131;
 }
+.cur_up{border-bottom: 10rpx solid #FA9EB6;}
+.cur_down{border-top: 10rpx solid #FA9EB6;}

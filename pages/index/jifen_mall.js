@@ -1,4 +1,5 @@
 // pages/index/product_list.js
+var util = require('../../utils/util.js');
 const app = getApp()
 Page({
 
@@ -6,23 +7,37 @@ Page({
    * 页面的初始数据
    */
   data: {
+    Page_slide: true,
     sortData: {
-      sortList: ['综合', '销量', '新品', '价格'],
+      sortList: [
+        { title: '综合', id: '' },
+        { title: '销量', id: 'xl' },
+        { title: '新品', id: 'xp' },
+        { title: '价格', id: 'jgx', cur: ''}
+      ],
       current: 0,
+      page: 1,
+      search: '',
+      list: [],
+      type: ''
     },
-    productList: [
-      { img: app.globalData.imgUrl + 'week1.jpg', name: '盘子女人坊古装艺术写真油画布框', price: 276, yPrice: 24278, pay: 30 },
-      { img: app.globalData.imgUrl + 'week2.jpg', name: '盘子女人坊古装艺术写真油画布框', price: 156, yPrice: 4278, pay: 30 },
-      { img: app.globalData.imgUrl + 'week3.jpg', name: '盘子女人坊古装艺术写真油画布框', price: 1766, yPrice: 33278, pay: 30 },
-      { img: app.globalData.imgUrl + 'week4.jpg', name: '盘子女人坊古装艺术写真油画布框', price: 236, yPrice: 2278, pay: 30 }
-    ],
+    
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      userInfo: userInfo
+    })
+    if (!userInfo) {
+      wx.navigateTo({
+        url: '/pages/login/index',
+      })
+    }
+    this.getList()
   },
 
   /**
@@ -39,20 +54,78 @@ Page({
 
   },
   blur_search: function (e) {
-    // this.setData({
-    //   'tel': e.detail.value
-    // })
+    this.setData({
+      'sortData.search': e.detail.value
+    })
+  },
+  confirm_search: function () {
+    this.setData({
+      'sortData.list': [],
+      'sortData.page': 1
+    })
+    this.getList()
   },
   click_sort: function (e) {
     var index = e.currentTarget.dataset.index;
+    var data = this.data.sortData.sortList
+    data[data.length-1].cur = ''
+    if (data[index].id == 'jgs') {
+      data[index].id = 'jgx'
+      data[index].cur = 2
+    } else if (data[index].id == 'jgx'){
+      data[index].id = 'jgs'
+      data[index].cur = 1
+    }
     this.setData({
+      'sortData.list': [],
+      'sortData.page': 1,
       'sortData.current': index,
+      'sortData.type': data[index].id,
+      'sortData.sortList': data
     })
+    this.getList()
   },
   click_detail: function (e) {
-    var index = e.currentTarget.dataset.index;
+    var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: 'jifen_detail',
+      url: 'jifen_detail?id=' + id,
+    })
+  },
+  getList: function () {
+    var that = this
+    var reqBody = {
+      pageSize: 10,
+      pageNum: that.data.sortData.page,
+      name: that.data.sortData.search,
+      type: that.data.sortData.type,
+      token: that.data.userInfo.token,
+    };
+    wx.showLoading({
+      title: '加载中',
+    })
+    util.post(util.url.goodsList, reqBody, (res) => {
+      wx.hideLoading()
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+      if (res.state == 1) {
+        var list = that.data.sortData.list
+        list = list.concat(res.data);
+        that.setData({
+          'sortData.list': list,
+          'sortData.page': that.data.sortData.page + 1
+        })
+        // 判断上拉加载
+        var leg = that.data.sortData.list.length
+        if (leg < res.count) {
+          this.setData({
+            Page_slide: true
+          })
+        } else {
+          this.setData({
+            Page_slide: false
+          })
+        }
+      }
     })
   },
   /**
@@ -73,14 +146,24 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({
+      'sortData.search': '',
+      'sortData.list': [],
+      'sortData.page': 1
+    })
+    this.getList()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if (this.data.Page_slide) {
+      this.setData({
+        Page_slide: false
+      })
+      this.getList()
+    }
   },
 
   /**

@@ -48,9 +48,12 @@ Page({
    */
   onLoad: function (options) {
     var userInfo = wx.getStorageSync('userInfo');
-    if (userInfo) {
-      this.setData({
-        userInfo
+    this.setData({
+      userInfo: userInfo
+    })
+    if (!userInfo) {
+      wx.navigateTo({
+        url: '/pages/login/index',
       })
     }
     if (options.info) {

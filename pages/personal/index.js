@@ -18,7 +18,7 @@ Page({
     })
     if (!userInfo) {
       wx.navigateTo({
-        url: '/page/login/index',
+        url: '/pages/login/index',
       })
     }
   },

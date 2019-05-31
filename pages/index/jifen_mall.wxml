@@ -2,34 +2,34 @@
 <view class='search_box bg_ff'>
   <view class='search df ai_c'>
     <image mode='widthFix' src='/img/search.png'></image>
-    <input placeholder="搜索店内宝贝" placeholder-style='color: #B4B4B4' bindinput="blur_search" class='w90'/>
+    <input placeholder="搜索店内宝贝" confirm-type='search' placeholder-style='color: #B4B4B4' bindinput="blur_search" bindconfirm='confirm_search' class='w90'/>
   </view>
 </view>
 
 <view class='bg_ff sort df'>
   <view wx:for='{{sortData.sortList}}' wx:key='{{index}}' class='item' bindtap='click_sort' data-index='{{index}}'>
     <view wx:if='{{index == sortData.sortList.length-1}}' class='df ai_c'>
-      <text class='{{sortData.current==index?"active":""}}'>{{item}}</text>
+      <text class='{{sortData.current==index?"active":""}}'>{{item.title}}</text>
       <view>
-        <view class='triangle-up'></view>
-        <view class='triangle-down'></view>
+        <view class="triangle-up {{item.cur==1 ? 'cur_up' : ''}}"></view>
+        <view class="triangle-down {{item.cur==2 ? 'cur_down' : ''}}"></view>
       </view>
     </view>
-    <text wx:else class='{{sortData.current==index?"active":""}}'>{{item}}</text>
+    <text wx:else class='{{sortData.current==index?"active":""}}'>{{item.title}}</text>
   </view>
 </view>
 
 <!-- 列表 -->
 <view class='product df jc_sb fw_w'>
-  <view wx:for="{{productList}}" wx:key='index' class='item' bindtap='click_detail' data-index='{{index}}'>
-    <image mode='widthFix' src='{{item.img}}'></image>
+  <view wx:for="{{sortData.list}}" wx:key='index' class='item' bindtap='click_detail' data-id='{{item.id}}'>
+    <image mode='widthFix' src='{{item.goods_img}}'></image>
     <view class='txtBox'>
-      <view class='ft_13'>{{item.name}}</view>
+      <view class='ft_13'>{{item.goods_name}}</view>
       <view class='mt_5 df jc_sb ai_fe'>
         <view class='ft_11'>
-          <text class='color_jifen ft_14'>{{item.price}} </text>积分
+          <text class='color_jifen ft_14'>{{item.cost}} </text>积分
         </view>
-        <text class='ft_10 color_5b pl_10'>{{item.yPrice}}万人想要</text>
+        <text class='ft_10 color_5b pl_10'>{{item.sales}}人已兑换</text>
       </view>
     </view>
   </view>

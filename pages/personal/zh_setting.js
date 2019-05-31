@@ -13,10 +13,14 @@ Page({
    */
   onLoad: function (options) {
     var userInfo = wx.getStorageSync('userInfo');
-    console.log(userInfo)
     this.setData({
       userInfo: userInfo
     })
+    if (!userInfo) {
+      wx.navigateTo({
+        url: '/pages/login/index',
+      })
+    }
   },
   // 跳转个人资料
   link_personInfo() {
