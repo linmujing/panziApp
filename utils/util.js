@@ -19,6 +19,17 @@ const url = {
   login: urlFront + 'index/login',
   settel: urlFront + 'Player/settel',
 
+  addrList: urlFront + 'integral/profile',
+  addAddr: urlFront + 'integral/address',
+  delAddr: urlFront + 'integral/delAddress',
+
+  goodsList: urlFront + 'integral/goods_list',
+  goodsInfo: urlFront + 'integral/goods_info',
+  goodsOrder: urlFront + 'integral/goods_order',
+  orderInfo: urlFront + 'integral/order_info',
+  orderConvert: urlFront + 'integral/convert_goods',
+  recommend: urlFront + 'integral/istj',
+
   signData: urlFront + 'sign/index',
   checkIn: urlFront + 'sign/sign',
   signRecord: urlFront + 'sign/sign_record',

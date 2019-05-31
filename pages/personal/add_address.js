@@ -55,16 +55,17 @@ Page({
     }
     if (options.info) {
       var data = JSON.parse(options.info)
+      console.log(data)
       this.setData({
-        'page_data.addressId': data.addressId,
-        'page_data.userName': data.userName,
-        'page_data.phoneNum': data.phoneNum,
-        'page_data.contryId': data.contryId,
-        'page_data.isDefault': data.isDefault,
-        'page_data.address': data.address,
-        'regionr[0].name': data.contryInfo.pName,
-        'regionr[1].name': data.contryInfo.cName,
-        'regionr[2].name': data.contryInfo.xName,
+        'page_data.addressId': data.id,
+        'page_data.userName': data.consignee,
+        'page_data.phoneNum': data.consignee_tel,
+        'page_data.contryId': data.area,
+        'page_data.isDefault': data.type,
+        'page_data.address': data.append,
+        'regionr[0].name': data.provinces,
+        'regionr[1].name': data.citys,
+        'regionr[2].name': data.areas,
       })
     }
 
@@ -96,6 +97,8 @@ Page({
     var active1 = value[0];
     var active2 = value[1];
     var active3 = value[2];
+    // console.log(province)
+    console.log(value)
     if (active1 != this.data.province_active) {
       var city = this.data.province[active1].child;
       this.setData({
@@ -171,26 +174,26 @@ Page({
   onShow: function () {
 
   },
-  bindPickerChange: function (e) {
-    console.log(e)
-    var code = e.detail.code;
-    var value = e.detail.value;
-    var list = [];
-    for (var i = 0; i < code.length; i++) {
-      var data = {
-        name: value[i],
-        id: code[i]
-      }
-      list[i] = data
-    }
-    this.setData({
-      regionr: list
-    })
-    this.setData({
-      'page_data.contryId': code[2]
-    })
+  // bindPickerChange: function (e) {
+  //   console.log(e)
+  //   var code = e.detail.code;
+  //   var value = e.detail.value;
+  //   var list = [];
+  //   for (var i = 0; i < code.length; i++) {
+  //     var data = {
+  //       name: value[i],
+  //       id: code[i]
+  //     }
+  //     list[i] = data
+  //   }
+  //   this.setData({
+  //     regionr: list
+  //   })
+  //   this.setData({
+  //     'page_data.contryId': code[2]
+  //   })
 
-  },
+  // },
   click_userName: function (e) {
     this.setData({
       'page_data.userName': e.detail.value
@@ -228,7 +231,7 @@ Page({
     var myreg = /^[1][3,4,5,7,8][0-9]{9}$/; //电话
     if (!this.data.page_data.userName) {
       wx.showToast({
-        title: '请输入收货人',
+        title: '请输入联系人',
         icon: 'none',
         duration: 2000
       })
@@ -275,59 +278,40 @@ Page({
       return
     }
     var data = this.data.page_data;
+    var regionr = this.data.regionr;
+    // var province = regionr[0].code;
+    // var city = regionr[1].code;
+    // var area = regionr[2].code;
+    var addressId = ''
     if (this.data.page_data.addressId) {
-      var dz = 'editAddress';
-      var reqBody = {
-        token: this.data.userInfo.token,
-        addressId: data.addressId,
-        userName: data.userName,
-        phoneNum: data.phoneNum,
-        contryId: data.contryId,
-        address: data.address,
-        isDefault: data.isDefault
-      };
-      util.post(util.url.editAddress, reqBody, (res) => {
-        if (res.state == 1002) {
-          wx.showToast({
-            title: '修改成功',
-            icon: 'none',
-            duration: 2000
-          })
-          wx.navigateBack()
-        } else {
-          wx.showToast({
-            title: '修改失败',
-            icon: 'none',
-            duration: 2000
-          })
-        }
-      })
-    } else {
-      var reqBody = {
-        token: this.data.userInfo.token,
-        userName: data.userName,
-        phoneNum: data.phoneNum,
-        contryId: data.contryId,
-        address: data.address,
-        isDefault: data.isDefault
-      };
-      util.post(util.url.addAddress, reqBody, (res) => {
-        if (res.state == 1002) {
-          wx.showToast({
-            title: '保存成功',
-            icon: 'none',
-            duration: 2000
-          })
-          wx.navigateBack()
-        } else {
-          wx.showToast({
-            title: '保存失败',
-            icon: 'none',
-            duration: 2000
-          })
-        }
-      })
+      addressId = this.data.page_data.addressId
     }
+    var reqBody = {
+      token: this.data.userInfo.token,
+      id: addressId,
+      consignee: data.userName,
+      consignee_tel: data.phoneNum,
+      area: data.contryId,
+      // contryId: data.contryId,
+      append: data.address,
+      type: data.isDefault
+    };
+    util.post(util.url.addAddr, reqBody, (res) => {
+      if (res.state == 1) {
+        wx.showToast({
+          title: '保存成功',
+          icon: 'none',
+          duration: 2000
+        })
+        wx.navigateBack()
+      } else {
+        wx.showToast({
+          title: '保存失败',
+          icon: 'none',
+          duration: 2000
+        })
+      }
+    })
 
   },
   /**

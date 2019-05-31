@@ -114,8 +114,12 @@ Page({
     var reqBody = {
       token: this.data.userInfo.token
     };
+    wx.showLoading({
+      title: '加载中',
+    })
     util.post(util.url.checkIn, reqBody, (res) => {
-      console.log(res)
+      // console.log(res)
+      wx.hideLoading()
       if (res.state == 1) {
         this.setData({
           popup_state: false,
@@ -130,13 +134,21 @@ Page({
     var reqBody = {
       token: that.data.userInfo.token
     };
+    wx.showLoading({
+      title: '加载中',
+    })
     util.post(util.url.signData, reqBody, (res) => {
+      wx.hideLoading()
       var data = res.data
+      var days = 0
+      if (data.days){
+        days = data.days
+      }
       if (res.state == 1) {
         that.setData({
           date: data.arrlist,
           is_sign: data.is_sign,
-          days: data.days,
+          days: days,
         })
       }
     })
