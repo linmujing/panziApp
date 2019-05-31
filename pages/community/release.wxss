@@ -56,7 +56,7 @@ page {
 
 .small_image {
     width: 160rpx;
-    /* height: 160rpx; */
+    height: 160rpx;
 }
 
 .close_image {
