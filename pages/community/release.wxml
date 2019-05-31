@@ -2,7 +2,7 @@
 <view class="container">
     <view class="top_title">
         <view bind:tap="cancel" class="cancel">取消</view>
-        <view class="release">发布</view>
+        <view bind:tap="release" class="release">发布</view>
     </view>
     <view class="content">
         <textarea bindinput="handleContentInput" placeholder="说点什么吧..." placeholder-style="color:#b3b3b3;font-size:18px;"></textarea>
@@ -11,7 +11,7 @@
                 <block wx:for="{{images}}" wx:key="*this">
                     <view class="small_imageBox">
                         <!-- 图片缩略图 -->
-                        <image class="small_image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+                        <image class="small_image" src="https://vip2.pznrfsy.com/{{item}}" mode="widthFix" data-idx="{{index}}" bindtap="handleImagePreview"></image>
                         <!-- 移除图片的按钮 -->
                         <image mode="widthFix" class="close_image" data-idx="{{index}}" bindtap="removeImage" src="../../img/close.png" />
                     </view>

@@ -26,7 +26,7 @@ Page({
         this.setData({
           phone: true
         })
-      }else{
+      } else {
         wx.switchTab({
           url: '/pages/index/index'
         })
@@ -36,7 +36,7 @@ Page({
       this.setData({
         login_state: true,
       })
-     
+
     }
   },
 
@@ -93,7 +93,7 @@ Page({
             iv: e.detail.iv
           };
           util.post(util.url.login, reqBody, (res) => {
-            // console.log(res)
+            console.log(res)
             if (res.state == 1) {
               userInfo.token = res.data.token
               if (res.data.tel == 0 || res.data.tel == ''){
@@ -150,14 +150,14 @@ Page({
                 'userInfo.tel': res.tel
               })
               var userInfo = this.data.userInfo
-              console.log(userInfo)
+              // console.log(userInfo)
               wx.setStorageSync('userInfo', userInfo);
               wx.switchTab({
                 url: '/pages/index/index'
               })
             }
           })
-         
+
         } else if (e.detail.errMsg == "getPhoneNumber:fail user deny") {
           console.log('不同意')
           this.setData({

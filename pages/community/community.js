@@ -51,8 +51,9 @@ Page({
       }
     })
     var userInfo = wx.getStorageSync('userInfo');
+    console.log(userInfo)
     var reqBody = {
-      token: userInfo
+      token: userInfo.token
     };
     util.post(util.url.category, reqBody, (res) => {
       console.log(res)
@@ -70,59 +71,77 @@ Page({
       }
     })
 
-
-
-    that.detail = [{
-        headerUrl: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2146046871,2611785107&fm=27&gp=0.jpg",
-        name: "我是昵称",
-        time: "07:49",
-        content: "的身份绝对是决定是否看活动时间何带上几点开始对接凤凰军事开发诞节和杀害读书电话黑客技术很疯狂的手机号",
-        bigUrl: ["https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=234634259,4236876085&fm=27&gp=0.jpg", "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1752243568,253651337&fm=27&gp=0.jpg"],
-        zhuanfa: 299,
-        huifu: 613,
-        dianzan: 218,
-        'hasChange': false
-      },
-      {
-        headerUrl: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2146046871,2611785107&fm=27&gp=0.jpg",
-        name: "我是昵称",
-        time: "07:49",
-        content: "的身份绝对是决定是否看活动时间何带上几点开始对接凤技术撒 打死奥斯卡的撒卡是和 爱就是核算黑客技术很疯狂的手机号",
-        bigUrl: ["https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=234634259,4236876085&fm=27&gp=0.jpg", "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1752243568,253651337&fm=27&gp=0.jpg", "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2153937626,1074119156&fm=27&gp=0.jpg", "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=123807196,3598291508&fm=27&gp=0.jpg"],
-        zhuanfa: 299,
-        huifu: 613,
-        dianzan: 200,
-        'hasChange': false
+    var reBody = {
+      token: userInfo.token,
+      pageSize: 8,
+      pageNumber: 1,
+      // searchText: '社区',
+      // category_id: 1
+    };
+    util.post(util.url.index_list, reBody, (res) => {
+      console.log(res)
+      if (res.state == 1) {
+        var list = res.data
+        that.setData({
+          detail: list
+        })
       }
-    ]
-    that.setData({
-      detail: this.detail
     })
   },
 
 
+
+  // that.detail = [{
+  //     headerUrl: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2146046871,2611785107&fm=27&gp=0.jpg",
+  //     name: "我是昵称",
+  //     time: "07:49",
+  //     content: "的身份绝对是决定是否看活动时间何带上几点开始对接凤凰军事开发诞节和杀害读书电话黑客技术很疯狂的手机号",
+  //     bigUrl: ["https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=234634259,4236876085&fm=27&gp=0.jpg", "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1752243568,253651337&fm=27&gp=0.jpg"],
+  //     zhuanfa: 299,
+  //     huifu: 613,
+  //     dianzan: 218,
+  //     'hasChange': false
+  //   },
+  //   {
+  //     headerUrl: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2146046871,2611785107&fm=27&gp=0.jpg",
+  //     name: "我是昵称",
+  //     time: "07:49",
+  //     content: "的身份绝对是决定是否看活动时间何带上几点开始对接凤技术撒 打死奥斯卡的撒卡是和 爱就是核算黑客技术很疯狂的手机号",
+  //     bigUrl: ["https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=234634259,4236876085&fm=27&gp=0.jpg", "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1752243568,253651337&fm=27&gp=0.jpg", "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2153937626,1074119156&fm=27&gp=0.jpg", "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=123807196,3598291508&fm=27&gp=0.jpg"],
+  //     zhuanfa: 299,
+  //     huifu: 613,
+  //     dianzan: 200,
+  //     'hasChange': false
+  //   }
+  // ]
+  // that.setData({
+  //   detail: this.detail
+  // })
+
+
+
   // 点赞
-  praiseThis: function (e) {
-    console.log(e)
-    var index = e.currentTarget.dataset.curindex;
-    console.log(index)
-    if (this.detail[index]) {
-      var hasChange = this.detail[index].hasChange;
-      if (hasChange !== undefined) {
-        var onum = this.detail[index].dianzan;
-        if (hasChange) {
-          this.detail[index].dianzan = (onum - 1);
-          this.detail[index].hasChange = false;
-        } else {
-          this.detail[index].dianzan = (onum + 1);
-          this.detail[index].hasChange = true;
-        }
-        this.setData({
-          detail: this.detail
-        })
-      }
-    }
-  },
+  // praiseThis: function (e) {
+  //   console.log(e)
+  //   var index = e.currentTarget.dataset.curindex;
+  //   console.log(index)
+  //   if (this.detail[index]) {
+  //     var hasChange = this.detail[index].hasChange;
+  //     if (hasChange !== undefined) {
+  //       var onum = this.detail[index].dianzan;
+  //       if (hasChange) {
+  //         this.detail[index].dianzan = (onum - 1);
+  //         this.detail[index].hasChange = false;
+  //       } else {
+  //         this.detail[index].dianzan = (onum + 1);
+  //         this.detail[index].hasChange = true;
+  //       }
+  //       this.setData({
+  //         detail: this.detail
+  //       })
+  //     }
+  //   }
+  // },
 
 
   // 预览图片
@@ -177,9 +196,10 @@ Page({
     }
   },
   // 跳转动态详情页面
-  link_details() {
+  link_details(e) {
+    var id = e.currentTarget.dataset.id
     wx.navigateTo({
-      url: './dongtai_details'
+      url: './dongtai_details?id=' + id
     })
   },
   // 跳转搜索页面

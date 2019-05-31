@@ -2,10 +2,10 @@
     <view class="details_top">
         <view class="details_title">
             <view class="title_left">
-                <image src="{{details.headerUrl}}" />
+                <image src="{{details.headimgurl}}" />
                 <view class="title_info">
-                    <view>{{details.name}}</view>
-                    <view>{{details.time}}</view>
+                    <view>{{details.nickname}}</view>
+                    <view>{{details.addtime}}</view>
                 </view>
             </view>
             <view class="title_right">
@@ -15,7 +15,7 @@
         <view class="details_content">
             <view class="content_text">{{details.content}}</view>
             <view class="img_box">
-                <image wx:for="{{details.bigUrl}}" src="{{item}}" wx:key="index" />
+                <image wx:for="{{details.images}}" src="{{item}}" wx:key="index" />
             </view>
         </view>
     </view>
@@ -23,16 +23,16 @@
         <view class="main_title">
             <view class="main_title_left">
                 <view class="zhuanfa">
-                    <text>18</text>
+                    <text>{{details.share}}</text>
                     转发
                 </view>
                 <view class="pinglun">
-                    <text>57</text>
+                    <text>{{details.comment}}</text>
                     评论
                 </view>
             </view>
             <view class="like">
-                <text>417</text>
+                <text>{{details.zan}}</text>
                 喜欢
             </view>
         </view>
@@ -48,7 +48,7 @@
             <view class="main_list">
                 <view class="list_item" wx:for="{{comment}}" wx:key="index">
                     <view class="item_left">
-                        <image src="{{item.headerUrl}}" />
+                        <image src="{{item.headimgurl}}" />
                     </view>
                     <view class="item_right">
                         <view class="item_name">{{item.name}}</view>
@@ -58,8 +58,11 @@
                             <view class="Comment_text">{{item.Comment_text}}</view>
                         </view>
                         <view class="item_foot">
-                            <view class="item_time">{{item.time}}</view>
+                            <view class="item_time">{{item.addtime}}</view>
                             <view class="item_btn">
+                                <view class="" bind:tap="on_input">评论</view>
+                            </view>
+                            <!-- <view class="item_btn">
                                 <image mode="widthFix" src="../../img/zhuanfa.png" />
                                 <view class="">
                                     <image mode="widthFix" src="../../img/huifu.png" />
@@ -69,7 +72,10 @@
                                     <image mode="widthFix" src="../../img/zan.png" />
                                     <text>54</text>
                                 </view>
-                            </view>
+                            </view> -->
+                        </view>
+                        <view class="comment_reply">
+                            <view class="reply" wx:for="{{comment_reply}}">{{item}}</view>
                         </view>
                     </view>
                 </view>
@@ -94,4 +100,7 @@
             </view>
         </view>
     </view>
+</view>
+<view class="inp" wx:if="{{show}}">
+    <input placeholder="评论" bindblur='bindBlur' focus="{{focus}}" />
 </view>

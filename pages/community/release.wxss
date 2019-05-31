@@ -20,15 +20,15 @@ page {
 }
 
 .upload_btn {
-    width: 210rpx;
-    height: 210rpx;
+    width: 160rpx;
+    height: 160rpx;
     background: #eee;
     text-align: center;
 }
 
 .upload_btn image {
     width: 73rpx;
-    margin-top: 60rpx;
+    margin-top: 30rpx;
 }
 
 .upload_btn view {
@@ -44,19 +44,19 @@ page {
 .img_show {
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: space-around; */
+    /* justify-content: space-evenly; */
 }
 
 .small_imageBox {
-    width: 210rpx;
-    height: 210rpx;
-    margin: 0 15rpx 15rpx 0;
-    position: relative;
+    width: 160rpx;
+    height: 160rpx;
+    margin: 0 60rpx 20rpx 0;
+    /* position: relative; */
 }
 
 .small_image {
-    width: 210rpx;
-    height: 210rpx;
+    width: 160rpx;
+    /* height: 160rpx; */
 }
 
 .close_image {
