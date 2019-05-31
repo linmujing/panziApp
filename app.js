@@ -73,6 +73,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    imgUrl: 'https://app.pznrfsy.com/static/panziApp/'
+    imgUrl: 'http://app.pznrfsy.com/static/panziApp/'
   }
 })
