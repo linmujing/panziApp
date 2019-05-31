@@ -14,6 +14,7 @@
 .info .plus{width: 50rpx;height: 50rpx;line-height: 50rpx;border-radius:0 8rpx 8rpx 0;border: 1rpx solid #ddd;text-align: center;}
 .info .num{width: 50rpx;height: 50rpx;line-height: 50rpx;border-top: 1rpx solid #ddd;border-bottom: 1rpx solid #ddd;text-align: center;font-size: 24rpx;}
 .info .tit{width: 120rpx;margin-right: 10rpx;}
+.info .imgb{width: 220rpx;height: 220rpx;overflow: hidden;}
 
 .tj{position:fixed;top:auto;right:0;bottom:0;left:0;background: #fff;}
 .tj .tjdd{padding: 18rpx 40rpx;}

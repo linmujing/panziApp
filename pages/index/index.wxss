@@ -67,7 +67,7 @@ video{ width:  100%;height:  100%;}
 
 .hot_topic{margin: 20rpx;}
 .hot_topic .item{width: 350rpx;background: #fff;border-radius: 8rpx;margin-bottom: 20rpx;overflow: hidden;box-shadow:0px 10rpx 30rpx -5rpx rgba(0,0,0,0.3);}
-.hot_topic .item image{width: 100%;height: 220rpx;}
+.hot_topic .item .imgb{width: 100%;height: 220rpx;overflow: hidden;}
 .hot_topic .item .txt{padding: 20rpx 10rpx;font-size: 24rpx;}
 .hot_topic .item .txt text:last-child{font-weight: bold;}
 .hot_topic .item .icon{width: 40rpx; height: 40rpx;}

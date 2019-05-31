@@ -1,0 +1,2 @@
+<!--pages/index/star_detail.wxml-->
+<image mode='widthFix' src='{{ad}}' class='w100'></image>

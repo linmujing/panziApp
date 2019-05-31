@@ -1,21 +1,21 @@
 <!--index.wxml-->
-<view class='search_box df jc_sb ai_c bg_ff'>
+<!-- <view class='search_box df jc_sb ai_c bg_ff'>
   <view class='search df ai_c'>
     <image src='/img/search.png'></image>
     <input placeholder="搜索主题风格 最新主题" placeholder-style='color: #B4B4B4' bindinput="blur_search"/>
   </view>
-  <!-- <view class='shop'>
+  <view class='shop'>
     <image src='/img/shopping.png'></image>
     <view class='point'>3</view>
-  </view> -->
+  </view>
   <view class='shop' bindtap='click_msg'>
     <image src='/img/message.png'></image>
     <view class='point'>1</view>
   </view>
-</view>
+</view> -->
 <!-- 轮播 -->
 <view class='carouse bg_ff ta_c'>
-  <swiper autoplay indicatorDots circular interval='3000' indicator-active-color='#fff' previous-margin='80rpx' next-margin='80rpx' bindchange='change' current='{{current}}'>
+  <swiper autoplay indicatorDots circular interval='5000' indicator-active-color='#fff' previous-margin='40rpx' next-margin='20rpx' bindchange='change' bindanimationfinish="animationChange" current='{{current}}'>
     <view wx:for="{{carouselData}}" wx:key='{{index}}'>
       <swiper-item class=' df ai_c'>
         <view class='box' animation="{{index == current?animationData:animationData2}}">
@@ -42,7 +42,9 @@
   </view>
   <view class='hot_topic df jc_sb fw_w'>
     <view wx:for='{{hotList}}' wx:key='{{index}}' class='item' bindtap='click_theme' data-id='{{item.id}}'>
-      <image src="{{item.img}}" />
+      <view class='imgb'>
+        <image mode='widthFix' src="{{item.img}}" class='w100'/>
+      </view>
       <view class='txt df jc_sb ai_c'>
         <view>
           <text>{{item.xilie}} | </text>
@@ -63,7 +65,7 @@
     <image mode='widthFix' src='{{experience}}' class='w60'></image>
   </view>
   <view class='experiencer df jc_sb fw_w'>
-    <view wx:for='{{hotList}}' wx:key='{{index}}' class='item'>
+    <view wx:for='{{starList}}' wx:key='{{index}}' class='item' bindtap='click_star' data-id='{{item.id}}'>
       <image src="{{item.img}}" />
       <view class='txt ta_c'>
         <view>
@@ -82,7 +84,7 @@
     <view>GUEST SHEET EVERY WEEK</view>
   </view>
   <view class='week df jc_sb fw_w'>
-    <view wx:for='{{weekData.weekList}}' wx:key='{{index}}' class='item'>
+    <view wx:for='{{weekData.weekList}}' wx:key='{{index}}' class='item' bindtap='click_kepian' data-id='{{item.id}}'>
       <image mode='widthFix' src="{{item.img}}" />
       <view class='txt ta_c'>
         <image mode='widthFix' src='{{weekData.week_logo}}'></image>
@@ -101,7 +103,7 @@
   </view>
   <view class='store bg_ff'>
     <scroll-view class="df fw_w" scroll-x style="width: auto;overflow:hidden;">
-      <view wx:for='{{storeData.storeList}}' wx:key='{{index}}' class='item'>
+      <view wx:for='{{storeData.storeList}}' wx:key='{{index}}' class='item' bindtap='click_store' data-id='{{item.id}}'>
         <image src="{{item.img}}" />
         <view class='txt ta_c'>{{item.name}}</view>
       </view>
@@ -115,7 +117,7 @@
     <view>HOT COMMENTS</view>
   </view>
   <view class='comments df jc_sb fw_w'>
-    <view wx:for='{{commentsList}}' wx:key='{{index}}' class='item'>
+    <view wx:for='{{commentsList}}' wx:key='{{index}}' class='item' bindtap='click_theme' data-id='{{item.id}}'>
       <image mode='widthFix' src="{{item.img}}" />
       <view class='txt'>
         <view class='twoline'>{{item.info}}</view>

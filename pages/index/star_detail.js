@@ -1,5 +1,4 @@
-// pages/theme/index.js
-//获取应用实例
+// pages/index/star_detail.js
 const app = getApp()
 Page({
 
@@ -7,19 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    banner: app.globalData.imgUrl + 'c-star.png',
-    themeList: [
-      { img: app.globalData.imgUrl + 'ad1.jpg', name: '明星同款主题【竹】', collect: 276, look: 24278, zan: 1 }
-    ],
+    ad: app.globalData.imgUrl + 'star_ad.jpg'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: options.title
-    })
+
   },
 
   /**
@@ -35,22 +29,7 @@ Page({
   onShow: function () {
 
   },
-  blur_search: function (e) {
-    // this.setData({
-    //   'tel': e.detail.value
-    // })
-  },
-  click_nav: function (e) {
-    var index = e.currentTarget.dataset.index;
-    this.setData({
-      'navData.current': index,
-    })
-  },
-  click_detail: function(e) {
-    wx.navigateTo({
-      url: 'star_detail',
-    })
-  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */

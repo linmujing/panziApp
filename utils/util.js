@@ -68,6 +68,13 @@ function _post(url, data, success, isLoading = true) {
     method: 'post',
     header: header,
     success: function (res) {
+      // token错误
+      if (res.data.code == -1) {
+        wx.clearStorageSync()
+        wx.navigateTo({
+          url: '/pages/login/index',
+        })
+      }
       if (res.data.state == '1002') {
         success(res.data);
       } else if (res.data.state == '1004' && res.data.info == '用户未登陆') {

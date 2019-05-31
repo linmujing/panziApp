@@ -9,7 +9,8 @@ Page({
   data: {
     isIPX: getApp().globalData.isIPX,
     detailData: {},
-    
+    goods_id: '',
+    recommend: []
   },
 
   /**
@@ -18,7 +19,8 @@ Page({
   onLoad: function (options) {
     var userInfo = wx.getStorageSync('userInfo');
     this.setData({
-      userInfo: userInfo
+      userInfo: userInfo,
+      goods_id: options.id
     })
     if (!userInfo) {
       wx.navigateTo({
@@ -27,6 +29,7 @@ Page({
     }
 
     this.getInfo(options.id)
+    this.getRecommend()
   },
 
   /**
@@ -43,12 +46,25 @@ Page({
 
   },
   click_dui: function (e) {
-    // var popup_state = this.data.popup_state
-    // this.setData({
-    //   popup_state: !popup_state
-    // })
-    wx.navigateTo({
-      url: 'order',
+    var goods_id = this.data.goods_id
+    var reqBody = {
+      token: this.data.userInfo.token,
+      goods_id: goods_id
+    };
+    util.post(util.url.goodsOrder, reqBody, (res) => {
+      // console.log(res)
+      wx.hideLoading()
+      if (res.state == 1) {
+        wx.navigateTo({
+          url: 'order?id=' + res.order_id,
+        })
+      }else{
+        wx.showToast({
+          title: res.info,
+          icon: 'none',
+          duration: 1000
+        })
+      }
     })
   },
   click_index: function (e) {
@@ -73,6 +89,26 @@ Page({
           detailData: res.data,
         })
       }
+    })
+  },
+  getRecommend: function (id) {
+    var that = this
+    var reqBody = {
+      token: that.data.userInfo.token
+    };
+    util.post(util.url.recommend, reqBody, (res) => {
+      // console.log(res)
+      if (res.state == 1) {
+        that.setData({
+          recommend: res.data,
+        })
+      }
+    })
+  },
+  click_detail: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: 'jifen_detail?id=' + id,
     })
   },
   /**
@@ -106,7 +142,13 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
-  }
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+    }
+    return {
+      title: this.data.detailData.goods_name,
+      path: 'pages/index/jifen_detail?id=' + this.data.goods_id
+    }
+  },
 })
