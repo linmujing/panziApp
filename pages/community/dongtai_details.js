@@ -1,9 +1,13 @@
+var util = require('../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    focus: false,
+    show: false,
+    comment_reply: ["小交换机"],
     details: {
       headerUrl: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2146046871,2611785107&fm=27&gp=0.jpg",
       name: "我是昵称",
@@ -43,9 +47,51 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    var id = options.id
+    var userInfo = wx.getStorageSync('userInfo');
+    var reBody = {
+      token: userInfo.token,
+      id: id
+    };
+    util.post(util.url.details, reBody, (res) => {
+      console.log(res)
+      if (res.state == 1) {
+        var list = res.data
+        this.setData({
+          details: list
+        })
+      }
+    })
 
+    var reqBody = {
+      token: userInfo.token,
+      id: id,
+      pageSize: 3,
+      pageNumber: 1,
+    };
+    util.post(util.url.details_comment, reqBody, (res) => {
+      console.log(res)
+      if (res.state == 1) {
+        var list = res.data
+        this.setData({
+          comment: list
+        })
+      }
+    })
   },
-
+  bindBlur() {
+    this.setData({
+      focus: false,
+      show: false
+    })
+  },
+  on_input() {
+    this.setData({
+      focus: true,
+      show: true
+    })
+  },
   // 转发功能
   onShareAppMessage: function (res) {
     console.log(res)

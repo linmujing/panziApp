@@ -139,7 +139,7 @@ Page({
                 'userInfo.tel': res.tel
               })
               var userInfo = this.data.userInfo
-              console.log(userInfo)
+              // console.log(userInfo)
               wx.setStorageSync('userInfo', userInfo);
               wx.switchTab({
                 url: '/pages/index/index'

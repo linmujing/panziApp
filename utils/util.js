@@ -34,6 +34,13 @@ const url = {
   themeZan: urlFront + 'Content/themeZan',
 
   category: urlFront + 'sns/category',
+  index_list: urlFront + 'sns/index_list',
+  details: urlFront + 'sns/details',
+  details_comment: urlFront + 'sns/details_comment',
+  add_content: urlFront + 'sns/add_content',
+  upload_img: urlFront + 'sns/upimg_base64',
+  add_sns: urlFront + 'sns/add_sns',
+
   slicesList: urlFront + 'Content/slicesList',
   slicesInfo: urlFront + 'Content/slicesInfo',
 
