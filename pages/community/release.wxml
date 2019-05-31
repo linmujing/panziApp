@@ -11,7 +11,7 @@
                 <block wx:for="{{images}}" wx:key="*this">
                     <view class="small_imageBox">
                         <!-- 图片缩略图 -->
-                        <image class="small_image" src="https://vip2.pznrfsy.com/{{item}}" mode="widthFix" data-idx="{{index}}" bindtap="handleImagePreview"></image>
+                        <image class="small_image" src="https://vip2.pznrfsy.com/{{item}}" data-idx="{{index}}" bindtap="handleImagePreview"></image>
                         <!-- 移除图片的按钮 -->
                         <image mode="widthFix" class="close_image" data-idx="{{index}}" bindtap="removeImage" src="../../img/close.png" />
                     </view>
