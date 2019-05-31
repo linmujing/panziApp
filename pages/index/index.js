@@ -32,7 +32,7 @@ Page({
         img: app.globalData.imgUrl + 'ad3.jpg'
       }
     ],
-    videoData: app.globalData.imgUrl + 'video.jpg',
+    videoData: { title: '强势登陆湖南卫视', info: '客片比样片更唯美', img: 'http://mmm.pznrfsy.com//uploads/20181230/d16f0c7963596c51d22e6cb265e8602f.png', url: 'http://mmm.pznrfsy.com//uploads/20181230/229a23ff3f60017a3ba3e8f3c8b8d35a.mp4' },
     experience: app.globalData.imgUrl + 'experience.jpg',
     weekData: {
       weekList: [
@@ -69,6 +69,7 @@ Page({
     animationData2: {}
   },
   onLoad: function () {
+    this.myVideo = wx.createVideoContext('myVideo')
     this.stretch(300 + 'rpx')
     this.shrink(260 + 'rpx')
     this.getIndex()

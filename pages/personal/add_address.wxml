@@ -1,8 +1,8 @@
 <!--pages/personal/add_address.wxml-->
 <view class='list df ai_c jc_sb'>
-  <view class='biaoti df ai_c jc_fs'>收货人：</view>
+  <view class='biaoti df ai_c jc_fs'>联系人：</view>
   <view class='rightnr'>
-    <input class='df ai_c jc_sb' placeholder='请输入收货人' value='{{page_data.userName}}' bindblur="click_userName" type='text'></input>
+    <input class='df ai_c jc_sb' placeholder='请输入联系人' value='{{page_data.userName}}' bindblur="click_userName" type='text'></input>
   </view>
 </view>
 <!--  -->

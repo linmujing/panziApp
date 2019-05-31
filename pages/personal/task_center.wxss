@@ -48,10 +48,11 @@
   color: #FFF;
 }
 .current.fw.tdc{
-  border: 1rpx solid #F6AFC1;
+  background-color: #F5ACBF;
+  color: #FFF;
 }
 .today.fw.tdc{
-  border: 1rpx solid #AFA89C;
+  border: 1rpx solid #F6AFC1;
 }
 .tip{width: 100%;margin: 20rpx;color: #999;}
 .tip .poi1{display: inline-block;width: 16rpx;height: 16rpx;background: #F6AFC1;border-radius: 50%;}
