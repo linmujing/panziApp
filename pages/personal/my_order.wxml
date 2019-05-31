@@ -32,9 +32,10 @@
         <view class="content_total">合计:{{item.total}}积分</view>
         <view class="content_btn">
             <text>更多</text>
-            <view class="wuliu">查看物流</view>
-            <view class="yanchang shouhuo">延长收货</view>
-            <view class="queren shouhuo">确认收货</view>
+            <view class="">查看物流</view>
+            <!-- <view class="yanchang shouhuo">延长收货</view> -->
+            <view class="" bindtap='click_comment'>评价</view>
+            <view class="">确认收货</view>
         </view>
     </view>
 </view>

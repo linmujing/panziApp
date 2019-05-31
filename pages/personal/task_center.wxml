@@ -8,6 +8,7 @@
       <text wx:else class='pl_5'> 已签到 </text>
     </view>
     <view wx:if='{{days > 0}}' class='mt_10'>已经连续签到{{days}}天，继续加油!</view>
+    <view wx:else class='mt_10'>签到领积分!</view>
   </view>
 </view>
 <view class='date'>

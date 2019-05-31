@@ -1,0 +1,19 @@
+<!--pages/personal/address.wxml-->
+<view class='box'>
+  <view class='list df jc_sb ai_c' wx:for='{{list}}' wx:key='{{index}}'>
+    <view class='info'>
+      <view class='ft_16 df ai_fe'>
+        {{item.userName}} 
+        <text class='ft_12 color_99 pl_10'>{{item.phoneNum}}</text>
+        <text wx:if='{{item.isDefault}}' class='mr'>默认</text>
+      </view>
+      <view class='mt_5'>{{item.contryInfo.pName}}{{item.contryInfo.cName}}{{item.contryInfo.xName}}{{item.address}}</view>
+    </view>
+    <view class='edit' bindtap='click_xjdz' data-index='{{index}}' data-mode='{{1}}'>编辑</view>
+  </view>
+</view>
+<view class='xjdz'>
+  <view bindtap='click_xjdz' data-mode='{{0}}' class='xjdznr df ai_c jc_c'>
+    <text>新建收货地址</text>
+  </view>
+</view>

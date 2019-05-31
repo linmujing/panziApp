@@ -3,6 +3,7 @@
 
     "pages/login/index",
     "pages/index/video",
+    "pages/index/order",
     "pages/index/showcase",
     "pages/index/index",
     "pages/index/message",
@@ -20,6 +21,8 @@
     "pages/community/search",
     "pages/community/searchLink",
     "pages/personal/index",
+    "pages/personal/address",
+    "pages/personal/add_address",
     "pages/personal/my_order",
     "pages/personal/zh_setting",
     "pages/personal/personal_info",

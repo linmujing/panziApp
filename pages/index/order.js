@@ -1,5 +1,4 @@
-// pages/theme/index.js
-//获取应用实例
+// pages/index/order.js
 const app = getApp()
 Page({
 
@@ -7,22 +6,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    banner: app.globalData.imgUrl + 'c-star.png',
-    themeList: [
-      { img: app.globalData.imgUrl + 'ad1.jpg', name: '明星同款主题【竹】', collect: 276, look: 24278, zan: 1 },
-      { img: app.globalData.imgUrl + 'ad2.jpg', name: '明星同款主题【竹】', collect: 156, look: 4278, zan: 0 },
-      { img: app.globalData.imgUrl + 'ad3.jpg', name: '明星同款主题【竹】', collect: 1766, look: 33278, zan: 1 },
-      { img: app.globalData.imgUrl + 'ad4.jpg', name: '明星同款主题【竹】', collect: 236, look: 2278, zan: 0 }
-    ],
+    isIPX: getApp().globalData.isIPX,
+    popup_state: true,
+    gift: app.globalData.imgUrl + 'gift.jpg',
+    num: 1
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: options.title
-    })
+
   },
 
   /**
@@ -38,15 +32,37 @@ Page({
   onShow: function () {
 
   },
-  blur_search: function (e) {
+  blur_remark: function (e) {
     // this.setData({
     //   'tel': e.detail.value
     // })
   },
-  click_nav: function (e) {
-    var index = e.currentTarget.dataset.index;
+  //增加数量
+  click_plus: function () {
+    var that = this;
+    var num = that.data.num;
+    num++;
+    that.setData({ num: num })
+  },
+  //减少数量
+  click_minus: function () {
+    var that = this;
+    var num = that.data.num;
+    if (num <= 1) {
+      wx.showToast({
+        title: '已经不能再少啦~',
+        icon: 'none',
+        duration: 800
+      })
+      return false
+    }
+    num--;
+    that.setData({ num: num })
+  },
+  click_tijiao: function (e) {
+    var popup_state = this.data.popup_state
     this.setData({
-      'navData.current': index,
+      popup_state: !popup_state
     })
   },
   /**

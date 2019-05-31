@@ -102,6 +102,7 @@ Page({
     })
   },
   click_close: function () {
+    this.signData();
     this.setData({
       popup_state: true
     })
@@ -118,7 +119,6 @@ Page({
       if (res.state == 1) {
         this.setData({
           popup_state: false,
-          is_sign: 1,
           days: res.data.days,
           score: res.data.score
         })

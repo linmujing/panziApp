@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isIPX: getApp().globalData.isIPX,
     flag: 0,
     noteMaxLen: 300, // 最多放多少字
     info: "",

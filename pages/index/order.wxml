@@ -1,0 +1,74 @@
+<!--pages/index/order.wxml-->
+<view class='addr df ai_c jc_sb'>
+  <image mode='widthFix' src='/img/location.png' class='loc'></image>
+  <view class='txt ft_16 color_99'>请添加收货地址</view>
+  <!-- <view class='txt'>
+    <view class='df ai_c'>
+      <text class='mr'>默认</text>
+      <text class='ft_12 pl_10'>啊飒飒</text>
+    </view>
+    <view class='ft_16 mt_10'>啦啦啦</view>
+    <view class='mt_10'>
+      <text>打点滴</text>
+      <text class='ft_12 color_99 pl_10'>1111</text>
+    </view>
+  </view> -->
+  <image mode='widthFix' src='/img/enter_.png' class='jt'></image>
+</view>
+<view class='info'>
+  <view class='df ai_c'>
+    <image src='{{gift}}' class='pho'></image>
+    <view class='detail'>
+      <view class='twoline'>盘子女人坊盘子女人坊盘子女人坊盘子女人坊盘子女人坊盘子女人坊盘子女人坊盘子女人坊盘子女人坊盘子女人坊盘子女人坊坊盘子女人坊坊盘子女人坊</view>
+      <view class='df jc_sb mt_20'>
+        <view class='color_99 ft_12'><text class='color_jf'>2000</text> 积分</view>
+        <view class='buy df ai_c'>
+            <view bindtap='click_minus' class='minus'>-</view>
+            <text class='num'>{{num}}</text>
+            <view bindtap='click_plus' class='plus'>+</view>
+          </view>
+      </view>
+    </view>
+  </view>
+  <view class='df jc_sb ai_c mt_20'>
+    <view class='df'>
+      <view class='tit'>配送方式</view>
+      <view class='color_99'>普通配送</view>
+    </view>
+    <view class='df ai_c'>
+      <view class='pr_10'>快递 包邮</view>
+      <image mode='widthFix' src='/img/enter_.png' class='jt'></image>
+    </view>
+  </view>
+  <view class='df ai_c mt_10'>
+   <view class='tit'>订单备注</view>
+   <input class='w70' placeholder="选填，请先和商家确认" placeholder-style='color: #999' bindinput="blur_remark"/>
+  </view>
+  <!-- <view class='mt_20 ta_r ft_12'>
+    <text class='color_99'>共2件 </text> 小计： <text class='color_jf ft_16'>2000 </text><text class='color_99'> 积分</text>
+  </view> -->
+</view>
+
+<view class='tj'>
+  <view class='tjdd df ai_c jc_sb'>
+    <view class='color_99'><text class='color_jf'>2000</text> 积分</view>
+    <view class='btn_title' bindtap='click_tijiao'>提交订单</view>
+  </view>
+   <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
+</view>
+
+
+<!-- 兑换成功弹窗 -->
+<view hidden='{{popup_state}}' class='popup'>
+  <view class='box df fd_c jc_sa'>
+    <view class='color_title'>恭喜您，兑换成功!</view>
+    <view>
+      <image mode='widthFix' src='{{gift}}' class='w50'></image>
+      <view class='color_99 ft_12'>订单已交至后台处理</view>
+    </view>
+    <view class='btn'>
+      <view class='btn_title'>查看订单</view>
+      <view class='btn_plain color_title mt_20' bindtap='click_index'>返回首页</view>
+    </view>
+  </view>
+</view>

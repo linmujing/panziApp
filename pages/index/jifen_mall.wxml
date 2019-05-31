@@ -10,7 +10,10 @@
   <view wx:for='{{sortData.sortList}}' wx:key='{{index}}' class='item' bindtap='click_sort' data-index='{{index}}'>
     <view wx:if='{{index == sortData.sortList.length-1}}' class='df ai_c'>
       <text class='{{sortData.current==index?"active":""}}'>{{item}}</text>
-      <image mode='widthFix' src='/img/up_down.png'></image>
+      <view>
+        <view class='triangle-up'></view>
+        <view class='triangle-down'></view>
+      </view>
     </view>
     <text wx:else class='{{sortData.current==index?"active":""}}'>{{item}}</text>
   </view>

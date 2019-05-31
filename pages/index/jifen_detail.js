@@ -16,8 +16,7 @@ Page({
       pay: 2,
       kucun: 2255
     },
-    popup_state: true,
-    gift: app.globalData.imgUrl + 'gift.jpg',
+    
   },
 
   /**
@@ -41,9 +40,12 @@ Page({
 
   },
   click_dui: function (e) {
-    var popup_state = this.data.popup_state
-    this.setData({
-      popup_state: !popup_state
+    // var popup_state = this.data.popup_state
+    // this.setData({
+    //   popup_state: !popup_state
+    // })
+    wx.navigateTo({
+      url: 'order',
     })
   },
   click_index: function (e) {
