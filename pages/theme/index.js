@@ -1,7 +1,7 @@
 // pages/theme/index.js
 //获取应用实例
 var util = require('../../utils/util.js');
-const app = getApp()  
+const app = getApp()
 Page({
 
   /**
@@ -38,7 +38,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-   
+
   },
   blur_search: function (e) {
     this.setData({
@@ -54,7 +54,7 @@ Page({
     })
     this.getThemeList()
   },
-  click_nav: function(e){
+  click_nav: function (e) {
     var index = e.currentTarget.dataset.index;
     var id = e.currentTarget.dataset.id;
     this.setData({
@@ -67,7 +67,7 @@ Page({
     })
     this.getThemeList()
   },
-  getTheme:function(){
+  getTheme: function () {
     var that = this
     var reqBody = {
       id: 3
@@ -77,9 +77,10 @@ Page({
         // wx.setNavigationBarTitle({
         //   title: res.data.title
         // })
-        var list = [
-          {name: '全部', id: ''}
-        ]
+        var list = [{
+          name: '全部',
+          id: ''
+        }]
         list = list.concat(res.data);
         that.getThemeList()
         that.setData({
@@ -104,7 +105,7 @@ Page({
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
       if (res.state == 1) {
-        for(var i=0;i<res.data.length;i++){
+        for (var i = 0; i < res.data.length; i++) {
           res.data[i].check = false
         }
         var list = that.data.themeData.themeList
@@ -119,7 +120,7 @@ Page({
           this.setData({
             Page_slide: true
           })
-        }else{
+        } else {
           this.setData({
             Page_slide: false
           })
@@ -128,17 +129,17 @@ Page({
     })
   },
   // 点赞
-  click_zan: function(e){
+  click_zan: function (e) {
     var that = this
     var index = e.currentTarget.dataset.index;
     var list = that.data.themeData.themeList
     var type = 'add'
-    if (list[index].check){
+    if (list[index].check) {
       type = 'del'
-      --list[index].zan
-    }else{
+        --list[index].zan
+    } else {
       type = 'add'
-      ++list[index].zan
+        ++list[index].zan
     }
     list[index].check = !list[index].check
     var reqBody = {
@@ -153,7 +154,7 @@ Page({
       }
     })
   },
-  click_detail: function(e){
+  click_detail: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: 'detail?id=' + id + '&type=1',

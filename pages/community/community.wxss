@@ -121,10 +121,10 @@ page {
 }
 
 .content .Popular_bigPic {
-    width: 250rpx;
-    height: 220rpx;
+    width: 210rpx;
+    /* height: 220rpx; */
     border-radius: 10rpx;
-    margin-right: 10rpx;
+    margin: 10rpx;
 }
 
 .content .Popular_foot {

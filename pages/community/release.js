@@ -12,7 +12,8 @@ Page({
     images: [],
     content: '', //正文内容
     position: "我的位置",
-    slecte: false
+    slecte: false,
+    pics: [],
   },
 
   /**
@@ -59,19 +60,29 @@ Page({
   // 图片选择功能
   chooseImage(e) {
     wx.chooseImage({
+      // count: 3,
       sizeType: ['original', 'compressed'], //可选择原图或压缩后的图片
       sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
       success: res => {
         console.log(res)
-
+        // var imgs = []
+        // for (var i = 0; i < res.tempFilePaths.length; i++) {
+        //   console.log(res.tempFilePaths[i])
+        //   imgs.push(res.tempFilePaths[i])
+        // }
+        // console.log(imgs)
         wx.getFileSystemManager().readFile({
+          // filePath: imgs,
           filePath: res.tempFilePaths[0], //选择图片返回的相对路径
           encoding: 'base64', //编码格式
           success: res => { //成功的回调
             console.log(res)
-            console.log('data:image/png;base64,' + res.data)
+            // console.log('data:image/png;base64,' + res.data)
             var img = 'data:image/png;base64,' + res.data
             console.log(img)
+
+
+
             var userInfo = wx.getStorageSync('userInfo');
             var reBody = {
               token: userInfo.token,
@@ -98,7 +109,6 @@ Page({
       }
     })
   },
-
 
 
 
@@ -144,14 +154,14 @@ Page({
     $digest(this)
   },
   // 预览图片
-  handleImagePreview(e) {
-    const idx = e.target.dataset.idx
-    const images = this.data.images
-    wx.previewImage({
-      current: images[idx], //当前预览的图片
-      urls: images, //所有要预览的图片
-    })
-  },
+  // handleImagePreview(e) {
+  //   const idx = e.target.dataset.idx
+  //   const images = this.data.images
+  //   wx.previewImage({
+  //     current: images[idx], //当前预览的图片
+  //     urls: images, //所有要预览的图片
+  //   })
+  // },
   // 点击取消返回页面
   cancel: function () {
     wx.navigateBack({

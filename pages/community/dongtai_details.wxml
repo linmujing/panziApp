@@ -8,9 +8,9 @@
                     <view>{{details.addtime}}</view>
                 </view>
             </view>
-            <view class="title_right">
+            <!-- <view class="title_right">
                 <image mode="widthFix" src="../../img/guanzhu.png" />
-            </view>
+            </view> -->
         </view>
         <view class="details_content">
             <view class="content_text">{{details.content}}</view>
