@@ -1,4 +1,5 @@
 // pages/index/jifen_detail.js
+var util = require('../../utils/util.js');
 const app = getApp()
 Page({
 
@@ -7,15 +8,7 @@ Page({
    */
   data: {
     isIPX: getApp().globalData.isIPX,
-    detailData: {
-      img: app.globalData.imgUrl + 'week1.jpg',
-      name: '盘子女人坊古装艺术写真油画布框',
-      info: '古装艺术写真油画布框辅助介绍',
-      jifen: 2000,
-      sale: 997,
-      pay: 2,
-      kucun: 2255
-    },
+    detailData: {},
     
   },
 
@@ -23,7 +16,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      userInfo: userInfo
+    })
+    if (!userInfo) {
+      wx.navigateTo({
+        url: '/pages/login/index',
+      })
+    }
 
+    this.getInfo(options.id)
   },
 
   /**
@@ -51,6 +54,25 @@ Page({
   click_index: function (e) {
     wx.switchTab({
       url: 'index',
+    })
+  },
+  getInfo: function (id) {
+    var that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    var reqBody = {
+      token: that.data.userInfo.token,
+      id: id
+    };
+    util.post(util.url.goodsInfo, reqBody, (res) => {
+      // console.log(res)
+      wx.hideLoading()
+      if (res.state == 1) {
+        that.setData({
+          detailData: res.data,
+        })
+      }
     })
   },
   /**

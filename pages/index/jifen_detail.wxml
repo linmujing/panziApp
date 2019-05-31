@@ -1,22 +1,33 @@
 <!--pages/index/jifen_detail.wxml-->
-<image mode='widthFix' src='{{detailData.img}}'class='w100'></image>
+<view class='banner'>
+  <swiper autoplay circular interval='3000'>
+    <view wx:for="{{detailData.goods_img}}" wx:key='{{index}}'>
+      <swiper-item>
+        <image mode='widthFix' src="{{item}}" class='w100'/>
+      </swiper-item>
+    </view>
+  </swiper>
+</view>
 <view class='info bg_ff'>
   <view class='df jc_sb ai_c'>
     <view>
-      <view class='font_blod'>{{detailData.name}}</view>
-      <view class='ft_12 color_5b mt_5'>{{detailData.info}}</view>
+      <view class='font_blod'>{{detailData.goods_name}}</view>
+      <!-- <view class='ft_12 color_5b mt_5'>{{detailData.goods_content}}</view> -->
       <view class='mt_10 df ai_c'>
-        <text class='color_jifen ft_16'>{{detailData.jifen}} </text>
+        <text class='color_jifen ft_16'>{{detailData.cost}} </text>
         <text class='color_5b ft_12 pl_5'>积分</text>
-        <text class='tag'>积分商品</text>
+        <text class='tag'>{{detailData.cid}}</text>
       </view>
     </view>
     <image mode='widthFix' src='/img/share-1.png' class='zf'></image>
   </view>
   <view class='mt_10 ft_12 color_5b df jc_sb'>
-    <text>仅限：{{detailData.sale}}</text>
-    <text>已参与：{{detailData.pay}}</text>
-    <text>库存：{{detailData.kucun}}</text>
+    <!-- <text>仅限：{{detailData.sales}}</text> -->
+    <text>已参与：{{detailData.sales}}</text>
+    <text>库存：{{detailData.stock}}</text>
+  </view>
+  <view class='mt_10'>
+    <rich-text class='w100' nodes="{{detailData.goods_content}}"></rich-text>  
   </view>
 </view>
 
