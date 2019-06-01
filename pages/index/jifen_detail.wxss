@@ -6,18 +6,18 @@ swiper{width: 100%;height: 700rpx;}
 .duihuan{position: fixed;bottom: 0;z-index: 1;width: 100%;text-align: center;font-size: 32rpx;line-height: 70rpx;}
 .duihuan .btn_title{border-radius: 0;}
 
-.tj{margin-bottom: 100rpx;margin-top: 20rpx;}
+.tj{padding-bottom: 100rpx;margin-top: 20rpx;}
 .title {text-align: center;padding: 20rpx;}
 .title view:first-child {font-weight: bold;font-size: 30rpx;}
 .title view:last-child {font-size: 14rpx;color: #5A5A5A;}
 .product{margin: 20rpx;}
-.product .item{width: 346rpx;background: #fff;border-radius: 8rpx;margin-bottom: 20rpx;overflow: hidden;}
+.product .item{width: 346rpx;background: #fff;border-radius: 8rpx;margin-bottom: 20rpx;overflow: hidden;box-shadow:0px 10rpx 30rpx -5rpx rgba(0,0,0,0.3);}
 .product .item>image{width: 100%;}
 .product .item .txtBox{padding: 10rpx;}
 .product .item .txtBox image{width: 40rpx;}
 
 .share button {
-  padding: 0;
+  padding: 0 20rpx;
   border-radius: 0;
   background: none;
   width: 100%;

@@ -2,7 +2,7 @@
 .addr, .info{margin: 30rpx;background: #fff;border-radius: 10rpx;padding: 20rpx;box-shadow:0 0 20rpx 2rpx rgba(0,0,0,0.2);}
 .addr .loc{width: 48rpx;}
 .addr .txt{width: 580rpx;padding-left: 20rpx;box-sizing: border-box;}
-.addr .mr{height:30rpx;background:#FAA7B7;color:#fff;border-radius:15rpx;font-size:20rpx;display:inline-block;padding:0 10rpx;line-height:30rpx;}
+.addr .mr{height:30rpx;background:#FAA7B7;color:#fff;border-radius:15rpx;font-size:20rpx;display:inline-block;padding:0 10rpx;line-height:30rpx;padding-right: 20rpx;}
 .jt{width: 12rpx;}
 .color_jf{color: #FF9F57;}
 

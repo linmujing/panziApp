@@ -14,6 +14,8 @@
     "pages/index/store_detail",
     "pages/index/jifen_mall",
     "pages/index/jifen_detail",
+    "pages/index/comments",
+    "pages/index/comments_detail",
     "pages/theme/index",
     "pages/theme/detail",
     "pages/community/dongtai_details",

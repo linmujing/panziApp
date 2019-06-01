@@ -7,8 +7,8 @@
   <view wx:for="{{themeList}}" wx:key='index' class='item' bindtap='click_detail'>
     <image mode='widthFix' src='{{item.img}}'></image>
     <view class='df jc_sb ai_c dd'>
-      <view>{{item.name}}</view>
-      <image src='/img/right_arrow.png' class='icon'></image>
+      <view class='oneline'>{{item.name}}</view>
+      <image mode='widthFix' src='/img/right_arrow.png' class='icon'></image>
     </view>
   </view>
 </view>

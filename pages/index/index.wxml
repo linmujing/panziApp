@@ -14,13 +14,22 @@
   </view>
 </view> -->
 <!-- 轮播 -->
-<view class='carouse bg_ff ta_c'>
+<!-- <view class='carouse bg_ff ta_c'>
   <swiper autoplay indicatorDots circular interval='5000' indicator-active-color='#fff' previous-margin='40rpx' next-margin='20rpx' bindchange='change' bindanimationfinish="animationChange" current='{{current}}'>
     <view wx:for="{{carouselData}}" wx:key='{{index}}'>
       <swiper-item class=' df ai_c'>
         <view class='box' animation="{{index == current?animationData:animationData2}}">
           <image src="{{item.img}}" class='w100 h100'/>
         </view>
+      </swiper-item>
+    </view>
+  </swiper>
+</view> -->
+<view class='carouse2'>
+  <swiper autoplay indicatorDots circular interval='5000' indicator-active-color='#fff'>
+    <view wx:for="{{carouselData}}" wx:key='{{index}}'>
+      <swiper-item>
+        <image src="{{item.img}}" class='w100 h100'/>
       </swiper-item>
     </view>
   </swiper>
@@ -43,14 +52,11 @@
   <view class='hot_topic df jc_sb fw_w'>
     <view wx:for='{{hotList}}' wx:key='{{index}}' class='item' bindtap='click_theme' data-id='{{item.id}}'>
       <view class='imgb'>
-        <image mode='widthFix' src="{{item.img}}" class='w100'/>
+        <image mode='widthFix' src="{{item.fm_img}}" class='w100'/>
       </view>
       <view class='txt df jc_sb ai_c'>
-        <view>
-          <text>{{item.xilie}} | </text>
-          <text>{{item.title}}</text>
-        </view>
-        <image src='/img/right_arrow.png' class='icon'></image>
+        <view class='oneline'>{{item.title}}</view>
+        <image mode='widthFix' src='/img/right_arrow.png' class='icon'></image>
       </view>
     </view>
   </view>
@@ -68,11 +74,11 @@
     <view wx:for='{{starList}}' wx:key='{{index}}' class='item' bindtap='click_star' data-id='{{item.id}}'>
       <image src="{{item.img}}" />
       <view class='txt ta_c'>
-        <view>
+        <view class='oneline'>
           <text>{{item.xilie}} | </text>
           <text>{{item.title}}</text>
         </view>
-        <image src='/img/right_arrow.png' class='icon'></image>
+        <image mode='widthFix' src='/img/right_arrow.png' class='icon'></image>
       </view>
     </view>
   </view>
@@ -85,7 +91,9 @@
   </view>
   <view class='week df jc_sb fw_w'>
     <view wx:for='{{weekData.weekList}}' wx:key='{{index}}' class='item' bindtap='click_kepian' data-id='{{item.id}}'>
-      <image mode='widthFix' src="{{item.img}}" />
+      <view class='imgb'>
+        <image mode='widthFix' src="{{item.fm_img}}" class='w100'/>
+      </view>
       <view class='txt ta_c'>
         <image mode='widthFix' src='{{weekData.week_logo}}'></image>
       </view>
@@ -99,15 +107,19 @@
     <view>STORE ENVIRONMENT</view>
   </view>
   <view class='w100'>
-    <image mode='widthFix' src='{{storeData.banner}}' class='w100'></image>
+    <image mode='widthFix' src='{{storeData.img}}' class='w100'></image>
   </view>
-  <view class='store bg_ff'>
-    <scroll-view class="df fw_w" scroll-x style="width: auto;overflow:hidden;">
-      <view wx:for='{{storeData.storeList}}' wx:key='{{index}}' class='item' bindtap='click_store' data-id='{{item.id}}'>
-        <image src="{{item.img}}" />
-        <view class='txt ta_c'>{{item.name}}</view>
+  <view class='store bg_ff df fw_w'>
+    <!-- <scroll-view class="df fw_w" scroll-x style="width: auto;overflow:hidden;">
+      <view wx:for='{{storeData.list}}' wx:key='{{index}}' class='item' bindtap='click_store' data-id='{{item.id}}'>
+        <image src="{{item.fm_img}}" />
+        <view class='txt ta_c oneline'>{{item.title}}</view>
       </view>
-    </scroll-view>
+    </scroll-view> -->
+    <view wx:for='{{storeData.list}}' wx:key='{{index}}' class='item' bindtap='click_store' data-id='{{item.id}}'>
+      <image src="{{item.fm_img}}" />
+      <view class='txt ta_c oneline'>{{item.title}}</view>
+    </view>
   </view>
 </view>
 <!-- 客户评价 -->
@@ -117,13 +129,15 @@
     <view>HOT COMMENTS</view>
   </view>
   <view class='comments df jc_sb fw_w'>
-    <view wx:for='{{commentsList}}' wx:key='{{index}}' class='item' bindtap='click_theme' data-id='{{item.id}}'>
-      <image mode='widthFix' src="{{item.img}}" />
+    <view wx:for='{{commentsList}}' wx:key='{{index}}' class='item' bindtap='click_comments'>
+      <view class='imgb'>
+         <image mode='widthFix' src="{{item.img}}" class='w100'/>
+      </view>
       <view class='txt'>
-        <view class='twoline'>{{item.info}}</view>
+        <view class='twoline'>{{item.content}}</view>
         <view class='df ai_c mt_10'>
-          <image src="{{item.img}}"></image>
-          <text class='pl_5'>{{item.name}}</text>
+          <image src="{{item.hea_pic}}"></image>
+          <text class='pl_5 oneline'>{{item.name}}</text>
         </view>
       </view>
     </view>

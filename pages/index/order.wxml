@@ -2,10 +2,10 @@
 <view class='addr df ai_c jc_sb'>
   <image mode='widthFix' src='/img/location.png' class='loc'></image>
   <view wx:if='{{addr_state}}' class='txt ft_16 color_99'>请添加收货地址</view>
-  <view wx:else class='txt'>
+  <view wx:else class='txt' bindtap='select_addr'>
     <view class='df ai_c'>
-      <text class='mr'>默认</text>
-      <text class='ft_12 pl_10'>{{addr.provinces}}{{addr.citys}}{{addr.areas}}</text>
+      <text wx:if='{{addr.type == 1}}' class='mr'>默认</text>
+      <text class='ft_12'>{{addr.provinces}}{{addr.citys}}{{addr.areas}}</text>
     </view>
     <view class='ft_16 mt_10'>{{addr.append}}</view>
     <view class='mt_10'>

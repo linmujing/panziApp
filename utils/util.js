@@ -36,6 +36,9 @@ const url = {
 
   index: urlFront + 'Content/column',
 
+  commentInfo: urlFront + 'Content/bookInfo',
+  commentList: urlFront + 'Content/bookList',
+
   storeList: urlFront + 'Content/storeList',
   storeInfo: urlFront + 'Content/storeInfo',
 

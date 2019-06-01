@@ -50,6 +50,9 @@ Page({
     var reqBody = {
       id: id
     };
+    wx.showLoading({
+      title: '加载中',
+    })
     util.post(url, reqBody, (res) => {
       if (res.state == 1) {
         wx.setNavigationBarTitle({
@@ -59,6 +62,7 @@ Page({
           info: res.data
         })
       }
+      wx.hideLoading()
     })
   },
   /**

@@ -1,0 +1,3 @@
+/* pages/index/comments_detail.wxss */
+page{background: #fff;}
+.cont{padding: 20rpx;text-align: justify;}

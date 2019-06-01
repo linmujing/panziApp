@@ -1,23 +1,24 @@
-// pages/index/store_detail.js
+// pages/index/comments_detail.js
 var util = require('../../utils/util.js');
-const app = getApp()         
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    info: {},
-    logo: app.globalData.imgUrl + 'pznrf.png',
-    copyright: app.globalData.imgUrl + 'beian.png'
+    info: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.myVideo = wx.createVideoContext('myVideo')
-    this.storeInfo(options.id)
+    var userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      userInfo: userInfo
+    })
+    this.getInfo(options.id)
   },
 
   /**
@@ -33,36 +34,23 @@ Page({
   onShow: function () {
 
   },
-  //拨电话
-  callUp: function () {
-    wx.makePhoneCall({
-      phoneNumber: this.data.info.tel
-    })
-  },
-  callSale: function () {
-    wx.makePhoneCall({
-      phoneNumber: '400-9011-888'
-    })
-  },
-  storeInfo: function(id){
+  getInfo: function (id) {
     var that = this
     var reqBody = {
-      id: id
+      id: id,
+      token: that.data.userInfo.token
     };
     wx.showLoading({
       title: '加载中',
     })
-    util.post(util.url.storeInfo, reqBody, (res) => {
+    util.post(util.url.commentInfo, reqBody, (res) => {
+      wx.hideLoading()
       if (res.state == 1) {
-        res.data.content = res.data.content.replace(/\<img/gi, '<img style="width:100%;height:auto" ')
-        wx.setNavigationBarTitle({
-          title: res.data.title
-        })
+        res.data.content2 = res.data.content2.replace(/\<img/gi, '<img style="width:100%;height:auto" ')
         that.setData({
           info: res.data
         })
       }
-      wx.hideLoading()
     })
   },
   /**

@@ -1,6 +1,6 @@
 <!--pages/index/jifen_detail.wxml-->
 <view class='banner'>
-  <swiper autoplay circular interval='3000'>
+  <swiper autoplay circular interval='5000'>
     <view wx:for="{{detailData.goods_img}}" wx:key='{{index}}'>
       <swiper-item>
         <image mode='widthFix' src="{{item}}" class='w100'/>
