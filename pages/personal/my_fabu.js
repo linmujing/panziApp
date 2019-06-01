@@ -1,4 +1,5 @@
 // pages/personal/my_fabu.js
+var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -28,7 +29,45 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var userInfo = wx.getStorageSync('userInfo');
+    var reBody = {
+      token: userInfo.token,
+      pageSize: 1,
+      pageNumber: 1
+    }
+    util.post(util.url.my_list, reBody, (res) => {
+      console.log(res)
+      var data = res.data
+      if (res.state == 1) {
+        this.setData({
+          list: data
+        })
+        // wx.showToast({
+        //   title: '发布成功',
+        //   icon: 'success',
+        //   duration: 2000
+        // })
+      }
+    })
+  },
 
+  delate(e) {
+    const id = e.currentTarget.dataset.id
+    var userInfo = wx.getStorageSync('userInfo');
+    var reBody = {
+      token: userInfo.token,
+      id: id
+    }
+    util.post(util.url.del_sns, reBody, (res) => {
+      console.log(res)
+      // var data = res.data
+      // if (res.state == 1) {
+      //   this.setData({
+      //     list: data
+      //   })
+
+      // }
+    })
   },
 
   /**

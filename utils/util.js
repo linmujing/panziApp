@@ -52,6 +52,8 @@ const url = {
   upload_img: urlFront + 'sns/upimg_base64',
   add_sns: urlFront + 'sns/add_sns',
   edit_sns: urlFront + 'sns/edit_sns',
+  my_list: urlFront + 'sns/my_list',
+  del_sns: urlFront + 'sns/del_sns',
 
   slicesList: urlFront + 'Content/slicesList',
   slicesInfo: urlFront + 'Content/slicesInfo',

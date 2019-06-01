@@ -67,6 +67,7 @@ Page({
     })
     this.getThemeList()
   },
+
   getTheme: function () {
     var that = this
     var reqBody = {
@@ -133,6 +134,7 @@ Page({
     var that = this
     var index = e.currentTarget.dataset.index;
     var list = that.data.themeData.themeList
+    console.log(list)
     var type = 'add'
     if (list[index].check) {
       type = 'del'

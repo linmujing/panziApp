@@ -17,7 +17,7 @@
         </block>
     </scroll-view> -->
     <view class="content">
-        <block wx:for="{{detail}}" wx:for-item="dd" wx:for-index='index' wx:key="{{index}}">
+        <block wx:for="{{detail}}" wx:for-item="dd" wx:for-index="idx" wx:key="{{index}}">
             <view class="Popular">
                 <view class="Popular_title">
                     <view class="pTitle_left">
@@ -37,29 +37,29 @@
                 <view class="Popular_content" bind:tap="link_details" data-id='{{dd.id}}'>
                     {{dd.content}}
                 </view>
-                <view class="Popular_picBox" data-id="{{index}}" bind:tap="toIndex">
-                    <image mode="widthFix" class="Popular_bigPic" wx:for="{{dd.images}}" wx:key="index" src="{{item}}" data-index="{{index}}" data-current='{{index}}' data-id="{{id}}" bind:tap="handleImagePreview" />
+                <view class="Popular_picBox">
+                    <image mode="widthFix" class="Popular_bigPic" wx:for="{{dd.images}}" wx:key="index1" src="{{item}}" data-current='{{index}}' data-id="{{idx}}" bind:tap="handleImagePreview" />
                 </view>
                 <view class="Popular_foot">
                     <view>
-                        <button plain="true" open-type="share">
+                        <button open-type="share">
                             <image mode="widthFix" src="../../img/zhuanfa.png" data-id="{{dd.id}}" />
                         </button>
-                        <text>{{dd.share}}</text>
+                        <text>{{num}}</text>
                     </view>
                     <view>
                         <image mode="widthFix" src="../../img/huifu.png" />
                         <text>{{dd.comment}}</text>
                     </view>
-                    <!-- <view class="" bindtap='click_zan' data-index='{{index}}'>
-                        <view wx:if='{{themeData.themeList.check}}' class='heart'></view>
-                        <image wx:else mode='widthFix' src='/img/dianzan.png' class='xin'></image>
-                        <text class='oneline'>{{themeData.themeList.zan}}</text>
-                    </view> -->
-                    <view>
+                    <view class="" bindtap='click_zan' data-index='{{index}}'>
+                        <view class='heart'></view>
+                        <image mode='widthFix' src='/img/dianzan.png' class='xin'></image>
+                        <text class='oneline'>{{dd.zan}}</text>
+                    </view>
+                    <!-- <view>
                         <image class="praise {{dd.hasChange? 'changed': ''}}" hover-class="hover_praise" bindtap="praiseThis" data-curIndex="{{index}}" mode="widthFix" src="{{dd.hasChange?'../../img/love-active.png':'../../img/dianzan.png'}}" />
                         <text>{{dd.zan}}</text>
-                    </view>
+                    </view> -->
                 </view>
             </view>
         </block>
