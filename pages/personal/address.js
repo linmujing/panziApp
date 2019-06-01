@@ -7,18 +7,21 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: [
-      {
-        addressId: 705, uid: 5214, userName: "测试", phoneNum: "15522113322", contryId: 110101, address: "测试测试测试测试测试测试测试测试", contryInfo: { pName: "北京市", cName: "市辖区", xName: "东城区" }, isDefault: 1 },
-      { addressId: 705, uid: 5214, userName: "测试", phoneNum: "15522113322", contryId: 110101, address: "测试测试", contryInfo: { pName: "北京市", cName: "市辖区", xName: "东城区" }, isDefault: 0 }
-    ],
+    list: [],
     count: 0,
+    source: false, //1000等于选择地址
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.source) {
+      this.setData({
+        source: JSON.parse(options.source)
+      })
+      console.log(this.data.source)
+    }
     var userInfo = wx.getStorageSync('userInfo');
     this.setData({
       userInfo: userInfo
@@ -113,6 +116,16 @@ Page({
       }
       wx.hideLoading()
     })
+  },
+  select_addr: function(e){
+      if (this.data.source == 1000) {
+        console.log('选择地址')
+        var index = e.currentTarget.dataset.index;
+        var datar = this.data.list[index];
+        app.globalData.Select_address = datar;
+        wx.navigateBack();
+        return
+      }
   },
   /**
    * 生命周期函数--监听页面隐藏

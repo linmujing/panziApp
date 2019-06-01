@@ -1,7 +1,7 @@
 <!--pages/personal/address.wxml-->
 <view class='box'>
   <view class='list df jc_sb ai_c' wx:for='{{list}}' wx:key='{{index}}'>
-    <view class='info'>
+    <view class='info' bindtap='select_addr' data-index='{{index}}'>
       <view class='ft_16 df ai_fe'>
         {{item.consignee}} 
         <text class='ft_12 color_99 pl_10'>{{item.consignee_tel}}</text>

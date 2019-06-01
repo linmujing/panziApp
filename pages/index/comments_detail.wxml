@@ -1,0 +1,4 @@
+<!--pages/index/comments_detail.wxml-->
+<view class='cont'>
+  <rich-text class='w100' nodes="{{info.content2}}"></rich-text>  
+</view>

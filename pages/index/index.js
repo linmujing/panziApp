@@ -54,12 +54,7 @@ Page({
       ],
       week_logo: app.globalData.imgUrl + 'week_logo.png'
     },
-    storeData: {
-      storeList: [
-        { img: app.globalData.imgUrl + 'store1.jpg', name: '北京总店' }
-      ],
-      banner: app.globalData.imgUrl + 'store.jpg'
-    },
+    storeData: {},
     commentsList: [
       
     ],
@@ -80,12 +75,17 @@ Page({
     })
     var reqBody = {};
     util.post(util.url.index, reqBody, (res) => {
-      // console.log(res)
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
       wx.hideLoading()
       if (res.state == 1){
         that.setData({
           carouselData: res.banner,
-          navData: res.data
+          navData: res.data,
+          hotList: res.theme,
+          commentsList: res.book,
+          'storeData': res.store,
+          'weekData.weekList': res.slices,
         })
       }
     })
@@ -193,26 +193,30 @@ Page({
   click_theme: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../theme/detail?id=' + 5 + '&type=1',
+      url: '../theme/detail?id=' + id + '&type=1',
     })
   },
   click_store: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: 'store_detail?id=' + 6,
+      url: 'store_detail?id=' + id,
     })
   },
   click_kepian: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      // url: 'showcase?id=' + 4,
-      url: '../theme/detail?id=' + 7 + '&type=2',
+      url: '../theme/detail?id=' + id + '&type=2',
     })
   },
   click_star: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: 'star_detail',
+    })
+  },
+  click_comments: function(){
+    wx.navigateTo({
+      url: 'comments',
     })
   },
   /**

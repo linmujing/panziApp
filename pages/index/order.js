@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isIPX: getApp().globalData.isIPX,
+    isIPX: app.globalData.isIPX,
     popup_state: true,
     gift: app.globalData.imgUrl + 'gift.jpg',
     num: 1,
@@ -32,7 +32,6 @@ Page({
         url: '/pages/login/index',
       })
     }
-    console.log(options)
     this.getOrder(options.id)
     this.getAddrList()
   },
@@ -48,7 +47,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (app.globalData.Select_address) {
+      this.setData({
+        addr: app.globalData.Select_address
+      })
+    }
   },
   getOrder: function (id) {
     var that = this
@@ -166,6 +169,12 @@ Page({
       }
     })
   },
+  select_addr: function () {
+    wx.navigateTo({
+      url: '/pages/personal/address?source=1000',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */
