@@ -1,15 +1,15 @@
 <!-- pages/personal/zh_setting.wxml -->
 <view class="container">
-    <!-- <view class="userInfo" bind:tap="link_personInfo"> -->
-    <view class="userInfo">
+    <view class="userInfo" bind:tap="link_personInfo">
+    <!-- <view class="userInfo"> -->
         <view class="info_details">
             <image src="{{userInfo.avatarUrl}}" />
             <view class="">
                 <view class="info_name">{{userInfo.nickName}}</view>
-                <!-- <view class="">用户名：88888888</view> -->
+                <view class="">用户名：88888888</view>
             </view>
         </view>
-        <!-- <image class="enter" mode="widthFix" src="../../img/enter_.png" /> -->
+        <image class="enter" mode="widthFix" src="../../img/enter_.png" />
     </view>
     <view class="address" bindtap='click_addr'>
         <view>地址管理</view>

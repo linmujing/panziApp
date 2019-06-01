@@ -5,9 +5,9 @@
 </view>
 
 <view wx:for="{{caseData.list}}" wx:key='index' class='list' bindtap='click_detail' data-id='{{item.id}}'>
-  <view>
-    <image mode='widthFix' src='{{item.fm_img}}'></image>
-  </view>
+  <view class='imgb'>
+      <image mode='widthFix' src="{{item.fm_img}}" class='w100'/>
+    </view>
   <view class='tip'>
     <image mode='widthFix' src='{{heng}}'></image>
   </view>

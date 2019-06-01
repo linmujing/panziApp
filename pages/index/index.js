@@ -12,52 +12,22 @@ Page({
     duration: 1000,
     carouselData: [],
     navData: [],
-    hotList: [
-      {
-        id: 5,
-        xilie: '个人写真系列' ,
-        title: '琉璃翠',
-        img: app.globalData.imgUrl + 'theme.jpg'
-      },{
-        id: 5,
-        xilie: '个人写真系列',
-        title: '琉璃翠',
-        img: app.globalData.imgUrl + 'theme.jpg'
-      }, {
-        id: 5,
-        xilie: '个人写真系列',
-        title: '琉璃翠',
-        img: app.globalData.imgUrl + 'theme.jpg'
-      }, {
-        id: 5,
-        xilie: '个人写真系列',
-        title: '琉璃翠',
-        img: app.globalData.imgUrl + 'theme.jpg'
-      }
-    ],
-    starList: [
-      {
-        id: 4,
-        xilie: '个人写真系列',
-        title: '琉璃翠',
-        img: app.globalData.imgUrl + 'ad1.jpg'
-      }
-    ],
-    videoData: { title: '强势登陆湖南卫视', info: '客片比样片更唯美', img: 'http://mmm.pznrfsy.com//uploads/20181230/d16f0c7963596c51d22e6cb265e8602f.png', url: 'http://mmm.pznrfsy.com//uploads/20181230/229a23ff3f60017a3ba3e8f3c8b8d35a.mp4' },
+    hotList: [],
+    starList: [],
     experience: app.globalData.imgUrl + 'experience.jpg',
     weekData: {
-      weekList: [
-        { img: app.globalData.imgUrl + 'theme.jpg' },
-        { img: app.globalData.imgUrl + 'theme.jpg' },
-        { img: app.globalData.imgUrl + 'theme.jpg' },
-        { img: app.globalData.imgUrl + 'theme.jpg' }
-      ],
+      weekList: [],
       week_logo: app.globalData.imgUrl + 'week_logo.png'
     },
     storeData: {},
-    commentsList: [
-      
-    ],
+    commentsList: [],
+    videoPlay: null,
+    videoData: {
+      list: [
+        { title: '强势登陆湖南卫视', info: '客片比样片更唯美', img: 'http://mmm.pznrfsy.com//uploads/20181230/d16f0c7963596c51d22e6cb265e8602f.png', url: 'http://mmm.pznrfsy.com//uploads/20181230/229a23ff3f60017a3ba3e8f3c8b8d35a.mp4' },
+        { title: '强势登陆湖南卫视', info: '客片比样片更唯美', img: 'http://mmm.pznrfsy.com//uploads/20181230/d16f0c7963596c51d22e6cb265e8602f.png', url: 'http://mmm.pznrfsy.com//uploads/20181230/229a23ff3f60017a3ba3e8f3c8b8d35a.mp4' }
+      ]
+    },
     current: 0,
     animationData: {},
     animationData2: {}
@@ -67,6 +37,21 @@ Page({
     this.stretch(300 + 'rpx')
     this.shrink(260 + 'rpx')
     this.getIndex()
+  },
+  // 点击cover播放，其它视频结束
+  videoPlay: function (e) {
+    var _index = e.currentTarget.id
+    this.setData({
+      _index: _index
+    })
+    //停止正在播放的视频
+    var videoContextPrev = wx.createVideoContext(this.data._index)
+    videoContextPrev.stop();
+    setTimeout(function () {
+      //将点击视频进行播放
+      var videoContext = wx.createVideoContext(_index)
+      videoContext.play();
+    }, 500)
   },
   getIndex: function(){
     var that = this
@@ -86,6 +71,7 @@ Page({
           commentsList: res.book,
           'storeData': res.store,
           'weekData.weekList': res.slices,
+          starList: res.mxhz
         })
       }
     })

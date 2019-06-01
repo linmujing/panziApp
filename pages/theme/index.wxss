@@ -27,10 +27,11 @@
 .themeList{margin: 20rpx;}
 .themeList .item{margin-bottom: 20rpx;}
 .themeList .item>image{width: 100%;}
-.themeList .item view image{width: 40rpx;}
+.themeList .item .eye{width: 40rpx;}
 .themeList .item .txt{padding: 20rpx 0;background: #fff;}
-.themeList .item .txt text{width: 100rpx;padding-left: 10rpx;}
+.themeList .item .txt text{width: 100rpx;padding: 0 10rpx;}
 .themeList .item .xin{width: 34rpx;}
+.themeList .item .imgb{width: 100%;height: 400rpx;overflow: hidden;}
 
 .blod{font-weight: bold}
 /* 爱心 */

@@ -5,6 +5,7 @@ page{
 .title{
   text-align: center;
   margin-top: 40rpx;
+  font-weight: bold;
 }
 .arrow{
   width: 0;
@@ -44,10 +45,4 @@ position: relative;
   left: 45%;
   margin: -30rpx 0 0 -30rpx;
   z-index: 100;
-}
- 
-/* 底部盒子 */
-.bottom {
-  width: 40rpx;
-  height: 40rpx;
 }

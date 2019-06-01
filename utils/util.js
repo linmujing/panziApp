@@ -39,6 +39,10 @@ const url = {
   commentInfo: urlFront + 'Content/bookInfo',
   commentList: urlFront + 'Content/bookList',
 
+  starList: urlFront + 'Content/mxhzList',
+  starInfo: urlFront + 'Content/mxhzInfo',
+  movieList: urlFront + 'Content/yshzList',
+
   storeList: urlFront + 'Content/storeList',
   storeInfo: urlFront + 'Content/storeInfo',
 

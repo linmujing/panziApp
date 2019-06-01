@@ -1,1 +1,21 @@
 /* pages/index/star_detail.wxss */
+page{
+  background: #fff
+}
+.title{
+  text-align: center;
+  margin: 40rpx;
+  font-weight: bold;
+}
+.arrow{
+  width: 0;
+  height: 0;
+  margin-top: 40rpx;
+  display: inline-block;
+  border-left: 10rpx solid transparent;
+  border-right: 10rpx solid transparent;
+  border-top: 16rpx solid #ccc;
+}
+.list{margin: 20rpx;padding: 8rpx;border: 1rpx solid #C8C8C8;}
+.list image{width: 100%;display: block;}
+.list .tip{margin: 20rpx 100rpx;}
