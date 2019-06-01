@@ -84,7 +84,7 @@ Page({
 
     var reBody = {
       token: userInfo.token,
-      pageSize: 3,
+      pageSize: 8,
       pageNumber: 1,
       // searchText: '社区',
       // category_id: 1
@@ -109,7 +109,7 @@ Page({
     var that = this
     var reqBody = {
       token: userInfo.token,
-      pageSize: 3,
+      pageSize: 8,
       pageNumber: that.data.themeData.page,
       // pageNum: that.data.themeData.page,
       // seach: that.data.themeData.search,
@@ -163,10 +163,12 @@ Page({
 
   // 点赞
   click_zan: function (e) {
+    console.log(e)
     var that = this
     var index = e.currentTarget.dataset.index;
+    console.log(index)
     var list = that.data.themeData.themeList
-    console.log(list[index])
+    console.log(list)
     var type = 'add'
     if (list[index].check) {
       type = 'del'
@@ -177,7 +179,7 @@ Page({
     }
     list[index].check = !list[index].check
     var userInfo = wx.getStorageSync('userInfo');
-    var id = e.currentTarget.dataset.id
+    // var id = e.currentTarget.dataset.id
 
     var reqBody = {
       token: userInfo.token,
@@ -187,6 +189,7 @@ Page({
     util.post(util.url.edit_sns, reqBody, (res) => {
       console.log(res)
       if (res.state == 1) {
+        console.log(list)
         that.setData({
           // 'themeData.themeList': list
           // zan: res.data.zan
@@ -195,8 +198,6 @@ Page({
       }
     })
   },
-
-
 
 
   // 顶部导航切换
@@ -218,43 +219,6 @@ Page({
     })
   },
 
-  // 转发功能
-  onShareAppMessage: function (res) {
-    console.log(res)
-    if (res.from === 'button') {
-      console.log(111, res)
-    } else {
-      console.log(111, res)
-    }
-    return {
-      title: '转发',
-      path: '/pages/community/community',
-      success: function (res) {
-        console.log('成功', res)
-      }
-    }
-  },
-
-
-  share(e) {
-    var userInfo = wx.getStorageSync('userInfo');
-    var id = e.currentTarget.dataset.id
-
-    var reBody = {
-      token: userInfo.token,
-      id: id,
-      type: "share"
-    };
-    util.post(util.url.edit_sns, reBody, (res) => {
-      console.log(res)
-      if (res.state == 1) {
-        var data = res.data
-        this.setData({
-          num: data
-        })
-      }
-    })
-  },
   // 跳转动态详情页面
   link_details(e) {
     var id = e.currentTarget.dataset.id
@@ -344,7 +308,40 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
+    console.log(res)
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
 
+      var that = this
+      var index = res.target.dataset.index;
+      var id = res.target.dataset.id
+      console.log(index)
+      var list = that.data.themeData.themeList
+      console.log(list)
+        ++list[index].share
+
+      var userInfo = wx.getStorageSync('userInfo');
+      var id = res.target.dataset.id
+
+      var reBody = {
+        token: userInfo.token,
+        id: id,
+        type: "share"
+      };
+      util.post(util.url.edit_sns, reBody, (res) => {
+        console.log(res)
+        if (res.state == 1) {
+          // var data = res.data
+          that.setData({
+            detail: list
+          })
+        }
+      })
+    }
+    return {
+      title: this.data.detailData,
+      path: 'pages/community/community'
+    }
   }
 })

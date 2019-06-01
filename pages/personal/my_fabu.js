@@ -6,23 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: [{
-      imgUrl: "../../img/order_hd.png",
-      title: "是读书绝对是啊肯定会撒娇德哈卡卡是和大家按时度可视角度和",
-      time: "2019.04.25",
-    }, {
-      imgUrl: "../../img/order_hd.png",
-      title: "是读书绝对是啊肯定会撒娇德哈卡卡是和大家按时度可视角度和",
-      time: "2019.04.25",
-    }, {
-      imgUrl: "../../img/order_hd.png",
-      title: "是读书绝对是啊肯定会撒娇德哈卡卡是和大家按时度可视角度和",
-      time: "2019.04.25",
-    }, {
-      imgUrl: "../../img/order_hd.png",
-      title: "是读书绝对是啊肯定会撒娇德哈卡卡是和大家按时度可视角度和",
-      time: "2019.04.25",
-    }]
+    list: []
   },
 
   /**
@@ -52,7 +36,9 @@ Page({
   },
 
   delate(e) {
+    console.log(e)
     const id = e.currentTarget.dataset.id
+    var idx = e.currentTarget.dataset.idx
     var userInfo = wx.getStorageSync('userInfo');
     var reBody = {
       token: userInfo.token,
@@ -60,12 +46,20 @@ Page({
     }
     util.post(util.url.del_sns, reBody, (res) => {
       console.log(res)
+      var list = this.data.list
+      console.log(list)
+      list[idx].status = 2
+      console.log(list)
+      this.setData({
+        list: list
+      })
       // var data = res.data
       // if (res.state == 1) {
+      //   var list = this.data.list
+      //   console.log(list)
       //   this.setData({
       //     list: data
       //   })
-
       // }
     })
   },

@@ -72,12 +72,12 @@ Page({
     };
     util.post(util.url.details_comment, reqBody, (res) => {
       console.log(res)
-      if (res.state == 1) {
-        var list = res.data
-        this.setData({
-          comment: list
-        })
-      }
+      // if (res.state == 1) {
+      //   var list = res.data
+      //   this.setData({
+      //     comment: list
+      //   })
+      // }
     })
   },
   bindBlur() {

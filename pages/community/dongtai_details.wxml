@@ -48,7 +48,7 @@
             <view class="main_list">
                 <view class="list_item" wx:for="{{comment}}" wx:key="index">
                     <view class="item_left">
-                        <image src="{{item.headimgurl}}" />
+                        <image src="{{item.headerUrl}}" />
                     </view>
                     <view class="item_right">
                         <view class="item_name">{{item.name}}</view>
@@ -75,7 +75,9 @@
                             </view> -->
                         </view>
                         <view class="comment_reply">
-                            <view class="reply" wx:for="{{comment_reply}}">{{item}}</view>
+                            <view class="reply" wx:for="{{comment_reply}}" wx:key="index">
+                                {{item}}
+                            </view>
                         </view>
                     </view>
                 </view>

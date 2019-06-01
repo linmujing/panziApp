@@ -185,3 +185,30 @@ page {
     height: 0;
     color: transparent;
 }
+
+/* 爱心 */
+.heart {
+    position: relative;
+    width: 38rpx;
+    height: 28rpx;
+}
+
+.heart:before,
+.heart:after {
+    position: absolute;
+    content: "";
+    left: 16rpx;
+    top: 0;
+    width: 18rpx;
+    height: 28rpx;
+    background: #FDA2B3;
+    border-radius: 16rpx 16rpx 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
