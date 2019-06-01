@@ -1,10 +1,10 @@
 <!--pages/theme/index.wxml-->
 <view class='top'>
-  <image mode='widthFix' src='{{banner}}'></image>
+  <!-- <image mode='widthFix' src='{{banner}}'></image> -->
 </view>
 <!-- 列表 -->
 <view class='themeList'>
-  <view wx:for="{{themeList}}" wx:key='index' class='item'>
+  <view wx:for="{{themeList}}" wx:key='index' class='item' bindtap='click_detail'>
     <image mode='widthFix' src='{{item.img}}'></image>
     <view class='df jc_sb ai_c dd'>
       <view>{{item.name}}</view>

@@ -14,55 +14,54 @@ Page({
     navData: [],
     hotList: [
       {
-        id: 4,
+        id: 5,
         xilie: '个人写真系列' ,
         title: '琉璃翠',
+        img: app.globalData.imgUrl + 'theme.jpg'
+      },{
+        id: 5,
+        xilie: '个人写真系列',
+        title: '琉璃翠',
+        img: app.globalData.imgUrl + 'theme.jpg'
+      }, {
+        id: 5,
+        xilie: '个人写真系列',
+        title: '琉璃翠',
+        img: app.globalData.imgUrl + 'theme.jpg'
+      }, {
+        id: 5,
+        xilie: '个人写真系列',
+        title: '琉璃翠',
+        img: app.globalData.imgUrl + 'theme.jpg'
+      }
+    ],
+    starList: [
+      {
+        id: 4,
+        xilie: '个人写真系列',
+        title: '琉璃翠',
         img: app.globalData.imgUrl + 'ad1.jpg'
-      },
-      {
-        id: 4,
-        xilie: '个人写真系列',
-        title: '琉璃翠',
-        img: app.globalData.imgUrl + 'ad2.jpg'
-      },
-      {
-        id: 4,
-        xilie: '个人写真系列',
-        title: '琉璃翠',
-        img: app.globalData.imgUrl + 'ad3.jpg'
       }
     ],
     videoData: { title: '强势登陆湖南卫视', info: '客片比样片更唯美', img: 'http://mmm.pznrfsy.com//uploads/20181230/d16f0c7963596c51d22e6cb265e8602f.png', url: 'http://mmm.pznrfsy.com//uploads/20181230/229a23ff3f60017a3ba3e8f3c8b8d35a.mp4' },
     experience: app.globalData.imgUrl + 'experience.jpg',
     weekData: {
       weekList: [
-        { img: app.globalData.imgUrl + 'week1.jpg' },
-        { img: app.globalData.imgUrl + 'week2.jpg' },
-        { img: app.globalData.imgUrl + 'week3.jpg' },
-        { img: app.globalData.imgUrl + 'week4.jpg' }
+        { img: app.globalData.imgUrl + 'theme.jpg' },
+        { img: app.globalData.imgUrl + 'theme.jpg' },
+        { img: app.globalData.imgUrl + 'theme.jpg' },
+        { img: app.globalData.imgUrl + 'theme.jpg' }
       ],
       week_logo: app.globalData.imgUrl + 'week_logo.png'
     },
     storeData: {
       storeList: [
-        { img: app.globalData.imgUrl + 'store1.jpg', name: '北京总店' },
-        { img: app.globalData.imgUrl + 'store2.jpg', name: '北京朝阳' },
-        { img: app.globalData.imgUrl + 'store3.jpg', name: '上海总店' },
-        { img: app.globalData.imgUrl + 'store1.jpg', name: '北京总店' },
-        { img: app.globalData.imgUrl + 'store2.jpg', name: '北京朝阳' },
-        { img: app.globalData.imgUrl + 'store3.jpg', name: '上海总店' },
-        { img: app.globalData.imgUrl + 'store1.jpg', name: '北京总店' },
-        { img: app.globalData.imgUrl + 'store2.jpg', name: '北京朝阳' },
-        { img: app.globalData.imgUrl + 'store3.jpg', name: '上海总店' },
-        { img: app.globalData.imgUrl + 'store4.jpg', name: '上海静安' }
+        { img: app.globalData.imgUrl + 'store1.jpg', name: '北京总店' }
       ],
       banner: app.globalData.imgUrl + 'store.jpg'
     },
     commentsList: [
-      { img: app.globalData.imgUrl + 'week1.jpg', name: 'Sunny', info: '喜欢盘子女人坊啊啊' },
-      { img: app.globalData.imgUrl + 'week2.jpg', name: 'Tom', info: '哈哈哈喜欢盘子女人坊' },
-      { img: app.globalData.imgUrl + 'week3.jpg', name: 'Amy', info: '好喜欢盘子女人坊' },
-      { img: app.globalData.imgUrl + 'week4.jpg', name: 'Sunny', info: '凄凄切喜欢盘子女人坊' }
+      
     ],
     current: 0,
     animationData: {},
@@ -102,6 +101,11 @@ Page({
     })
     this.stretch(300 + 'rpx')
     this.shrink(260 + 'rpx')
+  },
+  animationChange(e) {
+    this.setData({
+      current: e.detail.current
+    })
   },
   // 收缩
   stretch(h){
@@ -189,7 +193,33 @@ Page({
   click_theme: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../theme/detail?id=' + id
+      url: '../theme/detail?id=' + 5 + '&type=1',
     })
   },
+  click_store: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: 'store_detail?id=' + 6,
+    })
+  },
+  click_kepian: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      // url: 'showcase?id=' + 4,
+      url: '../theme/detail?id=' + 7 + '&type=2',
+    })
+  },
+  click_star: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: 'star_detail',
+    })
+  },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    this.getIndex()
+  },
+
 })

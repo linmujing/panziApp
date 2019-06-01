@@ -1,27 +1,29 @@
 <!--pages/index/order.wxml-->
 <view class='addr df ai_c jc_sb'>
   <image mode='widthFix' src='/img/location.png' class='loc'></image>
-  <view class='txt ft_16 color_99'>请添加收货地址</view>
-  <!-- <view class='txt'>
+  <view wx:if='{{addr_state}}' class='txt ft_16 color_99'>请添加收货地址</view>
+  <view wx:else class='txt'>
     <view class='df ai_c'>
       <text class='mr'>默认</text>
-      <text class='ft_12 pl_10'>啊飒飒</text>
+      <text class='ft_12 pl_10'>{{addr.provinces}}{{addr.citys}}{{addr.areas}}</text>
     </view>
-    <view class='ft_16 mt_10'>啦啦啦</view>
+    <view class='ft_16 mt_10'>{{addr.append}}</view>
     <view class='mt_10'>
-      <text>打点滴</text>
-      <text class='ft_12 color_99 pl_10'>1111</text>
+      <text>{{addr.consignee}}</text>
+      <text class='ft_12 color_99 pl_10'>{{addr.consignee_tel}}</text>
     </view>
-  </view> -->
+  </view>
   <image mode='widthFix' src='/img/enter_.png' class='jt'></image>
 </view>
 <view class='info'>
   <view class='df ai_c'>
-    <image src='{{gift}}' class='pho'></image>
+    <view class='imgb'>
+      <image mode='widthFix' src='{{info.goods_img}}' class='w100'></image>
+    </view>
     <view class='detail'>
-      <view class='twoline'>盘子女人坊盘子女人坊盘子女人坊盘子女人坊盘子女人坊盘子女人坊盘子女人坊盘子女人坊盘子女人坊盘子女人坊盘子女人坊坊盘子女人坊坊盘子女人坊</view>
+      <view class='twoline'>{{info.goods_name}}</view>
       <view class='df jc_sb mt_20'>
-        <view class='color_99 ft_12'><text class='color_jf'>2000</text> 积分</view>
+        <view class='color_99 ft_12'><text class='color_jf'>{{info.money}}</text> 积分</view>
         <view class='buy df ai_c'>
             <view bindtap='click_minus' class='minus'>-</view>
             <text class='num'>{{num}}</text>
@@ -37,7 +39,7 @@
     </view>
     <view class='df ai_c'>
       <view class='pr_10'>快递 包邮</view>
-      <image mode='widthFix' src='/img/enter_.png' class='jt'></image>
+      <!-- <image mode='widthFix' src='/img/enter_.png' class='jt'></image> -->
     </view>
   </view>
   <view class='df ai_c mt_10'>
@@ -51,7 +53,7 @@
 
 <view class='tj'>
   <view class='tjdd df ai_c jc_sb'>
-    <view class='color_99'><text class='color_jf'>2000</text> 积分</view>
+    <view class='color_99'><text class='color_jf'>{{totle_cost}}</text> 积分</view>
     <view class='btn_title' bindtap='click_tijiao'>提交订单</view>
   </view>
    <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
