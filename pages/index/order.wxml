@@ -1,7 +1,7 @@
 <!--pages/index/order.wxml-->
 <view class='addr df ai_c jc_sb'>
   <image mode='widthFix' src='/img/location.png' class='loc'></image>
-  <view wx:if='{{addr_state}}' class='txt ft_16 color_99'>请添加收货地址</view>
+  <view wx:if='{{addr_state}}' bindtap='select_addr' class='txt ft_16 color_99'>请添加收货地址</view>
   <view wx:else class='txt' bindtap='select_addr'>
     <view class='df ai_c'>
       <text wx:if='{{addr.type == 1}}' class='mr'>默认</text>
@@ -69,7 +69,7 @@
       <view class='color_99 ft_12'>订单已交至后台处理</view>
     </view>
     <view class='btn'>
-      <view class='btn_title'>查看订单</view>
+      <view class='btn_title' bindtap='click_order'>查看订单</view>
       <view class='btn_plain color_title mt_20' bindtap='click_index'>返回首页</view>
     </view>
   </view>

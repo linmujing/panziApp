@@ -71,7 +71,8 @@ Page({
           commentsList: res.book,
           'storeData': res.store,
           'weekData.weekList': res.slices,
-          starList: res.mxhz
+          starList: res.mxhz,
+          'videoData.list': res.video
         })
       }
     })
@@ -162,7 +163,7 @@ Page({
         break
       case 9:
         wx.navigateTo({
-          url: '/pages/index/my_photos',
+          url: '/pages/index/photos_list',
         })
         break
       default:
