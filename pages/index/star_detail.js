@@ -1,4 +1,5 @@
 // pages/index/star_detail.js
+var util = require('../../utils/util.js');
 const app = getApp()
 Page({
 
@@ -6,14 +7,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    ad: app.globalData.imgUrl + 'star_ad.jpg'
+    ad: app.globalData.imgUrl + 'star_ad.jpg',
+    info: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      userInfo: userInfo
+    })
+    if (!userInfo) {
+      wx.navigateTo({
+        url: '/pages/login/index',
+      })
+    }
+    this.getInfo(options.id)
   },
 
   /**
@@ -29,7 +40,24 @@ Page({
   onShow: function () {
 
   },
-
+  getInfo: function (id) {
+    var that = this
+    var reqBody = {
+      id: id,
+      token: that.data.userInfo.token
+    };
+    wx.showLoading({
+      title: '加载中',
+    })
+    util.post(util.url.starInfo, reqBody, (res) => {
+      wx.hideLoading()
+      if (res.state == 1) {
+        that.setData({
+          info: res.data
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

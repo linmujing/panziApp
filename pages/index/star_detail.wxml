@@ -1,2 +1,15 @@
 <!--pages/index/star_detail.wxml-->
-<image mode='widthFix' src='{{ad}}' class='w100'></image>
+<view class='title'>
+  <view class='mt_10'>| {{info.title}} |</view>
+  <view class='mt_10'>| {{info.name}} |</view>
+  <view class='arrow'></view>
+</view>
+
+<view wx:for="{{info.content}}" wx:key='index' class='list'>
+  <view>
+    <image mode='widthFix' src='{{item}}'></image>
+  </view>
+  <!-- <view class='tip'>
+    <image mode='widthFix' src='{{heng}}'></image>
+  </view> -->
+</view>

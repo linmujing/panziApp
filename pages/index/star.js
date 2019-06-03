@@ -1,5 +1,5 @@
 // pages/theme/index.js
-//获取应用实例
+var util = require('../../utils/util.js');
 const app = getApp()
 Page({
 
@@ -8,9 +8,10 @@ Page({
    */
   data: {
     banner: app.globalData.imgUrl + 'c-star.png',
-    themeList: [
-      { img: app.globalData.imgUrl + 'ad1.jpg', name: '明星同款主题【竹】', collect: 276, look: 24278, zan: 1 }
-    ],
+    Page_slide: true,
+    page: 1,
+    list: [],
+    type: 0
   },
 
   /**
@@ -20,6 +21,25 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
+    if (options.title == '明星合作'){
+      this.setData({
+        type: 1
+      })
+    }else{
+      this.setData({
+        type: 2
+      })
+    }
+    var userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      userInfo: userInfo
+    })
+    if (!userInfo) {
+      wx.navigateTo({
+        url: '/pages/login/index',
+      })
+    }
+    this.getList()
   },
 
   /**
@@ -35,20 +55,50 @@ Page({
   onShow: function () {
 
   },
-  blur_search: function (e) {
-    // this.setData({
-    //   'tel': e.detail.value
-    // })
-  },
-  click_nav: function (e) {
-    var index = e.currentTarget.dataset.index;
-    this.setData({
-      'navData.current': index,
+  click_detail: function(e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: 'star_detail?id=' + id,
     })
   },
-  click_detail: function(e) {
-    wx.navigateTo({
-      url: 'star_detail',
+  getList: function () {
+    var that = this
+    var url = util.url.starList
+    if(that.data.type == 1){
+      url = util.url.starList
+    }else{
+      url = util.url.movieList
+    }
+    var reqBody = {
+      pageNum: that.data.page,
+      token: that.data.userInfo.token
+    };
+    wx.showLoading({
+      title: '加载中',
+    })
+    util.post(url, reqBody, (res) => {
+      wx.hideLoading()
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+      if (res.state == 1) {
+        var list = that.data.list
+        list = list.concat(res.data);
+        that.setData({
+          list: list,
+          page: that.data.page + 1
+        })
+        // 判断上拉加载
+        var leg = that.data.list.length
+        if (leg < res.count) {
+          this.setData({
+            Page_slide: true
+          })
+        } else {
+          this.setData({
+            Page_slide: false
+          })
+        }
+      }
     })
   },
   /**
@@ -75,14 +125,23 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-
+  onPullDownRefresh: function () {
+    this.setData({
+      list: [],
+      page: 1
+    })
+    this.getList()
   },
 
   /**
-   * 用户点击右上角分享
+   * 页面上拉触底事件的处理函数
    */
-  onShareAppMessage: function () {
-
-  }
+  onReachBottom: function () {
+    if (this.data.Page_slide) {
+      this.setData({
+        Page_slide: false
+      })
+      this.getList()
+    }
+  },
 })

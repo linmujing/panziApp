@@ -63,7 +63,24 @@
 </view>
 <!-- 视频 -->
 <view class='video_box'>
-  <video id='myVideo' src='{{videoData.url}}' poster='{{videoData.img}}' objectFit='fill'></video>
+  <view class='vlist' wx:for='{{videoData.list}}' wx:key='{{index}}'>
+    <view class='block'>
+      <view class='ta_c'>
+        <view class='ft_16'>{{item.title}}</view>
+        <!-- <view class='ft_12 mt_10'>| {{item.info}} |</view> -->
+        <!-- <view class='arrow'></view> -->
+      </view>
+      <view id="{{index}}" class="cover" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
+        <!-- 视频图层 -->
+        <image class="videoVideo2" src="{{item.img}}" mode="scaleToFill">
+          <!-- 视频按钮 -->
+          <image class="videoPlay" src="/img/play.png" mode="scaleToFill"></image>
+        </image>
+      </view>
+    </view>
+    <!-- 视频 -->
+    <video src="{{item.url}}" id="{{index}}" class='video' wx:if="{{_index == index}}"></video>
+  </view>
 </view>
 <!-- 明星体验师 -->
 <view>
@@ -72,11 +89,13 @@
   </view>
   <view class='experiencer df jc_sb fw_w'>
     <view wx:for='{{starList}}' wx:key='{{index}}' class='item' bindtap='click_star' data-id='{{item.id}}'>
-      <image src="{{item.img}}" />
-      <view class='txt ta_c'>
+      <view class='imgb'>
+        <image mode='widthFix' src="{{item.fm_img}}" class='w100'/>
+      </view>
+      <view class='txt'>
         <view class='oneline'>
-          <text>{{item.xilie}} | </text>
-          <text>{{item.title}}</text>
+          <text>{{item.title}} | </text>
+          <text> 【{{item.name}}】</text>
         </view>
         <image mode='widthFix' src='/img/right_arrow.png' class='icon'></image>
       </view>

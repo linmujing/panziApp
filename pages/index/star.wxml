@@ -4,10 +4,15 @@
 </view>
 <!-- 列表 -->
 <view class='themeList'>
-  <view wx:for="{{themeList}}" wx:key='index' class='item' bindtap='click_detail'>
-    <image mode='widthFix' src='{{item.img}}'></image>
+  <view wx:for="{{list}}" wx:key='index' class='item' bindtap='click_detail' data-id='{{item.id}}'>
+    <view class='imgb'>
+      <image mode='widthFix' src="{{item.fm_img}}" class='w100'/>
+    </view>
     <view class='df jc_sb ai_c dd'>
-      <view class='oneline'>{{item.name}}</view>
+      <view class='oneline'>
+        <text class='blod'>{{item.title}} | </text>
+        <text> 【{{item.name}}】</text>
+      </view>
       <image mode='widthFix' src='/img/right_arrow.png' class='icon'></image>
     </view>
   </view>

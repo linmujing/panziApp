@@ -5,6 +5,7 @@ page{
 .title{
   text-align: center;
   margin: 40rpx;
+  font-weight: bold;
 }
 .arrow{
   width: 0;
@@ -18,3 +19,4 @@ page{
 .list{margin: 20rpx;padding: 8rpx;border: 1rpx solid #C8C8C8;}
 .list image{width: 100%;}
 .list .tip{margin: 20rpx 100rpx;}
+.list .imgb{width: 100%;height: 400rpx;overflow: hidden;}
