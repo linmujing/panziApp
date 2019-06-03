@@ -48,30 +48,7 @@ Page({
         }, 2000)
       }
     })
-
-
-    // var reqBody = {
-    //   token: userInfo.token,
-    //   file: images
-    // }
-    // util.post(util.url.upload_img, reqBody, (res) => {
-    //   console.log(res)
-    //   if (res.state == 1) {
-    //     var data = res.src
-    //     const images = this.data.images.concat(data)
-
-    //     // 限制最多只能留下3张照片
-    //     this.data.images = images.length <= 9 ? images : images.slice(0, 9)
-    //     $digest(this)
-
-    //     console.log(this.data.images)
-    //     // this.setData({
-    //     //   images: data
-    //     // })
-    //   }
-    // })
   },
-
 
   // 获取文字
   handleContentInput(e) {
@@ -81,7 +58,6 @@ Page({
     $digest(this)
   },
 
-
   // 图片选择功能
   chooseImage(e) {
     wx.chooseImage({
@@ -89,126 +65,121 @@ Page({
       sizeType: ['original', 'compressed'], //可选择原图或压缩后的图片
       sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
       success: res => {
-        // console.log(res)
-        var imgs = res.tempFilePaths
+        // var imgs = res.tempFilePaths
         // console.log(imgs)
-
-        for (var i = 0; i < imgs.length; i++) {
-          console.log(imgs[i])
-          wx.getFileSystemManager().readFile({
-            filePath: imgs[i],
-            // filePath: res.tempFilePaths[0], //选择图片返回的相对路径
-            encoding: 'base64', //编码格式
-            success: res => { //成功的回调
-              // console.log(res)
-              // console.log('data:image/png;base64,' + res.data)
-              var img = 'data:image/png;base64,' + res.data
-              // console.log(img, typeof (img))
-              // const images = this.data.images.concat(img)
-              var images = this.data.images
-              console.log(images)
-              images.push(img)
-              console.log(images)
-
-              var userInfo = wx.getStorageSync('userInfo');
-              var reqBody = {
-                token: userInfo.token,
-                file: images
-              }
-              util.post(util.url.upload_img, reqBody, (res) => {
-                console.log(res)
-                if (res.state == 1) {
-                  var data = res.src
-                  // const images = this.data.images.concat(data)
-
-                  // // 限制最多只能留下3张照片
-                  // this.data.images = images.length <= 9 ? images : images.slice(0, 9)
-                  // $digest(this)
-
-                  // console.log(this.data.images)
-                  this.setData({
-                    images: data
-                  })
-                }
-              })
-            }
-          })
-        }
-
-        // wx.getFileSystemManager().readFile({
-        //   filePath: imgs,
-        //   // filePath: res.tempFilePaths[0], //选择图片返回的相对路径
-        //   encoding: 'base64', //编码格式
-        //   success: res => { //成功的回调
-        //     console.log(res)
-        //     // console.log('data:image/png;base64,' + res.data)
-        //     var img = 'data:image/png;base64,' + res.data
-        //     console.log(img)
-        //     const images = this.data.images.concat(img)
-        //     console.log(images)
-
-        //   }
-        // })
-
-
+        const images = this.data.images.concat(res.tempFilePaths)
         // const images = this.data.images.concat(res.tempFilePaths)
-        // console.log(images)
         // 限制最多只能留下3张照片
-        // this.data.images = images.length <= 3 ? images : images.slice(0, 3)
-        // $digest(this)
-        // this.setData({
-        //   images
-        // })
-        //启动上传等待中...
-        wx.showToast({
-          title: '正在上传...',
-          icon: 'loading',
-          mask: true,
-          duration: 3000
+        this.data.images = images.length <= 9 ? images : images.slice(0, 9)
+        console.log(this.data.images)
+        $digest(this)
+
+        var userInfo = wx.getStorageSync('userInfo');
+        var reqBody = {
+          token: userInfo.token,
+          file: this.data.images
+        }
+        util.post(util.url.upload_img, reqBody, (res) => {
+          console.log(res)
+          if (res.state == 1) {
+            var data = res.src
+            this.setData({
+              images: data
+            })
+          }
         })
+        // var images = this.data.images
+        // console.log(images)
+        // var images = that.data.images
+        // for (var i = 0; i < imgs.length; i++) {
 
-        // var imgs = []
-        // for (var i = 0; i < res.tempFilePaths.length; i++) {
-        //   console.log(res.tempFilePaths[i])
-        //   imgs.push(res.tempFilePaths[i])
+        //   // wx.getFileSystemManager().readFileSync({
+
+        //   wx.getFileSystemManager().readFile({
+        //     filePath: imgs[i],
+        //     // filePath: res.tempFilePaths[0], //选择图片返回的相对路径
+        //     encoding: 'base64', //编码格式
+
+        //     success: res => { //成功的回调
+        //       console.log(res)
+        //       // console.log('data:image/png;base64,' + res.data)
+        //       var img = 'data:image/png;base64,' + res.data
+        //       // console.log(img, typeof (img))
+        //       const images = this.data.images.concat(img)
+        //       images.push(img)
+
+        //       // console.log(images)
+
+        //       // var userInfo = wx.getStorageSync('userInfo');
+        //       // var reqBody = {
+        //       //   token: userInfo.token,
+        //       //   file: images
+        //       // }
+        //       // util.post(util.url.upload_img, reqBody, (res) => {
+        //       //   console.log(res)
+        //       //   if (res.state == 1) {
+        //       //     var data = res.src
+        //       //     this.setData({
+        //       //       images: data
+        //       //     })
+        //       //   }
+        //       // })
+        //     }
+        //   })
         // }
-        // console.log(imgs)
-        // wx.getFileSystemManager().readFile({
-        //   // filePath: imgs,
-        //   filePath: res.tempFilePaths[0], //选择图片返回的相对路径
-        //   encoding: 'base64', //编码格式
-        //   success: res => { //成功的回调
-        //     console.log(res)
-        //     // console.log('data:image/png;base64,' + res.data)
-        //     var img = 'data:image/png;base64,' + res.data
-        //     console.log(img)
-
-        //     // var userInfo = wx.getStorageSync('userInfo');
-        //     // var reBody = {
-        //     //   token: userInfo.token,
-        //     //   file: img
-        //     // }
-        //     // util.post(util.url.upload_img, reBody, (res) => {
-        //     //   console.log(res)
-        //     //   if (res.state == 1) {
-        //     //     var data = res.src
-        //     //     const images = this.data.images.concat(data)
-
-        //     //     // 限制最多只能留下3张照片
-        //     //     this.data.images = images.length <= 9 ? images : images.slice(0, 9)
-        //     //     $digest(this)
-
-        //     //     console.log(this.data.images)
-        //     //     // this.setData({
-        //     //     //   images: data
-        //     //     // })
-        //     //   }
-        //     // })
-        //   }
-        // })
       }
     })
   },
+
+
+
+  //       // that.setData({
+  //       //   images: images
+  //       // })
+  //       // // var images = this.data.images
+  //       // console.log(imgdata)
+  //       // var userInfo = wx.getStorageSync('userInfo');
+  //       // var reqBody = {
+  //       //   token: userInfo.token,
+  //       //   file: images
+  //       // }
+  //       // util.post(util.url.upload_img, reqBody, (res) => {
+  //       //   console.log(res)
+  //       //   if (res.state == 1) {
+  //       //     var data = res.src
+  //       //     this.setData({
+  //       //       images: data
+  //       //     })
+  //       //   }
+  //       // })
+  //     }
+  //   })
+  // },
+  // var images = that.data.images
+  // console.log(images)
+  // var userInfo = wx.getStorageSync('userInfo');
+  // var reqBody = {
+  //   token: userInfo.token,
+  //   file: images
+  // }
+  // util.post(util.url.upload_img, reqBody, (res) => {
+  //   console.log(res)
+  //   if (res.state == 1) {
+  //     var data = res.src
+  //     this.setData({
+  //       images: data
+  //     })
+
+  //     // const images = this.data.images.concat(data)
+
+  //     // // 限制最多只能留下3张照片
+  //     // this.data.images = images.length <= 9 ? images : images.slice(0, 9)
+  //     // $digest(this)
+
+  //     // console.log(this.data.images)
+  //   }
+  // })
+
 
 
 
@@ -254,14 +225,14 @@ Page({
     $digest(this)
   },
   // 预览图片
-  // handleImagePreview(e) {
-  //   const idx = e.target.dataset.idx
-  //   const images = this.data.images
-  //   wx.previewImage({
-  //     current: images[idx], //当前预览的图片
-  //     urls: images, //所有要预览的图片
-  //   })
-  // },
+  handleImagePreview(e) {
+    const idx = e.target.dataset.idx
+    const images = this.data.images
+    wx.previewImage({
+      current: images[idx], //当前预览的图片
+      urls: images, //所有要预览的图片
+    })
+  },
   // 点击取消返回页面
   cancel: function () {
     wx.navigateBack({
@@ -366,3 +337,25 @@ Page({
 
   }
 })
+
+
+// wx.getImageInfo({
+//   src: imgs[i],
+//   // success(res) {
+//   //   console.log(res)
+//   //   var imgBase64 = wx.getFileSystemManager().readFileSync(res.path, "base64")
+
+//   //   imgdata.push('data:image/jpg;base64,' + wx.getFileSystemManager().readFileSync(res.path, "base64"))
+//   //   // console.log(wx.getFileSystemManager().readFileSync(res.path, "base64"))
+
+//   // }
+// })
+
+
+//启动上传等待中...
+// wx.showToast({
+//   title: '正在上传...',
+//   icon: 'loading',
+//   mask: true,
+//   duration: 2000
+// })

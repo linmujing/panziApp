@@ -2,7 +2,7 @@
 <view class="container">
     <view class="top_nav">
         <view>
-            <image mode="widthFix" src="../../img/xiaoxi.png" />
+            <!-- <image mode="widthFix" src="../../img/xiaoxi.png" /> -->
         </view>
         <view>
             <image bind:tap="link_search" mode="widthFix" src="../../img/fangdajing.png" />
@@ -38,7 +38,7 @@
                     <view class="Popular_content">{{dd.content}}</view>
                 </view>
                 <view class="Popular_picBox">
-                    <image mode="widthFix" class="Popular_bigPic" wx:for="{{dd.images}}" wx:key="index1" src="{{item}}" data-current='{{index}}' data-id="{{idx}}" bind:tap="handleImagePreview" />
+                    <image class="Popular_bigPic" wx:for="{{dd.images}}" wx:key="index1" src="{{item}}" data-current='{{index}}' data-id="{{idx}}" bind:tap="handleImagePreview" />
                 </view>
                 <view class="Popular_foot">
                     <view>

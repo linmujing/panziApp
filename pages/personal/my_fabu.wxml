@@ -3,7 +3,7 @@
     <view>
         <view class="list_item" wx:for="{{list}}" wx:key="index" wx:if="{{item.status != 2}}" wx:for-index="idx">
             <view class="item_details">
-                <image mode="widthFix" wx:for="{{item.images}}" wx:for-item="dd" src="{{dd}}" wx:key="index" />
+                <image wx:for="{{item.images}}" wx:for-item="dd" src="{{dd}}" wx:key="index" />
                 <view>
                     <view class="item_title">{{item.content}}</view>
                 </view>
@@ -14,7 +14,7 @@
                     <view wx:if="{{item.status == 1}}" class="btn">已发布</view>
                     <view wx:if="{{item.status == 0}}" class="btn">待审核</view>
                     <!-- <view wx:if="{{item.status == 2}}" class="btn">已删除</view> -->
-                    <view class="btn" bind:tap="delate" data-idx="{{idx}}" data-id="{{item.id}}">
+                    <view class="btn delate" bind:tap="delate" data-idx="{{idx}}" data-id="{{item.id}}">
                         删除
                     </view>
                     <!-- <view class="btn">编辑</view>
