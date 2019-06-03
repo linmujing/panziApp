@@ -1,4 +1,5 @@
 // pages/search/search.js
+var util = require('../../utils/util.js');
 Page({
 
   /**
@@ -10,22 +11,42 @@ Page({
     recommend: ['影视同款', '个人写真', '知否']
   },
 
+
   onSearch(e) {
+    var userInfo = wx.getStorageSync('userInfo');
+    var reBody = {
+      token: userInfo.token,
+    };
+    util.post(util.url.search, reBody, (res) => {
+      console.log(res)
+      if (res.state == 1) {
+        var data = res.data.opular
+        console.log(data)
+        this.setData({
+          recommend: data
+        })
+
+        wx.navigateTo({
+          url: `/pages/community/community`
+        })
+      }
+    })
+
     const value = e.detail.value || this.data.value;
 
-    if (value !== '读书') {
+    // if (value !== '读书') {
 
-      wx.showToast({
-        title: '只能搜索 读书 哦~',
-        icon: 'none'
-      })
+    //   wx.showToast({
+    //     title: '只能搜索 读书 哦~',
+    //     icon: 'none'
+    //   })
 
-      return;
-    }
+    //   return;
+    // }
 
-    wx.navigateTo({
-      url: `/pages/searchLink/searchLink?searchWord=${value}`
-    })
+    // wx.navigateTo({
+    //   url: `/pages/community/community?searchWord=${value}`
+    // })
   },
 
   onBlur(e) {

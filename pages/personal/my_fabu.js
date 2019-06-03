@@ -16,7 +16,7 @@ Page({
     var userInfo = wx.getStorageSync('userInfo');
     var reBody = {
       token: userInfo.token,
-      pageSize: 1,
+      pageSize: 9,
       pageNumber: 1
     }
     util.post(util.url.my_list, reBody, (res) => {

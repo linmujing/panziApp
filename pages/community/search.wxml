@@ -14,7 +14,7 @@
         <view class="recommend_title">热门推荐</view>
         <view wx:for="{{recommend}}" wx:key="index" class="recommend_text">
             <image mode="widthFix" src="../../img/hot_logo.png" />
-            {{item}}
+            {{item.search}}
         </view>
     </view>
 </view>

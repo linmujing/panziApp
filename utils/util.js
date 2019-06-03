@@ -61,11 +61,14 @@ const url = {
   details: urlFront + 'sns/details',
   details_comment: urlFront + 'sns/details_comment',
   add_content: urlFront + 'sns/add_content',
-  upload_img: urlFront + 'sns/upimg_base64',
+  // upload_img: urlFront + 'sns/upimg_base64',
+  upload_img: urlFront + 'sns/upload_img',
+
   add_sns: urlFront + 'sns/add_sns',
   edit_sns: urlFront + 'sns/edit_sns',
   my_list: urlFront + 'sns/my_list',
   del_sns: urlFront + 'sns/del_sns',
+  search: urlFront + 'sns/search',
 
   slicesList: urlFront + 'Content/slicesList',
   slicesInfo: urlFront + 'Content/slicesInfo',
