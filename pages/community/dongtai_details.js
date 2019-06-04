@@ -7,7 +7,7 @@ Page({
   data: {
     focus: false,
     show: false,
-    comment_reply: ["小交换机"],
+    comment_reply: '',
     details: {
       headerUrl: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2146046871,2611785107&fm=27&gp=0.jpg",
       name: "我是昵称",
@@ -50,12 +50,14 @@ Page({
     console.log(options)
     var id = options.id
     var userInfo = wx.getStorageSync('userInfo');
+
+    // 动态详情
     var reBody = {
       token: userInfo.token,
       id: id
     };
     util.post(util.url.details, reBody, (res) => {
-      console.log(res)
+      // console.log(res)
       if (res.state == 1) {
         var list = res.data
         this.setData({
@@ -64,6 +66,7 @@ Page({
       }
     })
 
+    // 评论回复列表
     var reqBody = {
       token: userInfo.token,
       id: id,
@@ -72,38 +75,41 @@ Page({
     };
     util.post(util.url.details_comment, reqBody, (res) => {
       console.log(res)
-      // if (res.state == 1) {
-      //   var list = res.data
-      //   this.setData({
-      //     comment: list
-      //   })
-      // }
+      if (res.state == 1) {
+        var list = res.data
+        this.setData({
+          comment: list
+        })
+      }
     })
   },
-  bindBlur() {
+  bindBlur(e) {
+    // console.log(e)
     this.setData({
+      comment_reply: e.detail.value,
       focus: false,
       show: false
     })
   },
-  on_input() {
+  on_input(e) {
+    console.log(e)
     this.setData({
       focus: true,
       show: true
     })
   },
   // 转发功能
-  onShareAppMessage: function (res) {
-    console.log(res)
-    if (res.from === 'button') {}
-    return {
-      title: '转发',
-      path: '/pages/community/community',
-      success: function (res) {
-        console.log('成功', res)
-      }
-    }
-  },
+  // onShareAppMessage: function (res) {
+  //   console.log(res)
+  //   if (res.from === 'button') {}
+  //   return {
+  //     title: '转发',
+  //     path: '/pages/community/community',
+  //     success: function (res) {
+  //       console.log('成功', res)
+  //     }
+  //   }
+  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

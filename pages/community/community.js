@@ -7,10 +7,6 @@ Page({
    */
   data: {
     winWidth: '',
-    currentTab: 0,
-    navScrollLeft: 0,
-    show: false,
-
     themeData: {
       navList: [],
       current: 0,
@@ -50,7 +46,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     var that = this
     that.getThemeList()
     // 获取设备可视窗口高度
@@ -62,13 +57,15 @@ Page({
         });
       }
     })
+
+    // 分类列表
     var userInfo = wx.getStorageSync('userInfo');
-    console.log(userInfo)
+    // console.log(userInfo)
     var reqBody = {
       token: userInfo.token
     };
     util.post(util.url.category, reqBody, (res) => {
-      console.log(res)
+      // console.log(res)
       if (res.state == 1) {
         // wx.setNavigationBarTitle({
         //   title: res.data.title
@@ -83,35 +80,34 @@ Page({
       }
     })
 
-    var reBody = {
-      token: userInfo.token,
-      pageSize: 8,
-      pageNumber: 1,
-      // searchText: '社区',
-      // category_id: 1
-    };
-    util.post(util.url.index_list, reBody, (res) => {
-      console.log(res)
-      if (res.state == 1) {
-        var list = res.data
-        // that.setData({
-        //   detail: list
-        // })
-        that.detail = list
-        that.setData({
-          detail: this.detail
-        })
-      }
-    })
   },
 
+  // 顶部搜索
+  blur_search: function (e) {
+    this.setData({
+      'themeData.search': e.detail.value
+    })
+  },
+  confirm_search: function () {
+    this.setData({
+      'themeData.themeList': [],
+      'themeData.page': 1,
+      'themeData.cid': '',
+      'themeData.current': 0
+    })
+    this.getThemeList()
+  },
+
+  // 加载列表数据
   getThemeList: function () {
     var userInfo = wx.getStorageSync('userInfo');
     var that = this
+    console.log(that.data.themeData.page)
     var reqBody = {
       token: userInfo.token,
-      pageSize: 8,
+      pageSize: 5,
       pageNumber: that.data.themeData.page,
+      searchText: that.data.themeData.search,
       // pageNum: that.data.themeData.page,
       // seach: that.data.themeData.search,
       // cid: that.data.themeData.cid
@@ -120,6 +116,7 @@ Page({
       title: '加载中',
     })
     util.post(util.url.index_list, reqBody, (res) => {
+      console.log(res)
       wx.hideLoading()
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
@@ -129,18 +126,24 @@ Page({
         }
         var list = that.data.themeData.themeList
         list = list.concat(res.data);
+        console.log(list)
         that.setData({
           'themeData.themeList': list,
           'themeData.page': that.data.themeData.page + 1
         })
         // 判断上拉加载
         var leg = that.data.themeData.themeList.length
-        if (leg < res.count) {
-          this.setData({
-            Page_slide: true
+        console.log(leg)
+        // if (leg < res.count) {
+        if (leg < 100) {
+          console.log('可以')
+          that.setData({
+            Page_slide: true,
+            // 'themeData.page': that.data.themeData.page + 1
           })
         } else {
-          this.setData({
+          console.log('不可以')
+          that.setData({
             Page_slide: false
           })
         }
@@ -155,7 +158,8 @@ Page({
     console.log(e)
     var id = e.currentTarget.dataset.id
     const current = e.currentTarget.dataset.current
-    var detail = this.data.detail[id]
+    // var detail = that.data.detail[id]
+    var detail = that.data.themeData.themeList[id]
     wx.previewImage({
       current: detail.images[current], // 当前显示图片的http链接
       urls: detail.images // 需要预览的图片http链接列表
@@ -164,12 +168,12 @@ Page({
 
   // 点赞
   click_zan: function (e) {
-    console.log(e)
+    // console.log(e)
     var that = this
     var index = e.currentTarget.dataset.index;
-    console.log(index)
+    // console.log(index)
     var list = that.data.themeData.themeList
-    console.log(list)
+    // console.log(list)
     var type = 'add'
     if (list[index].check) {
       type = 'del'
@@ -190,33 +194,20 @@ Page({
     util.post(util.url.edit_sns, reqBody, (res) => {
       console.log(res)
       if (res.state == 1) {
-        console.log(list)
+        // console.log(list)
         that.setData({
-          // 'themeData.themeList': list
+          'themeData.themeList': list
           // zan: res.data.zan
-          detail: list
+          // detail: list
         })
       }
     })
   },
 
-
-  // 顶部导航切换
-  switchNav(e) {
-    var that = this;
-    if (that.data.currentTab === e.target.dataset.current) {
-      return false
-    } else {
-      that.setData({
-        currentTab: e.target.dataset.current
-      })
-    }
-  },
-  // 详情页内容滑动
-  houseChange(e) {
-    var that = this;
-    that.setData({
-      currentTab: e.detail.current
+  // 跳转发布动态页面
+  link_to: function () {
+    wx.navigateTo({
+      url: './release'
     })
   },
 
@@ -228,17 +219,12 @@ Page({
     })
   },
   // 跳转搜索页面
-  link_search() {
-    wx.navigateTo({
-      url: './search'
-    })
-  },
-  // 跳转发布动态页面
-  link_to: function () {
-    wx.navigateTo({
-      url: './release'
-    })
-  },
+  // link_search() {
+  //   wx.navigateTo({
+  //     url: './search'
+  //   })
+  // },
+
   // 删除动态
   close: function (e) {
     console.log(e)
@@ -284,6 +270,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    console.log('下拉')
     this.setData({
       'themeData.search': '',
       'themeData.themeList': [],
@@ -335,7 +322,7 @@ Page({
         if (res.state == 1) {
           // var data = res.data
           that.setData({
-            detail: list
+            'themeData.themeList': list
           })
         }
       })

@@ -142,12 +142,24 @@
 .main_content .main_list .item_right .Comment {
     background: #eee;
     padding: 10rpx;
-    display: flex;
+    /* display: flex; */
     width: 520rpx;
+
+}
+
+.main_content .main_list .item_right .Comment .Comment_list {
+    display: flex;
+    align-items: center;
 }
 
 .main_content .main_list .item_right .Comment .Comment_title {
     color: #F4B6C5;
+    padding: 0 5rpx;
+}
+
+.main_content .main_list .item_right .Comment .huifu {
+    font-size: 25rpx;
+    color: #666;
 }
 
 .main_content .main_list .item_right .item_foot {
@@ -216,8 +228,8 @@
 
 .comment_reply {
     background: #eee;
-    padding: 20rpx;
-    margin-top: 20rpx;
+    /* padding: 20rpx;
+    margin-top: 20rpx; */
 }
 
 /* 点赞按钮样式 */

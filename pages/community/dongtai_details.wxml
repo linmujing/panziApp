@@ -46,21 +46,29 @@
                 </view>
             </view>
             <view class="main_list">
-                <view class="list_item" wx:for="{{comment}}" wx:key="index">
+                <view class="list_item" wx:for="{{comment}}" wx:key="index" wx:for-index="idx">
                     <view class="item_left">
-                        <image src="{{item.headerUrl}}" />
+                        <image src="{{item.headimgurl}}" />
                     </view>
                     <view class="item_right">
                         <view class="item_name">{{item.name}}</view>
                         <view class="item_content">{{item.content}}</view>
-                        <view class="Comment" wx:for="{{item.huifu}}" wx:key="index">
-                            <view class="Comment_title">{{item.Comment_title}}：</view>
-                            <view class="Comment_text">{{item.Comment_text}}</view>
+                        <view class="Comment" wx:key="index">
+                            <view class="comment_reply" wx:if="{{comment_reply}}">
+                                <view class="reply" data-index="{{idx}}" wx:key="index">
+                                    {{comment_reply}}
+                                </view>
+                            </view>
+                            <view class="Comment_list">
+                                <view class="Comment_title">{{item.name}}</view>
+                                <view class="huifu">回复</view>
+                                <view class="Comment_title">{{item.name2}}：</view>
+                            </view>
                         </view>
                         <view class="item_foot">
                             <view class="item_time">{{item.addtime}}</view>
                             <view class="item_btn">
-                                <view class="" bind:tap="on_input">评论</view>
+                                <view class="" data-index="{{idx}}" bind:tap="on_input">评论</view>
                             </view>
                             <!-- <view class="item_btn">
                                 <image mode="widthFix" src="../../img/zhuanfa.png" />
@@ -74,11 +82,9 @@
                                 </view>
                             </view> -->
                         </view>
-                        <view class="comment_reply">
-                            <view class="reply" wx:for="{{comment_reply}}" wx:key="index">
-                                {{item}}
-                            </view>
-                        </view>
+                        <!-- <view class="comment_reply">
+                            <view class="reply" wx:key="index">{{comment_reply}}</view>
+                        </view> -->
                     </view>
                 </view>
             </view>
@@ -104,5 +110,5 @@
     </view>
 </view>
 <view class="inp" wx:if="{{show}}">
-    <input placeholder="评论" bindblur='bindBlur' focus="{{focus}}" />
+    <input placeholder="评论" confirm-type='send' placeholder-style='color: #B4B4B4' bindblur='bindBlur' focus="{{focus}}" bindconfirm='confirm_search' />
 </view>

@@ -25,10 +25,12 @@ Page({
         this.setData({
           recommend: data
         })
-
-        wx.navigateTo({
-          url: `/pages/community/community`
+        wx.reLaunch({
+          url: `/pages/community/community?searchWord=${value}`
         })
+        // wx.redirectTo({
+        //   url: `/pages/community/community`
+        // })
       }
     })
 

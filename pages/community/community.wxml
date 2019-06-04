@@ -1,11 +1,14 @@
 <!-- pages/community/community.wxml -->
 <view class="container">
     <view class="top_nav">
-        <view>
-            <!-- <image mode="widthFix" src="../../img/xiaoxi.png" /> -->
+        <view class='search_box bg_ff'>
+            <view class='search df ai_c'>
+                <image mode='widthFix' src='/img/search.png'></image>
+                <input placeholder="搜索主题关键词" confirm-type='search' placeholder-style='color: #B4B4B4' bindinput="blur_search" bindconfirm='confirm_search' class='w90' />
+            </view>
         </view>
         <view>
-            <image bind:tap="link_search" mode="widthFix" src="../../img/fangdajing.png" />
+            <!-- <image bind:tap="link_search" mode="widthFix" src="../../img/fangdajing.png" /> -->
             <image class="dongtai" bind:tap="link_to" mode="widthFix" src="../../img/xiangji.png" />
         </view>
     </view>
@@ -17,7 +20,7 @@
         </block>
     </scroll-view> -->
     <view class="content">
-        <block wx:for="{{detail}}" wx:for-item="dd" wx:for-index="idx" wx:key="{{index}}">
+        <view wx:for="{{themeData.themeList}}" wx:for-item="dd" wx:for-index="idx" wx:key="{{index}}">
             <view class="Popular">
                 <view bind:tap="link_details" data-id='{{dd.id}}'>
                     <view class="Popular_title">
@@ -58,57 +61,6 @@
                     </view>
                 </view>
             </view>
-        </block>
-        <!-- <block wx:for="{{goodsData}}" wx:key="index" wx:for-item="dt">
-            <swiper-item class="content-item">
-                <scroll-view scroll-y="{{true}}" style="height: {{winHeight+'px'}}">
-                    <view wx:if="{{dt.type == 1}}">
-                        <block wx:for="{{dt.detail}}" wx:for-item="dd" data-index='{{index}}' wx:key="{{index}}">
-                            <view class="Popular" wx:if="{{!show}}">
-                                <view class="Popular_title">
-                                    <view class="pTitle_left">
-                                        <image class="Popular_headerImg" src="{{dd.headerUrl}}" />
-                                        <view class="">
-                                            <view class="Popular_name">{{dd.name}}</view>
-                                            <view class="Popular_time">{{dd.time}}</view>
-                                        </view>
-                                    </view>
-                                    <view class="pTitle_right">
-                                        <view class="guanzhu">+关注</view>
-                                        <view bind:tap="close" class="close_btn" data-idx='{{index}}'>
-                                            ×
-                                        </view>
-                                    </view>
-                                </view>
-                                <view class="Popular_content">{{dd.content}}</view>
-                                <view class="Popular_picBox">
-                                    <image class="Popular_bigPic" wx:for="{{dd.bigUrl}}" wx:key="index" src="{{item}}" />
-                                </view>
-                                <view class="Popular_foot">
-                                    <view>
-                                        <button plain="true" open-type="share">
-                                            <image mode="widthFix" src="../../image/zhuanfa.png" />
-                                        </button>
-                                       
-                                        <text>{{dd.zhuanfa}}</text>
-                                    </view>
-                                    <view>
-                                        <image mode="widthFix" src="../../image/huifu.png" />
-                                        <text>{{dd.huifu}}</text>
-                                    </view>
-                                    <view>
-                                        <image mode="widthFix" src="../../image/dianzan.png" />
-                                        <text>{{dd.dianzan}}</text>
-                                    </view>
-                                </view>
-                            </view>
-                        </block>
-                    </view>
-                    <view wx:if="{{dt.type == 2}}">
-                        <view>{{dt.name}}</view>
-                    </view>
-                </scroll-view>
-            </swiper-item>
-        </block> -->
+        </view>
     </view>
 </view>

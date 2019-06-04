@@ -93,6 +93,7 @@ Page({
   },
   getThemeList: function () {
     var that = this
+    console.log(that.data.themeData.page)
     var reqBody = {
       pageNum: that.data.themeData.page,
       seach: that.data.themeData.search,
@@ -102,6 +103,7 @@ Page({
       title: '加载中',
     })
     util.post(util.url.themeList, reqBody, (res) => {
+      console.log(res)
       wx.hideLoading()
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
@@ -111,6 +113,7 @@ Page({
         }
         var list = that.data.themeData.themeList
         list = list.concat(res.data);
+        console.log(list)
         that.setData({
           'themeData.themeList': list,
           'themeData.page': that.data.themeData.page + 1
