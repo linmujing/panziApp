@@ -13,7 +13,8 @@ Page({
     details: [],
     comment: [],
     page: 1,
-    comment_id: ''
+    comment_id: '',
+    Page_slide: true
   },
 
   /**
@@ -61,12 +62,27 @@ Page({
       pageNumber: that.data.page,
     };
     util.post(util.url.details_comment, reqBody, (res) => {
-      console.log(res)
+      wx.hideLoading()
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
       if (res.state == 1) {
-        var list = res.data
-        this.setData({
-          comment: list
+        var comment = that.data.comment
+        comment = comment.concat(res.data.list);
+        that.setData({
+          comment: comment,
+          page: that.data.page + 1
         })
+        // 判断上拉加载
+        var leg = that.data.comment.length
+        if (leg < res.data.total) {
+          this.setData({
+            Page_slide: true
+          })
+        } else {
+          this.setData({
+            Page_slide: false
+          })
+        }
       }
     })
   },
@@ -118,8 +134,6 @@ Page({
       }
     })
   },
-
-
   bindBlur(e) {
     this.setData({
       comment_reply: e.detail.value,
@@ -129,7 +143,6 @@ Page({
   },
   on_input(e) {
     var id = e.currentTarget.dataset.id;
-    console.log(id)
     this.setData({
       comment_id: id,
       focus: true,
@@ -147,6 +160,10 @@ Page({
     };
     util.post(util.url.add_content, reqBody, (res) => {
       if (res.state == 1) {
+        this.setData({
+          comment: [],
+          page: 1
+        })
         that.getComment()
       }
     })
@@ -190,14 +207,23 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({
+      comment: [],
+      page: 1
+    })
+    this.getComment()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if (this.data.Page_slide) {
+      this.setData({
+        Page_slide: false
+      })
+      this.getComment()
+    }
   },
 
   /**

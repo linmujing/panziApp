@@ -47,17 +47,17 @@
                     </view>
                 </view>
                 <view class="Popular_foot">
-                    <view>
+                    <view class='dianj'>
                         <button plain="true" open-type="share" data-id="{{dd.id}}" data-index="{{idx}}">
                             <image mode="widthFix" src="../../img/zhuanfa.png" data-id="{{dd.id}}" />
                         </button>
                         <text>{{dd.share}}</text>
                     </view>
-                    <view bind:tap="link_details" data-id='{{dd.id}}'>
+                    <view class='dianj' bind:tap="link_details" data-id='{{dd.id}}'>
                         <image mode="widthFix" src="../../img/huifu.png" />
                         <text>{{dd.comment}}</text>
                     </view>
-                    <view class="" bindtap='click_zan' data-index='{{idx}}'>
+                    <view class="dianj" bindtap='click_zan' data-index='{{idx}}'>
                         <view wx:if='{{dd.my_zan}}' class='heart'></view>
                         <image wx:else mode='widthFix' src='/img/dianzan.png' class='xin'></image>
                         <text class='oneline'>{{dd.zan}}</text>

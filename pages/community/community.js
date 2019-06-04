@@ -88,7 +88,7 @@ Page({
           res.data[i].check = false
         }
         var list = that.data.themeData.themeList
-        list = list.concat(res.data);
+        list = list.concat(res.data.list);
         console.log(list)
         that.setData({
           'themeData.themeList': list,
@@ -98,7 +98,7 @@ Page({
         var leg = that.data.themeData.themeList.length
         console.log(leg)
         // if (leg < res.count) {
-        if (leg < 100) {
+        if (leg < res.data.total) {
           console.log('可以')
           that.setData({
             Page_slide: true,

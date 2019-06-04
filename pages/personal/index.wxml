@@ -79,7 +79,14 @@
         <view class="my_list_item">
             <view>
                 <image mode="widthFix" src="/img/center-05.jpg" />
-                <text bind:tap="to">我的收藏</text>
+                <text bind:tap="to">我的二维码</text>
+            </view>
+            <image mode="widthFix" src="/img/enter_.png" />
+        </view>
+        <view class="my_list_item">
+            <view>
+                <image mode="widthFix" src="/img/center-05.jpg" />
+                <text bind:tap="to">我的客户</text>
             </view>
             <image mode="widthFix" src="/img/enter_.png" />
         </view>
