@@ -1,47 +1,19 @@
 var util = require('../../utils/util.js');
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userInfo:{},
     focus: false,
     show: false,
     comment_reply: '',
     details: [],
-    // details: {
-    //   headerUrl: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2146046871,2611785107&fm=27&gp=0.jpg",
-    //   name: "我是昵称",
-    //   time: "07:49",
-    //   content: "的身份绝对是决定是否看活动时间何带上几点开始对接凤凰军事开发诞节和杀害读书电话黑客技术很疯狂的手机号",
-    //   bigUrl: ["https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=234634259,4236876085&fm=27&gp=0.jpg", "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1752243568,253651337&fm=27&gp=0.jpg", "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2153937626,1074119156&fm=27&gp=0.jpg", "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=123807196,3598291508&fm=27&gp=0.jpg"],
-    //   zhuanfa: 299,
-    //   huifu: 613,
-    //   dianzan: 218,
-    //   hasChange: false
-    // },
-    comment: [{
-        headerUrl: "../../img/header.png",
-        name: "我是昵称",
-        content: "哇！你在哪里拍的？真好看",
-        huifu: [{
-          Comment_title: "麻花晶",
-          Comment_text: "这个看起来像盘子女人坊",
-        }, {
-          Comment_title: "李大海",
-          Comment_text: "我也觉得是",
-        }],
-        time: "4-9",
-      },
-      {
-        headerUrl: "../../img/header.png",
-        name: "我是昵称",
-        content: "哇！你在哪里拍的？真好看",
-        Comment_title: "草原没有海",
-        Comment_text: "这个看起来像盘子女人坊",
-        time: "4-9"
-      }
-    ]
+    comment: [],
+    page: 1,
+    comment_id: ''
   },
 
   /**
@@ -49,35 +21,44 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    console.log(options)
-    var id = options.id
     var userInfo = wx.getStorageSync('userInfo');
-
+    this.setData({
+      userInfo,
+      options
+    })
+    if (!userInfo) {
+      wx.navigateTo({
+        url: '/pages/login/index',
+      })
+    }
     // 动态详情
+    that.getDetail()
+    // 评论回复列表
+    that.getComment()
+  },
+  // 动态详情
+  getDetail: function(id){
+    var that = this
     var reBody = {
-      token: userInfo.token,
-      id: id
+      token: that.data.userInfo.token,
+      id: that.data.options.id
     };
     util.post(util.url.details, reBody, (res) => {
-      // console.log(res)
       if (res.state == 1) {
-        var list = that.data.details
-        // list = list.concat(res.data);
-        list = res.data;
-        console.log(list)
         that.setData({
-          // details: list
-          details: list,
+          details: res.data,
         })
       }
     })
-
-    // 评论回复列表
+  },
+  // 评论回复列表
+  getComment: function (id) {
+    var that = this
     var reqBody = {
-      token: userInfo.token,
-      id: id,
-      pageSize: 3,
-      pageNumber: 1,
+      token: that.data.userInfo.token,
+      id: that.data.options.id,
+      pageSize: 10,
+      pageNumber: that.data.page,
     };
     util.post(util.url.details_comment, reqBody, (res) => {
       console.log(res)
@@ -89,7 +70,6 @@ Page({
       }
     })
   },
-
   // 图片预览
   handleImagePreview(e) {
     var that = this
@@ -141,7 +121,6 @@ Page({
 
 
   bindBlur(e) {
-    // console.log(e)
     this.setData({
       comment_reply: e.detail.value,
       focus: false,
@@ -149,11 +128,35 @@ Page({
     })
   },
   on_input(e) {
-    console.log(e)
+    var id = e.currentTarget.dataset.id;
+    console.log(id)
     this.setData({
+      comment_id: id,
       focus: true,
       show: true
     })
+  },
+  send_msg: function () {
+    var that = this
+    var comment_id = that.data.comment_id
+    var reqBody = {
+      token: that.data.userInfo.token,
+      pid: comment_id,
+      sns_id: that.data.details.id,
+      content: that.data.comment_reply
+    };
+    util.post(util.url.add_content, reqBody, (res) => {
+      if (res.state == 1) {
+        that.getComment()
+      }
+    })
+  },
+  confirm_send: function(e){
+    var msg = e.detail.value
+    this.setData({
+      comment_reply: msg
+    })
+    this.send_msg()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

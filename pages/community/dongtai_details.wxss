@@ -86,10 +86,6 @@
     margin-bottom: 30rpx;
 }
 
-.details_main .main_content {
-    margin-top: 50rpx;
-}
-
 .details_main .main_content .main_input>image {
     width: 67rpx;
     height: 67rpx;
