@@ -42,14 +42,6 @@
             </view>
         </view>
         <view class="main_content">
-            <view class="main_input">
-                <image src="../../img/header.png" />
-                <view class="input_text">
-                    <image class="pen" mode="widthFix" src="../../img/pen.png" />
-                    <input placeholder="点击发表你的看法" />
-                    <image class="biaoqing" mode="widthFix" src="../../img/biaoqing.png" />
-                </view>
-            </view>
             <view class="main_list">
                 <view class="list_item" wx:for="{{comment}}" wx:key="index" wx:for-index="idx">
                     <view class="item_left">
@@ -57,39 +49,14 @@
                     </view>
                     <view class="item_right">
                         <view class="item_name">{{item.name}}</view>
-                        <view class="item_content">{{item.content}}</view>
-                        <view class="Comment" wx:key="index">
-                            <view class="comment_reply" wx:if="{{comment_reply}}">
-                                <view class="reply" data-index="{{idx}}" wx:key="index">
-                                    {{comment_reply}}
-                                </view>
-                            </view>
-                            <view class="Comment_list">
-                                <view class="Comment_title">{{item.name}}</view>
-                                <view class="huifu">回复</view>
-                                <view class="Comment_title">{{item.name2}}：</view>
-                            </view>
-                        </view>
+                        <view wx:if='{{item.name2}}' class="item_content">回复<text class='color_title'>{{item.name2}}</text>：{{item.content}}</view>
+                        <view wx:else class="item_content">{{item.content}}</view>
                         <view class="item_foot">
-                            <view class="item_time">{{item.addtime}}</view>
+                            <view class="item_time color_99 ft_12">{{item.addtime}}</view>
                             <view class="item_btn">
-                                <view class="" data-index="{{idx}}" bind:tap="on_input">评论</view>
+                                <view class="" data-id="{{item.id}}" bind:tap="on_input">评论</view>
                             </view>
-                            <!-- <view class="item_btn">
-                                <image mode="widthFix" src="../../img/zhuanfa.png" />
-                                <view class="">
-                                    <image mode="widthFix" src="../../img/huifu.png" />
-                                    <text class="">2</text>
-                                </view>
-                                <view class="">
-                                    <image mode="widthFix" src="../../img/zan.png" />
-                                    <text>54</text>
-                                </view>
-                            </view> -->
                         </view>
-                        <!-- <view class="comment_reply">
-                            <view class="reply" wx:key="index">{{comment_reply}}</view>
-                        </view> -->
                     </view>
                 </view>
             </view>
@@ -103,7 +70,7 @@
                     <text>转发</text>
                 </button>
             </view>
-            <view class="">
+            <view bindtap='on_input'>
                 <image mode="widthFix" src="../../img/huifu.png" />
                 评论
             </view>
@@ -111,11 +78,10 @@
                 <view wx:if='{{details.my_zan}}' class='heart'></view>
                 <image wx:else mode='widthFix' src='/img/dianzan.png' class='xin'></image>
                 喜欢
-                <!-- <text class='oneline'>{{details.zan}}</text> -->
             </view>
         </view>
     </view>
 </view>
 <view class="inp" wx:if="{{show}}">
-    <input placeholder="评论" confirm-type='send' placeholder-style='color: #B4B4B4' bindblur='bindBlur' focus="{{focus}}" bindconfirm='confirm_search' />
+    <input placeholder="评论" confirm-type='send' placeholder-style='color: #B4B4B4' bindblur='bindBlur' focus="{{focus}}" bindconfirm='confirm_send' />
 </view>

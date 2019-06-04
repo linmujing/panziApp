@@ -23,26 +23,23 @@ Page({
    */
   onLoad: function (options) {
 
-
-    // // 分类列表
-    // var userInfo = wx.getStorageSync('userInfo');
-    // // console.log(userInfo)
+    // 分类列表
     // var reqBody = {
     //   token: userInfo.token
     // };
     // util.post(util.url.category, reqBody, (res) => {
-    //   // console.log(res)
+    //   console.log(res)
     //   if (res.state == 1) {
-    //     // wx.setNavigationBarTitle({
-    //     //   title: res.data.title
-    //     // })
-    //     // var list = that.data.themeData.navList
-    //     // list = list.concat(res.data);
-    //     // that.getThemeList()
-    //     // that.setData({
-    //     //   banner: res.banner,
-    //     //   'themeData.navList': list
-    //     // })
+    //     wx.setNavigationBarTitle({
+    //       title: res.data.title
+    //     })
+    //     var list = that.data.themeData.navList
+    //     list = list.concat(res.data);
+    //     that.getThemeList()
+    //     that.setData({
+    //       banner: res.banner,
+    //       'themeData.navList': list
+    //     })
     //   }
     // })
 
@@ -66,7 +63,7 @@ Page({
 
   // 加载列表数据
   getThemeList: function () {
-    var userInfo = wx.getStorageSync('userInfo');
+    var userInfo = this.data.userInfo;
     var that = this
     console.log(that.data.themeData.page)
     var reqBody = {
@@ -147,7 +144,7 @@ Page({
       ++list[index].zan
     }
     list[index].my_zan = !list[index].my_zan
-    var userInfo = wx.getStorageSync('userInfo');
+    var userInfo = that.data.userInfo;
     // var id = e.currentTarget.dataset.id
 
     var reqBody = {
@@ -214,6 +211,19 @@ Page({
    */
   onShow: function () {
     var that = this
+    var userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      userInfo: userInfo
+    })
+    if (!userInfo) {
+      wx.navigateTo({
+        url: '/pages/login/index',
+      })
+    }
+    this.setData({
+      'themeData.themeList': [],
+      'themeData.page': 1
+    })
     that.getThemeList()
     // 获取设备可视窗口高度
     wx.getSystemInfo({
@@ -283,7 +293,7 @@ Page({
       console.log(list)
         ++list[index].share
 
-      var userInfo = wx.getStorageSync('userInfo');
+      var userInfo = that
       var id = res.target.dataset.id
 
       var reBody = {

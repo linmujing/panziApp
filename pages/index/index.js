@@ -93,6 +93,8 @@ Page({
     this.setData({
       current: e.detail.current
     })
+    this.stretch(300 + 'rpx')
+    this.shrink(260 + 'rpx')
   },
   // 收缩
   stretch(h){
