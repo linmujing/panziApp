@@ -69,7 +69,7 @@
             </view>
             <image mode="widthFix" src="/img/enter_.png" />
         </view>
-        <view class="my_list_item">
+        <view class="my_list_item" bind:tap="link_rank">
             <view>
                 <image mode="widthFix" src="/img/center-04.jpg" />
                 <text bind:tap="to">排行榜</text>

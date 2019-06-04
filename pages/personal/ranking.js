@@ -1,11 +1,12 @@
-// pages/personal/index.js
+// pages/personal/ranking.js
+var util = require('../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {},
+
   },
 
   /**
@@ -13,52 +14,21 @@ Page({
    */
   onLoad: function (options) {
     var userInfo = wx.getStorageSync('userInfo');
-    this.setData({
-      userInfo: userInfo
-    })
-    if (!userInfo) {
-      wx.navigateTo({
-        url: '/pages/login/index',
-      })
-    }
-  },
-  // 跳转所有订单
-  link_allOrder(e) {
-    var type = e.currentTarget.dataset.type
-    console.log(type)
-    wx.navigateTo({
-      url: './my_order?type=' + type
+    // console.log(userInfo)
+    var reqBody = {
+      token: userInfo.token
+    };
+    util.post(util.url.ranking, reqBody, (res) => {
+      // console.log(res)
+      var list = res.data
+      if (res.state == 1) {
+        this.setData({
+          rankData: list
+        })
+      }
     })
   },
-  link_orderComment() {
-    wx.navigateTo({
-      url: './order_comment'
-    })
-  },
-  // 跳转设置
-  link_setting() {
-    wx.navigateTo({
-      url: './zh_setting'
-    })
-  },
-  // 跳转我发布的
-  link_release() {
-    wx.navigateTo({
-      url: './my_fabu'
-    })
-  },
-  // 
-  link_rank() {
-    wx.navigateTo({
-      url: './ranking'
-    })
-  },
-  // 跳转任务中心
-  link_task() {
-    wx.navigateTo({
-      url: 'task_center'
-    })
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

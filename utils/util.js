@@ -69,6 +69,7 @@ const url = {
   my_list: urlFront + 'sns/my_list',
   del_sns: urlFront + 'sns/del_sns',
   search: urlFront + 'sns/search',
+  ranking: urlFront + 'Integral/ranking',
 
   slicesList: urlFront + 'Content/slicesList',
   slicesInfo: urlFront + 'Content/slicesInfo',
