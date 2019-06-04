@@ -15,7 +15,12 @@
         <view class="details_content">
             <view class="content_text">{{details.content}}</view>
             <view class="img_box">
-                <image wx:for="{{details.images}}" src="{{item}}" wx:key="index" />
+                <view class="imgs_warp" wx:for="{{details.images}}" wx:key="index">
+                    <image class="Popular_bigPic" src="{{item}}" mode="widthFix" data-current='{{index}}' data-id="{{idx}}" bind:tap="handleImagePreview" />
+                </view>
+                <!-- <view class="imgs_warp" wx:for="{{details.images}}" wx:key="index">
+                    <image src="{{item}}" mode="widthFix" />
+                </view> -->
             </view>
         </view>
     </view>
@@ -93,18 +98,20 @@
     <view class="details_footer">
         <view class="details_foot">
             <view class="share">
-                <button plain="true" open-type="share">
+                <button plain="true" open-type="share" data-id="{{details.id}}">
                     <image mode="widthFix" src="../../img/zhuanfa.png" />
+                    <text>转发</text>
                 </button>
-                <view>转发</view>
             </view>
             <view class="">
                 <image mode="widthFix" src="../../img/huifu.png" />
                 评论
             </view>
-            <view class="">
-                <image class="praise {{details.hasChange? 'changed': ''}}" hover-class="hover_praise" bindtap="praiseThis" data-curIndex="{{index}}" mode="widthFix" src="{{details.hasChange?'../../img/love-active.png':'../../img/dianzan.png'}}" />
+            <view class="" bindtap='click_zan' data-index='{{index}}'>
+                <view wx:if='{{details.my_zan}}' class='heart'></view>
+                <image wx:else mode='widthFix' src='/img/dianzan.png' class='xin'></image>
                 喜欢
+                <!-- <text class='oneline'>{{details.zan}}</text> -->
             </view>
         </view>
     </view>

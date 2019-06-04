@@ -16,30 +16,6 @@ Page({
       cid: ''
     },
     Page_slide: true,
-    goodsData: [{
-      name: '热门',
-      type: 1,
-    }, {
-      name: '关注',
-      type: 2,
-      detail: []
-    }, {
-      name: '影视',
-      type: 3,
-      detail: []
-    }, {
-      name: '客片',
-      detail: []
-    }, {
-      name: '变装',
-      detail: []
-    }, {
-      name: '同城',
-      detail: []
-    }, {
-      name: '门店',
-      detail: []
-    }],
   },
 
   /**
@@ -171,18 +147,16 @@ Page({
     // console.log(e)
     var that = this
     var index = e.currentTarget.dataset.index;
-    // console.log(index)
     var list = that.data.themeData.themeList
-    // console.log(list)
-    var type = 'add'
-    if (list[index].check) {
-      type = 'del'
-        --list[index].zan
+    // var type = 'add'
+    if (list[index].my_zan) {
+      // type = 'del'
+      --list[index].zan
     } else {
-      type = 'add'
-        ++list[index].zan
+      // type = 'add'
+      ++list[index].zan
     }
-    list[index].check = !list[index].check
+    list[index].my_zan = !list[index].my_zan
     var userInfo = wx.getStorageSync('userInfo');
     // var id = e.currentTarget.dataset.id
 

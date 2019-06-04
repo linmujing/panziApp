@@ -41,7 +41,10 @@
                     <view class="Popular_content">{{dd.content}}</view>
                 </view>
                 <view class="Popular_picBox">
-                    <image class="Popular_bigPic" wx:for="{{dd.images}}" wx:key="index1" src="{{item}}" data-current='{{index}}' data-id="{{idx}}" bind:tap="handleImagePreview" />
+                    <view class="picBox" wx:for="{{dd.images}}" wx:key="index1">
+                        <image class="Popular_bigPic" src="{{item}}" mode="widthFix" data-current='{{index}}' data-id="{{idx}}" bind:tap="handleImagePreview" />
+                        <!-- <image class="Popular_bigPic" wx:for="{{dd.images}}" wx:key="index1" src="{{item}}" data-current='{{index}}' data-id="{{idx}}" bind:tap="handleImagePreview" /> -->
+                    </view>
                 </view>
                 <view class="Popular_foot">
                     <view>
@@ -50,12 +53,12 @@
                         </button>
                         <text>{{dd.share}}</text>
                     </view>
-                    <view>
+                    <view bind:tap="link_details" data-id='{{dd.id}}'>
                         <image mode="widthFix" src="../../img/huifu.png" />
                         <text>{{dd.comment}}</text>
                     </view>
                     <view class="" bindtap='click_zan' data-index='{{idx}}'>
-                        <view wx:if='{{dd.check}}' class='heart'></view>
+                        <view wx:if='{{dd.my_zan}}' class='heart'></view>
                         <image wx:else mode='widthFix' src='/img/dianzan.png' class='xin'></image>
                         <text class='oneline'>{{dd.zan}}</text>
                     </view>

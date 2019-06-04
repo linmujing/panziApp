@@ -1,15 +1,15 @@
-<!--pages/theme/index.wxml-->
+<!-- pages/theme/index.wxml -->
 <view class='search_box bg_ff'>
   <view class='search df ai_c'>
     <image mode='widthFix' src='/img/search.png'></image>
-    <input placeholder="搜索主题关键词" confirm-type='search' placeholder-style='color: #B4B4B4' bindinput="blur_search" bindconfirm='confirm_search' class='w90'/>
+    <input placeholder="搜索主题关键词" confirm-type='search' placeholder-style='color: #B4B4B4' bindinput="blur_search" bindconfirm='confirm_search' class='w90' />
   </view>
 </view>
 <view class='banner bg_ff'>
   <swiper autoplay circular interval='3000'>
     <view wx:for="{{banner}}" wx:key='{{index}}'>
       <swiper-item>
-        <image src="{{item}}" class='w100 h100'/>
+        <image src="{{item}}" class='w100 h100' />
       </swiper-item>
     </view>
   </swiper>
@@ -17,7 +17,9 @@
 <!-- 导航栏 -->
 <view class='nav bg_ff'>
   <scroll-view scroll-x class='df' scroll-with-animation style="width: auto;">
-    <view wx:for='{{themeData.navList}}' wx:key='index' class='item {{themeData.current==index?"active":""}}' data-index='{{index}}' bindtap='click_nav' data-id='{{item.id}}'>{{item.name}}</view>
+    <view wx:for='{{themeData.navList}}' wx:key='index' class='item {{themeData.current==index?"active":""}}' data-index='{{index}}' bindtap='click_nav' data-id='{{item.id}}'>
+      {{item.name}}
+    </view>
   </scroll-view>
 </view>
 <!-- 列表 -->

@@ -120,11 +120,24 @@ page {
     white-space: normal; */
 }
 
-.content .Popular_bigPic {
-    width: 210rpx;
+.content .Popular_picBox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content .Popular_picBox .picBox {
+    width: 30%;
     height: 210rpx;
-    border-radius: 10rpx;
+    overflow: hidden;
     margin: 10rpx;
+    border-radius: 10rpx
+}
+
+.content .Popular_bigPic {
+    width: 100%;
+    /* height: 210rpx; */
+    border-radius: 10rpx;
+
 }
 
 .content .Popular_foot {

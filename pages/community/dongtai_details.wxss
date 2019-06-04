@@ -40,13 +40,20 @@
 .details_content .img_box {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin: 10rpx 0;
+    /* justify-content: space-between; */
+    /* margin: 10rpx 0; */
+}
+
+.details_content .imgs_warp {
+    width: 30%;
+    height: 210rpx;
+    overflow: hidden;
+    border-radius: 10rpx;
+    margin-right: 10rpx;
 }
 
 .details_content .img_box image {
-    width: 220rpx;
-    height: 220rpx;
+    width: 100%;
     border-radius: 10rpx;
     margin-top: 10rpx;
 }
@@ -219,11 +226,16 @@
     margin-right: 10rpx;
 }
 
-.details_foot button {
+.details_foot .share button {
+    display: flex;
     border: none;
     padding: 0 !important;
     margin: 0 !important;
     line-height: 1;
+}
+
+.details_foot .share text {
+    font-size: 28rpx;
 }
 
 .comment_reply {
@@ -253,4 +265,31 @@
 .inp input {
     background: #fff;
     padding: 10rpx 20rpx;
+}
+
+/* 爱心 */
+.heart {
+    position: relative;
+    width: 38rpx;
+    height: 28rpx;
+}
+
+.heart:before,
+.heart:after {
+    position: absolute;
+    content: "";
+    left: 16rpx;
+    top: 0;
+    width: 18rpx;
+    height: 28rpx;
+    background: #FDA2B3;
+    border-radius: 16rpx 16rpx 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
 }

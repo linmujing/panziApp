@@ -19,16 +19,22 @@ page {
     padding: 30rpx;
 }
 
+.img_upload {
+    width: 30%;
+    height: 210rpx;
+    margin: 10rpx;
+}
+
 .upload_btn {
-    width: 160rpx;
-    height: 160rpx;
+    width: 100%;
+    height: 100%;
     background: #eee;
     text-align: center;
 }
 
 .upload_btn image {
     width: 73rpx;
-    margin-top: 30rpx;
+    margin-top: 50rpx;
 }
 
 .upload_btn view {
@@ -36,33 +42,36 @@ page {
     font-size: 30rpx;
 }
 
-.upload_content {
+/* .upload_content {
     display: flex;
     flex-wrap: wrap;
-}
+} */
 
 .img_show {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
     /* justify-content: space-evenly; */
 }
 
 .small_imageBox {
-    width: 160rpx;
-    height: 160rpx;
-    margin: 0 60rpx 20rpx 0;
+    width: 30%;
+    height: 210rpx;
+    overflow: hidden;
+    /* margin: 0 60rpx 20rpx 0; */
+    margin: 10rpx;
     position: relative;
 }
 
 .small_image {
-    width: 160rpx;
-    height: 160rpx;
+    width: 100%;
+    /* height: 160rpx; */
 }
 
 .close_image {
     position: absolute;
-    top: -15rpx;
-    right: -15rpx;
+    top: 0rpx;
+    right: 0rpx;
     width: 38rpx;
 }
 
