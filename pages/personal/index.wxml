@@ -2,7 +2,7 @@
     <view class="person_info">
         <view class="info_title">
             <view bind:tap="link_setting">设置</view>
-            <image mode="widthFix" class="" src="/img/mesg.png" />
+            <!-- <image mode="widthFix" class="" src="/img/mesg.png" /> -->
         </view>
         <view class="info_details">
             <image mode="widthFix" class="personInfo_bg" src="/img/person_topPic.png" />
@@ -23,31 +23,27 @@
     <view class="my_order">
         <view class="order_title">
             <view class="title_left">我的订单</view>
-            <view class="look_all" bind:tap="link_allOrder">
+            <view class="look_all" bind:tap="link_allOrder" data-type=''>
                 查看全部
                 <image mode="widthFix" src="/img/enter_.png" />
             </view>
         </view>
         <view class="order_list">
-            <!-- <view>
-                <image src="../../img/money1.png" />
+            <view bind:tap="link_allOrder" data-type='0'>
+                <image src="/img/money1.png" />
                 <view>待付款</view>
-            </view> -->
-            <view bind:tap="link_allOrder">
+            </view>
+            <view bind:tap="link_allOrder" data-type='1'>
                 <image src="/img/money2.png" />
                 <view>待发货</view>
             </view>
-            <view bind:tap="link_allOrder">
+            <view bind:tap="link_allOrder" data-type='2'>
                 <image src="/img/money3.png" />
                 <view>待收货</view>
             </view>
-            <view bind:tap="link_orderComment">
-                <image src="/img/money4.png" />
-                <view>评论</view>
-            </view>
-            <view bind:tap="link_allOrder">
+            <view bind:tap="link_allOrder" data-type='3'>
                 <image src="/img/money5.png" />
-                <view>退换/售后</view>
+                <view>已收货</view>
             </view>
         </view>
     </view>

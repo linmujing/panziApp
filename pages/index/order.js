@@ -47,9 +47,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log(app.globalData.Select_address)
     if (app.globalData.Select_address) {
       this.setData({
-        addr: app.globalData.Select_address
+        addr: app.globalData.Select_address,
+        addr_state: false
       })
     }
   },
@@ -174,7 +176,16 @@ Page({
       url: '/pages/personal/address?source=1000',
     })
   },
-
+  click_order: function () {
+    wx.navigateTo({
+      url: '/pages/personal/my_order',
+    })
+  },
+  click_index: function () {
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

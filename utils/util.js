@@ -18,6 +18,7 @@ const urlFront = 'https://vip2.pznrfsy.com/index/';
 const url = {
   login: urlFront + 'index/login',
   settel: urlFront + 'Player/settel',
+  erporder: urlFront + 'Player/erporder',
 
   addrList: urlFront + 'integral/profile',
   addAddr: urlFront + 'integral/address',
@@ -29,6 +30,8 @@ const url = {
   orderInfo: urlFront + 'integral/order_info',
   orderConvert: urlFront + 'integral/convert_goods',
   recommend: urlFront + 'integral/istj',
+  myOrder: urlFront + 'integral/myOrder',
+  finish_order: urlFront + 'integral/finish_order',
 
   signData: urlFront + 'sign/index',
   checkIn: urlFront + 'sign/sign',
@@ -50,6 +53,8 @@ const url = {
   themeList: urlFront + 'Content/themeList',
   themeInfo: urlFront + 'Content/themeInfo',
   themeZan: urlFront + 'Content/themeZan',
+
+  videoList: urlFront + 'Content/videoList',
 
   category: urlFront + 'sns/category',
   index_list: urlFront + 'sns/index_list',

@@ -4,7 +4,7 @@
         <view>我的头像</view>
         <view class="right">
             <image class="header" src="{{userInfo.avatarUrl}}" />
-            <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
+            <!-- <image class="enter_" mode="widthFix" src="../../img/enter_.png" /> -->
         </view>
     </view>
     <view class="Member_name">
@@ -18,7 +18,7 @@
         <view>昵称</view>
         <view class="right">
             <view>{{userInfo.nickName}}</view>
-            <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
+            <!-- <image class="enter_" mode="widthFix" src="../../img/enter_.png" /> -->
         </view>
     </view>
     <view class="weixin">
@@ -31,8 +31,10 @@
     <view class="gender">
         <view>性别</view>
         <view class="right">
-            <view>未知</view>
-            <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
+            <view wx:if='{{userInfo.gender == 0}}'>保密</view>
+            <view wx:if='{{userInfo.gender == 1}}'>男</view>
+            <view wx:if='{{userInfo.gender == 2}}'>女</view>
+            <!-- <image class="enter_" mode="widthFix" src="../../img/enter_.png" /> -->
         </view>
     </view>
     <view class="data">

@@ -1,0 +1,9 @@
+/* pages/index/photos_list.wxss */
+.list{background: #fff;margin-top: 10rpx;}
+.list .name{padding: 20rpx 0 0 30rpx;}
+.list .order{padding: 20rpx 30rpx;}
+.list .state{border-top: 1rpx solid #E9E9E9;margin: 0 30rpx;padding: 20rpx 0;}
+.list .line{width: 90rpx;position: relative;top: 31rpx;border-top: 4rpx dashed #D0D0D0;}
+.list .line2{width: 90rpx;position: relative;top: 31rpx;border-top: 4rpx solid #F6AFC1;}
+.txt{margin-top: 10rpx;font-size: 26rpx;}
+.color_dd{color: #D0D0D0;}

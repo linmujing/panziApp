@@ -2,40 +2,60 @@
 <!-- 导航 -->
 <view class="nav">
     <view class='tab'>
-        <block wx:for="{{goodsData}}" wx:key="{{index}}">
-            <view class="{{currentTab==index ? 'active' :'' }}" data-current='{{index}}' bindtap='switchNav' data-name='{{item.name}}'>
+        <block wx:for="{{tabArr}}" wx:key="{{index}}">
+            <view class="{{currentTab==index ? 'active' :'' }}" data-current='{{index}}' bindtap='switchNav' data-type='{{item.type}}'>
                 {{item.name}}
             </view>
         </block>
     </view>
 </view>
 <view class="order_list">
-    <view class="order_item" wx:for="{{allOrder}}" wx:key="index">
+    <view class="order_item" wx:for="{{list}}" wx:key="index">
         <view class="item_title">
-            <view>积分商城</view>
-            <view>已发货</view>
+            <view>订单号：{{item.convert_no}}</view>
+            <view wx:if='{{item.status == 0}}'>未支付</view>
+            <view wx:elif='{{item.status == 1}}'>未发货</view>
+            <view wx:elif='{{item.status == 2}}'>已发货</view>
+            <view wx:elif='{{item.status == 3}}'>确认收货</view>
         </view>
         <view class="item_content">
             <view class="content_left">
-                <image mode="widthFix" src="{{item.img}}" />
+                <image mode="widthFix" src="{{item.goods_img}}" />
                 <view class="">
-                    <view class="content_title">{{item.title}}</view>
-                    <view>{{item.tips}}</view>
+                    <view class="content_title">{{item.goods_name}}</view>
+                    <view class='mr'>{{item.cid}}</view>
                 </view>
             </view>
             <view class="content_right">
-                <view class="price">{{item.price}}积分</view>
-                <view class="price_">{{item.price_}}积分</view>
+                <view class="price">{{item.money / item.num}}积分</view>
+                <!-- <view class="price_">{{item.price_}}积分</view> -->
                 <view class="num">×{{item.num}}</view>
             </view>
         </view>
-        <view class="content_total">合计:{{item.total}}积分</view>
+        <view class='df jc_sb ai_c'>
+          <view class='ft_12 color_99 pl_10'>下单时间：{{item.create_time}}</view>
+          <view class="content_total">合计：{{item.money}}积分</view>
+        </view>
         <view class="content_btn">
-            <text>更多</text>
-            <view class="">查看物流</view>
-            <!-- <view class="yanchang shouhuo">延长收货</view> -->
-            <view class="" bindtap='click_comment'>评价</view>
-            <view class="">确认收货</view>
+            <!-- <text>更多</text> -->
+            <view class='btn' wx:if='{{item.status == 0}}' bindtap='click_pay' data-id='{{item.id}}'>继续支付</view>
+            <view class='btn' wx:if='{{item.status == 1 || item.status == 2 || item.status == 3}}' bindtap='click_open' data-name='{{item.logistics}}' data-order='{{item.logistics_no}}'>查看物流</view>
+            <view class='btn' wx:if='{{item.status == 2}}' bindtap='click_qrsh' data-id='{{item.id}}' data-oid='{{item.convert_no}}'>确认收货</view>
+            <view wx:if='{{item.status == 3}}'><button open-type="contact" bindtap='click_service'>售后客服</button></view>
+            <!-- <view class="" bindtap='click_comment'>评价</view> -->
         </view>
     </view>
+</view>
+
+<!-- 查看物流 -->
+<view hidden='{{logis.popup_state}}' class='popup'>
+  <view class='box'>
+    <view class='ta_l'>
+      <view>物流公司： <text>{{logis.wl_company}}</text></view>
+      <view class='mt_10'>物流单号： <text>{{logis.wl_order}}</text></view>
+    </view>
+    <view class='btn'>
+      <view class='btn_title' bindtap='click_close'>确定</view>
+    </view>
+  </view>
 </view>

@@ -1,4 +1,6 @@
 // pages/index/video.js
+var util = require('../../utils/util.js');
+const app = getApp()   
 Page({
 
   /**
@@ -6,19 +8,25 @@ Page({
    */
   data: {
     videoPlay: null,
-    videoData: {
-      list: [
-        { title: '强势登陆湖南卫视', info: '客片比样片更唯美', img: 'http://mmm.pznrfsy.com//uploads/20181230/d16f0c7963596c51d22e6cb265e8602f.png', url: 'http://mmm.pznrfsy.com//uploads/20181230/229a23ff3f60017a3ba3e8f3c8b8d35a.mp4' },
-        { title: '强势登陆湖南卫视', info: '客片比样片更唯美', img: 'http://mmm.pznrfsy.com//uploads/20181230/d16f0c7963596c51d22e6cb265e8602f.png', url: 'http://mmm.pznrfsy.com//uploads/20181230/229a23ff3f60017a3ba3e8f3c8b8d35a.mp4' }
-      ]
-    }
+    page: 1,
+    Page_slide: true,
+    list: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    var userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      userInfo: userInfo
+    })
+    if (!userInfo) {
+      wx.navigateTo({
+        url: '/pages/login/index',
+      })
+    }
+    this.getList()
   },
 
   /**
@@ -49,6 +57,40 @@ Page({
       videoContext.play();
     }, 500)
   },
+  getList: function () {
+    var that = this
+    var reqBody = {
+      pageNum: that.data.page,
+      token: that.data.userInfo.token
+    };
+    wx.showLoading({
+      title: '加载中',
+    })
+    util.post(util.url.videoList, reqBody, (res) => {
+      wx.hideLoading()
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+      if (res.state == 1) {
+        var list = that.data.list
+        list = list.concat(res.data);
+        that.setData({
+          list: list,
+          page: that.data.page + 1
+        })
+        // 判断上拉加载
+        var leg = that.data.list.length
+        if (leg < res.count) {
+          this.setData({
+            Page_slide: true
+          })
+        } else {
+          this.setData({
+            Page_slide: false
+          })
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -67,19 +109,27 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({
+      list: [],
+      page: 1
+    })
+    this.getList()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if (this.data.Page_slide) {
+      this.setData({
+        Page_slide: false
+      })
+      this.getList()
+    }
   },
-
   /**
-   * 用户点击右上角分享
-   */
+  * 用户点击右上角分享
+  */
   onShareAppMessage: function () {
 
   }

@@ -9,6 +9,7 @@
     "pages/index/message",
     "pages/index/star",
     "pages/index/star_detail",
+    "pages/index/photos_list",
     "pages/index/my_photos",
     "pages/index/store",
     "pages/index/store_detail",

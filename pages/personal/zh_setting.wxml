@@ -6,7 +6,7 @@
             <image src="{{userInfo.avatarUrl}}" />
             <view class="">
                 <view class="info_name">{{userInfo.nickName}}</view>
-                <view class="">用户名：88888888</view>
+                <view class="">手机号：{{userInfo.tel}}</view>
             </view>
         </view>
         <image class="enter" mode="widthFix" src="../../img/enter_.png" />
