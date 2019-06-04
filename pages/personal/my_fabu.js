@@ -104,12 +104,12 @@ Page({
     }
     util.post(util.url.del_sns, reBody, (res) => {
       console.log(res)
-      var list = this.data.list
+      var list = this.data.themeData.themeList
       console.log(list)
       list[idx].status = 2
       console.log(list)
       this.setData({
-        list: list
+        'themeData.themeList': list
       })
       // var data = res.data
       // if (res.state == 1) {
