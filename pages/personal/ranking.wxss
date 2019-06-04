@@ -1,0 +1,45 @@
+/* pages/personal/ranking.wxss */
+
+.rank_nav {
+    display: flex;
+    align-items: center;
+    background: #F4B6C5;
+    padding: 20rpx;
+}
+
+.rank_nav>view {
+    text-align: center;
+}
+
+.rank_item {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    padding: 20rpx;
+    color: #999;
+}
+
+.rank_item>view {
+    text-align: center;
+}
+
+.ranking {
+    width: 80rpx;
+
+}
+
+.title {
+    width: 450rpx;
+
+}
+
+.num {
+    width: 100rpx;
+}
+
+.time {
+    width: 140rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

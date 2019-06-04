@@ -32,7 +32,9 @@
     "pages/personal/personal_info",
     "pages/personal/task_center",
     "pages/personal/my_fabu",
-    "pages/personal/order_comment"
+    "pages/personal/order_comment",
+    "pages/personal/ranking"
+
   ],
   "navigateToMiniProgramAppIdList": [
     "wx5ba0b0241434741e"

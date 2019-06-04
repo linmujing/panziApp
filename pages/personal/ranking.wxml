@@ -1,0 +1,19 @@
+<!-- pages/personal/ranking.wxml -->
+<view class="container">
+    <view class="rank_nav">
+        <view class="ranking">排名</view>
+        <view class="title">名称</view>
+        <view class="num">数量</view>
+        <view class="time">时间</view>
+    </view>
+    <view class="rank_item" wx:for="{{rankData}}" wx:key="index">
+        <view class="ranking">{{item.TOP}}</view>
+        <view class="title">{{item.THEMENAME}}</view>
+        <view class="num">{{item.NUM}}</view>
+        <view class="time">
+            <view class="year">{{item.YEAR}}</view>
+            -
+            <view class="month">{{item.MONTH}}</view>
+        </view>
+    </view>
+</view>

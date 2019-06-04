@@ -22,39 +22,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    that.getThemeList()
-    // 获取设备可视窗口高度
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          // winHeight: res.windowHeight - 100
-          winHeight: res.windowHeight - 10
-        });
-      }
-    })
 
-    // 分类列表
-    var userInfo = wx.getStorageSync('userInfo');
-    // console.log(userInfo)
-    var reqBody = {
-      token: userInfo.token
-    };
-    util.post(util.url.category, reqBody, (res) => {
-      // console.log(res)
-      if (res.state == 1) {
-        // wx.setNavigationBarTitle({
-        //   title: res.data.title
-        // })
-        // var list = that.data.themeData.navList
-        // list = list.concat(res.data);
-        // that.getThemeList()
-        // that.setData({
-        //   banner: res.banner,
-        //   'themeData.navList': list
-        // })
-      }
-    })
+
+    // // 分类列表
+    // var userInfo = wx.getStorageSync('userInfo');
+    // // console.log(userInfo)
+    // var reqBody = {
+    //   token: userInfo.token
+    // };
+    // util.post(util.url.category, reqBody, (res) => {
+    //   // console.log(res)
+    //   if (res.state == 1) {
+    //     // wx.setNavigationBarTitle({
+    //     //   title: res.data.title
+    //     // })
+    //     // var list = that.data.themeData.navList
+    //     // list = list.concat(res.data);
+    //     // that.getThemeList()
+    //     // that.setData({
+    //     //   banner: res.banner,
+    //     //   'themeData.navList': list
+    //     // })
+    //   }
+    // })
 
   },
 
@@ -223,7 +213,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var that = this
+    that.getThemeList()
+    // 获取设备可视窗口高度
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          // winHeight: res.windowHeight - 100
+          winHeight: res.windowHeight - 10
+        });
+      }
+    })
   },
 
   /**
