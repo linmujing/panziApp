@@ -65,10 +65,10 @@ Page({
   },
   getPhoto: function(){
     var reqBody = {
-      // order: this.data.options.order,
-      // tel: this.data.options.tel
-      order: 'Abc9999999999',
-      tel: '18774092987'
+      order: this.data.options.order,
+      tel: this.data.options.tel
+      // order: 'Abc9999999999',
+      // tel: '18774092987'
     };
     wx.showLoading({
       title: '加载中',

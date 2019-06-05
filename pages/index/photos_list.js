@@ -62,14 +62,14 @@ Page({
     var tel = e.currentTarget.dataset.tel;
     var state = e.currentTarget.dataset.state;
     var order = e.currentTarget.dataset.order;
-    // if (state != 5){
-    //   wx.showToast({
-    //     title: '订单还未完成哦~',
-    //     icon: 'none',
-    //     duration: 1000
-    //   })
-    //   return
-    // }
+    if (state != 5){
+      wx.showToast({
+        title: '订单还未完成哦~',
+        icon: 'none',
+        duration: 1000
+      })
+      return
+    }
     wx.navigateTo({
       url: 'my_photos?tel=' +tel + '&order=' + order,
     })
