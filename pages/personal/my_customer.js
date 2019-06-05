@@ -1,12 +1,14 @@
-// pages/index/photos_list.js
+// pages/personal/my_customer.js
 var util = require('../../utils/util.js');
-const app = getApp()
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    Page_slide: true,
+    page: 1,
     list: []
   },
 
@@ -41,40 +43,29 @@ Page({
   },
   getList: function () {
     var that = this
+    var userInfo = that.data.userInfo
     var reqBody = {
-      token: that.data.userInfo.token
+      token: userInfo.token,
+      page: that.data.page
     };
-    wx.showLoading({
-      title: '加载中',
-    })
-    util.post(util.url.erporder, reqBody, (res) => {
+    util.post(util.url.myjunior, reqBody, (res) => {
       wx.hideLoading()
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
       if (res.state == 1) {
+        var list = that.data.list
+        list = list.concat(res.data);
         that.setData({
-          list: res.data
+          list: list,
+          page: that.data.page + 1
+        })
+      } else {
+        that.setData({
+          Page_slide: false
         })
       }
     })
   },
-  click_photo: function (e) {
-    var tel = e.currentTarget.dataset.tel;
-    var state = e.currentTarget.dataset.state;
-    var order = e.currentTarget.dataset.order;
-    if (state != 5){
-      wx.showToast({
-        title: '订单还未完成哦~',
-        icon: 'none',
-        duration: 1000
-      })
-      return
-    }
-    wx.navigateTo({
-      url: 'my_photos?tel=' +tel + '&order=' + order,
-    })
-  },
-  
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -93,6 +84,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    this.setData({
+      list: [],
+      page: 1
+    })
     this.getList()
   },
 
@@ -100,7 +95,12 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if (this.data.Page_slide) {
+      this.setData({
+        Page_slide: false
+      })
+      this.getList()
+    }
   },
 
   /**

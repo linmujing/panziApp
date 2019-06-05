@@ -1,5 +1,5 @@
 <!--pages/index/photos_list.wxml-->
-<view class='list' wx:for='{{list}}' wx:key='{{index}}' bindtap='click_photo' data-id='{{item.ORDERSN}}' data-state='{{item.STATUS}}'>
+<view class='list' wx:for='{{list}}' wx:key='{{index}}' bindtap='click_photo' data-tel='{{item.MOBILE}}' data-state='{{item.STATUS}}' data-order='{{item.ORDERSN}}'>
   <view class='name'>姓名：{{item.NAME}}</view>
   <view class='df jc_sb order'>
     <view>订单号：{{item.ORDERSN}}</view>

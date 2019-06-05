@@ -1,0 +1,13 @@
+<!--pages/personal/my_integral.wxml-->
+<view class='jf'>
+  <view class='font'>{{userInfo.integral}}</view>
+  <view class='ft_13 mt_5'>当前可用积分</view>
+</view>
+<view class='list df ai_c jc_sb' wx:for='{{list}}' wx:key='{{index}}'>
+  <view>
+    <view>{{item.type}}</view>
+    <view class='color_99 mt_5 ft_12'>{{item.date}}</view>
+  </view>
+  <view>{{item.erpintegral}}</view>
+</view>
+<view class='ta_c pt_10 pb_10 ft_12 color_99'>{{Page_slide ? '上拉加载更多~' : '没有更多了~'}}</view>

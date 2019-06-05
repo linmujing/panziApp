@@ -2,7 +2,7 @@
 <view class="container">
     <view class="rank_nav">
         <view class="ranking">排名</view>
-        <view class="title">名称</view>
+        <view class="title">主题</view>
         <view class="num">数量</view>
         <!-- <view class="time">时间</view> -->
     </view>
@@ -15,7 +15,7 @@
         </view>
         <view class="title">{{item.THEMENAME}}</view>
         <view class="number">
-            <image mode="widthFix" src="../../img/p_xing.png" />
+            <image mode="widthFix" src="../../img/star.png" />
             {{item.NUM}}
         </view>
         <!-- <view class="time">

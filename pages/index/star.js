@@ -21,15 +21,9 @@ Page({
     wx.setNavigationBarTitle({
       title: options.title
     })
-    if (options.title == '明星合作'){
-      this.setData({
-        type: 1
-      })
-    }else{
-      this.setData({
-        type: 2
-      })
-    }
+    this.setData({
+      type: options.type
+    })
     var userInfo = wx.getStorageSync('userInfo');
     this.setData({
       userInfo: userInfo

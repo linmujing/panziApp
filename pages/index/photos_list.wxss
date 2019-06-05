@@ -7,3 +7,6 @@
 .list .line2{width: 90rpx;position: relative;top: 31rpx;border-top: 4rpx solid #F6AFC1;}
 .txt{margin-top: 10rpx;font-size: 26rpx;}
 .color_dd{color: #D0D0D0;}
+
+
+

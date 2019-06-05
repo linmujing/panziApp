@@ -145,6 +145,18 @@ Page({
           url: '/pages/index/video',
         })
         break
+      case 4:
+        break
+      case 5:
+        wx.navigateTo({
+          url: '/pages/index/star?title=' + title + '&type=2'
+        })
+        break
+      case 6:
+        wx.navigateTo({
+          url: '/pages/index/star?title=' + title + '&type=1'
+        })
+        break
       case 7:
         wx.navigateTo({
           url: '/pages/index/jifen_mall',
@@ -168,10 +180,10 @@ Page({
           url: '/pages/index/photos_list',
         })
         break
-      default:
-        wx.navigateTo({
-          url: '/pages/index/star?title=' + title
-        })
+      // default:
+      //   wx.navigateTo({
+      //     url: '/pages/index/star?title=' + title
+      //   })
     }
   },
   click_msg: function(){
