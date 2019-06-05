@@ -23,8 +23,10 @@
   <view class='btn' bindtap='savePic'>保存图片</view>
 </view> -->
 
-<view hidden='{{preview.preview_state}}' class='preview df ai_c jc_c' bindtap='hide'>
-  <image mode='aspectFit' src='{{preview.imgSrc}}' class='w100'></image>
+<view hidden='{{preview.preview_state}}' class='preview' bindtap='hide'>
+  <view class='pre ta_c'>
+    <image mode='widthFix' src='{{preview.imgSrc}}' class='w100'></image>
+  </view>
 </view>
 
 <!-- 弹窗 -->

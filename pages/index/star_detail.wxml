@@ -9,7 +9,8 @@
   <view>
     <image mode='widthFix' src='{{item}}'></image>
   </view>
-  <!-- <view class='tip'>
-    <image mode='widthFix' src='{{heng}}'></image>
-  </view> -->
+  <view class='tip'>
+    <image mode='widthFix' wx:if='{{type == 1}}' src='{{logo}}'></image>
+    <image mode='widthFix' wx:else src='{{logo2}}'></image>
+  </view>
 </view>

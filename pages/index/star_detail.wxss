@@ -18,4 +18,4 @@ page{
 }
 .list{margin: 20rpx;padding: 8rpx;border: 1rpx solid #C8C8C8;}
 .list image{width: 100%;display: block;}
-.list .tip{margin: 20rpx 100rpx;}
+.list .tip{margin: 20rpx 0;}

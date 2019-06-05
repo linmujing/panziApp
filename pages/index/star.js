@@ -52,7 +52,7 @@ Page({
   click_detail: function(e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: 'star_detail?id=' + id,
+      url: 'star_detail?id=' + id + '&type=' + this.data.type,
     })
   },
   getList: function () {
