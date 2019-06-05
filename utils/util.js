@@ -78,6 +78,7 @@ const url = {
   del_sns: urlFront + 'sns/del_sns',
   search: urlFront + 'sns/search',
   ranking: urlFront + 'Integral/ranking',
+  Player: urlFront + 'Player/index',
 
   slicesList: urlFront + 'Content/slicesList',
   slicesInfo: urlFront + 'Content/slicesInfo',

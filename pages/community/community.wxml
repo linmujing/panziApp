@@ -53,7 +53,7 @@
                         </button>
                         <text>{{dd.share}}</text>
                     </view>
-                    <view class='dianj' bind:tap="link_details" data-id='{{dd.id}}'>
+                    <view class='dianj pinglun' bind:tap="link_details" data-id='{{dd.id}}'>
                         <image mode="widthFix" src="../../img/huifu.png" />
                         <text>{{dd.comment}}</text>
                     </view>
