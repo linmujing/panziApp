@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo:{},
+    userInfo: {},
     focus: false,
     show: false,
     comment_reply: '',
@@ -14,7 +14,7 @@ Page({
     comment: [],
     page: 1,
     comment_id: '',
-    Page_slide: true
+    Page_slide: true,
   },
 
   /**
@@ -38,7 +38,7 @@ Page({
     that.getComment()
   },
   // 动态详情
-  getDetail: function(id){
+  getDetail: function (id) {
     var that = this
     var reBody = {
       token: that.data.userInfo.token,
@@ -168,7 +168,7 @@ Page({
       }
     })
   },
-  confirm_send: function(e){
+  confirm_send: function (e) {
     var msg = e.detail.value
     this.setData({
       comment_reply: msg

@@ -49,7 +49,11 @@
                     </view>
                     <view class="item_right">
                         <view class="item_name">{{item.name}}</view>
-                        <view wx:if='{{item.name2}}' class="item_content">回复<text class='color_title'>{{item.name2}}</text>：{{item.content}}</view>
+                        <view wx:if='{{item.name2}}' class="item_content">
+                            回复
+                            <text class='color_title'>{{item.name2}}</text>
+                            ：{{item.content}}
+                        </view>
                         <view wx:else class="item_content">{{item.content}}</view>
                         <view class="item_foot">
                             <view class="item_time color_99 ft_12">{{item.addtime}}</view>

@@ -3,45 +3,57 @@
     <view class="my_header">
         <view>我的头像</view>
         <view class="right">
-            <image class="header" src="{{userInfo.avatarUrl}}" />
+            <image class="header" src="{{userInfo.headimgurl}}" />
             <!-- <image class="enter_" mode="widthFix" src="../../img/enter_.png" /> -->
         </view>
     </view>
-    <view class="Member_name">
+    <view class="Member_name" bind:tap="on_input" data-id="1">
         <view>会员名</view>
         <view class="right">
-            <view>盘子最帅</view>
+            <view>{{comment_reply}}</view>
             <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
         </view>
     </view>
     <view class="name">
         <view>昵称</view>
         <view class="right">
-            <view>{{userInfo.nickName}}</view>
+            <view>{{userInfo.nickname}}</view>
             <!-- <image class="enter_" mode="widthFix" src="../../img/enter_.png" /> -->
         </view>
     </view>
-    <view class="weixin">
+    <view class="weixin" bind:tap="on_input1" data-id="2">
         <view>微信号</view>
         <view class="right">
-            <view>88888888</view>
+            <view>{{wx_number}}</view>
             <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
         </view>
     </view>
     <view class="gender">
         <view>性别</view>
         <view class="right">
-            <view wx:if='{{userInfo.gender == 0}}'>保密</view>
-            <view wx:if='{{userInfo.gender == 1}}'>男</view>
-            <view wx:if='{{userInfo.gender == 2}}'>女</view>
+            <view wx:if='{{userInfo.sex == 0}}'>保密</view>
+            <view wx:if='{{userInfo.sex == 1}}'>男</view>
+            <view wx:if='{{userInfo.sex == 2}}'>女</view>
             <!-- <image class="enter_" mode="widthFix" src="../../img/enter_.png" /> -->
         </view>
     </view>
     <view class="data">
         <view>出生日期</view>
         <view class="right">
-            <view>2000-08-24</view>
+            <picker mode="date" value="{{date}}" bindchange="bindDateChange">
+                <view class="picker">{{date}}</view>
+            </picker>
             <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
         </view>
+    </view>
+</view>
+<view class='input_box {{change===true?"active":""}}'>
+    <view class="inp" wx:if="{{show}}">
+        <input placeholder="请输入会员名" confirm-type='send' placeholder-style='color: #B4B4B4' bindblur='bindBlur' focus="{{focus}}" bindconfirm='confirm_send' />
+    </view>
+</view>
+<view class='input_box {{change===true?"active":""}}'>
+    <view class="inp" wx:if="{{show1}}">
+        <input placeholder="请输入会员名" confirm-type='send' placeholder-style='color: #B4B4B4' bindblur='bindBlur1' focus="{{focus1}}" bindconfirm='confirm_send1' />
     </view>
 </view>

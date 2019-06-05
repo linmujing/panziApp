@@ -251,16 +251,16 @@
 
 .inp {
     position: fixed;
-    bottom: 0;
+    bottom: 80rpx;
     width: 100%;
-    padding: 10rpx 20rpx;
+    padding: 30rpx 20rpx;
     border-top: 1px solid #ccc;
     background: #eee;
 }
 
 .inp input {
     background: #fff;
-    padding: 10rpx 20rpx;
+    padding: 20rpx 20rpx;
 }
 
 /* 爱心 */

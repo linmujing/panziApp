@@ -157,23 +157,27 @@ page {
 .content .Popular_foot button {
     border: none;
     padding: 0 !important;
+    margin: 0 !important;
 }
 
 .content .Popular_foot image {
     width: 32rpx;
-    margin-right: 10rpx;
+    padding-right: 10rpx;
 }
 
 .Popular_foot text {
     color: #666;
     font-size: 30rpx;
 }
-.content .Popular_foot .dianj{
-  line-height:92rpx;
-  padding:0 60rpx;
+
+.content .Popular_foot .dianj {
+    line-height: 92rpx;
+    width: 100rpx;
+    /* padding:0 60rpx; */
 }
+
 /* .praise { */
-    /* width: 50px;
+/* width: 50px;
     height: 50px;
     background: #999;
     text-align: center;
