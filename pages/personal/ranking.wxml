@@ -4,16 +4,29 @@
         <view class="ranking">排名</view>
         <view class="title">名称</view>
         <view class="num">数量</view>
-        <view class="time">时间</view>
+        <!-- <view class="time">时间</view> -->
     </view>
     <view class="rank_item" wx:for="{{rankData}}" wx:key="index">
-        <view class="ranking">{{item.TOP}}</view>
+        <view class="ranking">
+            <image wx:if="{{item.TOP == 1}}" mode="widthFix" src="../../img/p1.png" />
+            <image wx:if="{{item.TOP == 2}}" mode="widthFix" src="../../img/p2.png" />
+            <image wx:if="{{item.TOP == 3}}" mode="widthFix" src="../../img/p3.png" />
+            <view>{{item.TOP}}</view>
+        </view>
         <view class="title">{{item.THEMENAME}}</view>
-        <view class="num">{{item.NUM}}</view>
-        <view class="time">
+        <view class="number">
+            <image mode="widthFix" src="../../img/p_xing.png" />
+            {{item.NUM}}
+        </view>
+        <!-- <view class="time">
             <view class="year">{{item.YEAR}}</view>
             -
             <view class="month">{{item.MONTH}}</view>
-        </view>
+        </view> -->
+    </view>
+    <view class="rank_item back" wx:for="{{rankData1}}" wx:key="index">
+        <view class="ranking">{{item.TOP}}</view>
+        <view class="title">{{item.THEMENAME}}</view>
+        <view class="number">{{item.NUM}}</view>
     </view>
 </view>

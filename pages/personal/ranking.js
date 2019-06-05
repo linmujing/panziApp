@@ -20,10 +20,12 @@ Page({
     };
     util.post(util.url.ranking, reqBody, (res) => {
       // console.log(res)
-      var list = res.data
+      var list = res.data.lists
+      var list1 = res.data.list
       if (res.state == 1) {
         this.setData({
-          rankData: list
+          rankData: list,
+          rankData1: list1
         })
       }
     })

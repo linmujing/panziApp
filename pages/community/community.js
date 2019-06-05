@@ -180,18 +180,18 @@ Page({
   // },
 
   // 删除动态
-  close: function (e) {
-    console.log(e)
-    var index = e.currentTarget.dataset.index
-    var oldarr = this.data.detail
-    oldarr.splice(index, 1);
-    if (oldarr.length < 1) {
-      // oldarr = [0] //如果循环内容长度为0即删完了，必须要留一个默认的。这里oldarr只要是数组并且长度为1，里面的值随便是什么
-    }
-    this.setData({
-      detail: oldarr
-    })
-  },
+  // close: function (e) {
+  //   console.log(e)
+  //   var index = e.currentTarget.dataset.index
+  //   var oldarr = this.data.detail
+  //   oldarr.splice(index, 1);
+  //   if (oldarr.length < 1) {
+  //     // oldarr = [0] //如果循环内容长度为0即删完了，必须要留一个默认的。这里oldarr只要是数组并且长度为1，里面的值随便是什么
+  //   }
+  //   this.setData({
+  //     detail: oldarr
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
