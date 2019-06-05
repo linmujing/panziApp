@@ -1,4 +1,6 @@
 // pages/personal/index.js
+var util = require('../../utils/util.js');
+const app = getApp();
 Page({
 
   /**
@@ -21,6 +23,27 @@ Page({
         url: '/pages/login/index',
       })
     }
+    this.getJifen()
+  },
+  getJifen: function () {
+    var userInfo = this.data.userInfo
+    var reqBody = {
+      token: userInfo.token
+    };
+    wx.showLoading({
+      title: '加载中',
+    })
+    util.post(util.url.getJifen, reqBody, (res) => {
+      if (res.state == 1) {
+        this.setData({
+          'userInfo.integral': res.data.integral,
+          'userInfo.grade': res.data.grade
+        })
+        wx.setStorageSync('userInfo.integral', res.data.integral);
+        wx.setStorageSync('userInfo.grade', res.data.grade);
+      }
+      wx.hideLoading()
+    })
   },
   // 跳转所有订单
   link_allOrder(e) {
@@ -59,6 +82,11 @@ Page({
       url: 'task_center'
     })
   },
+  to_QRcode: function () {
+    wx.navigateTo({
+      url: 'my_QRcode'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -70,7 +98,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

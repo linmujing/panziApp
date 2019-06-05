@@ -54,7 +54,7 @@
                         <view class="item_foot">
                             <view class="item_time color_99 ft_12">{{item.addtime}}</view>
                             <view class="item_btn">
-                                <view class="" data-id="{{item.id}}" bind:tap="on_input">评论</view>
+                                <view class="" data-id="{{item.uid}}" bind:tap="on_input">评论</view>
                             </view>
                         </view>
                     </view>

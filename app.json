@@ -28,13 +28,12 @@
     "pages/personal/address",
     "pages/personal/add_address",
     "pages/personal/my_order",
+    "pages/personal/my_QRcode",
     "pages/personal/zh_setting",
     "pages/personal/personal_info",
     "pages/personal/task_center",
     "pages/personal/my_fabu",
-    "pages/personal/order_comment",
-    "pages/personal/ranking"
-
+    "pages/personal/order_comment"
   ],
   "navigateToMiniProgramAppIdList": [
     "wx5ba0b0241434741e"
