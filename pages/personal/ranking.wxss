@@ -4,7 +4,8 @@
     display: flex;
     align-items: center;
     background: #F4B6C5;
-    padding: 20rpx;
+    padding: 20rpx 50rpx 20rpx 20rpx;
+    color: #fff;
 }
 
 .rank_nav>view {
@@ -14,32 +15,57 @@
 .rank_item {
     display: flex;
     align-items: center;
-    /* justify-content: space-around; */
-    padding: 20rpx;
+    justify-content: space-between;
+    padding: 20rpx 50rpx 20rpx 20rpx;
     color: #999;
 }
 
-.rank_item>view {
+/* .rank_item>view {
     text-align: center;
+} */
+
+.rank_item .num {
+    color: #F4B6C5;
+}
+
+.rank_item .number image {
+    width: 24rpx;
+}
+
+.rank_item .ranking {
+    position: relative;
+    text-align: center;
+}
+
+.rank_item .ranking image {
+    width: 65rpx;
+}
+
+.rank_item .ranking view {
+    position: absolute;
+    top: 15rpx;
+    left: 32rpx;
+    font-weight: 600;
 }
 
 .ranking {
     width: 80rpx;
-
+    margin-right: 30rpx;
 }
 
 .title {
-    width: 450rpx;
-
+    flex: 1;
+    /* width: 450rpx; */
 }
 
-.num {
-    width: 100rpx;
+.rank_item .number {
+    text-align: right;
+    width: 140rpx;
 }
 
-.time {
+/* .time {
     width: 140rpx;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
