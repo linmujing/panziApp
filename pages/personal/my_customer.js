@@ -1,29 +1,19 @@
-// pages/theme/index.js
+// pages/personal/my_customer.js
 var util = require('../../utils/util.js');
-const app = getApp()
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    banner: app.globalData.imgUrl + 'c-star.png',
-    Page_slide: true,
-    page: 1,
-    list: [],
-    type: 0
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.setNavigationBarTitle({
-      title: options.title
-    })
-    this.setData({
-      type: options.type
-    })
     var userInfo = wx.getStorageSync('userInfo');
     this.setData({
       userInfo: userInfo
@@ -49,28 +39,14 @@ Page({
   onShow: function () {
 
   },
-  click_detail: function(e) {
-    var id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: 'star_detail?id=' + id,
-    })
-  },
   getList: function () {
     var that = this
-    var url = util.url.starList
-    if(that.data.type == 1){
-      url = util.url.starList
-    }else{
-      url = util.url.movieList
-    }
+    var userInfo = that.data.userInfo
     var reqBody = {
-      pageNum: that.data.page,
-      token: that.data.userInfo.token
+      token: userInfo.token,
+      page: that.data.page
     };
-    wx.showLoading({
-      title: '加载中',
-    })
-    util.post(url, reqBody, (res) => {
+    util.post(util.url.myjunior, reqBody, (res) => {
       wx.hideLoading()
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
@@ -81,17 +57,10 @@ Page({
           list: list,
           page: that.data.page + 1
         })
-        // 判断上拉加载
-        var leg = that.data.list.length
-        if (leg < res.count) {
-          this.setData({
-            Page_slide: true
-          })
-        } else {
-          this.setData({
-            Page_slide: false
-          })
-        }
+      } else {
+        that.setData({
+          Page_slide: false
+        })
       }
     })
   },
@@ -131,4 +100,11 @@ Page({
       this.getList()
     }
   },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
 })

@@ -15,12 +15,17 @@ const formatNumber = n => {
 }
 
 const urlFront = 'https://vip2.pznrfsy.com/index/';
+const urlFront2 = 'https://kpgl.pznrfsy.com/index/';
 const url = {
+  survey: urlFront2 + 'survey/submission',
+
   login: urlFront + 'index/login',
   settel: urlFront + 'Player/settel',
   erporder: urlFront + 'Player/erporder',
   myewm: urlFront + 'Player/myewm',
-  getJifen: urlFront + 'Player/index',
+  getUserInfo: urlFront + 'Player/index',
+  myjifen: urlFront + 'Player/myjifen',
+  myjunior: urlFront + 'Player/myjunior',
 
   addrList: urlFront + 'integral/profile',
   addAddr: urlFront + 'integral/address',

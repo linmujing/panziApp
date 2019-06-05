@@ -1,4 +1,5 @@
 // pages/index/my_photos.js
+var util = require('../../utils/util.js');
 const app = getApp()
 Page({
 
@@ -28,7 +29,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      options: options
+    })
+    this.getPhoto()
   },
 
   /**
@@ -43,6 +47,35 @@ Page({
    */
   onShow: function () {
 
+  },
+  getPhoto: function(){
+    var reqBody = {
+      // order: this.data.options.order,
+      // tel: this.data.options.tel,
+      order: 'Abc9999999999',
+      tel: '18774092987'
+    };
+    wx.showLoading({
+      title: '加载中',
+    })
+    var url = 'https://kpgl.pznrfsy.com/index/index/wx_list'
+    util.post(url, reqBody, (res) => {
+      wx.hideLoading()
+      if (res.code == 1) {
+        for (var i = 0; i < res.data.length; i++) {
+          res.data[i].check = false
+        }
+       this.setData({
+         imgData: res.data
+       })
+      }else{
+        wx.showToast({
+          title: res.msg,
+          icon: "none",
+          duration: 1000
+        })
+      }
+    })
   },
   checkboxChange(e) {
     var imgArr = e.detail.value

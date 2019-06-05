@@ -1,5 +1,5 @@
 <!--pages/index/photos_list.wxml-->
-<view class='list' wx:for='{{list}}' wx:key='{{index}}' bindtap='click_photo' data-id='{{item.ORDERSN}}' data-state='{{item.STATUS}}'>
+<view class='list' wx:for='{{list}}' wx:key='{{index}}' bindtap='click_photo' data-tel='{{item.MOBILE}}' data-state='{{item.STATUS}}' data-order='{{item.ORDERSN}}'>
   <view class='name'>姓名：{{item.NAME}}</view>
   <view class='df jc_sb order'>
     <view>订单号：{{item.ORDERSN}}</view>
@@ -40,5 +40,53 @@
       </view>
       <view class='{{item.STATUS == 5 ? "color_title" : "color_dd"}} txt'>取片</view>
     </view>
+  </view>
+</view>
+<!-- 弹窗 -->
+<view hidden='{{survey.popup_state}}' class='popup'>
+  <view class='box'>
+    <view class='tit'>
+      <view class='ft_16'>整体评分</view>
+      <view class='mt_5'>
+        <block wx:for="{{total.one}}" wx:key='{{index}}'> 
+          <image mode='widthFix' src='/img/star.png' class='star'></image> 
+        </block> 
+        <block wx:for="{{total.two}}" wx:key='{{index}}'> 
+          <image mode='widthFix' src='/img/kstar.png' class='star'></image> 
+        </block> 
+      </view>
+    </view>
+    <view class='df jc_sb fw_w mt_5'>
+      <view wx:for="{{gradeList}}" wx:for-index="indexs"  wx:key="indexs">
+        <view class='mt_5'>{{item.title}}</view>
+        <view class='mt_5'>
+          <block wx:for="{{item.one}}" wx:for-index="index"  wx:key="index"> 
+            <image mode='widthFix' catchtap='in_xin' id='{{index+1}}' data-index='{{indexs}}' data-in='use_sc2' src='/img/star.png' class='star2'></image> 
+          </block> 
+          <block wx:for="{{item.two}}" wx:key="index"> 
+            <image mode='widthFix' catchtap='in_xin' id='{{index+1}}' data-index='{{indexs}}' data-in='use_sc' src='/img/kstar.png' class='star2'></image> 
+          </block> 
+        </view>
+      </view>
+    </view>
+    <view class='mt_10'>
+     <view>您是否愿意再次光临或介绍朋友来盘子女人坊呢?</view>
+      <radio-group bindchange="radioChange" class="df jc_sa mt_5">
+        <label wx:for="{{radioData}}" wx:key='index'>
+          <radio value="{{item.name}}" checked="{{item.checked}}" color='#F9A1B7'/>{{item.value}}
+        </label>
+      </radio-group>
+    </view>
+    <view class='mt_10'>
+      <view>有没有觉得不错或者特别不好的地方呢？</view>
+      <textarea placeholder='请在这里留下您宝贵的意见......' class='textarea' bindinput='blur_advise'></textarea>
+    </view>
+    <view class='btn'>
+      <view class='btn_title' bindtap='click_submit'>点击提交</view>
+    </view>
+    <view class='mt_10 ft_12'>期待小主的再次光临，小盘定当好生伺候小主!</view>
+  </view>
+  <view class='ta_c'>
+    <icon type="cancel" size="36" color="#fff" bindtap='click_close'/>
   </view>
 </view>

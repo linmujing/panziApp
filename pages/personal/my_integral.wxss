@@ -1,0 +1,4 @@
+/* pages/personal/my_integral.wxss */
+.jf{background: #F6AFC1;padding: 60rpx;text-align: center;color: #fff;}
+.font{font-size: 48rpx;}
+.list{padding: 20rpx 50rpx;border-bottom: 2rpx solid #E9E9E9;}

@@ -64,7 +64,7 @@
             </view>
             <image mode="widthFix" src="../../img/enter_.png" />
         </view> -->
-        <view class="my_list_item">
+        <view class="my_list_item" bindtap='my_integral'>
             <view>
                 <image mode="widthFix" src="/img/center-02.jpg" />
                 <text>我的积分</text>
@@ -81,18 +81,18 @@
         <view class="my_list_item" bind:tap="link_rank">
             <view>
                 <image mode="widthFix" src="/img/center-04.jpg" />
-                <text bind:tap="to">排行榜</text>
+                <text>排行榜</text>
             </view>
             <image mode="widthFix" src="/img/enter_.png" />
         </view>
-        <view class="my_list_item">
+        <view class="my_list_item" bind:tap="to_QRcode">
             <view>
                 <image mode="widthFix" src="/img/code.png" />
-                <text bind:tap="to_QRcode">我的二维码</text>
+                <text>我的二维码</text>
             </view>
             <image mode="widthFix" src="/img/enter_.png" />
         </view>
-        <view class="my_list_item">
+        <view class="my_list_item" bindtap='my_customer'>
             <view>
                 <image mode="widthFix" src="/img/center-05.jpg" />
                 <text bind:tap="to">我的客户</text>
