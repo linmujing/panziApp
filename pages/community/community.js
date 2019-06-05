@@ -22,27 +22,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    // 分类列表
-    // var reqBody = {
-    //   token: userInfo.token
-    // };
-    // util.post(util.url.category, reqBody, (res) => {
-    //   console.log(res)
-    //   if (res.state == 1) {
-    //     wx.setNavigationBarTitle({
-    //       title: res.data.title
-    //     })
-    //     var list = that.data.themeData.navList
-    //     list = list.concat(res.data);
-    //     that.getThemeList()
-    //     that.setData({
-    //       banner: res.banner,
-    //       'themeData.navList': list
-    //     })
-    //   }
-    // })
-
+    var that = this
+    var userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      userInfo: userInfo
+    })
+    if (!userInfo) {
+      wx.navigateTo({
+        url: '/pages/login/index',
+      })
+    }
+    this.setData({
+      'themeData.themeList': [],
+      'themeData.page': 1,
+      'themeData.search': ''
+    })
+    that.getThemeList()
+    // 获取设备可视窗口高度
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          // winHeight: res.windowHeight - 100
+          winHeight: res.windowHeight - 10
+        });
+      }
+    })
   },
 
   // 顶部搜索
@@ -65,21 +69,16 @@ Page({
   getThemeList: function () {
     var userInfo = this.data.userInfo;
     var that = this
-    console.log(that.data.themeData.page)
     var reqBody = {
       token: userInfo.token,
       pageSize: 5,
       pageNumber: that.data.themeData.page,
-      searchText: that.data.themeData.search,
-      // pageNum: that.data.themeData.page,
-      // seach: that.data.themeData.search,
-      // cid: that.data.themeData.cid
+      searchText: that.data.themeData.search
     };
     wx.showLoading({
       title: '加载中',
     })
     util.post(util.url.index_list, reqBody, (res) => {
-      console.log(res)
       wx.hideLoading()
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
@@ -88,8 +87,7 @@ Page({
           res.data[i].check = false
         }
         var list = that.data.themeData.themeList
-        list = list.concat(res.data);
-        console.log(list)
+        list = list.concat(res.data.list);
         that.setData({
           'themeData.themeList': list,
           'themeData.page': that.data.themeData.page + 1
@@ -97,15 +95,11 @@ Page({
         // 判断上拉加载
         var leg = that.data.themeData.themeList.length
         console.log(leg)
-        // if (leg < res.count) {
-        if (leg < 100) {
-          console.log('可以')
+        if (leg < res.data.total) {
           that.setData({
             Page_slide: true,
-            // 'themeData.page': that.data.themeData.page + 1
           })
         } else {
-          console.log('不可以')
           that.setData({
             Page_slide: false
           })
@@ -118,7 +112,6 @@ Page({
   // 图片预览
   handleImagePreview(e) {
     var that = this
-    console.log(e)
     var id = e.currentTarget.dataset.id
     const current = e.currentTarget.dataset.current
     // var detail = that.data.detail[id]
@@ -210,29 +203,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this
     var userInfo = wx.getStorageSync('userInfo');
     this.setData({
       userInfo: userInfo
-    })
-    if (!userInfo) {
-      wx.navigateTo({
-        url: '/pages/login/index',
-      })
-    }
-    this.setData({
-      'themeData.themeList': [],
-      'themeData.page': 1
-    })
-    that.getThemeList()
-    // 获取设备可视窗口高度
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          // winHeight: res.windowHeight - 100
-          winHeight: res.windowHeight - 10
-        });
-      }
     })
   },
 

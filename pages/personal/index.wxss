@@ -46,7 +46,21 @@ page {
 .person_info .info_details .details_right {
     color: #fff;
 }
-
+.person_info .info_details .details_right .vip{
+  margin-left: 10rpx;
+  border: 2rpx solid #fff;
+  border-radius: 30rpx;
+  padding: 0 10rpx;
+}
+.person_info .info_details .details_right .vip .num{
+  font-size: 16rpx;
+  position: relative;
+  left: -5rpx;
+  top: 6rpx;
+}
+.person_info .info_details .details_right .vip image{
+  width: 20rpx;
+}
 .person_info .info_details .details_left image {
     width: 140rpx;
     height: 140rpx;

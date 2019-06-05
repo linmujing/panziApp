@@ -34,7 +34,7 @@
   </view>
 </view> 
 <!-- 新人好礼 -->
-<view class='gift bg_ff'>
+<!-- <view class='gift bg_ff'>
   <image mode='widthFix' src='{{logo}}' class='w40'></image>
   <view class='lines df ai_c jc_sb'>
     <text class='d'></text>
@@ -51,4 +51,4 @@
     <view bindtap='callSale' class='blod mt_5'>400-9011-888</view>
     <image mode='widthFix' src='{{copyright}}' class='w85 mt_20'></image>
   </view>
-</view>
+</view> -->

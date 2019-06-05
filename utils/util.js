@@ -19,6 +19,8 @@ const url = {
   login: urlFront + 'index/login',
   settel: urlFront + 'Player/settel',
   erporder: urlFront + 'Player/erporder',
+  myewm: urlFront + 'Player/myewm',
+  getJifen: urlFront + 'Player/index',
 
   addrList: urlFront + 'integral/profile',
   addAddr: urlFront + 'integral/address',

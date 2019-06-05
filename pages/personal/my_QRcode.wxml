@@ -1,0 +1,2 @@
+<!--pages/personal/my_QRcode.wxml-->
+<image mode="widthFix" src='{{qrImg}}'></image>
