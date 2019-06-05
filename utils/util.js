@@ -18,6 +18,7 @@ const urlFront = 'https://vip2.pznrfsy.com/index/';
 const urlFront2 = 'https://kpgl.pznrfsy.com/index/';
 const url = {
   survey: urlFront2 + 'survey/submission',
+  wx_list: urlFront2 + 'index/wx_list',
 
   login: urlFront + 'index/login',
   settel: urlFront + 'Player/settel',

@@ -30,9 +30,9 @@
         </view>
     </view>
     <view class="my_order">
-        <view class="order_title">
-            <view class="title_left">我的订单</view>
-            <view class="look_all" bind:tap="link_allOrder" data-type=''>
+        <view class="order_title" bind:tap="link_allOrder" data-type=''>
+            <view class="title_left">我的兑换</view>
+            <view class="look_all">
                 查看全部
                 <image mode="widthFix" src="/img/enter_.png" />
             </view>

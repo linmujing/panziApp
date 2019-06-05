@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    Page_slide: true,
+    page: 1,
+    list: []
   },
 
   /**

@@ -1,3 +1,4 @@
 /* pages/personal/my_customer.wxss */
 .font{font-size: 48rpx;}
-.list{padding: 20rpx 50rpx;border-bottom: 2rpx solid #E9E9E9;}
+.list{padding: 20rpx;border-bottom: 2rpx solid #E9E9E9;}
+.list image{width: 100rpx;border-radius: 50%;}
