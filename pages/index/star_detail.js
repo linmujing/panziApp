@@ -8,6 +8,8 @@ Page({
    */
   data: {
     ad: app.globalData.imgUrl + 'star_ad.jpg',
+    logo: app.globalData.imgUrl + 'tip1.png',
+    logo2: app.globalData.imgUrl + 'tip2.png',
     info: {}
   },
 
@@ -17,7 +19,8 @@ Page({
   onLoad: function (options) {
     var userInfo = wx.getStorageSync('userInfo');
     this.setData({
-      userInfo: userInfo
+      userInfo: userInfo,
+      type: options.type
     })
     if (!userInfo) {
       wx.navigateTo({
