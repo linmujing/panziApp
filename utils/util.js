@@ -45,7 +45,8 @@ const url = {
   checkIn: urlFront + 'sign/sign',
   signRecord: urlFront + 'sign/sign_record',
 
-  index: urlFront + 'Content/column',
+  index: urlFront + 'Content/column', 
+  gywm: urlFront + 'Content/gywm', 
 
   commentInfo: urlFront + 'Content/bookInfo',
   commentList: urlFront + 'Content/bookList',

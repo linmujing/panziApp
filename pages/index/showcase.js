@@ -8,6 +8,7 @@ Page({
    */
   data: {
     heng: app.globalData.imgUrl + 'heng.png',
+    week_logo: app.globalData.imgUrl + 'week_logo.png',
     caseData: {
       page: 1,
       list: []

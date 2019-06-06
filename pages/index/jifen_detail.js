@@ -145,9 +145,9 @@ Page({
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮
-      console.log("111", res);
+      // console.log("111", res);
     }else{
-      console.log("222", res);
+      // console.log("222", res);
     }
     return {
       title: this.data.detailData.goods_name,

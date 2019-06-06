@@ -1,2 +1,17 @@
 <!--pages/personal/my_QRcode.wxml-->
-<image mode="widthFix" src='{{qrImg}}'></image>
+<!-- <view class='ta_c box'>
+  <image mode="widthFix" src='{{bgImg}}' class='w100 bg'></image>
+  <image mode="widthFix" src='{{qrImg}}' class='code'></image>
+</view> -->
+<view class='ta_c box'>
+  <image mode="widthFix" src='{{poster}}' class='w100 bg' bindtap='previewImg'></image>
+</view>
+<view class='canvask'>
+  <canvas canvas-id="shareImg" style="width:650px;height:1080px"></canvas>
+</view>
+
+<view class='save'>
+  <view bindtap='click_save' data-mode='{{0}}' class='xjdznr df ai_c jc_c'>
+    <text>下载二维码</text>
+  </view>
+</view>

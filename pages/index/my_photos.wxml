@@ -1,19 +1,23 @@
 <!--pages/index/my_photos.wxml-->
-<view class='photo'>
-  <checkbox-group bindchange="checkboxChange">
-      <view class='list df jc_sb fw_w'>
-        <view wx:for='{{imgData}}' wx:key='{{index}}' class='item'>
-          <view class='img_box' bindtap='previewImg' data-src='{{item.img}}'>
-            <image lazy-load mode='widthFix' src='{{item.img}}'></image>
-          </view>
-          <!-- <view class='check'>
+<!-- 瀑布流 -->
+<checkbox-group bindchange="checkboxChange">
+  <view class='container'>
+      <view wx:if="{{index % 2 != 0 }}" wx:for="{{imgData}}" wx:key="{{index}}" class='img_box'>
+        <image src='{{item.img}}'  mode='widthFix' bindtap='previewImg' data-index='{{index}}'></image>
+        <view class='check'>
             <checkbox value='{{item.img}}' checked='{{item.check}}' />
-          </view> -->
-        </view> 
+          </view>
       </view>
-  </checkbox-group>
-</view>
-<!-- <view class='upload df jc_sb'>
+      <view wx:if="{{index % 2 == 0 }}" wx:for="{{imgData}}" wx:key="{{index}}" class='img_box'>
+        <image src='{{item.img}}' mode='widthFix' bindtap='previewImg' data-index='{{index}}'></image> 
+        <view class='check'>
+            <checkbox value='{{item.img}}' checked='{{item.check}}' />
+          </view>
+      </view>
+  </view> 
+</checkbox-group>
+
+<view class='upload df jc_sb'>
   <checkbox-group bindchange="checkboxAll">
     <label class='ck'>
       <checkbox checked="{{allCheck}}" color='#F89FB5'/>
@@ -21,13 +25,13 @@
     </label>
   </checkbox-group>
   <view class='btn' bindtap='savePic'>保存图片</view>
-</view> -->
+</view>
 
-<view hidden='{{preview.preview_state}}' class='preview' bindtap='hide'>
-  <view class='pre ta_c'>
+<!-- <view hidden='{{preview.preview_state}}' class='preview' bindtap='hide'>
+  <view class='pre df ai_c jc_c'>
     <image mode='widthFix' src='{{preview.imgSrc}}' class='w100'></image>
   </view>
-</view>
+</view> -->
 
 <!-- 弹窗 -->
 <view hidden='{{survey.popup_state}}' class='popup'>
@@ -66,7 +70,7 @@
     </view>
     <view class='mt_10'>
       <view>有没有觉得不错或者特别不好的地方呢？</view>
-      <textarea maxlength='200' placeholder='请在这里留下您宝贵的意见......' class='textarea' bindinput='blur_advise'></textarea>
+      <input maxlength='200' placeholder="请在这里留下您宝贵的意见..." class='textarea' bindinput="blur_advise"/>
     </view>
     <view class='btn'>
       <view class='btn_title' bindtap='click_submit'>点击提交</view>

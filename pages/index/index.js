@@ -23,10 +23,7 @@ Page({
     commentsList: [],
     videoPlay: null,
     videoData: {
-      list: [
-        { title: '强势登陆湖南卫视', info: '客片比样片更唯美', img: 'http://mmm.pznrfsy.com//uploads/20181230/d16f0c7963596c51d22e6cb265e8602f.png', url: 'http://mmm.pznrfsy.com//uploads/20181230/229a23ff3f60017a3ba3e8f3c8b8d35a.mp4' },
-        { title: '强势登陆湖南卫视', info: '客片比样片更唯美', img: 'http://mmm.pznrfsy.com//uploads/20181230/d16f0c7963596c51d22e6cb265e8602f.png', url: 'http://mmm.pznrfsy.com//uploads/20181230/229a23ff3f60017a3ba3e8f3c8b8d35a.mp4' }
-      ]
+      list: []
     },
     current: 0,
     animationData: {},
@@ -212,7 +209,7 @@ Page({
   click_star: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: 'star_detail',
+      url: 'star_detail?id=' + id + '&type=1',
     })
   },
   click_comments: function(){
@@ -226,5 +223,19 @@ Page({
   onPullDownRefresh: function () {
     this.getIndex()
   },
-
+  /**
+     * 用户点击右上角分享
+     */
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      // console.log("111", res);
+    } else {
+      // console.log("222", res);
+    }
+    return {
+      title: '盘子女人坊官方',
+      path: 'pages/index/index'
+    }
+  },
 })

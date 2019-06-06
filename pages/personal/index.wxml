@@ -15,9 +15,10 @@
                   <view class='vip ft_10 df ai_c'>
                     <image mode="widthFix" src="/img/v.png"></image>
                     <text class='num'>{{userInfo.grade}}</text>
-                    <text wx:if='{{userInfo.grade == 1}}'>普通会员</text>
+                    <text wx:if='{{userInfo.grade == 1}}'>水晶会员</text>
                     <text wx:if='{{userInfo.grade == 2}}'>黄金会员</text>
-                    <text wx:if='{{userInfo.grade == 3}}'>暂时会员</text>
+                    <text wx:if='{{userInfo.grade == 3}}'>白金会员</text>
+                    <text wx:if='{{userInfo.grade == 4}}'>钻石会员</text>
                   </view>
                 </view>
                 <view class="qiandao" bindtap='link_task'>
@@ -99,10 +100,10 @@
             </view>
             <image mode="widthFix" src="/img/enter_.png" />
         </view>
-        <view class="my_list_item">
+        <view class="my_list_item" bind:tap="about_us">
             <view>
                 <image mode="widthFix" src="/img/center-06.jpg" />
-                <text bind:tap="to">关于我们</text>
+                <text>关于我们</text>
             </view>
             <image mode="widthFix" src="/img/enter_.png" />
         </view>

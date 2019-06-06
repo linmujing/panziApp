@@ -18,5 +18,7 @@ page{
 }
 .list{margin: 20rpx;padding: 8rpx;border: 1rpx solid #C8C8C8;}
 .list image{width: 100%;}
-.list .tip{margin: 20rpx 100rpx;}
+.list .tip{margin: 20rpx;}
+.list .tip image{width: 300rpx;}
 .list .imgb{width: 100%;height: 400rpx;overflow: hidden;}
+.tip .img{width: 40rpx; height: 40rpx;}

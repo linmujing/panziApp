@@ -32,9 +32,9 @@
     </view>
   </view>
 
-  <view class='active' style='width: {{ sysW * 7 }}px'>
+  <!-- <view class='active' style='width: {{ sysW * 7 }}px'>
     <view class='title'>其他活动</view>
-    <!-- <view wx:for='{{active}}' wx:key='{{index}}' class='list df jc_sb ai_c'>
+    <view wx:for='{{active}}' wx:key='{{index}}' class='list df jc_sb ai_c'>
       <view class='df ai_c'>
         <image mode='widthFix' src='{{item.img}}'></image>
         <view class='pl_10'>
@@ -44,8 +44,8 @@
         </view>
       </view>
       <view class='btn_title'>领取</view>
-    </view> -->
-  </view>
+    </view>
+  </view> -->
 </view>
 <!-- 弹窗 -->
 <view hidden='{{popup_state}}' class='modal'>

@@ -37,7 +37,10 @@ Page({
       { name: '否', value: 2 }
     ],
     intro: '',
-    advise: ''
+    advise: '',
+    page: 1,
+    Page_slide: true,
+
   },
 
   /**
@@ -47,7 +50,7 @@ Page({
     this.setData({
       options: options
     })
-    this.getPhoto()
+    this.getList()
   },
 
   /**
@@ -63,30 +66,50 @@ Page({
   onShow: function () {
 
   },
-  getPhoto: function(){
+  getList: function(){
+    var that = this
     var reqBody = {
       order: this.data.options.order,
-      tel: this.data.options.tel
-      // order: 'Abc9999999999',
-      // tel: '18774092987'
+      tel: this.data.options.tel,
+      // order: '2018051901694',
+      // tel: '15710669709',
+      pageNumber: this.data.page,
+      pageSize: 10
     };
     wx.showLoading({
       title: '加载中',
     })
     util.post(util.url.wx_list, reqBody, (res) => {
       wx.hideLoading()
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
       if (res.code == 1) {
-        if (res.data.status == 0){
-          this.setData({
+        if (res.data.status == 0 && that.data.page == 1){
+          that.setData({
             'survey.popup_state': false
           })
         }
         for (var i = 0; i < res.data.list.length; i++) {
           res.data.list[i].check = false
         }
-        this.setData({
-          imgData: res.data.list
+        var list = that.data.imgData
+        list = list.concat(res.data.list);
+        that.setData({
+          imgData: list,
+          page: that.data.page + 1
         })
+        // 判断上拉加载
+        var leg = that.data.imgData.length
+        if (leg < res.data.count) {
+          that.setData({
+            Page_slide: true
+          })
+        } else {
+          that.setData({
+            Page_slide: false
+          })
+        }
+        
       }else{
         wx.showToast({
           title: res.msg,
@@ -131,10 +154,20 @@ Page({
   },
   // 预览图片
   previewImg: function(e){
-    var src = e.currentTarget.dataset.src
-    this.setData({
-      'preview.preview_state': false,
-      'preview.imgSrc': src
+    // var src = e.currentTarget.dataset.src
+    // this.setData({
+    //   'preview.preview_state': false,
+    //   'preview.imgSrc': src
+    // })
+    var index = e.currentTarget.dataset.index
+    var imgData = this.data.imgData
+    var lists = []
+    for (var i = 0; i < imgData.length; i++) {
+      lists.push(imgData[i].img)
+    }
+    wx.previewImage({
+      current: lists[index], // 当前显示图片的http链接
+      urls: lists // 需要预览的图片http链接列表
     })
   },
   hide: function (e) {
@@ -398,7 +431,12 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if (this.data.Page_slide) {
+      this.setData({
+        Page_slide: false
+      })
+      this.getList()
+    }
   },
 
   /**
