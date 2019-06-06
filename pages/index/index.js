@@ -212,7 +212,7 @@ Page({
   click_star: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: 'star_detail',
+      url: 'star_detail?id=' + id + '&type=1',
     })
   },
   click_comments: function(){

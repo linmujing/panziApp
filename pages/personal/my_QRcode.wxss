@@ -1,1 +1,9 @@
 /* pages/personal/my_QRcode.wxss */
+.box{position: relative;padding: 40rpx 80rpx;}
+.box .bg{border-radius: 16rpx;box-shadow:0px 10rpx 30rpx -5rpx rgba(0,0,0,0.3);}
+.box .code{position: absolute;bottom: 326rpx;left:97rpx;width: 120rpx;border-radius: 50%;}
+
+.canvask{position:fixed;width:0;height:0;left:auto;top:auto;bottom:-500rpx;right:-500rpx;opacity:0;}
+
+.save{position:fixed;bottom:0;left:0;width: 100%;}
+.xjdznr{height:100rpx;font-size:36rpx;font-weight:500;color:#fff;background:#F2F2F2;background: #FAA7B7;}

@@ -5,9 +5,9 @@
     <view>
       <image mode='widthFix' src='{{item}}'></image>
     </view>
-    <view class='tip'>
+    <!-- <view class='tip'>
       <image mode='widthFix' src='{{img.heng}}'></image>
-    </view>
+    </view> -->
   </view>
   
   <view class='hp'>
@@ -17,8 +17,8 @@
     <view>
       <image mode='widthFix' src='{{item}}'></image>
     </view>
-    <view class='tip'>
+    <!-- <view class='tip'>
       <image mode='widthFix' src='{{img.shu}}'></image>
-    </view>
+    </view> -->
   </view>
 </view>

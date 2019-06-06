@@ -1,6 +1,6 @@
 {
   "pages": [
-
+"pages/personal/my_QRcode",
     "pages/login/index",
     "pages/index/video",
     "pages/index/order",
@@ -30,7 +30,7 @@
     "pages/personal/my_order",
     "pages/personal/my_customer",
     "pages/personal/my_integral",
-    "pages/personal/my_QRcode",
+    
     "pages/personal/zh_setting",
     "pages/personal/ranking",
     "pages/personal/personal_info",
