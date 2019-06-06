@@ -147,16 +147,16 @@ Page({
     console.log(city)
     console.log(area)
     var regionr = [{
-      name: province.pName,
-      code: province.pId
-    },
-    {
-      name: city.cName,
-      code: city.cId
-    }, {
-      name: area.xName,
-      code: area.xId
-    }
+        name: province.pName,
+        code: province.pId
+      },
+      {
+        name: city.cName,
+        code: city.cId
+      }, {
+        name: area.xName,
+        code: area.xId
+      }
     ]
     this.setData({
       regionr,

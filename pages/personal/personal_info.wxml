@@ -10,7 +10,7 @@
     <view class="Member_name" bind:tap="on_input" data-id="1">
         <view>会员名</view>
         <view class="right">
-            <view>{{comment_reply}}</view>
+            <view>{{userInfo.name}}</view>
             <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
         </view>
     </view>
@@ -24,7 +24,7 @@
     <view class="weixin" bind:tap="on_input1" data-id="2">
         <view>微信号</view>
         <view class="right">
-            <view>{{wx_number}}</view>
+            <view>{{userInfo.weixin}}</view>
             <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
         </view>
     </view>
@@ -40,8 +40,8 @@
     <view class="data">
         <view>出生日期</view>
         <view class="right">
-            <picker mode="date" value="{{date}}" bindchange="bindDateChange">
-                <view class="picker">{{date}}</view>
+            <picker mode="date" value="{{userInfo.isbirthday}}" bindchange="bindDateChange">
+                <view class="picker">{{userInfo.isbirthday}}</view>
             </picker>
             <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
         </view>

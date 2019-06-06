@@ -11,37 +11,64 @@ Page({
     show: false,
     focus1: false,
     show1: false,
-    comment_reply: '',
-    wx_number: "",
-    change: false
+    change: false,
+    userInfo: {
+      name: "",
+      weixin: "",
+      isbirthday: ''
+    },
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // var userInfo = wx.getStorageSync('userInfo');
-    // console.log(userInfo)
-    // this.setData({
-    //   userInfo: userInfo
-    // })
-    this.getInfo()
-  },
+    var userInfo = wx.getStorageSync('userInfo');
+    this.setData({
+      userInfo: userInfo
+    })
+    if (!userInfo) {
+      wx.navigateTo({
+        url: '/pages/login/index',
+      })
+    }
 
-
-  getInfo() {
     var userInfo = wx.getStorageSync('userInfo');
     var reqBody = {
       token: userInfo.token,
-      // id: list[index].id,
-      // type: "zan"
     };
-    util.post(util.url.Player, reqBody, (res) => {
+    util.post(util.url.getUserInfo, reqBody, (res) => {
       console.log(res)
       var data = res.data
+      this.setData({
+        userInfo: data
+      })
+    })
+  },
+
+  getInfo() {
+    var userInfo = wx.getStorageSync('userInfo');
+    var data = this.data.userInfo;
+    var reqBody = {
+      token: userInfo.token,
+      name: data.name,
+      weixin: data.weixin,
+      isbirthday: data.isbirthday
+    };
+    util.post(util.url.amendindex, reqBody, (res) => {
+      console.log(res)
+      // var data = res.data
       if (res.state == 1) {
-        this.setData({
-          userInfo: data
+        wx.showToast({
+          title: '修改成功',
+          icon: 'none',
+          duration: 2000
+        })
+      } else {
+        wx.showToast({
+          title: '修改失败',
+          icon: 'none',
+          duration: 2000
         })
       }
     })
@@ -49,19 +76,21 @@ Page({
 
   bindBlur(e) {
     this.setData({
-      comment_reply: e.detail.value,
+      'userInfo.name': e.detail.value,
       focus: false,
       show: false,
       change: false
     })
+    this.getInfo()
   },
   bindBlur1(e) {
     this.setData({
-      wx_number: e.detail.value,
+      'userInfo.weixin': e.detail.value,
       focus1: false,
       show1: false,
       change: false
     })
+    this.getInfo()
   },
   on_input(e) {
     console.log(e)
@@ -94,12 +123,13 @@ Page({
     })
   },
 
-
+  // 出生日期修改
   bindDateChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    console.log('picker发送选择改变，携带值为', e.detail.value, typeof (e.detail.value))
     this.setData({
-      date: e.detail.value
+      'userInfo.isbirthday': e.detail.value
     })
+    this.getInfo()
   },
 
   /**
@@ -113,7 +143,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // this.getInfo()
   },
 
   /**
