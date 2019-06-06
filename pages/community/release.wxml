@@ -30,7 +30,7 @@
                 </view>
             </view> -->
         </view>
-        <view class="foot_list">
+        <!-- <view class="foot_list">
             <view class="list_item">
                 <view class="item_left">
                     <image mode="widthFix" src="../../img/biaoqian.png" />
@@ -49,6 +49,6 @@
                     <image mode="widthFix" src="../../img/enter_.png" />
                 </view>
             </view>
-        </view>
+        </view> -->
     </view>
 </view>
