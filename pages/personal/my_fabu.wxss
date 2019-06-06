@@ -13,10 +13,15 @@
     border-bottom: 1px solid #eee;
 }
 
-.list_item .item_details image {
+.img_box {
     width: 210rpx;
     height: 210rpx;
+    overflow: hidden;
     margin-right: 30rpx;
+}
+
+.list_item .item_details image {
+    width: 100%;
 }
 
 .list_item .item_details .item_title {
