@@ -10,7 +10,7 @@
     <view class="Member_name" bind:tap="on_input" data-id="1">
         <view>会员名</view>
         <view class="right">
-            <view>{{userInfo.name}}</view>
+            <view>{{userInfo.name == null ? '' : userInfo.name}}</view>
             <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
         </view>
     </view>
@@ -24,7 +24,7 @@
     <view class="weixin" bind:tap="on_input1" data-id="2">
         <view>微信号</view>
         <view class="right">
-            <view>{{userInfo.weixin}}</view>
+            <view>{{userInfo.weixin == null ? '' : userInfo.weixin}}</view>
             <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
         </view>
     </view>
@@ -54,6 +54,6 @@
 </view>
 <view class='input_box {{change===true?"active":""}}'>
     <view class="inp" wx:if="{{show1}}">
-        <input placeholder="请输入会员名" confirm-type='send' placeholder-style='color: #B4B4B4' bindblur='bindBlur1' focus="{{focus1}}" bindconfirm='confirm_send1' />
+        <input placeholder="请输入微信名" confirm-type='send' placeholder-style='color: #B4B4B4' bindblur='bindBlur1' focus="{{focus1}}" bindconfirm='confirm_send1' />
     </view>
 </view>

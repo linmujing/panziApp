@@ -40,6 +40,7 @@ Page({
     util.post(util.url.getUserInfo, reqBody, (res) => {
       console.log(res)
       var data = res.data
+      data.nickname = data.nickname.replace(/\"/g, "");
       this.setData({
         userInfo: data
       })
@@ -81,7 +82,6 @@ Page({
       show: false,
       change: false
     })
-    this.getInfo()
   },
   bindBlur1(e) {
     this.setData({
@@ -90,7 +90,6 @@ Page({
       show1: false,
       change: false
     })
-    this.getInfo()
   },
   on_input(e) {
     console.log(e)
@@ -111,16 +110,22 @@ Page({
   },
 
   confirm_send: function (e) {
-    var msg = e.detail.value
     this.setData({
-      comment_reply: msg,
+      'userInfo.name': e.detail.value,
+      focus: false,
+      show: false,
+      change: false
     })
+    this.getInfo()
   },
   confirm_send1(e) {
-    var msg = e.detail.value
     this.setData({
-      wx_number: msg
+      'userInfo.weixin': e.detail.value,
+      focus1: false,
+      show1: false,
+      change: false
     })
+    this.getInfo()
   },
 
   // 出生日期修改
