@@ -73,6 +73,7 @@ page {
     top: 0rpx;
     right: 0rpx;
     width: 38rpx;
+    z-index: 10;
 }
 
 .foot_list {

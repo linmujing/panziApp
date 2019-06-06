@@ -14,6 +14,7 @@ Page({
     position: "我的位置",
     slecte: false,
     pics: [],
+    baseUrl: 'https://vip2.pznrfsy.com'
   },
 
   /**
@@ -27,25 +28,37 @@ Page({
     var userInfo = wx.getStorageSync('userInfo');
     var value = this.data.content
     var images = this.data.images
+    if (value == '' && images.length == 0){
+      wx.showToast({
+        title: '说点什么吧~',
+        icon: "none",
+        duration: 800
+      })
+      return
+    }
     var reBody = {
       token: userInfo.token,
       images: images,
       content: value,
       category_id: 3
     }
+    wx.showLoading({
+      title: '加载中',
+    })
     util.post(util.url.add_sns, reBody, (res) => {
-      console.log(res)
+      // console.log(res)
+      wx.hideLoading()
       if (res.state == 1) {
         wx.showToast({
           title: '发布成功',
           icon: 'success',
-          duration: 2000
+          duration: 1000
         })
         setTimeout(function () {
-          wx.reLaunch({
-            url: './community'
+          wx.switchTab({
+            url: '/pages/community/community',
           })
-        }, 2000)
+        }, 500)
       }
     })
   },
@@ -60,71 +73,52 @@ Page({
 
   // 上传图片
   uploadImg: function () {
-    var that = this,
-      images = this.data.images;
-    if (this.data.images.length < 3) {
-      wx.chooseImage({
-        count: 9, // 默认9
-        sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-        sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-        success: function (res) {
-          // console.log(res.tempFilePaths)
-          var userInfo = wx.getStorageSync('userInfo');
-          var token = userInfo.token
-          var images = []
-          for (var i = 0; i < res.tempFilePaths.length; i++) {
-            wx.uploadFile({
-              url: 'https://vip2.pznrfsy.com/index/sns/upload_imgs?token=' + token, //这个方法就是后台处理上传的方法
-              filePath: res.tempFilePaths[i], //获取到上传的图片
-              name: 'file',
-              success: function (info) {
-                var img = info.data
-                // var imgs = []
-                images.push(img)
-                console.log(images)
-                that.setData({
-                  images: images
-                })
-                // console.log(images)
-              }
-            })
-          }
-          // console.log(imgs)
-          // that.setData({
-          //   imgs: imgs
-          // })
-          // wx.uploadFile({
-          //   // url: 'https://vip2.pznrfsy.com/index/sns/upload_imgs?token=16b56a5232dedbd5a9dccf91826147f4', //这个方法就是后台处理上传的方法
-          //   url: 'https://vip2.pznrfsy.com/index/sns/upload_imgs?token=' + token, //这个方法就是后台处理上传的方法
-          //   filePath: res.tempFilePaths[0], //获取到上传的图片
-          //   name: 'file',
-          //   success: function (info) {
-          //     var img = info.data
-          //     var imgs = []
-          //     imgs.push(img)
-          //     console.log(imgs)
-          //     that.setData({
-          //       imgs: imgs
-          //     })
-          //     // console.log(images)
-          //     // console.log(img); //info.data就是上传成功的图片名称 您可以在wxml里面搞一个隐藏域存储起来，在上面Submit提交里拼装一块提交出去
-          //   }
-          // })
-        },
-        complete: function (res) {
-          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-          if (that.data.images.length == 2) {
-            that.setData({
-              img_button: 'none',
-            })
-          }
-          images.push(res.tempFilePaths);
-          that.setData({
-            images: images,
+    var that = this;
+    var images = that.data.images;
+    console.log(images)
+    if (images.length == 9){
+      wx.showToast({
+        title: '已经到达上限了~',
+        icon: 'none',
+        duration: 1000
+      })
+      return
+    }
+    var count = 9 - images.length;
+    wx.chooseImage({
+      count: count, // 默认9
+      sizeType: ['compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // console.log(res.tempFilePaths)
+        wx.showLoading({
+          title: '加载中',
+        })
+        var userInfo = wx.getStorageSync('userInfo');
+        var token = userInfo.token
+        for (var i = 0; i < res.tempFilePaths.length; i++) {
+          const uploadTask = wx.uploadFile({
+            url: 'https://vip2.pznrfsy.com/index/sns/upload_imgs?token=' + token, //这个方法就是后台处理上传的方法
+            filePath: res.tempFilePaths[i], //获取到上传的图片
+            name: 'file',
+            success: function (info) {
+              var data = info.data
+              images.push(data)
+              // console.log(data)
+              that.setData({
+                images: images
+              })
+            }
+          })
+          uploadTask.onProgressUpdate((res) => {
+            if (res.progress == 100) {
+              wx.hideLoading()
+            }
           })
         }
-      })
-    }
+      },
+      complete: function (res) { }
+    })
   },
 
   // 删除图片
@@ -136,11 +130,15 @@ Page({
 
   // 预览图片
   handleImagePreview(e) {
-    const idx = e.target.dataset.idx
-    const images = this.data.images
+    var idx = e.target.dataset.idx
+    var images = this.data.images
+    var list = []
+    for (var i = 0; i < images.length;i++){
+      list.push(this.data.baseUrl + images[i])
+    }
     wx.previewImage({
-      current: images[idx], //当前预览的图片
-      urls: images, //所有要预览的图片
+      current: list[idx], //当前预览的图片
+      urls: list, //所有要预览的图片
     })
   },
 

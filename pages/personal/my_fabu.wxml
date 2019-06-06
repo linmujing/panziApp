@@ -5,7 +5,7 @@
             <!-- <view class="list_item" wx:for="{{themeData.themeList}}" wx:key="index" wx:for-index="idx"> -->
             <view class="item_details">
                 <!-- <image wx:for="{{item.images}}" wx:for-item="dd" src="{{dd}}" wx:key="index" /> -->
-                <view class="img_box">
+                <view class="img_box" wx:if='{{item.images.length>0}}'>
                     <image mode="widthFix" src="{{item.images[0]}}" wx:key="index" />
                 </view>
                 <view>

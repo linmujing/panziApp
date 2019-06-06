@@ -1,7 +1,4 @@
 /* pages/community/community.wxss */
-page {
-    background: #F6F6F6;
-}
 
 .top_nav {
     display: flex;
@@ -53,10 +50,11 @@ page {
 
 .content {
     /* margin-top: 30rpx; */
-    background: #fff;
+    /* background: #fff; */
 }
 
 .content .Popular {
+    background: #fff;
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
     padding: 30rpx 30rpx 0 30rpx;
