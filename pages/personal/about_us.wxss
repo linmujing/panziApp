@@ -1,0 +1,3 @@
+/* pages/personal/about_us.wxss */
+page{background: #fff;}
+.cont{text-align: justify;}

@@ -42,7 +42,7 @@
                 </view>
                 <view class="Popular_picBox">
                     <view class="picBox" wx:for="{{dd.images}}" wx:key="index1">
-                        <image class="Popular_bigPic" src="{{item}}" mode="widthFix" data-current='{{index}}' data-id="{{idx}}" bind:tap="handleImagePreview" />
+                        <image mode="aspectFill" class="Popular_bigPic" src="{{item}}" data-current='{{index}}' data-id="{{idx}}" bind:tap="handleImagePreview" />
                         <!-- <image class="Popular_bigPic" wx:for="{{dd.images}}" wx:key="index1" src="{{item}}" data-current='{{index}}' data-id="{{idx}}" bind:tap="handleImagePreview" /> -->
                     </view>
                 </view>

@@ -1,0 +1,4 @@
+<!--pages/personal/about_us.wxml-->
+ <view class='cont'>
+    <rich-text class='w100' nodes="{{info}}"></rich-text>  
+  </view>

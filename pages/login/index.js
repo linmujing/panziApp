@@ -10,13 +10,18 @@ Page({
     phone: 0,
     userInfo: {},
     change: false,
-    login_state: false
+    login_state: false,
+    scene: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const scene = decodeURIComponent(options.scene)
+    this.setData({
+      scene: scene
+    })
     var userInfo = wx.getStorageSync('userInfo');
     if (userInfo) {
       this.setData({
@@ -90,7 +95,8 @@ Page({
             code: res.code,
             userInfo: userInfo,
             encryptedData: e.detail.encryptedData,
-            iv: e.detail.iv
+            iv: e.detail.iv,
+            channel: that.data.scene
           };
           util.post(util.url.login, reqBody, (res) => {
             console.log(res)

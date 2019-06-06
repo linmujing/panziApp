@@ -6,4 +6,4 @@
   </view>
   <view class='color_99 mt_5 ft_12'>{{item.createtime}}</view>
 </view>
-<view class='ta_c pt_10 pb_10 ft_12 color_99'>{{Page_slide ? '上拉加载更多~' : '没有更多了~'}}</view>
+<view class='ta_c pt_10 pb_10 ft_12 color_99'>{{Page_slide ? '' : '没有更多了~'}}</view>

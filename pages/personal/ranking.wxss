@@ -9,7 +9,7 @@
 }
 
 .rank_nav>view {
-    text-align: center;
+    /* text-align: center; */
 }
 
 .rank_item {
