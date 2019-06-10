@@ -91,6 +91,11 @@ Page({
             icon: 'none',
             duration: 500
           })
+          if (that.data.scene == 'undefined'){
+            that.setData({
+              scene: ''
+            })
+          }
           var reqBody = {
             code: res.code,
             userInfo: userInfo,

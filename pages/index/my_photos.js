@@ -119,18 +119,30 @@ Page({
       }
     })
   },
+ 
   checkboxChange(e) {
-    var imgArr = e.detail.value
-    var len = this.data.imgData.length
-    var allCheck = false
-    if (imgArr.length == len) {
-      allCheck = true
-    } else {
-      allCheck = false
+    var checkArr = e.detail.value
+    var imgData = this.data.imgData
+    var imgArr = []
+    for (var i = 0; i < imgData.length; i++) {
+      for (var j = 0; j < checkArr.length; j++) {
+        if (checkArr[j] == i){
+          imgData[i].check = true
+          imgArr.push(imgData[i].img)
+        }
+      }
     }
+    // var len = this.data.imgData.length
+    // var allCheck = false
+    // if (imgArr.length == len) {
+    //   allCheck = true
+    // } else {
+    //   allCheck = false
+    // }
     this.setData({
       imgArr: imgArr,
-      allCheck: allCheck
+      imgData: imgData
+      // allCheck: allCheck
     })
   },
   // 全选

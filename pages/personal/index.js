@@ -43,9 +43,9 @@ Page({
     var reqBody = {
       token: userInfo.token
     };
-    wx.showLoading({
-      title: '加载中',
-    })
+    // wx.showLoading({
+    //   title: '加载中',
+    // })
     util.post(util.url.getUserInfo, reqBody, (res) => {
       if (res.state == 1) {
         this.setData({
@@ -53,7 +53,7 @@ Page({
           'userInfo.grade': res.data.grade
         })
       }
-      wx.hideLoading()
+      // wx.hideLoading()
     })
   },
   // 跳转所有订单

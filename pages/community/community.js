@@ -266,7 +266,7 @@ Page({
       console.log(list)
         ++list[index].share
 
-      var userInfo = that
+      var userInfo = that.data.userInfo
       var id = res.target.dataset.id
 
       var reBody = {

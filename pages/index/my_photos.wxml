@@ -5,13 +5,13 @@
       <view wx:if="{{index % 2 != 0 }}" wx:for="{{imgData}}" wx:key="{{index}}" class='img_box'>
         <image src='{{item.img}}'  mode='widthFix' bindtap='previewImg' data-index='{{index}}'></image>
         <view class='check'>
-            <checkbox value='{{item.img}}' checked='{{item.check}}' />
+            <checkbox value='{{index}}' checked='{{item.check}}' />
           </view>
       </view>
       <view wx:if="{{index % 2 == 0 }}" wx:for="{{imgData}}" wx:key="{{index}}" class='img_box'>
         <image src='{{item.img}}' mode='widthFix' bindtap='previewImg' data-index='{{index}}'></image> 
         <view class='check'>
-            <checkbox value='{{item.img}}' checked='{{item.check}}' />
+            <checkbox value='{{index}}' checked='{{item.check}}' />
           </view>
       </view>
   </view> 
