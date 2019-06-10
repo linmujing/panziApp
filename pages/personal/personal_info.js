@@ -15,7 +15,7 @@ Page({
     userInfo: {
       name: "",
       weixin: "",
-      isbirthday: ''
+      birthday: ''
     },
   },
 
@@ -54,7 +54,7 @@ Page({
       token: userInfo.token,
       name: data.name,
       weixin: data.weixin,
-      isbirthday: data.isbirthday
+      birthday: data.birthday
     };
     util.post(util.url.amendindex, reqBody, (res) => {
       console.log(res)
@@ -132,7 +132,7 @@ Page({
   bindDateChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value, typeof (e.detail.value))
     this.setData({
-      'userInfo.isbirthday': e.detail.value
+      'userInfo.birthday': e.detail.value
     })
     this.getInfo()
   },

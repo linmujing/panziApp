@@ -1,4 +1,5 @@
 /* pages/index/my_photos.wxss */
+page{padding-bottom: 100rpx;}
 /* 瀑布流 */
 .container{
   column-count: 2;  /*设置列数*/ 
@@ -6,7 +7,7 @@
   padding-left: 12rpx;
 }
 .container image{
-  width: 178px;
+  width: 356rpx;
   margin-top: 12rpx;
   box-shadow: 2px 2px 4px rgba(0,0,0,.4);
 }
@@ -16,7 +17,7 @@
 .upload{position: fixed;bottom: 0;width: 100%;font-size: 32rpx;background: #fff;line-height: 100rpx;z-index: 10;}
 .upload .ck{margin-left: 20rpx;}
 .upload .ck text{position: relative;top: 5rpx;}
-.upload .btn{width:300rpx;text-align: center;background: #F89FB5;color: #fff;}
+.upload .btn{width:100%;text-align: center;background: #F89FB5;color: #fff;}
 
 /* checkbox未选中时样式 */
 .container checkbox .wx-checkbox-input{border-radius: 20rpx;height: 36rpx;width: 36rpx;margin-top: -18rpx;background-color: #fff;} 
