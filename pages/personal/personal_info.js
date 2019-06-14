@@ -25,22 +25,19 @@ Page({
   onLoad: function (options) {
     var userInfo = wx.getStorageSync('userInfo');
     this.setData({
-      userInfo: userInfo
+      UserInfo: userInfo
     })
     if (!userInfo) {
       wx.navigateTo({
         url: '/pages/login/index',
       })
     }
-
-    var userInfo = wx.getStorageSync('userInfo');
     var reqBody = {
       token: userInfo.token,
     };
     util.post(util.url.getUserInfo, reqBody, (res) => {
-      console.log(res)
       var data = res.data
-      data.nickname = data.nickname.replace(/\"/g, "");
+      data.nickname = data.nickname.replace(/\"/g,"");
       this.setData({
         userInfo: data
       })
@@ -57,7 +54,7 @@ Page({
       birthday: data.birthday
     };
     util.post(util.url.amendindex, reqBody, (res) => {
-      console.log(res)
+      // console.log(res)
       // var data = res.data
       if (res.state == 1) {
         wx.showToast({
@@ -77,7 +74,6 @@ Page({
 
   bindBlur(e) {
     this.setData({
-      'userInfo.name': e.detail.value,
       focus: false,
       show: false,
       change: false
@@ -85,7 +81,6 @@ Page({
   },
   bindBlur1(e) {
     this.setData({
-      'userInfo.weixin': e.detail.value,
       focus1: false,
       show1: false,
       change: false
@@ -136,7 +131,48 @@ Page({
     })
     this.getInfo()
   },
+  // 修改电话
+  getPhoneNumber: function (e) {
+    var that = this
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        var code = res.code
+        if (e.detail.errMsg == "getPhoneNumber:ok") {
+          var reqBody = {
+            code: res.code,
+            encryptedData: e.detail.encryptedData,
+            iv: e.detail.iv,
+            token: that.data.UserInfo.token
+          };
+          util.post(util.url.settel, reqBody, (res) => {
+            // console.log(res)
+            if (res.state == 0 || res.state == 1) {
+              that.setData({
+                'userInfo.tel': res.tel
+              })
+              var UserInfo = that.data.UserInfo
+              wx.setStorageSync('userInfo', UserInfo);
+              wx.showToast({
+                title: '修改成功',
+                icon: 'none',
+                duration: 2000
+              })
+            }else{
+              wx.showToast({
+                title: res.info,
+                icon: 'none',
+                duration: 2000
+              })
+            }
+          })
 
+        } else if (e.detail.errMsg == "getPhoneNumber:fail user deny") {
+          console.log('不同意')
+        }
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

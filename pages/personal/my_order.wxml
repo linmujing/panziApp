@@ -27,14 +27,14 @@
                 </view>
             </view>
             <view class="content_right">
-                <view class="price">{{item.money / item.num}}积分</view>
+                <view class="price">{{item.type == 1 ? '' : '￥'}}{{item.money / item.num}}{{item.type == 1 ? '积分' : ''}}</view>
                 <!-- <view class="price_">{{item.price_}}积分</view> -->
                 <view class="num">×{{item.num}}</view>
             </view>
         </view>
         <view class='df jc_sb ai_c'>
           <view class='ft_12 color_99 pl_10'>下单时间：{{item.create_time}}</view>
-          <view class="content_total">合计：{{item.money}}积分</view>
+          <view class="content_total">合计：{{item.type == 1 ? '' : '￥'}}{{item.money}}{{item.type == 1 ? '积分' : ''}}</view>
         </view>
         <view class="content_btn">
             <!-- <text>更多</text> -->

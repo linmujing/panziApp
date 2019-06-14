@@ -67,9 +67,10 @@
 
 /* 弹窗 */
 .modal{position:fixed;background:rgba(0,0,0,0.7);top:0;right:0;left:0;bottom:0;}
-.modal .cont{background: #fff;width: 520rpx;margin: 0 auto;text-align: center;border-radius: 16rpx;overflow: hidden;margin-top: 30%;}
+.modal .cont{background: #fff;width: 520rpx;margin: 0 auto;border-radius: 16rpx;overflow: hidden;margin-top: 30%;}
 .modal .cont .head{background: #FAA4AD;color: #fff;padding: 40rpx;}
 .modal .cont .head image{width: 70rpx;}
 .modal .cont .body{padding: 40rpx;}
 .modal .cont .btn_title{width: 200rpx;margin: 40rpx auto;line-height: 50rpx;}
+.just{text-align: justify;}
 

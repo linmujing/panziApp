@@ -1,6 +1,6 @@
 <!--pages/personal/task_center.wxml-->
 <view class='top'>
-  <view class='ta_r ft_12'>签到规则</view>
+  <view class='ta_r ft_12' bindtap='click_rule'>签到规则</view>
   <view class='qd ta_c'>
     <view class='btn df ai_c jc_c' bindtap='click_checkIn'>
       <image mode='widthFix' src='/img/checkin.png'></image>
@@ -49,7 +49,7 @@
 </view>
 <!-- 弹窗 -->
 <view hidden='{{popup_state}}' class='modal'>
-  <view class='cont'>
+  <view class='cont ta_c'>
     <view class='head'>
       <image mode='widthFix' src='/img/checkin.png'></image>
       <view class='mt_5 ft_15'>签到成功</view>
@@ -62,6 +62,20 @@
   </view>
   <view class='mt_20 ta_c'>
     <icon type="cancel" size="36" color="#fff" bindtap='click_close'/>
+  </view>
+</view>
+
+<view hidden='{{rule_state}}' class='modal'>
+  <view class='cont'>
+    <view class='head ta_c'>
+      <view class='mt_5 ft_15'>签到规则</view>
+    </view>
+    <view class='body just'>
+      <rich-text class='w100' nodes="{{rule}}"></rich-text>  
+    </view>
+  </view>
+  <view class='mt_20 ta_c'>
+    <icon type="cancel" size="36" color="#fff" bindtap='click_rule'/>
   </view>
 </view>
 

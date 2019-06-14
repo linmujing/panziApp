@@ -28,8 +28,8 @@
 <view class='carouse2'>
   <swiper autoplay indicatorDots circular interval='5000' indicator-active-color='#fff'>
     <view wx:for="{{carouselData}}" wx:key='{{index}}'>
-      <swiper-item>
-        <image src="{{item.img}}" class='w100 h100'/>
+      <swiper-item class='item'>
+        <image mode='widthFix' src="{{item.img}}" class='w100'/>
       </swiper-item>
     </view>
   </swiper>
@@ -37,7 +37,7 @@
 <!-- 导航 -->
 <view class='nav df jc_sb fw_w bg_ff'>
   <block wx:for='{{navData}}' wx:key='{{index}}'>
-    <view class='w20 mt_10' bindtap='click_nav' data-index='{{index}}' data-title='{{item.title}}'>
+    <view class='w20 mt_10' bindtap='click_nav' data-id='{{item.id}}' data-title='{{item.title}}'>
       <image src='{{item.title_img}}'></image>
       <view class='ft_12 mt_5'>{{item.title}}</view>
     </view>
@@ -126,7 +126,7 @@
     <view>STORE ENVIRONMENT</view>
   </view>
   <view class='w100'>
-    <image mode='widthFix' src='{{storeData.img}}' class='w100'></image>
+    <image mode='widthFix' src='{{storeData.img}}' class='w100' bindtap='click_nav' data-id='{{2}}'></image>
   </view>
   <view class='store bg_ff df fw_w'>
     <!-- <scroll-view class="df fw_w" scroll-x style="width: auto;overflow:hidden;">
@@ -148,7 +148,7 @@
     <view>HOT COMMENTS</view>
   </view>
   <view class='comments df jc_sb fw_w'>
-    <view wx:for='{{commentsList}}' wx:key='{{index}}' class='item' bindtap='click_comments'>
+    <view wx:for='{{commentsList}}' wx:key='{{index}}' class='item' bindtap='comments_detail' data-id='{{item.id}}'>
       <view class='imgb'>
          <image mode='widthFix' src="{{item.img}}" class='w100'/>
       </view>
@@ -161,6 +161,7 @@
       </view>
     </view>
   </view>
+  <view class='more' bindtap='click_comments'>点击查看更多...</view>
 </view>
 
 

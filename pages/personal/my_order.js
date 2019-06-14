@@ -39,7 +39,10 @@ Page({
         url: '/pages/login/index',
       })
     }
-    var type = options.type
+    var type = ''
+    if (options.type){
+      type = options.type
+    }
     var currentTab = 0
     if (type == ''){
       currentTab = 0

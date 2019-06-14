@@ -32,6 +32,11 @@ const url = {
   addAddr: urlFront + 'integral/address',
   delAddr: urlFront + 'integral/delAddress',
 
+  hanfuList: urlFront + 'integral/goods_list_new',
+  recommend_new: urlFront + 'integral/istj_new',
+  goodsOrder_new: urlFront + 'integral/goods_order_new',
+  pay: urlFront + 'Integral/pay',
+
   goodsList: urlFront + 'integral/goods_list',
   goodsInfo: urlFront + 'integral/goods_info',
   goodsOrder: urlFront + 'integral/goods_order',
@@ -44,6 +49,7 @@ const url = {
   signData: urlFront + 'sign/index',
   checkIn: urlFront + 'sign/sign',
   signRecord: urlFront + 'sign/sign_record',
+  welfare: urlFront + 'sign/welfare',
 
   index: urlFront + 'Content/column', 
   gywm: urlFront + 'Content/gywm', 
@@ -81,7 +87,8 @@ const url = {
   ranking: urlFront + 'Integral/ranking',
   amendindex: urlFront + 'Player/amendindex',
 
-  slicesList: urlFront + 'Content/slicesList',
+  slicesCat: urlFront + 'Content/slicesCat', 
+  slicesList: urlFront + 'Content/slicesList', 
   slicesInfo: urlFront + 'Content/slicesInfo',
 
 }

@@ -1,10 +1,11 @@
 page {
-    background: #F5F5F5
+    background: #F5F5F5;
 }
 
 .container {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .person_info {
@@ -37,6 +38,7 @@ page {
     display: flex;
     align-items: center;
     padding: 60rpx 0 0 30rpx;
+    overflow: hidden;
 }
 
 .person_info .info_details .details_left {
@@ -77,12 +79,13 @@ page {
 
 .person_info .info_details .VIP_center {
     position: absolute;
-    right: 30rpx;
-    top: 18%;
+    right: 28rpx;
+    top: 157rpx;
 }
 
 .person_info .info_details .VIP_center image {
     width: 135rpx;
+    padding: 40rpx 0 0 40rpx;
 }
 
 .my_order {

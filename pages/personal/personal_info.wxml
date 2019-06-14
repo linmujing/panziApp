@@ -7,6 +7,15 @@
             <!-- <image class="enter_" mode="widthFix" src="../../img/enter_.png" /> -->
         </view>
     </view>
+    <view class='tel'>
+      <button  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='df jc_sb w100'>
+        <view>手机号</view>
+        <view class="right">
+            <view>{{userInfo.tel}}</view>
+            <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
+        </view>
+      </button>
+    </view>
     <view class="Member_name" bind:tap="on_input" data-id="1">
         <view>会员名</view>
         <view class="right">
@@ -49,11 +58,11 @@
 </view>
 <view class='input_box {{change===true?"active":""}}'>
     <view class="inp" wx:if="{{show}}">
-        <input placeholder="请输入会员名" confirm-type='send' placeholder-style='color: #B4B4B4' bindblur='bindBlur' focus="{{focus}}" bindconfirm='confirm_send' />
+        <input placeholder="请输入会员名" confirm-type='done' placeholder-style='color: #B4B4B4' bindblur='bindBlur' focus="{{focus}}" bindconfirm='confirm_send' />
     </view>
 </view>
 <view class='input_box {{change===true?"active":""}}'>
     <view class="inp" wx:if="{{show1}}">
-        <input placeholder="请输入微信名" confirm-type='send' placeholder-style='color: #B4B4B4' bindblur='bindBlur1' focus="{{focus1}}" bindconfirm='confirm_send1' />
+        <input placeholder="请输入微信名" confirm-type='done' placeholder-style='color: #B4B4B4' bindblur='bindBlur1' focus="{{focus1}}" bindconfirm='confirm_send1' />
     </view>
 </view>

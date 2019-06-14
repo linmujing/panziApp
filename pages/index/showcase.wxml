@@ -1,7 +1,26 @@
 <!--pages/index/showcase.wxml-->
-<view class='title'>
-  <view class='mt_10'>| 最新客片照欣赏 |</view>
-  <view class='arrow'></view>
+<view class='search_box bg_ff'>
+  <view class='search df ai_c'>
+    <image mode='widthFix' src='/img/search.png'></image>
+    <input placeholder="搜索客片关键词" confirm-type='search' placeholder-style='color: #B4B4B4' bindinput="blur_search" bindconfirm='confirm_search' class='w90' />
+  </view>
+</view>
+<view class='banner bg_ff'>
+  <swiper autoplay circular interval='3000'>
+    <view wx:for="{{banner}}" wx:key='{{index}}'>
+      <swiper-item>
+        <image src="{{item}}" class='w100 h100' />
+      </swiper-item>
+    </view>
+  </swiper>
+</view>
+<!-- 导航栏 -->
+<view class='nav bg_ff'>
+  <scroll-view scroll-x class='df' scroll-with-animation style="width: auto;">
+    <view wx:for='{{caseData.navList}}' wx:key='index' class='item {{caseData.current==index?"active":""}}' data-index='{{index}}' bindtap='click_nav' data-id='{{item.id}}'>
+      {{item.name}}
+    </view>
+  </scroll-view>
 </view>
 
 <view wx:for="{{caseData.list}}" wx:key='index' class='list' bindtap='click_detail' data-id='{{item.id}}'>

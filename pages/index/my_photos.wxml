@@ -18,12 +18,12 @@
 </checkbox-group>
 
 <view class='upload df jc_sb'>
-  <!-- <checkbox-group bindchange="checkboxAll">
+  <checkbox-group bindchange="checkboxAll">
     <label class='ck'>
       <checkbox checked="{{allCheck}}" color='#F89FB5'/>
       <text>全选</text>
     </label>
-  </checkbox-group> -->
+  </checkbox-group>
   <view class='btn' bindtap='savePic'>保存图片</view>
 </view>
 

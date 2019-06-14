@@ -23,7 +23,7 @@
     <view class='detail'>
       <view class='twoline'>{{info.goods_name}}</view>
       <view class='df jc_sb mt_20'>
-        <view class='color_99 ft_12'><text class='color_jf'>{{info.money}}</text> 积分</view>
+        <view class='color_99 ft_12'><text class='color_jf'>{{type == 1 ? '' : '￥'}} {{info.money}}</text> {{type == 1 ? '积分' : ''}}</view>
         <view class='buy df ai_c'>
             <view bindtap='click_minus' class='minus'>-</view>
             <text class='num'>{{num}}</text>
@@ -53,7 +53,7 @@
 
 <view class='tj'>
   <view class='tjdd df ai_c jc_sb'>
-    <view class='color_99'><text class='color_jf'>{{totle_cost}}</text> 积分</view>
+    <view class='color_99'><text class='color_jf'>{{type == 1 ? '' : '￥'}} {{totle_cost}}</text> {{type == 1 ? '积分' : ''}}</view>
     <view class='btn_title' bindtap='click_tijiao'>提交订单</view>
   </view>
    <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
@@ -63,7 +63,7 @@
 <!-- 兑换成功弹窗 -->
 <view hidden='{{popup_state}}' class='popup'>
   <view class='box df fd_c jc_sa'>
-    <view class='color_title'>恭喜您，兑换成功!</view>
+    <view class='color_title'>恭喜您，{{type == 1 ? '兑换' : '支付'}}成功!</view>
     <view>
       <image mode='widthFix' src='{{gift}}' class='w50'></image>
       <view class='color_99 ft_12'>订单已交至后台处理</view>

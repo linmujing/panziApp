@@ -15,7 +15,8 @@ Page({
     addr_state: true,
     info: {},
     totle_cost: 0,
-    remark: ''
+    remark: '',
+    type: 0
   },
 
   /**
@@ -70,7 +71,8 @@ Page({
       if (res.state == 1) {
         that.setData({
           info: res.order,
-          totle_cost: res.order.money
+          totle_cost: res.order.money,
+          type: res.order.type
         })
       }
     })
@@ -103,10 +105,10 @@ Page({
     var that = this;
     var num = that.data.num;
     num++;
-    var totle_cost = parseInt(that.data.info.money * num)
+    var totle_cost = that.data.info.money * num
     that.setData({ 
       num: num,
-      totle_cost: totle_cost
+      totle_cost: totle_cost.toFixed(2)
     })
   },
   //减少数量
@@ -138,6 +140,53 @@ Page({
       })
       return false
     }
+   if(that.data.type == 1){
+     that.integral()
+   }else{
+     that.payment()
+   }
+  },
+  payment: function () {
+    var that = this
+    var reqBody = {
+      token: that.data.userInfo.token,
+      goods_id: that.data.info.goods_id,
+      address_id: that.data.addr.id,
+      money: that.data.totle_cost,
+      remark: that.data.remark,
+      convert_no: that.data.info.convert_no,
+      num: that.data.num
+    };
+    wx.showLoading({
+      title: '加载中',
+    })
+    util.post(util.url.pay, reqBody, (res) => {
+      wx.hideLoading()
+      wx.requestPayment({
+        'timeStamp': res.timeStamp,
+        'nonceStr': res.nonceStr,
+        'package': res.package,
+        'signType': 'MD5',
+        'paySign': res.paySign,
+        'success': function (res) {
+          wx.showToast({
+            title: "完成订单支付"
+          })
+          var popup_state = that.data.popup_state
+          that.setData({
+            popup_state: !popup_state
+          })
+        },
+        'fail': function (res) {
+          wx.redirectTo({
+            url: '/pages/personal/my_order'
+          })
+
+        }
+      })
+    })
+  },
+  integral: function(){
     wx.showModal({
       title: '提示',
       content: '是否确认兑换该商品？',

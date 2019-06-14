@@ -9,7 +9,6 @@ Page({
   data: {
     imgData: [],
     imgArr: [],
-    lists: [],
     allCheck: false,
     percent_n: 0,
     preview: {
@@ -96,20 +95,20 @@ Page({
         list = list.concat(res.data.list);
         that.setData({
           imgData: list,
-          page: that.data.page + 1
+          page: that.data.page + 1,
+          allCheck: false
         })
         // 判断上拉加载
         var leg = that.data.imgData.length
         if (leg < res.data.count) {
           that.setData({
-            Page_slide: true
+            Page_slide: true,
           })
         } else {
           that.setData({
             Page_slide: false
           })
         }
-        
       }else{
         wx.showToast({
           title: res.msg,
@@ -125,6 +124,7 @@ Page({
     var imgData = this.data.imgData
     var imgArr = []
     for (var i = 0; i < imgData.length; i++) {
+      imgData[i].check = false
       for (var j = 0; j < checkArr.length; j++) {
         if (checkArr[j] == i){
           imgData[i].check = true
@@ -132,17 +132,17 @@ Page({
         }
       }
     }
-    // var len = this.data.imgData.length
-    // var allCheck = false
-    // if (imgArr.length == len) {
-    //   allCheck = true
-    // } else {
-    //   allCheck = false
-    // }
+    var len = this.data.imgData.length
+    var allCheck = false
+    if (checkArr.length == len) {
+      allCheck = true
+    } else {
+      allCheck = false
+    }
     this.setData({
       imgArr: imgArr,
-      imgData: imgData
-      // allCheck: allCheck
+      imgData: imgData,
+      allCheck: allCheck
     })
   },
   // 全选
@@ -151,12 +151,14 @@ Page({
     var imgData = this.data.imgData
     var lists = []
     for (var i = 0; i < imgData.length; i++) {
-      imgData[i].check = !imgData[i].check
-    }
-    if (!allCheck) {
-      lists = this.data.lists
-    } else {
-      lists = []
+      if (!allCheck) {
+        imgData[i].check = true
+        lists.push(imgData[i].img)
+      }else{
+        imgData[i].check = false
+        lists = []
+      }
+      
     }
     this.setData({
       allCheck: !allCheck,

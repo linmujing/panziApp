@@ -1,5 +1,5 @@
 /* pages/index/jifen_detail.wxss */
-swiper{width: 100%;min-height: 700rpx;}
+swiper{width: 100%;height: 700rpx;}
 .info{padding: 20rpx;}
 .font_blod{font-weight: bold}
 .tag{color: #fff;background: #FAA8B6;padding: 2rpx 10rpx;font-size: 20rpx;margin-left: 20rpx;}

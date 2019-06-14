@@ -51,14 +51,14 @@ Page({
       token: this.data.userInfo.token,
       goods_id: goods_id
     };
-    util.post(util.url.goodsOrder, reqBody, (res) => {
+    util.post(util.url.goodsOrder_new, reqBody, (res) => {
       // console.log(res)
       wx.hideLoading()
       if (res.state == 1) {
         wx.navigateTo({
           url: 'order?id=' + res.order_id,
         })
-      }else{
+      } else {
         wx.showToast({
           title: res.info,
           icon: 'none',
@@ -97,7 +97,7 @@ Page({
     var reqBody = {
       token: that.data.userInfo.token
     };
-    util.post(util.url.recommend, reqBody, (res) => {
+    util.post(util.url.recommend_new, reqBody, (res) => {
       // console.log(res)
       if (res.state == 1) {
         that.setData({
@@ -109,7 +109,7 @@ Page({
   click_detail: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: 'jifen_detail?id=' + id,
+      url: 'hanFu_detail?id=' + id,
     })
   },
   /**
@@ -147,12 +147,12 @@ Page({
     if (res.from === 'button') {
       // 来自页面内转发按钮
       // console.log("111", res);
-    }else{
+    } else {
       // console.log("222", res);
     }
     return {
       title: this.data.detailData.goods_name,
-      path: 'pages/index/jifen_detail?id=' + this.data.goods_id
+      path: 'pages/index/hanFu_detail?id=' + this.data.goods_id
     }
   },
 })

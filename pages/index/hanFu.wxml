@@ -29,9 +29,9 @@
       <view class='ft_13 oneline'>{{item.goods_name}}</view>
       <view class='mt_5 df jc_sb ai_fe'>
         <view class='ft_11'>
-          <text class='color_jifen ft_14 oneline'>{{item.cost}} </text>积分
+          <text class='color_jifen ft_14 oneline'>￥ {{item.cost}}</text>
         </view>
-        <text class='ft_10 color_5b pl_10'>{{item.sales}}人已兑换</text>
+        <text class='ft_10 color_5b pl_10'>{{item.sales}}人已购买</text>
       </view>
     </view>
   </view>

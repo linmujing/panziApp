@@ -23,6 +23,8 @@ Page({
     is_sign: 0,
     days: 0,
     score: 0,
+    rule_state: true,
+    rule: '',
     Height: wx.getSystemInfoSync().windowHeight
   },
 
@@ -145,12 +147,19 @@ Page({
         days = data.days
       }
       if (res.state == 1) {
+        data.rule = data.rule.replace(/\<img/gi, '<img style="width:100%;height:auto" ')
         that.setData({
           date: data.arrlist,
           is_sign: data.is_sign,
           days: days,
+          rule: data.rule
         })
       }
+    })
+  },
+  click_rule: function () {
+    this.setData({
+      rule_state: !this.data.rule_state
     })
   },
   /**

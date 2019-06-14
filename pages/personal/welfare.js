@@ -1,4 +1,4 @@
-// pages/theme/detail.js
+// pages/personal/welfare.js
 var util = require('../../utils/util.js');
 const app = getApp()
 Page({
@@ -7,23 +7,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    info: {},
-    img:{
-      hengping: app.globalData.imgUrl + 'henping.png',
-      heng: app.globalData.imgUrl + 'heng.png',
-      shu: app.globalData.imgUrl + 'shu.png',
-    }
+
   },
-  
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.log(options)
-    this.themeInfo(options.id, options.type)
+    var userInfo = wx.getStorageSync('userInfo');
     this.setData({
-      options: options
+      userInfo: userInfo
     })
+    if (!userInfo) {
+      wx.navigateTo({
+        url: '/pages/login/index',
+      })
+    }
+    this.welfare()
   },
 
   /**
@@ -39,29 +39,18 @@ Page({
   onShow: function () {
 
   },
-  themeInfo: function (id, type) {
-    var that = this
-    var url = ''
-    switch (type){
-      case '1':
-        url = util.url.themeInfo;
-        break;
-      case '2':
-        url = util.url.slicesInfo;
-        break;
-    }
+  welfare: function () {
+    var userInfo = this.data.userInfo
     var reqBody = {
-      id: id
+      token: userInfo.token
     };
     wx.showLoading({
       title: '加载中',
     })
-    util.post(url, reqBody, (res) => {
+    util.post(util.url.welfare, reqBody, (res) => {
       if (res.state == 1) {
-        wx.setNavigationBarTitle({
-          title: res.data.title
-        })
-        that.setData({
+        res.data = res.data.replace(/\<img/gi, '<img style="width:100%;height:auto" ')
+        this.setData({
           info: res.data
         })
       }

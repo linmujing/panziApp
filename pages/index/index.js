@@ -119,47 +119,50 @@ Page({
   },
   // 导航列表
   click_nav: function (e) {
-    var index = e.currentTarget.dataset.index;
+    var id = e.currentTarget.dataset.id;
     var title = e.currentTarget.dataset.title;
-    switch (index) {
-      case 0:
+    switch (id) {
+      case 2:
         wx.navigateTo({
           url: '/pages/index/store',
         })
         break
-      case 1:
+      case 3:
         wx.switchTab({
           url: '/pages/theme/index',
         })
         break
-      case 2:
+      case 4:
         wx.navigateTo({
           url: '/pages/index/showcase',
         })
         break
-      case 3:
+      case 5:
         wx.navigateTo({
           url: '/pages/index/video',
         })
         break
-      case 4:
-        break
-      case 5:
-        wx.navigateTo({
-          url: '/pages/index/star?title=' + title + '&type=2'
-        })
-        break
       case 6:
         wx.navigateTo({
-          url: '/pages/index/star?title=' + title + '&type=1'
+          url: '/pages/index/hanFu',
         })
         break
       case 7:
         wx.navigateTo({
-          url: '/pages/index/jifen_mall',
+          url: '/pages/index/star?title=' + title + '&type=2'
         })
         break
       case 8:
+        wx.navigateTo({
+          url: '/pages/index/star?title=' + title + '&type=1'
+        })
+        break
+      case 9:
+        wx.navigateTo({
+          url: '/pages/index/jifen_mall',
+        })
+        break
+      case 10:
         wx.navigateToMiniProgram({
           appId: 'wx5ba0b0241434741e',
           path: 'page/home/index',
@@ -172,7 +175,7 @@ Page({
           }
         })
         break
-      case 9:
+      case 11:
         wx.navigateTo({
           url: '/pages/index/photos_list',
         })
@@ -215,6 +218,12 @@ Page({
   click_comments: function(){
     wx.navigateTo({
       url: 'comments',
+    })
+  },
+  comments_detail: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: 'comments_detail?id=' + id,
     })
   },
   /**

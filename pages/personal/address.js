@@ -52,7 +52,7 @@ Page({
     var that = this 
     wx.showModal({
       title: '提示',
-      content: '确认删除改地址吗？',
+      content: '确认删除该地址吗？',
       success(res) {
         if (res.confirm) {
           console.log('用户点击确定')

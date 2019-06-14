@@ -25,14 +25,14 @@
                     <image mode="widthFix" src="/img/qiandao.png" />
                 </view>
             </view>
-            <view class="VIP_center">
+            <view class="VIP_center" bindtap='click_vip'>
                 <image mode="widthFix" src="/img/huiyuan.png" />
             </view>
         </view>
     </view>
     <view class="my_order">
         <view class="order_title" bind:tap="link_allOrder" data-type=''>
-            <view class="title_left">我的兑换</view>
+            <view class="title_left">我的订单</view>
             <view class="look_all">
                 查看全部
                 <image mode="widthFix" src="/img/enter_.png" />
@@ -79,13 +79,13 @@
             </view>
             <image mode="widthFix" src="/img/enter_.png" />
         </view>
-        <view class="my_list_item" bind:tap="link_rank">
+        <!-- <view class="my_list_item" bind:tap="link_rank">
             <view>
                 <image mode="widthFix" src="/img/center-04.jpg" />
                 <text>排行榜</text>
             </view>
             <image mode="widthFix" src="/img/enter_.png" />
-        </view>
+        </view> -->
         <view class="my_list_item" bind:tap="to_QRcode">
             <view>
                 <image mode="widthFix" src="/img/code.png" />

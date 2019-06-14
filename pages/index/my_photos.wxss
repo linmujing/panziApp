@@ -17,7 +17,7 @@ page{padding-bottom: 100rpx;}
 .upload{position: fixed;bottom: 0;width: 100%;font-size: 32rpx;background: #fff;line-height: 100rpx;z-index: 10;}
 .upload .ck{margin-left: 20rpx;}
 .upload .ck text{position: relative;top: 5rpx;}
-.upload .btn{width:100%;text-align: center;background: #F89FB5;color: #fff;}
+.upload .btn{width:40%;text-align: center;background: #F89FB5;color: #fff;}
 
 /* checkbox未选中时样式 */
 .container checkbox .wx-checkbox-input{border-radius: 20rpx;height: 36rpx;width: 36rpx;margin-top: -18rpx;background-color: #fff;} 

@@ -69,3 +69,5 @@
     background: #fff;
     padding: 20rpx;
 }
+.tel button{background:none;font-size:28rpx;padding: 0;}
+.tel button::after{border: none;background-color:rgba(0,0,0,0);}

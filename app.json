@@ -3,6 +3,8 @@
 
     "pages/login/index",
     "pages/index/video",
+    "pages/index/hanFu",
+    "pages/index/hanFu_detail",
     "pages/index/order",
     "pages/index/showcase",
     "pages/index/index",
@@ -24,7 +26,8 @@
     "pages/community/community",
     "pages/community/search",
     "pages/community/searchLink",
-    "pages/personal/index",
+   "pages/personal/index",
+    "pages/personal/welfare",
     "pages/personal/about_us",
     "pages/personal/address",
     "pages/personal/add_address",

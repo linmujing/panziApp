@@ -15,8 +15,8 @@
       <view class='font_blod'>{{detailData.goods_name}}</view>
       <!-- <view class='ft_12 color_5b mt_5'>{{detailData.goods_content}}</view> -->
       <view class='mt_10 df ai_c'>
-        <text class='color_jifen ft_16'>{{detailData.cost}} </text>
-        <text class='color_5b ft_12 pl_5'>积分</text>
+        <text class='color_jifen ft_16'>￥ {{detailData.cost}} </text>
+        <!-- <text class='color_5b ft_12 pl_5'>积分</text> -->
         <text class='tag'>{{detailData.cid}}</text>
       </view>
     </view>
@@ -29,7 +29,7 @@
   </view>
   <view class='mt_10 ft_12 color_5b df jc_sb'>
     <!-- <text>仅限：{{detailData.sales}}</text> -->
-    <text>{{detailData.sales}}人已兑换</text>
+    <text>{{detailData.sales}}人已购买</text>
     <text>库存：{{detailData.stock}}</text>
   </view>
   <!-- tab -->
@@ -54,9 +54,9 @@
         <view class='ft_13'>{{item.goods_name}}</view>
         <view class='mt_5 df jc_sb ai_fe'>
           <view class='ft_11'>
-            <text class='color_jifen ft_14'>{{item.cost}} </text>积分
+            <text class='color_jifen ft_14'>￥ {{item.cost}}</text>
           </view>
-          <text class='ft_10 color_5b pl_10'>{{item.sales}}人已兑换</text>
+          <text class='ft_10 color_5b pl_10'>{{item.sales}}人已购买</text>
         </view>
       </view>
     </view>
@@ -65,7 +65,7 @@
 
 
 <view class='duihuan' bindtap='click_dui'>
-  <view class='btn_title'>立即兑换</view>
+  <view class='btn_title'>立即购买</view>
   <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
 </view>
 
