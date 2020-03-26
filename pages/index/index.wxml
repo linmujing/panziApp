@@ -6,7 +6,7 @@
   <navigator url="/pages/login/test"><button type="primary">识别体验</button></navigator>
 </view> -->
 
-<button bindtap="h5">测试</button>
+<!-- <button bindtap="h5">测试</button> -->
 
 <view class='carouse2 bg_ff'>
   <swiper autoplay indicatorDots circular interval='4000' indicator-active-color='#fff'>

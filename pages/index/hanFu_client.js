@@ -64,6 +64,9 @@ Page({
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
       if (res.state == 1) {
+        wx.setNavigationBarTitle({
+          title: res.title
+        })
         var list = that.data.clientData.list
         list = list.concat(res.data);
         that.setData({
