@@ -1,0 +1,18 @@
+<!--pages/activity/index.wxml-->
+<view class='list'>
+  <view wx:for="{{gameData}}" wx:key="index" class="item df jc_sb" bindtap="click_next" data-param='{{item}}'>
+    <view class="df">
+      <view class="img">
+        <image mode='widthFix' src='{{item.image}}'></image>
+      </view>
+      <view class="pl_10 pt_10 info">
+        <view class="ft_16 blod">{{item.title}}</view>
+        <view class="mt_5 color_99 ft_12">{{item.xtitle}}</view>
+      </view>
+    </view>
+    <view class="df fd_c jc_fe pb_20">
+      <view class="btn_title">玩一玩</view>
+    </view>
+  </view>
+</view>
+<view class='ta_c pt_10 pb_10 ft_12 color_99 mt_10'>更多游戏 敬请期待~</view>

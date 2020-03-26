@@ -4,16 +4,23 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"autoAudits": false,
-		"checkInvalidKey": true
+		"checkInvalidKey": true,
+		"checkSiteMap": false,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.6",
+	"libVersion": "2.8.3",
 	"appid": "wx62400f34c7d6628e",
 	"projectname": "panziApp",
 	"debugOptions": {

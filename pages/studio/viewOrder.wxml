@@ -1,0 +1,27 @@
+<!--pages/studio/viewOrder.wxml-->
+<canvas  canvas-id="shareImg" style="width:1080px;height:1762px"></canvas>
+<view class='preview'>
+  <view class='img brr8'><image class="brr8" mode='widthFix' bindload="imageLoad" src='{{load?resimg:"../../image/ba1200x1600.jpg"}}'></image></view>
+  <view class='an brr8'>
+    <view class='bc'  bindtap='canvas'>
+      <text>保存图片</text>
+    </view>
+      <button class='fx' id="shareBtn" open-type="share" type="primary" hover-class="other-button-hover">
+      <text>撩朋友来玩</text>
+    </button>
+  </view>
+</view>
+<view class='popup' wx:if="{{page_jz}}"></view>
+
+<!-- 设置 -->
+<view class='set' hidden='{{down_state}}'>
+  <view class='popup_nr'>
+    <view class='biaoti'>温馨提示</view>
+    <view class='popup_nrs'>为了更好的体验小程序，请前往设置窗口，打开相册授权！</view>
+    <view class='an'>
+      <button open-type="openSetting" bindopensetting="set_callback">
+        <text>打开设置页</text>
+      </button>
+    </view>
+  </view>
+</view>

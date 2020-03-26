@@ -57,7 +57,8 @@ Page({
         list = list.concat(res.data);
         that.setData({
           list: list,
-          page: that.data.page + 1
+          page: that.data.page + 1,
+          Page_slide: true
         })
       } else {
         that.setData({
@@ -103,10 +104,5 @@ Page({
     }
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
-  }
 })

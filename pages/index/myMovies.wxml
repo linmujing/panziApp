@@ -1,0 +1,68 @@
+<!--pages/index/myMovies.wxml-->
+<view class="nav">
+    <view class='tab df'>
+        <block wx:for="{{tabArr}}" wx:key="{{index}}">
+            <view class="{{currentTab==index ? 'active' :'' }}" data-current='{{index}}' bindtap='switchNav' data-type='{{item.type}}'>
+                {{item.name}}
+            </view>
+        </block>
+    </view>
+</view>
+<view wx:if='{{list.length>0}}' class="listbox">
+  <view class='list' wx:for='{{list}}' wx:key='index'>
+    <view class='title df ai_c'>
+      <image class="movie" src="/img/video.png" mode="widthFix"></image>
+      <view class='ft_16 pl_10'>{{item.title}}</view>
+    </view>
+    <view class="vbox">
+      <view id="{{index}}" class="cover" style="display: {{ _index === index+'' ? 'none' : 'block' }};" bindtap="videoPlay">
+        <!-- 视频图层 -->
+        <image class="videoVideo2" src="{{item.poster}}" mode="scaleToFill">
+          <!-- 视频按钮 -->
+          <image class="videoPlay" src="/img/play.png" mode="scaleToFill"></image>
+        </image>
+      </view>
+      <!-- 视频 -->
+      <video src="{{item.videourl}}" id="{{index}}" class='video' wx:if="{{_index === index+''}}" bindtimeupdate='bindtimeupdate'></video>
+    </view>
+    <view wx:if='{{item.num > 0}}' class="df jc_sb ai_c mt_10 btnbox">
+      <view class="color_title ft_16"></view>
+      <view class="btn" bindtap="judgeWifi" data-index='{{index}}'>下载保存至手机<image class="down pl_5" src="/img/down.png" mode="widthFix"></image></view>
+    </view>
+    <view wx:else class="df jc_sb ai_c mt_10 btnbox">
+      <view class="color_title">￥<text class="price">{{item.money}}</text><text class="yj">￥{{item.yjmoney}}</text></view>
+      <view class="btn" bindtap="show_tip" data-index='{{index}}'>购买高清{{item.title}}<image class="down pl_5" src="/img/down.png" mode="widthFix"></image></view>
+    </view>
+  </view>
+</view>
+<view wx:else class="ta_c color_99 nodata">
+  <image mode="widthFix" src='{{dyimg}}' class='w100 bg' bindtap='previewImg'></image>
+  <view class="mt_10">您还未在盘子女人坊体验古装拍摄</view>
+  <view>无法制作微电影哦~</view>
+  <view class="btn_title" bindtap="click_btn">立即预约体验</view>
+</view>
+
+<!-- 提示弹窗 -->
+<view class="tip_box df ai_c jc_c" hidden="{{tip.state}}">
+  <view class="body">
+    <view class="title">付费下载</view>
+    <view class="mt_20 color_title">支付￥{{tip.price}}</view>
+    <view class="mt_10">下载高清完整视频</view>
+    <view class="df jc_sa mt_20 foot pb_10">
+      <view bindtap="cancel_tip" class="cancel">取消</view>
+      <view bindtap="create_order" class="ok">确认</view>
+    </view>
+  </view>
+</view>
+<!-- 设置 -->
+<view class='set' hidden='{{down_state}}'>
+  <view class='popup_nr'>
+    <view class='biaoti'>温馨提示</view>
+    <view class='popup_nrs'>为了更好的体验小程序，请前往设置窗口，打开相册授权！</view>
+    <view class='an'>
+      <button open-type="openSetting" bindopensetting="set_callback">
+        <text>打开设置页</text>
+      </button>
+    </view>
+  </view>
+</view>

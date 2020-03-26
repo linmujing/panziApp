@@ -52,7 +52,8 @@ Page({
     var res = wx.getSystemInfoSync();
     this.setData({
       //更具屏幕宽度变化自动设置宽度
-      sysW: res.windowHeight * 0.95 / 12,
+      // sysW: res.windowHeight * 0.95 / 12,
+      sysW: (res.windowWidth - 40) / 7,
       marLet: this.data.firstDay,
       // arr: this.data.arr,
       year: this.data.year,
@@ -190,10 +191,4 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

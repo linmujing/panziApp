@@ -1,0 +1,65 @@
+<!--pages/studio/preview.wxml-->
+<view class='preview brr8'>
+  <view class='img brr8'>
+      <image class='brr8' bindload='imageOnLoad' binderror='imageOnLoadError' mode='widthFix' src='{{imgloadr?hcimg:hcimg}}'>
+      </image>
+     <image class="watermark {{watermark?'show':'hide'}}" mode="widthFix" src='../../image/watermark.png'></image>
+    </view>
+</view>
+<!--  -->
+<scroll-view class="fenlei" scroll-x="true" bindscroll="scroll" style="width: 100%">
+  <view class='li f26 {{index==active?"active":""}} {{index==0?"ml":""}}' data-index='{{index}}' data-id='{{item.id}}' bindtap='fenlei' wx:key='index' wx:for="{{yj_list}}">
+      <view class='biaoti'>{{item.cname}}</view>
+      <view class='xian'></view>
+    </view>
+</scroll-view>
+<!--  -->
+<scroll-view class="list" scroll-x="true" bindscroll="scroll" style="width: 100%">
+  <view wx:if='{{!list_state}}' class='list_nr brr4 {{index===listi?"active":""}} {{index==0?"ml":""}} {{index+1==list.length?"mr":""}}' bindtap="click_list" wx:key='index' data-title='{{item.gname}}' wx:for="{{list}}" data-status='{{item.status}}' data-make="{{item.make}}" data-price='{{item.price}}' data-img='{{item.eimg}}' data-id='{{item.id}}'
+      data-index='{{index}}'>
+      <view class='tpimg'>
+        <image class='brr4'lazy-load='true' mode='aspectFill' src='{{item.mimg}}'></image>
+      </view>
+      <view class='mc_jg flexzy'>
+        <text class='biaoti'>{{item.gname}}</text>
+        <!-- <image wx:if="{{xitong=='ios' && item.status==1}}" class='img' src='../../image/star.png'></image> -->
+        <view wx:if="{{item.status==1}}" class='jg f16 df ai_c'>
+          <image mode='widthFix' src='/img/diamond.png' class="w_11"></image>
+          <text>{{item.price}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='li_jiazai' wx:if='{{list_state}}'><text>数据加载中……</text></view>
+</scroll-view>
+<!--  -->
+
+<!--  -->
+<view class='purchase' wx:if='status'>
+    <view class='tishi {{xitong=="ios" && status==1?"pg":""}}'>
+      <!-- <text wx:if='{{xitong=="ios" && status==1}}'>因相关规定，iOS用户暂不支持购买。</text> -->
+      <text wx:if='{{status==1}}'>兑换后可保存该写真的无水印高清版本</text>
+      <text wx:else>生成靓照后可保存该写真的高清版本</text>
+    </view>
+    <!-- <view wx:if='{{xitong=="ios" && status==1}}' class='f36 an pg'>
+      <text>购买</text>
+    </view> -->
+    <view wx:if='{{status==1}}' bindtap='goumai' class='f36 an'>
+      <text>兑换</text>
+    </view>
+    <view wx:else bindtap='huanzhuan' class='f36 an'>
+      <text>生成靓照</text>
+    </view>
+</view>
+ 
+<view class='Load' wx:if="{{Loadstate}}">
+  <view class='img'>
+    <image src='/image/logo.png'></image>
+  </view>
+  <view class='tishi'>
+    <text class='f24'>正在为您换装</text>
+  </view>
+  <view class='tishi'>
+    <text class='f24'>请稍等</text>
+    <text class='f24 dotting'></text>
+  </view>
+</view>

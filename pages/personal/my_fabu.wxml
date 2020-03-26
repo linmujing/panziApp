@@ -1,30 +1,45 @@
 <!-- pages/personal/my_fabu.wxml -->
 <view class="container">
-    <view>
-        <view class="list_item" wx:for="{{themeData.themeList}}" wx:key="index" wx:if="{{item.status != 2}}" wx:for-index="idx">
-            <!-- <view class="list_item" wx:for="{{themeData.themeList}}" wx:key="index" wx:for-index="idx"> -->
-            <view class="item_details">
-                <!-- <image wx:for="{{item.images}}" wx:for-item="dd" src="{{dd}}" wx:key="index" /> -->
+    <view wx:if='{{themeData.themeList.length>0}}'>
+        <view class="list_item" wx:for="{{themeData.themeList}}" wx:key="index" wx:for-index="idx">
+            <view class="audit ta_r pt_5 pb_10"><text>{{item.status == 0?'审核中':'已发布'}}</text></view>
+            <view class="item_details" bind:tap="click_detail" data-id="{{item.id}}">
                 <view class="img_box" wx:if='{{item.images.length>0}}'>
-                    <image mode="widthFix" src="{{item.images[0]}}" wx:key="index" />
+                    <image mode="widthFix" src="{{item.images[0]}}"/>
                 </view>
-                <view>
+                <view class="w80">
                     <view class="item_title">{{item.content}}</view>
+                    <view class="df mt_10 ft_12 color_99">
+                      <view class="pr_20">点赞 {{item.zan}}</view>
+                      <view>评论 {{item.commentnum}}</view>
+                    </view>
                 </view>
             </view>
             <view class="item_foot">
                 <view class="time">{{item.addtime}}</view>
                 <view class="btn_box">
-                    <view wx:if="{{item.status == 1}}" class="btn">已发布</view>
-                    <view wx:if="{{item.status == 0}}" class="btn">待审核</view>
+                    <!-- <view wx:if="{{item.status == 1}}" class="btn">已发布</view>
+                    <view wx:if="{{item.status == 0}}" class="btn">待审核</view> -->
                     <!-- <view wx:if="{{item.status == 2}}" class="btn">已删除</view> -->
-                    <view class="btn delate" bind:tap="delate" data-idx="{{idx}}" data-id="{{item.id}}">
-                        删除
-                    </view>
+                    <view wx:if="{{item.status == 1}}" class="btn share" bind:tap="getShareCode" data-id="{{item.id}}">分享</view>
+                    <view class="btn delate" bind:tap="delate" data-idx="{{idx}}" data-id="{{item.id}}">删除</view>
+                    <view wx:if="{{item.status == 1}}" class="btn delate" bind:tap="click_detail" data-id="{{item.id}}">查看</view>
                     <!-- <view class="btn">编辑</view>
                 <view class="btn More">更多</view> -->
                 </view>
             </view>
         </view>
     </view>
+    <view wx:else class="ta_c color_99 nodata">
+      <image mode="widthFix" src='{{stimg}}' class='w100 bg' bindtap='previewImg'></image>
+      <view class="mt_10">您还没有晒图哦~</view>
+      <view class="btn_title" bindtap="click_fabu">我要晒图</view>
+    </view>
+</view>
+<view class='ta_c pt_10 pb_10 ft_12 color_99'>{{Page_slide ? '' : '没有更多了~'}}</view>
+
+<view hidden='{{share.state}}' class='notes'>
+  <view class='cont ta_j w100 h100' bindtap="close_share">
+    <image mode='aspectFit' src="{{share.img}}" class="h100 w100"/>
+  </view>
 </view>

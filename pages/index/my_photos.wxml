@@ -1,14 +1,31 @@
 <!--pages/index/my_photos.wxml-->
+<!-- <view wx:if='{{video.url != ""}}' class='title'>
+  <view>视频</view>
+</view>
+<view wx:if='{{video.url != ""}}' class='video-box'>
+  <view wx:if='{{video_state}}' class='vimg' bindtap="video_Play">
+    <image class="videoPlay" src="/img/play.png" mode="scaleToFill"></image>
+  </view>
+  <video wx:else id='myVideo' src='{{video.url}}' objectFit='fill'></video>
+  <view class='df jc_sb ai_c bottomline'>
+    <view class='num'>下载次数：{{video.count}}/{{video.number}}</view>
+    <view class='btn' hidden='{{preview.btn_state}}' bindtap='save_video' data-url='{{video.url}}' data-num='{{video.count}}'>视频下载</view>
+  </view>
+</view> --> 
+<view class="movie df ai_c jc_c" bindtap="click_myMovie">请点击，查看您的微电影 <view class="icon">></view></view>
 <!-- 瀑布流 -->
+<view class='title mt_20'>
+  <view>图片</view>
+</view>
 <checkbox-group bindchange="checkboxChange">
   <view class='container'>
-      <view wx:if="{{index % 2 != 0 }}" wx:for="{{imgData}}" wx:key="{{index}}" class='img_box'>
+      <view wx:if="{{index % 2 != 0 }}" wx:for="{{imgData}}" wx:key="index" class='img_box'>
         <image src='{{item.img}}'  mode='widthFix' bindtap='previewImg' data-index='{{index}}'></image>
         <view class='check'>
             <checkbox value='{{index}}' checked='{{item.check}}' />
           </view>
       </view>
-      <view wx:if="{{index % 2 == 0 }}" wx:for="{{imgData}}" wx:key="{{index}}" class='img_box'>
+      <view wx:if="{{index % 2 == 0 }}" wx:for="{{imgData}}" wx:key="index" class='img_box'>
         <image src='{{item.img}}' mode='widthFix' bindtap='previewImg' data-index='{{index}}'></image> 
         <view class='check'>
             <checkbox value='{{index}}' checked='{{item.check}}' />
@@ -17,21 +34,42 @@
   </view> 
 </checkbox-group>
 
-<view class='upload df jc_sb'>
+<view class='upload df jc_sb' hidden='{{preview.btn_state}}'>
   <checkbox-group bindchange="checkboxAll">
     <label class='ck'>
       <checkbox checked="{{allCheck}}" color='#F89FB5'/>
       <text>全选</text>
     </label>
   </checkbox-group>
-  <view class='btn' bindtap='savePic'>保存图片</view>
+  <view class='btn' bindtap='savePic'>普通图保存</view>
 </view>
 
-<!-- <view hidden='{{preview.preview_state}}' class='preview' bindtap='hide'>
-  <view class='pre df ai_c jc_c'>
+<view hidden='{{preview.preview_state}}' class='preview'>
+  <swiper class='h100' current='{{current}}'>
+    <view wx:for="{{imgData}}" wx:key='index'>
+      <swiper-item>
+        <view class='pre df jc_c ai_c' bindtap='hide' style="height: {{winHeight +'px'}}">
+          <image mode='widthFix' src='{{item.img}}' class='w100'></image>
+        </view>
+        <view class='gq bg_ff' hidden='{{preview.btn_state}}'>
+          <view class='df jc_sb ai_c'>
+            <!-- <view class='num'>下载次数：{{item.count}}/{{number}}</view> -->
+            <view class='btn' bindtap='judgeWifi' data-index='{{index}}'>高清图下载</view>
+          </view>
+        </view>
+      </swiper-item>
+    </view>
+  </swiper>
+  <!-- <view class='pre df jc_c ai_c' bindtap='hide' style="height: {{winHeight +'px'}}">
     <image mode='widthFix' src='{{preview.imgSrc}}' class='w100'></image>
   </view>
-</view> -->
+  <view class='gq bg_ff' hidden='{{preview.btn_state}}'>
+    <view class='df jc_sb ai_c'>
+      <view class='num'>下载次数：{{preview.num}}/{{number}}</view>
+      <view class='btn' bindtap='save_gqImg' data-url='{{preview.url}}' data-num='{{preview.num}}'>高清图下载</view>
+    </view>
+  </view> -->
+</view>
 
 <!-- 弹窗 -->
 <view hidden='{{survey.popup_state}}' class='popup'>
@@ -39,10 +77,10 @@
     <view class='tit'>
       <view class='ft_16'>整体评分</view>
       <view class='mt_5'>
-        <block wx:for="{{total.one}}" wx:key='{{index}}'> 
+        <block wx:for="{{total.one}}" wx:key='index'> 
           <image mode='widthFix' src='/img/star.png' class='star'></image> 
         </block> 
-        <block wx:for="{{total.two}}" wx:key='{{index}}'> 
+        <block wx:for="{{total.two}}" wx:key='index'> 
           <image mode='widthFix' src='/img/kstar.png' class='star'></image> 
         </block> 
       </view>
@@ -80,4 +118,20 @@
   <view class='ta_c'>
     <icon type="cancel" size="36" color="#fff" bindtap='click_close'/>
   </view>
+</view>
+
+<view class='set' hidden='{{down_state}}'>
+  <view class='popup_nr'>
+    <view class='biaoti'>温馨提示</view>
+    <view class='popup_nrs'>为了更好的体验小程序，请前往设置窗口，打开相册授权！</view>
+    <view class='an'>
+      <button open-type="openSetting" bindopensetting="set_callback">
+        <text>打开设置页</text>
+      </button>
+    </view>
+  </view>
+</view>
+
+<view class='service_an' bindtap='judgeWifiGq'>
+  <text>一键下载高清图</text>
 </view>

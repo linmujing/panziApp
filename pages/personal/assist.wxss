@@ -1,0 +1,8 @@
+/* pages/personal/assist.wxss */
+page{background-image: url('https://vip2.pznrfsy.com/lmj/panziApp/hxbg.png');background-repeat: no-repeat;background-position: top center;background-attachment: fixed;background-size: cover;padding: 0;}
+
+.box{padding: 30rpx;text-align: center;color: #fff;}
+/* .box image{border-radius: 10rpx;margin-top: 40rpx;box-shadow:0px 10rpx 30rpx 5rpx rgba(0,0,0,0.3);} */
+.box image{border-radius: 10rpx;margin-top: 20rpx;display: block;}
+.box .btn{border-radius: 8rpx;padding: 5rpx 20rpx;background: #FFB3C0;line-height: 70rpx;font-size: 32rpx;margin-top: 20rpx;}
+.bold{font-weight: bold;}

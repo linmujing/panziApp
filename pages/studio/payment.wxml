@@ -1,0 +1,35 @@
+<!--pages/studio/payment.wxml-->
+<view class='page_bj'>
+  <view class='payment'>
+    <view class='img'>
+      <image class='brr8' mode='widthFix' src='{{hcimg}}'>
+        <image class='watermark' mode="widthFix" src='../../image/watermark.png'></image>
+      </image>
+    </view>
+    <view class='tishi'>
+      <!-- <text class='f26'>（仅支持微信支付.未支付订单会被自动取消）</text> -->
+    </view>
+  </view>
+  <!--  -->
+  <view class='purchase'>
+    <view class='tishi'>
+      <text>兑换积分：{{price}}积分</text>
+    </view>
+    <view bindtap='zhifu' class='an'>
+      <text>确定兑换</text>
+    </view>
+  </view>
+</view>
+<!-- 弹窗 -->
+<view hidden='{{jifen.state}}' class='popup'>
+  <view class='popup_nr'>
+    <view class='biaoti'>温馨提示</view>
+    <view class='popup_nrs'>{{jifen.msg}}</view> 
+    <view class='an'>
+      <button bindtap='click_panzi'>
+        <text>去获取更多积分~</text>
+      </button>
+    </view>
+  </view>
+</view>
+

@@ -1,0 +1,29 @@
+/* pages/shopCart/order.wxss */
+.addr, .info{margin: 30rpx;background: #fff;border-radius: 10rpx;padding: 20rpx;box-shadow:0 0 20rpx 2rpx rgba(0,0,0,0.2);}
+.addr .loc{width: 48rpx;}
+.addr .txt{width: 580rpx;padding-left: 20rpx;box-sizing: border-box;}
+.addr .mr{height:30rpx;background:#FAA7B7;color:#fff;border-radius:15rpx;font-size:20rpx;display:inline-block;padding:0 10rpx;line-height:30rpx;margin-right: 20rpx;}
+.jt{width: 12rpx;}
+.color_jf{color: #FF9F57;}
+
+.info .list{border-bottom: 1px solid #E5E5E5;padding-bottom: 10rpx;margin-bottom: 10rpx;}
+.info .pho{width: 160rpx;height: 160rpx;border-radius: 4rpx;}
+.info .twoline{height: 80rpx;}
+.info .detail{width: 460rpx;margin-left: 16rpx;box-sizing: border-box;}
+.info .detail .color_jf{font-size: 32rpx;}
+.info .minus{width: 50rpx;height: 50rpx;line-height: 50rpx;border-radius:8rpx 0 0 8rpx;border: 1rpx solid #ddd;text-align: center;}
+.info .plus{width: 50rpx;height: 50rpx;line-height: 50rpx;border-radius:0 8rpx 8rpx 0;border: 1rpx solid #ddd;text-align: center;}
+.info .num{width: 50rpx;height: 50rpx;line-height: 50rpx;text-align: center;font-size: 24rpx;}
+.info .tit{width: 120rpx;margin-right: 10rpx;}
+.info .imgb{width: 200rpx;overflow: hidden;}
+
+.tj{position:fixed;top:auto;right:0;bottom:0;left:0;background: #fff;z-index: 100}
+.tj .tjdd{padding: 18rpx 40rpx;}
+.tj .tjdd .color_jf{font-size: 48rpx;}
+.tj .tjdd .btn_title{line-height: 60rpx;width: 160rpx;text-align: center;}
+
+.popup{position: fixed;top: 0;width: 100%;height: 100%;z-index: 200;background: #F5F5F5;}
+.popup .box{margin: 100rpx 0;width: 100%;height: 800rpx;text-align: center;}
+.popup .box>.color_title{font-size: 40rpx;}
+.popup .box .btn{margin-top: 80rpx;font-size: 32rpx;line-height: 80rpx;}
+.popup .box .btn view{width: 75%;display: inline-block;}

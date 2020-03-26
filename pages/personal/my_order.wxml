@@ -10,7 +10,7 @@
     </view>
 </view>
 <view class="order_list">
-    <view class="order_item" wx:for="{{list}}" wx:key="index">
+    <view class="order_item" wx:for="{{list}}" wx:for-item="item" wx:key="index">
         <view class="item_title">
             <view>订单号：{{item.convert_no}}</view>
             <view wx:if='{{item.status == 0}}'>未支付</view>
@@ -18,27 +18,70 @@
             <view wx:elif='{{item.status == 2}}'>已发货</view>
             <view wx:elif='{{item.status == 3}}'>确认收货</view>
         </view>
+        <block wx:if='{{!item.data_list || item.data_list.length == 0 || item.data_list == ""}}'>
         <view class="item_content">
             <view class="content_left">
                 <image mode="widthFix" src="{{item.goods_img}}" />
                 <view class="">
                     <view class="content_title">{{item.goods_name}}</view>
-                    <view class='mr'>{{item.cid}}</view>
+                    <view class='df'>
+                      <view class='mr' wx:if='{{item.type == 1}}'>积分商品</view>
+                      <view class='mr' wx:if='{{item.type == 2}}'>支付商品</view>
+                      <view class='mr' wx:if='{{item.type == 3 || item.type == 4}}'>抽奖商品</view>
+                      <view class='{{item.cid == null ? "" : "mr"}}' wx:if='{{item.cid != ""}}'>{{item.cid == null ? '' : item.cid}}</view>
+                    </view>
+                    <block wx:if='{{item.type == 2}}'>
+                      <view wx:if='{{item.goods_nature != ""}}' class='ft_12 mt_5'>尺码： {{item.goods_nature == null ? '' : item.goods_nature}}</view>
+                    </block>
+                    <view bindtap='copyText' data-text="{{item.code}}" class="ft_11 mt_5 color_99">{{item.code == null ? '' : '券码：'+item.code+'（点击复制券码）'}}</view> 
                 </view>
             </view>
             <view class="content_right">
-                <view class="price">{{item.type == 1 ? '' : '￥'}}{{item.money / item.num}}{{item.type == 1 ? '积分' : ''}}</view>
+                <view class="price">
+                  <text wx:if='{{item.money_jf>0}}'><text class="color_jifen">￥{{item.money_jf}}</text>+</text>
+                  <text class="color_jifen">{{item.type == 1 || item.type == 3 || item.type == 4 ? '' : '￥'}}{{item.money}}{{item.type == 1 || item.type == 3 || item.type == 4 ? '积分' : ''}}</text>
+                </view>
                 <!-- <view class="price_">{{item.price_}}积分</view> -->
-                <view class="num">×{{item.num}}</view>
+                <view class="ft_12 mt_5">×{{item.num}}</view>
+                <!-- <view class="ft_10 mt_5 color_99">快递：{{item.postage > 0 ? item.postage+'元' : '包邮'}}</view> -->
             </view>
         </view>
-        <view class='df jc_sb ai_c'>
+        </block>
+        <block wx:else>
+        <view wx:for='{{item.data_list}}' wx:for-item="dd" wx:key='i' class="item_content">
+            <view class="content_left">
+                <image mode="widthFix" src="{{dd.goods_img}}" />
+                <view class="">
+                    <view class="content_title">{{dd.goods_name}}</view>
+                    <view class='df'>
+                      <view class='mr'>支付商品</view>
+                      <view class='{{dd.cid == null ? "" : "mr"}}' wx:if='{{dd.cid != ""}}'>{{dd.cid == null ? '' : dd.cid}}</view>
+                    </view>
+                    <view wx:if='{{dd.goods_nature != ""}}' class='ft_12 mt_5'>尺码： {{dd.goods_nature == null ? '' : dd.goods_nature}}</view>
+                    <view bindtap='copyText' data-text="{{dd.code}}" class="ft_11 mt_5 color_99">{{dd.code == null ? '' : '券码：'+dd.code+'（点击复制券码）'}}</view> 
+                </view>
+            </view>
+            <view class="content_right">
+                <view class="price">
+                  <text class="color_jifen">￥{{dd.money}}</text>
+                </view>
+                <!-- <view class="price_">{{item.price_}}积分</view> -->
+                <view class="ft_12 mt_5">×{{dd.num}}</view>
+            </view>
+        </view>
+        </block>
+        <view class='df jc_sb ai_c mt_10'>
           <view class='ft_12 color_99 pl_10'>下单时间：{{item.create_time}}</view>
-          <view class="content_total">合计：{{item.type == 1 ? '' : '￥'}}{{item.money}}{{item.type == 1 ? '积分' : ''}}</view>
+          <view class="ft_10 ta_r color_99 pr_10">快递：{{item.postage > 0 ? item.postage+'元' : '包邮'}}</view>
+        </view>
+        <view class="content_total">
+          合计：<text wx:if='{{item.money_jf>0}}'><text>￥{{item.pricecount_jf}}</text>+</text>{{item.type == 1 || item.type == 3 || item.type == 4 ? '' : '￥'}}{{item.pricecount}}{{item.type == 1 || item.type == 3 || item.type == 4 ? '积分' : ''}}
         </view>
         <view class="content_btn">
             <!-- <text>更多</text> -->
-            <view class='btn' wx:if='{{item.status == 0}}' bindtap='click_pay' data-id='{{item.id}}'>继续支付</view>
+            <view class='btn' wx:if='{{item.consignee == null}}' bindtap='click_pay' data-index='{{index}}'>完善地址</view>
+            <view class='btn' wx:if='{{item.status == 0}}' bindtap='click_pay' data-index='{{index}}'>继续支付</view>
+            <view class='btn' wx:if='{{item.status == 0}}' bindtap='del_order' data-index='{{index}}'>删除订单</view>
             <view class='btn' wx:if='{{item.status == 1 || item.status == 2 || item.status == 3}}' bindtap='click_open' data-name='{{item.logistics}}' data-order='{{item.logistics_no}}'>查看物流</view>
             <view class='btn' wx:if='{{item.status == 2}}' bindtap='click_qrsh' data-id='{{item.id}}' data-oid='{{item.convert_no}}'>确认收货</view>
             <view wx:if='{{item.status == 3}}'><button open-type="contact" bindtap='click_service'>售后客服</button></view>
@@ -53,7 +96,7 @@
   <view class='box'>
     <view class='ta_l'>
       <view>物流公司： <text>{{logis.wl_company}}</text></view>
-      <view class='mt_10'>物流单号： <text>{{logis.wl_order}}</text></view>
+      <view bindtap='copyText' data-text="{{logis.wl_order}}" class='mt_10'>物流单号： <text>{{logis.wl_order}}</text></view>
     </view>
     <view class='btn'>
       <view class='btn_title' bindtap='click_close'>确定</view>

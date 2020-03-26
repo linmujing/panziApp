@@ -1,0 +1,4 @@
+/* pages/activity/game_list.wxss */
+page{background: #fff;}
+.list{margin-top: 40rpx;padding: 0 40rpx;}
+.list image{border-radius: 8rpx;}

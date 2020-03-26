@@ -1,0 +1,40 @@
+<!--pages/studio/material.wxml-->
+<view class='material brr8'>
+  <view class='brr8 img'>
+    <image mode='widthFix' class='brr8' bindload="imageLoadr" src='{{scimg}}'></image>
+  </view>
+</view>
+<view class='miaoshu'>
+  <text>选择一张正脸照生成写真</text>
+</view>
+<scroll-view class="set_img" scroll-x="true" bindscroll="scroll" style="width: 100%">
+  <navigator class='list left' bindtap='paizhao' url="add_photo?scid={{scid}}&cid={{cid}}">
+    <view class='zxjk brr8'>
+      <image class='zxj' src='../../image/zxj.png'></image>
+    </view>
+  </navigator>
+  <view class='list' wx:key='index' wx:if="{{getUserImg.length>0}}" wx:for="{{getUserImg}}">
+    <view class='listnr' bindtap='{{shanchuzt?"shanchu":"clickimg"}}' data-id="{{item.id}}" url="preview?scid={{scid}}&scimg={{scimg}}&cid={{cid}}&pagezt=2&yhimgid={{item.id}}">
+      <image class='brr8 product_image {{item.load?"loaded":""}}' data-index='{{index}}' bindload="imageLoad" lazy-load='true' mode='aspectFill' src='{{item.uimg?item.uimg:"../../image/ba320x432.jpg"}}'></image>
+    </view>
+    <image wx:if='{{shanchuzt}}' data-id='{{item.id}}' data-index='{{index}}' bindtap='shanchu' class='shanchu' src='../../image/deleting.png'></image>
+  </view>
+  <view class='list right' wx:if="{{getUserImg.length>0}}" bindtap='xianshi'>
+    <view class='zxjk brr8'>
+      <image class='zxjr' src='{{shanchuzt?"../../image/deletingrs.png":"../../image/deletingr.png"}}'></image>
+    </view>
+  </view>
+</scroll-view>
+
+<view class='Load' wx:if="{{Loadstate}}">
+  <view class='img'>
+    <image src='/image/logo.png'></image>
+  </view>
+  <view class='tishi'>
+    <text class='f24'>正在为您换装</text>
+  </view>
+  <view class='tishi'>
+    <text class='f24'>请稍等</text>
+    <text class='f24 dotting'></text>
+  </view>
+</view>

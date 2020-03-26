@@ -87,6 +87,13 @@ Page({
       url: 'store_detail?id=' + id,
     })
   },
+  click_web: function (e) {
+    getApp().globalData.webView = 'https://h5.pznrfsy.com/ljjh5/public/mendian/jiamengdian.html';
+    wx.navigateTo({
+      url: 'webView'
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -125,10 +132,4 @@ Page({
     }
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

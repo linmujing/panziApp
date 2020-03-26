@@ -1,4 +1,108 @@
 <!--pages/login/index.wxml-->
+<view bindtap="click_login">
+<view class="person_info">
+    <view class="info_title">
+        <view>设置</view>
+        <!-- <image mode="widthFix" class="" src="/img/mesg.png" /> -->
+    </view>
+    <view class="info_details">
+        <image mode="widthFix" class="personInfo_bg" src="/img/person_topPic.png" />
+        <view class="details_left">
+            <image mode="widthFix" class="" src="/img/center-06.jpg" />
+        </view>
+        <view class="details_right">
+            <view class="user_info_name df ai_fe">
+              <view class='ft_17'>点击登录账户</view>
+            </view>
+            <!-- <view class="qiandao">
+                <image mode="widthFix" src="/img/qiandao.png" />
+            </view> -->
+        </view>
+        <view class="VIP_center">
+            <image mode="widthFix" src="/img/huiyuan.png" />
+        </view>
+    </view>
+</view>
+<view class="my_order">
+  <view class="order_title">
+      <view class="title_left">我的订单</view>
+      <view class="look_all">
+          查看全部
+          <image mode="widthFix" src="/img/enter_.png" />
+      </view>
+  </view>
+  <view class="order_list">
+      <view>
+          <image src="/img/money1.png" />
+          <view>待付款</view>
+      </view>
+      <view>
+          <image src="/img/money2.png" />
+          <view>待发货</view>
+      </view>
+      <view>
+          <image src="/img/money3.png" />
+          <view>待收货</view>
+      </view>
+      <view>
+          <image src="/img/money5.png" />
+          <view>已收货</view>
+      </view>
+  </view>
+</view>
+<view class="my_list">
+    <view class="my_list_item">
+      <view>
+          <image mode="widthFix" src="/img/car.png" />
+          <text>我的购物车</text>
+      </view>
+      <image mode="widthFix" src="/img/enter_.png" />
+  </view>
+  <view class="my_list_item">
+      <view>
+          <image mode="widthFix" src="/img/center-02.jpg" />
+          <text>我的积分</text>
+      </view>
+      <image mode="widthFix" src="/img/enter_.png" />
+  </view>
+  <view class="my_list_item">
+      <view>
+          <image mode="widthFix" src="/img/center-03.jpg" />
+          <text>我发布的</text>
+      </view>
+      <image mode="widthFix" src="/img/enter_.png" />
+  </view>
+  <view class="my_list_item">
+      <view>
+          <image mode="widthFix" src="/img/code.png" />
+          <text>我的二维码</text>
+      </view>
+      <image mode="widthFix" src="/img/enter_.png" />
+  </view>
+  <view class="my_list_item">
+      <view>
+          <image mode="widthFix" src="/img/center-05.jpg" />
+          <text>我的客户</text>
+      </view>
+      <image mode="widthFix" src="/img/enter_.png" />
+  </view>
+  <view class="my_list_item">
+      <view>
+          <image mode="widthFix" src="/img/center-07.jpg" />
+          <text>花絮下载</text>
+      </view>
+      <image mode="widthFix" src="/img/enter_.png" />
+  </view>
+  <view class="my_list_item">
+      <view>
+          <image mode="widthFix" src="/img/center-06.jpg" />
+          <text>关于我们</text>
+      </view>
+      <image mode="widthFix" src="/img/enter_.png" />
+  </view>
+</view>
+</view>
+
 <view class='popup {{phone===true && !userInfo.tel?"active":""}}'>
   <view class='popup_nr'>
     <view class='biaoti'>温馨提示</view>
@@ -14,11 +118,17 @@
 <view class='popup {{login_state===true?"active":""}}'>
   <view class='popup_nr'>
     <view class='biaoti'>温馨提示</view>
-    <view class='popup_nrs'>为了更好的体验小程序，请登录</view>
-    <view class='an'>
-      <button open-type="getUserInfo" bindgetuserinfo="click_userInfo">
+    <view class='popup_nrs'>为了更好的体验小程序，请允许授权您的微信个人信息</view>
+    <view class='an df jc_sa ai_c'>
+      <!-- <button open-type="getUserInfo" bindgetuserinfo="click_userInfo">
         <text>登录</text>
-      </button>
+      </button> -->
+      <view class="qx"><navigator open-type="exit" target="miniProgram">拒绝</navigator></view>
+      <view>
+        <button open-type="getUserInfo" bindgetuserinfo="click_userInfo">
+          <text>允许</text>
+        </button>
+      </view>
     </view>
   </view>
 </view>

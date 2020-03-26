@@ -1,12 +1,33 @@
 /* pages/index/photos_list.wxss */
 .list{background: #fff;margin-top: 10rpx;}
-.list .name{padding: 20rpx 0 0 30rpx;}
-.list .order{padding: 20rpx 30rpx;}
+.list .name{padding: 20rpx 30rpx 0 30rpx;}
+.list .order, .list .add{padding: 20rpx 30rpx;}
 .list .state{border-top: 1rpx solid #E9E9E9;margin: 0 30rpx;padding: 20rpx 0;}
 .list .line{width: 90rpx;position: relative;top: 31rpx;border-top: 4rpx dashed #D0D0D0;}
 .list .line2{width: 90rpx;position: relative;top: 31rpx;border-top: 4rpx solid #F6AFC1;}
 .txt{margin-top: 10rpx;font-size: 26rpx;}
 .color_dd{color: #D0D0D0;}
+.list .add .bg_ccc{background: #ccc;}
 
+.search_box {
+  padding: 20rpx 40rpx;
+  line-height: 60rpx;
+}
+
+.search_box image {
+  width: 40rpx;
+  height: 40rpx
+}
+
+.search_box .search {
+  width: 100%;
+  background: #EEEEEE;
+  border-radius: 60rpx;
+  padding: 10rpx;
+  box-sizing:border-box;
+}
+
+.nodata{padding: 80rpx 40rpx;}
+.nodata .btn_title{margin-top: 80rpx;line-height: 80rpx;font-size: 34rpx;}
 
 

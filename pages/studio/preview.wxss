@@ -1,0 +1,42 @@
+/* pages/studio/preview.wxss */
+page{display:flex;flex-direction:column;justify-content:space-between;padding-bottom: 0;height: 100vh;}
+.preview{margin:0 36rpx 20rpx;flex:auto;overflow:hidden;height: 800rpx;}/*flex:auto;*/
+.preview .img{overflow:hidden;}
+.preview .img .watermark{overflow:hidden;}
+/* 分类 */
+.fenlei{white-space:nowrap;color:#353535;height:55rpx;}
+.fenlei .li{display:inline-block;margin-right:46rpx;text-align:center;}
+.fenlei .li .xian{width:100%;height:4rpx;background:#E5C0C4;margin:0 auto;display:none;margin-top:-1rpx;border-radius:2rpx;}
+.fenlei .ml{margin-left:36rpx;}
+.fenlei .mr{margin-left:36rpx;}
+.fenlei .active{color:#E5C0C4;}
+.fenlei .active .xian{display:block;}
+
+.list{white-space:nowrap;height:260rpx;margin-top:2rpx;margin-bottom: 100rpx;}
+.list_nr{display:inline-block;margin-right:16rpx;width:164rpx;border:2rpx solid #f2f2f2;padding:4rpx;}
+.list .ml{margin-left:36rpx;}
+.list .mr{margin-right:36rpx;}
+.list .active{border:2rpx solid #E5C0C4;background:#fff;}
+.list_nr .tpimg{width:100%;height:208rpx;text-align:center;}
+.list_nr .mc_jg{align-items:center;height:28rpx;font-size:20rpx;margin:8rpx 2rpx 4rpx 0rpx;}
+.list_nr .mc_jg .img{height:24rpx;width:24rpx;}
+.list_nr .biaoti{font-size:22rpx;color:#353535;}
+.list_nr .jg{height:24rpx;background:#F6A10C;color:#fff;padding:0 5rpx;line-height:24rpx;border-radius:12rpx;}
+
+.purchase{width:100%;height:92rpx;position:fixed;bottom:0;background:#fff;overflow:hidden;display:flex;justify-content:space-between;margin-top:5rpx;}
+.purchase .tishi{font-size:26rpx;color:#b3b3b3;line-height:92rpx;margin-left:40rpx;}
+.purchase .tishi.pg{width:100%;text-align:center;color:#9e9e9e}
+.purchase .an{width:242rpx;height:92rpx;background:#B1825F;text-align:center;color:#fff;line-height:92rpx;}
+.purchase .an.pg{background:#fff;width:0;}
+.li_jiazai{color:#ddd;font-size:24rpx;height:100%;display:flex;align-items:center;justify-content:center;}
+
+::-webkit-scrollbar {/*滚动条整体样式*/
+        width: 0;     /*高宽分别对应横竖滚动条的尺寸*/
+        height:0;
+    }
+
+
+
+
+
+

@@ -1,0 +1,219 @@
+/* pages/personal/pfApply_info.wxss */
+page {
+    background: #fff;
+}
+
+.info_title {
+    width: 100%;
+    height: 100rpx;
+    background: #FDA2B3;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.info_title .logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -31rpx;
+    margin-left: -113rpx;
+    width: 226rpx;
+    height: 62rpx;
+}
+
+.info_title .menu {
+    position: absolute;
+    top: 50%;
+    margin-top: -17rpx;
+    right: 50rpx;
+    width: 44rpx;
+    height: 35rpx;
+}
+
+.info_wrap {
+    background: #fff;
+}
+
+.info_content {
+    width: 66%;
+    margin: 0 auto;
+    padding-top: 30rpx;
+    /* background: #fff; */
+}
+
+.info_name {
+    width: 88%;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.info_name input {
+    border: 1px solid #FDA2B3;
+    border-radius: 6rpx;
+    padding-left: 8rpx;
+    height: 62rpx;
+    margin: 15rpx 0;
+}
+
+.info_sex {
+    margin: 30rpx auto;
+}
+
+.info_sex .radio-group {
+    margin: 15rpx 0;
+}
+
+.info_sex .radio-group .radio {
+    margin-right: 50rpx;
+}
+
+
+/* 选中后的 对勾样式 */
+radio .wx-radio-input.wx-radio-input-checked::before {
+    border-radius: 50%;
+    width: 30rpx;
+    height: 30rpx;
+    text-align: center;
+    font-size: 0rpx;
+    /* 对勾大小 去掉 */
+    background-color: #FDA2B3;
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+
+
+.info_data {
+    width: 88%;
+}
+
+.picker {
+    border: 1px solid #FDA2B3;
+    height: 62rpx;
+    line-height: 62rpx;
+    padding-left: 10rpx;
+    position: relative;
+    border-radius: 6rpx;
+    margin: 20rpx 0;
+}
+
+.picker image {
+    position: absolute;
+    right: 30rpx;
+    top: 10rpx;
+    width: 42rpx;
+}
+
+.info_phone {
+    width: 88%;
+}
+
+.tel_inp {
+    border: 1px solid #FDA2B3;
+    padding-left: 10rpx;
+    height: 62rpx;
+    margin-top: 20rpx;
+}
+
+.code_wrap {
+    display: flex;
+    align-items: center;
+    border: 1px solid #FDA2B3;
+    border-radius: 6rpx;
+    margin: 20rpx 0;
+    height: 62rpx;
+}
+
+.code_wrap input {
+    /* border: 1px solid #FDA2B3; */
+    /* border-radius: 6rpx; */
+    padding-left: 10rpx;
+    height: 62rpx;
+}
+
+.code_wrap .send {
+    color: #fff;
+    background: #FDA2B3;
+    text-align: center;
+    height: 62rpx;
+    line-height: 62rpx;
+    font-size: 22rpx;
+    width: 150rpx;
+}
+
+.send.send_ {
+    background: #ccc;
+    /* border-radius: 8rpx; */
+    /* padding: 10rpx; */
+    color: #fff;
+}
+
+.upload_card {
+    /* display: flex;
+    justify-content: space-between; */
+}
+
+.upload_card .front {
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.upload_card .back {
+    position: relative;
+    overflow: hidden;
+}
+
+.upload_card .showPic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.upload_card>view {
+    border: 1px solid #ccc;
+    background: #eee;
+    text-align: center;
+    width: 100%;
+    height: 230rpx;
+    margin-top: 20rpx;
+}
+
+.upload_card>view>image {
+    width: 52rpx;
+    margin-top: 55rpx;
+}
+
+.upload_card>view .text {
+    font-size: 22rpx;
+    color: #999;
+}
+
+.upload_btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 70rpx;
+}
+
+.upload_btn view {
+    width: 280rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    border-radius: 8rpx;
+}
+
+.upload_btn .cancel {
+    border: 1px solid #FDA2B3;
+    color: #FDA2B3;
+}
+
+.upload_btn .preserve {
+    background: #FDA2B3;
+    color: #fff;
+}

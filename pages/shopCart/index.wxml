@@ -1,0 +1,63 @@
+<!--pages/shopCart/index.wxml-->
+<view wx:if='{{listData.list.length > 0}}'>
+  <checkbox-group bindchange="checkboxChange">
+    <view class="list container">
+      <view wx:for='{{listData.list}}' wx:key='index' class='item {{index===active?"active":""}}' data-index='{{index}}' bindtouchstart="touchS" bindtouchend="touchE">
+        <view class='df jc_sb'>
+          <view class="df ai_c">
+            <view>
+              <checkbox value='{{index}}' checked='{{item.check}}' />
+            </view>
+            <view class="pl_10" bindtap="click_detail" data-id='{{item.goods_id}}'>
+              <image mode='widthFix' src='{{item.goods_img}}' class='gimg'></image>
+            </view>
+          </view>
+          <view class="info">
+            <view class="title twoline" bindtap="click_detail" data-id='{{item.goods_id}}'>{{item.goods_name}}</view>
+            <view class="color_99 ft_13 mt_5" bindtap="showModal" data-index='{{index}}'> 规格：{{item.spec}}</view>
+            <view class="df jc_sb ai_c mt_10">
+              <view class="color_title">￥{{item.cost}}</view>
+              <view class='df ai_c'>
+                <view bindtap='click_minus' data-index='{{index}}' class='minus'>-</view>
+                <text class='num'>{{item.num}}</text>
+                <view bindtap='click_plus' data-index='{{index}}' class='plus'>+</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='del df ai_c jc_c' bindtap='click_del' data-index='{{index}}'>删除</view>
+      </view>
+    </view>
+  </checkbox-group>
+</view>
+<view wx:else class="ta_c mt_30 color_99">快去选购商品吧~</view>
+
+<!-- 规格弹窗 -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{specData.state}}"></view>
+<view animation="{{animationData}}" class="commodity_attr_box spec" wx:if="{{specData.state}}">
+  <view class="ft_16 pb_10 df jc_sb ai_c">
+    <text>请选择规格</text>
+    <icon type="cancel" size="26" color="#FD93B3" bindtap='hideModal'/>
+  </view>
+  <view class="tag">
+    <view class="df fw_w">
+      <view wx:for='{{specData.info.nature}}' wx:key='index' class="tag_btn {{specData.cur==index ? 'active' :'' }}" bindtap='select' data-index="{{index}}">{{item}}</view>
+    </view>
+  </view>
+  <view class="btn_title" bindtap="click_confirm">确 定</view>
+</view>
+
+<view class='bottom container df jc_sb'>
+  <checkbox-group bindchange="checkboxAll">
+    <label class='ck'>
+      <checkbox checked="{{allCheck}}" color='#F89FB5'/>
+      <text>全选</text>
+    </label>
+  </checkbox-group>
+  <view class="df">
+    <view>总计：<text class="color_title pr_10">￥{{totalPrice}}</text></view>
+    <view class='btn' bindtap='click_order'>结算</view>
+  </view>
+</view>
+
+

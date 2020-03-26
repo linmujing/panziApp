@@ -1,5 +1,5 @@
 <!--pages/index/video.wxml-->
-<view class='list' wx:for='{{list}}' wx:key='{{index}}'>
+<view class='list' wx:for='{{list}}' wx:key='index'>
   <view class='block'>
     <view class='title'>
       <view class='ft_16'>{{item.title}}</view>

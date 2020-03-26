@@ -1,0 +1,20 @@
+<!--pages/studio/add_photo.wxml-->
+<view class='page_bj'>
+  <view class='add_photo'>
+    <view class='img'>
+      <image mode='widthFix' class='brr8' bindload="imageLoad" src='{{img}}'></image>
+    </view>
+    <view class='explain'>
+      <text>请参照上方“样板图”选择图片或拍照</text>
+    </view>
+  </view>
+  <view class='an'>
+    <view class='f32 brr8' data-lx='1' bindtap='chooseImage'>本地选图</view>
+    <view class='f32 brr8' data-lx='2' bindtap='chooseImage'>拍摄正脸照</view>
+  </view>
+</view>
+<view class='Load' wx:if="{{Loadstate}}">
+  <view class='img'><image src='/image/logo.png'></image></view>
+  <view class='tishi'><text class='f24'>正在为您换装</text></view>
+  <view class='tishi'><text class='f24'>请稍等</text><text class='f24 dotting'></text></view>
+</view>

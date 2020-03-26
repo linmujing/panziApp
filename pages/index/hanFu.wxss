@@ -16,14 +16,22 @@
   padding: 10rpx;
   box-sizing:border-box;
 }
-.sort .item{padding: 20rpx 30rpx;font-size: 30rpx;}
+.sort{position: relative;}
+.sort .item{width: 140rpx;padding: 20rpx 0;font-size: 30rpx;text-align: center;}
 .sort .item image{width: 35rpx;}
 .sort .item text{padding: 0 10rpx;}
 .sort .item .active{background: #FA9EB6;color: #fff;border-radius: 30rpx;padding: 0 10rpx;}
 
+.sort .select{position: absolute;top: 80rpx;left: 0;width: 100%;background: #fff;z-index: 2;}
+.sort .select .list{padding: 0 30rpx;}
+.sort .select .list view{border-top: 2rpx solid #eee;padding: 20rpx 0;}
+.sort .select .list .active{color: #FA9EB6;}
+
+.sort .mask{position: absolute;top: 80rpx;left: 0;width: 100%;background: rgba(0,0,0,0.3);z-index: 1;}
+
 .product{margin: 20rpx;}
 .product .item{width: 346rpx;background: #fff;border-radius: 8rpx;margin-bottom: 20rpx;overflow: hidden;box-shadow:0px 10rpx 30rpx -5rpx rgba(0,0,0,0.3);}
-.product .item .imgb{width: 100%;height: 400rpx;overflow: hidden;}
+.product .item .imgb{width: 100%;height: 360rpx;overflow: hidden;}
 .product .item .imgb image{width: 100%;}
 .product .item .txtBox{padding: 10rpx;}
 .product .item .txtBox image{width: 40rpx;}
@@ -45,3 +53,19 @@
 }
 .cur_up{border-bottom: 10rpx solid #FA9EB6;}
 .cur_down{border-top: 10rpx solid #FA9EB6;}
+
+.service_an {
+  position: fixed;
+  top: auto;
+  left: auto;
+  right: 40rpx;
+  bottom: 180rpx;
+  width:30rpx;
+  font-size: 22rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 30rpx;
+  background: rgba(248,159,181,0.8);
+  color: #fff;
+  text-align: center;
+  z-index: 10
+}

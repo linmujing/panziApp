@@ -1,5 +1,6 @@
 page {
     background: #F5F5F5;
+    padding-bottom: 0;
 }
 
 .container {
@@ -43,26 +44,38 @@ page {
 
 .person_info .info_details .details_left {
     margin-right: 20rpx;
+    position: relative;
+}
+
+.person_info .info_details .details_left .pf_logo {
+    position: absolute;
+    right: 0;
+    bottom: 10rpx;
+    width: 40rpx;
 }
 
 .person_info .info_details .details_right {
     color: #fff;
 }
-.person_info .info_details .details_right .vip{
-  margin-left: 10rpx;
-  border: 2rpx solid #fff;
-  border-radius: 30rpx;
-  padding: 0 10rpx;
+
+.person_info .info_details .details_right .vip {
+    margin-left: 10rpx;
+    border: 2rpx solid #fff;
+    border-radius: 30rpx;
+    padding: 0 10rpx;
 }
-.person_info .info_details .details_right .vip .num{
-  font-size: 16rpx;
-  position: relative;
-  left: -5rpx;
-  top: 6rpx;
+
+.person_info .info_details .details_right .vip .num {
+    font-size: 16rpx;
+    position: relative;
+    left: -5rpx;
+    top: 6rpx;
 }
-.person_info .info_details .details_right .vip image{
-  width: 20rpx;
+
+.person_info .info_details .details_right .vip image {
+    width: 20rpx;
 }
+
 .person_info .info_details .details_left image {
     width: 140rpx;
     height: 140rpx;
@@ -140,7 +153,7 @@ page {
 
 .my_list {
     background: #fff;
-    margin: 20rpx 30rpx 0;
+    margin: 20rpx 30rpx;
     border-radius: 30rpx;
     padding: 20rpx;
     box-shadow: 0px 0px 9px 0px #ccc;
@@ -170,4 +183,7 @@ page {
     width: 15rpx;
 }
 
-
+.my_list_item .enter {
+    height: 26rpx;
+    width: 15rpx;
+}

@@ -1,0 +1,52 @@
+<!--pages/studio/order.wxml-->
+<button class='customer_service'open-type="contact">
+  <image src='../../image/customer_service.png'></image>
+</button>
+<view >
+  <view class='personal' wx:if='{{array.length>0}}'>
+    <view class='list_nr' wx:key='index' wx:for="{{array}}">
+      <view class='dingdanh'>
+        <text class='ddh f18'>订单号:{{item.order_sn}}</text>
+      </view>
+      <view bindtouchstart="touchS" bindtouchmove="touchM" data-index='{{index}}' data-id='{{item.id}}' bindtouchend="touchE" style='width:{{grzx_liw}}px' class='list brr4 {{item.mal?"active":""}}'>
+        <view class='tpimg'>
+          <image class='brr4' mode='aspectFill' src="{{item.mimg}}"></image>
+        </view>
+        <view class='dj_jg'>
+          <view class='biaoti'>
+            <text class='f30'>{{item.gname}}</text>
+          </view>
+          <view wx:if="{{item.status==2}}" class='yzf'>
+            <text class='f20'>已换装</text>
+          </view>
+          <view wx:elif="{{item.status==1}}" class='yzf'>
+            <text class='f20'>积分：{{item.price}}</text>
+            <text class='f20'>已兑换</text>
+          </view>
+          <view wx:else class='dzf'>
+            <text class='f20'>积分：{{item.price}}</text>
+            <text class='f20'>待兑换</text>
+          </view>
+          <view class='time'>
+            <text class='f18'>{{item.addtime}}</text>
+          </view>
+        </view>
+        <view class='an'>
+          <navigator data-title='{{item.gname}}' url="viewOrder?oid={{item.id}}&resimg={{item.dimg}}&price={{item.price}}" wx:if="{{item.status}}" class='see f26 brr4' bindtap='click' hover-class="navigator-hover">查看</navigator>
+          <navigator data-title='{{item.gname}}' url='payment?oid={{item.id}}&hcimg={{item.dimg}}&price={{item.price}}' wx:else class='payment f26 brr4' bindtap='click'>去兑换</navigator>
+          <view wx:if="{{!item.status}}" class='time f18'>未兑换订单会自动取消</view>
+        </view>
+        <view class='delete' bindtap='deletings' data-index='{{index}}' data-id='{{item.id}}'>
+          <image mode='aspectFit' src='../../image/deletings.png'></image>
+        </view>
+      </view>
+    </view>
+
+    <!--  -->
+  </view>
+  <view class='nodata' wx:if='{{array.length==0}}'>
+    <view class='img'>
+      <image mode='aspectFit' src='../../image/nodata.png'></image>
+    </view>
+  </view>
+</view>

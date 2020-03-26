@@ -1,94 +1,157 @@
 <!--index.wxml-->
-<!-- <view class='search_box df jc_sb ai_c bg_ff'>
-  <view class='search df ai_c'>
-    <image src='/img/search.png'></image>
-    <input placeholder="搜索主题风格 最新主题" placeholder-style='color: #B4B4B4' bindinput="blur_search"/>
-  </view>
-  <view class='shop'>
-    <image src='/img/shopping.png'></image>
-    <view class='point'>3</view>
-  </view>
-  <view class='shop' bindtap='click_msg'>
-    <image src='/img/message.png'></image>
-    <view class='point'>1</view>
-  </view>
+<!-- <camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 200px;"></camera> -->
+<!-- <button bindtap="test">上传照片</button>
+<image wx:if="{{src}}" mode="widthFix" src="{{src}}" class="w100"></image> -->
+<!-- <view>
+  <navigator url="/pages/login/test"><button type="primary">识别体验</button></navigator>
 </view> -->
-<!-- 轮播 -->
-<!-- <view class='carouse bg_ff ta_c'>
-  <swiper autoplay indicatorDots circular interval='5000' indicator-active-color='#fff' previous-margin='40rpx' next-margin='20rpx' bindchange='change' bindanimationfinish="animationChange" current='{{current}}'>
-    <view wx:for="{{carouselData}}" wx:key='{{index}}'>
-      <swiper-item class=' df ai_c'>
-        <view class='box' animation="{{index == current?animationData:animationData2}}">
-          <image src="{{item.img}}" class='w100 h100'/>
-        </view>
-      </swiper-item>
-    </view>
-  </swiper>
-</view> -->
-<view class='carouse2'>
-  <swiper autoplay indicatorDots circular interval='5000' indicator-active-color='#fff'>
-    <view wx:for="{{carouselData}}" wx:key='{{index}}'>
+
+<button bindtap="h5">测试</button>
+
+<view class='carouse2 bg_ff'>
+  <swiper autoplay indicatorDots circular interval='4000' indicator-active-color='#fff'>
+    <view wx:for="{{carouselData}}" wx:key='index'>
       <swiper-item class='item'>
-        <image mode='widthFix' src="{{item.img}}" class='w100'/>
+        <image mode='widthFix' src="{{item.img}}" class='w100' bindtap='click_banner' data-type='{{item.type}}' data-url='{{item.url}}'/>
       </swiper-item>
     </view>
   </swiper>
 </view>
 <!-- 导航 -->
 <view class='nav df jc_sb fw_w bg_ff'>
-  <block wx:for='{{navData}}' wx:key='{{index}}'>
+  <block wx:for='{{navData}}' wx:key='index'>
     <view class='w20 mt_10' bindtap='click_nav' data-id='{{item.id}}' data-title='{{item.title}}'>
       <image src='{{item.title_img}}'></image>
       <view class='ft_12 mt_5'>{{item.title}}</view>
     </view>
   </block>
 </view>
-<!-- 热门主题 -->
-<view>
-  <view class='title bg_ff'>
-    <view>热门主题</view>
-    <view>THE LATEST TOPIC</view>
+<!-- 在线照相馆 -->
+<view class="bg_ff">
+  <view class="title">
+    <text class="bold">在线照相馆</text>
+    <text class="color_99 pl_10">上传照片 一键穿越</text>
   </view>
-  <view class='hot_topic df jc_sb fw_w'>
-    <view wx:for='{{hotList}}' wx:key='{{index}}' class='item' bindtap='click_theme' data-id='{{item.id}}'>
-      <view class='imgb'>
-        <image mode='widthFix' src="{{item.fm_img}}" class='w100'/>
+  <view class="zxBox" wx:if='{{zxList.length>0}}'>
+    <scroll-view scroll-x enable-flex scroll-with-animation style="width: auto;">
+      <view wx:for="{{zxList}}" wx:key='index' class="item">
+        <image mode="aspectFill" src='{{item.mimg}}' class='img'></image>
+        <view class="info df fd_c jc_sb" bindtap="click_material" data-title='{{item.gname}}' data-scid="{{item.id}}" data-cid="{{item.cid}}" data-scimg='{{item.mimg}}'>
+          <view class="name ft_12">{{item.gname}}</view>
+          <view class="price df jc_fe" wx:if='{{item.price != 0}}'>
+            <view class="df ai_c">
+              <image mode='widthFix' src='/img/diamond.png' class='icon'></image>
+              <text class="ft_12 pl_5">{{item.price}}积分</text>
+            </view>
+          </view>
+        </view>
       </view>
-      <view class='txt df jc_sb ai_c'>
-        <view class='oneline'>{{item.title}}</view>
-        <image mode='widthFix' src='/img/right_arrow.png' class='icon'></image>
-      </view>
+    </scroll-view>
+    <view class="more df jc_c ai_c" bindtap='click_nav' data-id='{{10}}'>
+      <image src='/img/index1.png'></image>
+      <text class="pl_5">古装造型随心换！跟我一键穿越</text>
     </view>
   </view>
 </view>
-<!-- 视频 -->
-<view class='video_box'>
-  <view class='vlist' wx:for='{{videoData.list}}' wx:key='{{index}}'>
-    <view class='block'>
-      <view class='ta_c'>
-        <view class='ft_16'>{{item.title}}</view>
-        <!-- <view class='ft_12 mt_10'>| {{item.info}} |</view> -->
-        <!-- <view class='arrow'></view> -->
-      </view>
-      <view id="{{index}}" class="cover" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
-        <!-- 视频图层 -->
-        <image class="videoVideo2" src="{{item.fm_ing}}" mode="scaleToFill">
-          <!-- 视频按钮 -->
-          <image class="videoPlay" src="/img/play.png" mode="scaleToFill"></image>
-        </image>
+<!-- 推荐列表 -->
+<view wx:if='{{recommend.length>0}}' class='bg_ff mt_5'>
+  <view class="title">
+    <text class="bold">积分商城</text>
+    <text class="color_99 pl_10">会员专属福利 积分兑换好礼</text>
+  </view>
+  <view class='product df jc_sb fw_w'>
+    <view wx:for="{{recommend}}" wx:key='index' class='item' bindtap='jifen_detail' data-id='{{item.id}}'>
+      <image mode='aspectFit' src='{{item.goods_img}}'></image>
+      <view class='txtBox'>
+        <view class='ft_13'>{{item.goods_name}}</view>
+        <view class='mt_5 df jc_sb ai_fe'>
+          <view class='ft_11'>
+            <text class='color_jifen ft_14'>{{item.cost}} 积分</text>
+          </view>
+          <text class='ft_10 color_5b pl_10'>{{item.sales}}人已兑换</text>
+        </view>
       </view>
     </view>
-    <!-- 视频 -->
-    <video src="{{item.video}}" id="{{index}}" class='video' wx:if="{{_index == index}}"></video>
+  </view>
+  <view class="pl_10 pr_10 pb_5">
+    <view class='more df jc_c ai_c' bindtap='click_nav' data-id='{{9}}'>
+      <image src='/img/index2.png'></image>
+      <text class="pl_5">美妆珠宝免费兑！一键领好礼</text>
+    </view>
+  </view>
+</view>
+<!-- 王者荣耀 -->
+<view class="bg_ff mt_5">
+  <view class="title">
+    <text class="bold">王者荣耀</text>
+    <text class="color_99 pl_10">官方独家授权 峡谷四美重磅上线</text>
+  </view>
+  <view class='experiencer'>
+    <image mode='widthFix' src='{{wzrylist.data.fm_img}}' class='img1' bindtap='click_themeDetail' data-id='{{wzrylist.data.id}}'></image>
+    <view class='df jc_sb fw_w'>
+      <view wx:for='{{wzrylist.list}}' wx:key='index' class='item' bindtap='click_themeDetail' data-id='{{item.id}}'>
+        <view class='imgb'>
+          <image mode='widthFix' src="{{item.fm_img}}" class='w100'/>
+        </view>
+        <view class='txt'>
+          <view class='oneline'>
+            <text>{{item.title}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="pl_10 pr_10 pb_5">
+    <view class='more df jc_c ai_c' bindtap='click_theme' data-id='{{15}}'>
+      <image src='/img/index3.png'></image>
+      <text class="pl_5">打王者荣耀！拍王者同款</text>
+    </view>
+  </view>
+</view>
+<!-- 影视ip -->
+<view class="bg_ff mt_5">
+  <view class="title">
+    <text class="bold">热门影视IP</text>
+    <text class="color_99 pl_10">官方独家授权 用拍电影的手法拍古装</text>
+  </view>
+  <view class='experiencer'>
+    <image mode='widthFix' src='{{movieList.data.fm_img}}' class='img1' bindtap='click_star' data-id='{{movieList.data.id}}' data-type='{{2}}'></image>
+    <view class='df jc_sb fw_w'>
+      <view wx:for='{{movieList.list}}' wx:key='index' class='item' bindtap='click_star' data-id='{{item.id}}' data-type='{{2}}'>
+        <view class='imgb'>
+          <image mode='widthFix' src="{{item.fm_img}}" class='w100'/>
+        </view>
+        <view class='txt'>
+          <view class='oneline'>
+            <text>{{item.title}} | </text>
+            <text> 【{{item.name}}】</text>
+          </view>
+          <!-- <image mode='widthFix' src='/img/right_arrow.png' class='icon'></image> -->
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="pl_10 pr_10 pb_5">
+    <view class='more df jc_c ai_c' bindtap='click_nav' data-id='{{7}}' data-title='热门影视IP'>
+      <image src='/img/index3.png'></image>
+      <text class="pl_5">热门影视随心拍！一键成为古装女神</text>
+    </view>
   </view>
 </view>
 <!-- 明星体验师 -->
-<view>
-  <view class='ta_c mt_20 '>
-    <image mode='widthFix' src='{{experience}}' class='w60'></image>
+<view class="star bg_ff mt_5">
+  <view class="title df ai_b">
+    <view class="bold">明星体验师</view>
+    <view class="color_99 pl_10 notice">
+      <view class="fonts" style="transform: translateX(-{{slide.marqueeDistance}}px)">
+        <view class="ft_14">{{slide.text}}</view>
+        <view style="margin-right:{{slide.marquee_margin}}px;"></view>
+        <view class="ft_14" style="margin-right:{{slide.marquee_margin}}px;">{{slide.text}}</view>  
+      </view>
+    </view>
   </view>
   <view class='experiencer df jc_sb fw_w'>
-    <view wx:for='{{starList}}' wx:key='{{index}}' class='item' bindtap='click_star' data-id='{{item.id}}'>
+    <view wx:for='{{starList}}' wx:key='index' class='item' bindtap='click_star' data-id='{{item.id}}' data-type='{{1}}'>
       <view class='imgb'>
         <image mode='widthFix' src="{{item.fm_img}}" class='w100'/>
       </view>
@@ -101,15 +164,45 @@
       </view>
     </view>
   </view>
+  <view class="pl_10 pr_10 pb_5">
+    <view class='more df jc_c ai_c' bindtap='click_nav' data-id='{{8}}' data-title='明星合作'>
+      <image src='/img/index4.png'></image>
+      <text class="pl_5">明星客户的选择！一键get明星同款</text>
+    </view>
+  </view>
+</view>
+<!-- 热门主题 -->
+<view class="bg_ff mt_5">
+  <view class="title">
+    <text class="bold">主题欣赏</text>
+    <text class="color_99 pl_10">1500+套原创主题 最热门的都在这里</text>
+  </view>
+  <view class='hot_topic df jc_sb fw_w'>
+    <view wx:for='{{hotList}}' wx:key='index' class='item' bindtap='click_theme' data-id='{{item.id}}'>
+      <view class='imgb'>
+        <image mode='widthFix' src="{{item.image}}" class='w100'/>
+      </view>
+      <view class='txt df jc_c'>
+        <view class='oneline'>{{item.name}}</view>
+        <view>点击查看</view>
+      </view>
+    </view>
+  </view>
+  <view class="pl_10 pr_10 pb_5">
+    <view class='more df jc_c ai_c' bindtap='click_nav' data-id='{{3}}'>
+      <image src='/img/index5.png'></image>
+      <text class="pl_5">查看更多主题</text>
+    </view>
+  </view>
 </view>
 <!-- 每周客片 -->
-<view>
-  <view class='title'>
-    <view>每周客片</view>
-    <view>GUEST SHEET EVERY WEEK</view>
+<view class="bg_ff mt_5">
+  <view class="title">
+    <text class="bold">每周客片</text>
+    <text class="color_99 pl_10">单年客片量3.9亿张 客片比样片更唯美</text>
   </view>
   <view class='week df jc_sb fw_w'>
-    <view wx:for='{{weekData.weekList}}' wx:key='{{index}}' class='item' bindtap='click_kepian' data-id='{{item.id}}'>
+    <view wx:for='{{weekData.weekList}}' wx:key='index' class='item' bindtap='click_kepian' data-id='{{item.id}}'>
       <view class='imgb'>
         <image mode='widthFix' src="{{item.fm_img}}" class='w100'/>
       </view>
@@ -118,39 +211,77 @@
       </view>
     </view>
   </view>
+  <view class="pl_10 pr_10 pb_5">
+    <view class='more df jc_c ai_c' bindtap='click_nav' data-id='{{4}}'>
+      <image src='/img/index6.png'></image>
+      <text class="pl_5">查看更多客照</text>
+    </view>
+  </view>
+</view>
+<!-- 视频 -->
+<view wx:if='{{videoData.video_status == 1}}' class="video_box bg_ff mt_5">
+  <view class="title">
+    <text class="bold">品牌介绍</text>
+    <text class="color_99 pl_10">专注中国风摄影十七年</text>
+  </view>
+  <view class='vlist mt_10' wx:for='{{videoData.list}}' wx:key='index'>
+    <view class='block'>
+      <!-- <view class='ta_c'> -->
+        <!-- <view class='ft_16'>{{item.title}}</view> -->
+        <!-- <view class='ft_12 mt_10'>| {{item.info}} |</view> -->
+        <!-- <view class='arrow'></view> -->
+      <!-- </view> -->
+      <view id="{{index}}" class="cover" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
+        <!-- 视频图层 -->
+        <image class="videoVideo2" src="{{item.fm_ing}}" mode="scaleToFill">
+          <!-- 视频按钮 -->
+          <image class="videoPlay" src="/img/play.png" mode="scaleToFill"></image>
+        </image>
+      </view>
+    </view>
+    <!-- 视频 -->
+    <video src="{{item.video}}" id="{{index}}" class='video' wx:if="{{_index == index}}"></video>
+  </view>
+  <view class="pl_10 pr_10 pb_5">
+    <view class='more df jc_c ai_c' bindtap='click_nav' data-id='{{5}}'>
+      <image src='/img/index7.png'></image>
+      <text class="pl_5">查看更多视频</text>
+    </view>
+  </view>
 </view>
 <!-- 全国门店 -->
-<view class='store_box'>
-  <view class='title'>
-    <view>全国门店</view>
-    <view>STORE ENVIRONMENT</view>
+<view class="store_box bg_ff mt_5">
+  <view class="title">
+    <text class="bold">全国门店</text>
+    <text class="color_99 pl_10">全国224家旗舰店均可体验</text>
   </view>
-  <view class='w100'>
-    <image mode='widthFix' src='{{storeData.img}}' class='w100' bindtap='click_nav' data-id='{{2}}'></image>
+  <view class='pl_10 pr_10'>
+    <image mode='widthFix' src='{{storeData.img}}' class='w100 brr8' bindtap='click_nav' data-id='{{2}}'></image>
   </view>
   <view class='store bg_ff df fw_w'>
-    <!-- <scroll-view class="df fw_w" scroll-x style="width: auto;overflow:hidden;">
-      <view wx:for='{{storeData.list}}' wx:key='{{index}}' class='item' bindtap='click_store' data-id='{{item.id}}'>
-        <image src="{{item.fm_img}}" />
-        <view class='txt ta_c oneline'>{{item.title}}</view>
-      </view>
-    </scroll-view> -->
-    <view wx:for='{{storeData.list}}' wx:key='{{index}}' class='item' bindtap='click_store' data-id='{{item.id}}'>
+    <view wx:for='{{storeData.list}}' wx:key='index' class='item' bindtap='click_store' data-id='{{item.id}}'>
       <image src="{{item.fm_img}}" />
-      <view class='txt ta_c oneline'>{{item.title}}</view>
+      <view class='txt ta_c oneline ft_12'>{{item.title}}</view>
+    </view>
+  </view>
+  <view class="pl_10 pr_10 pb_5">
+    <view class='more df jc_c ai_c' bindtap='click_nav' data-id='{{2}}'>
+      <image src='/img/index8.png'></image>
+      <text class="pl_5">查看更多门店</text>
     </view>
   </view>
 </view>
 <!-- 客户评价 -->
-<view>
-  <view class='title'>
-    <view>客户评价</view>
-    <view>HOT COMMENTS</view>
+<view class="bg_ff mt_5">
+  <view class="title">
+    <text class="bold">客户评价</text>
+    <text class="color_99 pl_10">200万客户的选择</text>
   </view>
   <view class='comments df jc_sb fw_w'>
-    <view wx:for='{{commentsList}}' wx:key='{{index}}' class='item' bindtap='comments_detail' data-id='{{item.id}}'>
+    <view wx:for='{{commentsList}}' wx:key='index' class='item' bindtap='comments_detail' data-id='{{item.id}}'>
       <view class='imgb'>
          <image mode='widthFix' src="{{item.img}}" class='w100'/>
+         <view class="tag">#晒九州，赢积分#</view>
       </view>
       <view class='txt'>
         <view class='twoline'>{{item.content}}</view>
@@ -161,14 +292,26 @@
       </view>
     </view>
   </view>
-  <view class='more' bindtap='click_comments'>点击查看更多...</view>
+  <view class="pl_10 pr_10 pb_5">
+    <view class='more df jc_c ai_c' bindtap='click_comments'>
+      <image src='/img/index9.png'></image>
+      <text class="pl_5">查看更多评价</text>
+    </view>
+  </view>
 </view>
-
-
 
 <view class='service_an'>
   <button open-type="contact">
     <image mode='widthFix' src='{{service}}'></image>
   </button>
+</view>
+
+<view hidden='{{ad.state}}' class='ad'>
+  <view class='cont' bindtap='click_url' data-type='{{ad.type}}' data-url='{{ad.url}}'>
+    <image mode='widthFix' src="{{ad.img}}" class="w100"></image>
+  </view>
+  <view class='mt_20 ta_c'>
+    <icon type="cancel" size="36" color="#fff" bindtap='close_ad'/>
+  </view>
 </view>
 

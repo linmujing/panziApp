@@ -1,0 +1,60 @@
+<!--pages/community/hot_list.wxml-->
+<image mode='widthFix' src='{{category.image}}' class="w100"></image>
+<view class="card">
+  <view class="df jc_sb ai_c">
+    <view class="title">{{category.name}}</view>
+    <view><text class="btn_title pl_10 pr_10">{{category.title}}</text></view>
+  </view>
+  <view class="color_99 mt_10">{{category.sum}}人参与</view>
+</view>
+<view class="content">
+  <view class="df ai_c jc_fe ft_13">
+    <view class="pr_5 pl_5 {{field == 'zan' ? 'color_title' : ''}}" bindtap="click_sort" data-type='{{"zan"}}'>热门</view>
+    <view>|</view>
+    <view class="pr_5 pl_5 {{field == 'addtime' ? 'color_title' : ''}}" bindtap="click_sort" data-type='{{"addtime"}}'>最新</view>
+  </view>
+  <view class="list" >
+    <view class="item" wx:for='{{col1}}' wx:key='index'>
+      <view class="tag" bind:tap="link_details" data-id='{{item.id}}'>
+        <image wx:if="{{item.images != ''}}" mode="widthFix" class="w100" src="{{item.images}}"/>
+        <view class="tag_t oneline">{{item.category_name}}</view>
+      </view>
+      <view class="oneline info" bind:tap="link_details" data-id='{{item.id}}'>{{item.content}}</view>
+      <view class="df jc_sb ai_c pl_10 pr_10 pb_10">
+        <view class="df ai_c">
+          <image class="headimg" src="{{item.headimgurl}}" />
+          <text class="name oneline">{{item.nickname}}</text>
+        </view>
+        <view class="dianj df ai_c" bindtap='click_zan' data-type='{{1}}' data-index='{{index}}'>
+          <image wx:if='{{item.my_zan}}' src='/img/dianzan2.png' class='xin'></image>
+          <image wx:else src='/img/dianzan.png' class='xin'></image>
+          <text class='oneline color_99 ft_12'>{{item.zan}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="list">
+    <view class="item" wx:for='{{col2}}' wx:key='index'>
+      <view class="tag" bind:tap="link_details" data-id='{{item.id}}'>
+        <image wx:if="{{item.images != ''}}" mode="widthFix" class="w100" src="{{item.images}}"/>
+        <view class="tag_t oneline">{{item.category_name}}</view>
+      </view>
+      <view class="oneline info" bind:tap="link_details" data-id='{{item.id}}'>{{item.content}}</view>
+      <view class="df jc_sb ai_c pl_10 pr_10 pb_10">
+        <view class="df ai_c">
+          <image class="headimg" src="{{item.headimgurl}}" />
+          <text class="name oneline">{{item.nickname}}</text>
+        </view>
+        <view class="dianj df ai_c" bindtap='click_zan' data-type='{{2}}' data-index='{{index}}'>
+          <image wx:if='{{item.my_zan}}' src='/img/dianzan2.png' class='xin'></image>
+          <image wx:else src='/img/dianzan.png' class='xin'></image>
+          <text class='oneline color_99 ft_12'>{{item.zan}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="shaitu" bindtap="link_release">
+  <image src='{{huati}}'></image>
+</view>

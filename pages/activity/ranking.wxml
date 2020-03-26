@@ -1,0 +1,27 @@
+<!--pages/activity/ranking.wxml-->
+<view><image mode='widthFix' src="{{img.jfr}}" class="w100"></image></view>
+<view class="box">
+  <view class="df thead">
+    <view>排名</view>
+    <view>昵称</view>
+    <view>通关</view>
+    <view>获得积分</view>
+  </view>
+  <view wx:if='{{rankList.length > 0}}' class="tbody">
+    <view class="list df ai_c" wx:for='{{rankList}}' wx:key='index'>
+      <view class="ta_c">
+        <image wx:if='{{index == 0}}' mode='widthFix' src="{{img.jfr1}}" class="img"></image>
+        <image wx:elif='{{index == 1}}' mode='widthFix' src="{{img.jfr2}}" class="img"></image>
+        <image wx:elif='{{index == 2}}' mode='widthFix' src="{{img.jfr3}}" class="img"></image>
+        <text wx:else class="num">{{index+1}}</text>
+      </view>
+      <view class="df ai_c jc_c">
+        <image mode='widthFix' src="{{item.headimgurl}}" class="headimg"></image>
+        <text class="oneline pl_5">{{item.nickname}}</text>
+      </view>
+      <view>{{item.count}}次</view>
+      <view>{{item.integral}}分</view>
+    </view>
+  </view>
+  <view wx:else class="bg_ff pt_20 pb_20">暂无数据~</view>
+</view>

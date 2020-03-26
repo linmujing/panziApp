@@ -103,14 +103,13 @@ Page({
       pageNum: that.data.page,
       token: that.data.userInfo.token
     };
-    console.log(type)
     if(type !== ''){
       reqBody.type = type
     }
     wx.showLoading({
       title: '加载中',
     })
-    util.post(util.url.myOrder, reqBody, (res) => {
+    util.post(util.url.myorder_new, reqBody, (res) => {
       // console.log(res)
       wx.hideLoading()
       if (res.state == 1) {
@@ -135,10 +134,19 @@ Page({
     })
   },
   click_pay: function(e){
-    var id = e.currentTarget.dataset.id;
-    wx.navigateTo({
-      url: '/pages/index/order?id=' + id,
-    })
+    var index = e.currentTarget.dataset.index;
+    var list = this.data.list[index]
+    console.log(list.type)
+    if (list.type == 2){
+      wx.navigateTo({
+        url: '/pages/shopCart/order?id=' + list.convert_no,
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/index/order?id=' + list.id,
+      })
+    }
+   
   },
   click_qrsh: function (e) {
     var that = this
@@ -146,6 +154,7 @@ Page({
     var oid = e.currentTarget.dataset.oid;
     wx.showLoading({
       title: '加载中',
+      mask: true
     })
     var reqBody = {
       id: id,
@@ -154,18 +163,24 @@ Page({
     };
     util.post(util.url.finish_order, reqBody, (res) => {
       if (res.state == 1) {
+        wx.hideLoading()
         wx.showToast({
           title: '确认收货成功~',
           icon: "none",
           duration: 1000
         })
-        this.setData({
+        that.setData({
           list: [],
           page: 1
         })
-        that.getList()
+        that.getOrder()
+      }else{
+        wx.hideLoading()
+        wx.showToast({
+          title: res.info,
+          icon: "none"
+        })
       }
-      wx.hideLoading()
     })
   },
   click_open: function (e) {
@@ -184,6 +199,60 @@ Page({
       'logis.popup_state': true
     })
   },
+  del_order: function (e) {
+    var that = this
+    var index = e.currentTarget.dataset.index;
+    var list = that.data.list;
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    var reqBody = {
+      id: list[index].id,
+      convert_no: list[index].convert_no,
+      token: that.data.userInfo.token
+    };
+    util.post(util.url.delOrder, reqBody, (res) => {
+      if (res.state == 1) {
+        wx.hideLoading()
+        that.data.list.splice(index, 1);
+        that.setData({
+          list: list
+        })
+        wx.showToast({
+          title: '删除成功~',
+          icon: "none",
+          duration: 1000
+        })
+      } else {
+        wx.hideLoading()
+        wx.showToast({
+          title: res.info,
+          icon: "none"
+        })
+      }
+    })
+  },
+  copyText: function (e) {
+    var text = e.currentTarget.dataset.text;
+    console.log(text)
+    wx.setClipboardData({
+      data: text,
+      success(res) {
+        wx.getClipboardData({
+          success(res) {
+            console.log(res) // data
+            wx.showToast({
+              title: '复制成功~',
+              icon: "none",
+              duration: 1000
+            })
+          }
+        })
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -221,10 +290,4 @@ Page({
     }
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

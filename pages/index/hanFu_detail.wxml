@@ -1,7 +1,7 @@
 <!--pages/index/jifen_detail.wxml-->
 <view class='banner'>
   <!-- <swiper autoplay circular interval='5000'>
-    <view wx:for="{{detailData.goods_img}}" wx:key='{{index}}'>
+    <view wx:for="{{detailData.goods_img}}" wx:key='index'>
       <swiper-item>
         <image mode='widthFix' src="{{item}}" class='w100'/>
       </swiper-item>
@@ -17,7 +17,8 @@
       <view class='mt_10 df ai_c'>
         <text class='color_jifen ft_16'>￥ {{detailData.cost}} </text>
         <!-- <text class='color_5b ft_12 pl_5'>积分</text> -->
-        <text class='tag'>{{detailData.cid}}</text>
+        <text class='tag' wx:if='{{detailData.type == 2}}'>支付商品</text>
+        <text class='tag' wx:if='{{detailData.cid != ""}}'>{{detailData.cid}}</text>
       </view>
     </view>
     <!-- <image mode='widthFix' src='/img/share-1.png' class='zf'></image> -->
@@ -29,6 +30,7 @@
   </view>
   <view class='mt_10 ft_12 color_5b df jc_sb'>
     <!-- <text>仅限：{{detailData.sales}}</text> -->
+    <text>快递：{{detailData.postage > 0 ? detailData.postage+'元' : '包邮'}}</text>
     <text>{{detailData.sales}}人已购买</text>
     <text>库存：{{detailData.stock}}</text>
   </view>
@@ -63,9 +65,40 @@
   </view>
 </view>
 
-
-<view class='duihuan' bindtap='click_dui'>
-  <view class='btn_title'>立即购买</view>
+<view class='duihuan'>
+  <view class="df jc_sb ai_c">
+    <view class="car" bindtap='click_cart'>
+      <image src='/img/cart.png'></image>
+      <view class="ft_10 color_title">购物车</view>
+    </view>
+    <view class="df">
+      <view><view class="addcar" bindtap='showModal' data-type='{{1}}'>加入购物车</view></view>
+      <view><view class="buy" bindtap='showModal' data-type='{{2}}'>立即购买</view></view>
+    </view>
+  </view>
+  
   <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
 </view>
+<!-- 
+<view class='duihuan'>
+  <view wx:if='{{detailData.nature == ""}}' class='btn_title {{detailData.stock == 0 ? "btn_gray" : ""}}' bindtap='click_dui'>立即购买</view>
+  <view wx:else class='btn_title {{detailData.stock == 0 ? "btn_gray" : ""}}'>
+    <picker mode="selector" bindchange="bindPickerChange" value="{{natureIndex}}" range="{{detailData.nature}}">{{detailData.nature[natureIndex]}}</picker>
+  </view>
+  <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
+</view> -->
 
+<!-- 规格弹窗 -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{specData.state}}"></view>
+<view animation="{{animationData}}" class="commodity_attr_box spec" wx:if="{{specData.state}}">
+  <view class="ft_16 pb_10 df jc_sb ai_c">
+    <text>请选择规格</text>
+    <icon type="cancel" size="26" color="#FD93B3" bindtap='hideModal'/>
+  </view>
+  <view class="tag">
+    <view class="df fw_w">
+      <view wx:for='{{specData.info}}' wx:key='index' class="tag_btn {{specData.cur==specData.info[index] ? 'active' :'' }}" bindtap='select' data-val="{{specData.info[index]}}">{{item}}</view>
+    </view>
+  </view>
+  <view class="btn_title" bindtap="click_confirm">确 定</view>
+</view>

@@ -50,9 +50,9 @@
         <view>出生日期</view>
         <view class="right">
             <picker mode="date" value="{{userInfo.birthday}}" bindchange="bindDateChange">
-                <view class="picker">{{userInfo.birthday}}</view>
+                <view class="picker">{{userInfo.birthday ? userInfo.birthday : ''}}</view>
+                <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
             </picker>
-            <image class="enter_" mode="widthFix" src="../../img/enter_.png" />
         </view>
     </view>
 </view>

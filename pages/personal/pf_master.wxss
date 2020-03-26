@@ -1,0 +1,99 @@
+/* pages/personal/pf_master.wxss */
+.apply_content {
+    background: #fff;
+}
+
+.apply_title {
+    text-align: center;
+    padding: 50rpx;
+}
+
+.apply_title image {
+    width: 163rpx;
+}
+
+.apply_details {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 30rpx;
+}
+
+.apply_item {
+    width: 25%;
+    text-align: center;
+}
+
+.apply_item view {
+    font-size: 22rpx;
+    text-align: center;
+    transform: translateY(-20rpx);
+}
+
+.apply_details .apply_item:nth-of-type(5) view {
+    transform: translateY(-15rpx)
+}
+
+.apply_details .apply_item:nth-of-type(6) view {
+    transform: translateY(-15rpx)
+}
+
+.apply_details .apply_item:nth-of-type(7) view {
+    transform: translateY(-15rpx);
+}
+
+.apply_details .apply_item:nth-of-type(8) view {
+    transform: translateY(-15rpx);
+}
+
+
+.apply_item .completed {
+    color: #F85035;
+}
+
+.apply_item .no_complete {
+    color: #ccc;
+}
+
+
+
+.privilege_content {
+    text-align: center;
+    background: #E7E7E7;
+}
+
+.privilege_title {
+    padding-top: 50rpx;
+}
+
+.privilege_title image {
+    width: 162rpx;
+}
+
+.privilege_pic {
+    padding: 30rpx 0;
+}
+
+.privilege_pic image {
+    width: 704rpx;
+}
+
+.apply_btn {
+    text-align: center;
+}
+
+.apply_btn image {
+    width: 268rpx;
+    height: 49rpx;
+    margin-top: 50rpx;
+}
+
+.no_click {
+    width: 268rpx;
+    height: 49rpx;
+    line-height: 49rpx;
+    text-align: center;
+    margin: 50rpx auto;
+    border-radius: 30rpx;
+    background: #ccc;
+    color: #fff;
+}

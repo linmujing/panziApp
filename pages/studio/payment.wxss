@@ -1,0 +1,20 @@
+/* pages/studio/payment.wxss */
+page{padding-bottom: 0;}
+.payment{padding:36rpx 36rpx 94rpx;}
+.payment .img{width:670rpx;}
+.payment .img image{overflow:hidden;position:relative;}
+.payment .img .watermark{position:absolute;left:0;bottom:0;right:0;top:0;}
+
+.tishi{text-align:center;color:#C0C0C0}
+
+.purchase{position:fixed;width:100%;height:94rpx;background:#fff;display:flex;justify-content:space-between;bottom:0;}
+.purchase .tishi{font-size:26rpx;color:#C0C0C0;line-height:94rpx;margin-left:40rpx;}
+.purchase .an{width:242rpx;height:94rpx;background:#B1825F;text-align:center;color:#fff;line-height:94rpx;}
+
+.popup{position:fixed;background:rgba(0,0,0,0.1);top:0;right:0;left:0;bottom:0;}
+.popup .biaoti{height:60rpx;color:#030303;line-height:60rpx;text-align:center;margin-top:40rpx;}
+.popup_nr{position:absolute;top:30%;width:540rpx;background:#fff;left:15%;text-align:center;box-shadow:0rpx 8rpx 40rpx 0rpx rgba(0,0,0,0.1);border-radius:24rpx;}
+.popup_nrs{font-size:28rpx;color:#9B9B9B;margin:32rpx 50rpx 20rpx;}
+.popup .an{border-top:1rpx  solid #ccc;}
+.popup .an button{padding-top:10rpx;font-weight:bold;padding-bottom:10rpx;background:none;color:#FD93B3;font-size:34rpx;}
+.popup .an button::after{border: none;background-color:rgba(0,0,0,0);}

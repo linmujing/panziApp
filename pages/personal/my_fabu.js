@@ -1,5 +1,6 @@
 // pages/personal/my_fabu.js
 var util = require('../../utils/util.js');
+const app = getApp();
 Page({
 
   /**
@@ -15,6 +16,12 @@ Page({
       cid: ''
     },
     Page_slide: true,
+    stimg: app.globalData.imgUrl + 'noSt.png',
+    // 分享朋友圈
+    share: {
+      img: '',
+      state: true
+    },
   },
 
   /**
@@ -30,8 +37,7 @@ Page({
         url: '/pages/login/index',
       })
     }
-    var that = this
-    that.getThemeList()
+    this.getThemeList()
   },
 
   // 加载列表数据
@@ -40,21 +46,19 @@ Page({
     var userInfo = that.data.userInfo;
     var reqBody = {
       token: userInfo.token,
-      pageSize: 5,
+      pageSize: 10,
       pageNumber: that.data.themeData.page
     };
     wx.showLoading({
       title: '加载中',
     })
     util.post(util.url.my_list, reqBody, (res) => {
-      console.log(res)
       wx.hideLoading()
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
       if (res.state == 1) {
         var list = that.data.themeData.themeList
         list = list.concat(res.data.list);
-        console.log(list)
         that.setData({
           'themeData.themeList': list,
           'themeData.page': that.data.themeData.page + 1
@@ -62,12 +66,10 @@ Page({
         // 判断上拉加载
         var leg = that.data.themeData.themeList.length
         if (leg < res.data.total) {
-          console.log('可以')
           that.setData({
             Page_slide: true
           })
         } else {
-          console.log('不可以')
           that.setData({
             Page_slide: false
           })
@@ -77,34 +79,95 @@ Page({
   },
 
   delate(e) {
-    console.log(e)
-    const id = e.currentTarget.dataset.id
-    var idx = e.currentTarget.dataset.idx
-    var userInfo = wx.getStorageSync('userInfo');
-    var reBody = {
-      token: userInfo.token,
-      id: id
-    }
-    util.post(util.url.del_sns, reBody, (res) => {
-      console.log(res)
-      var list = this.data.themeData.themeList
-      console.log(list)
-      list[idx].status = 2
-      console.log(list)
-      this.setData({
-        'themeData.themeList': list
-      })
-      // var data = res.data
-      // if (res.state == 1) {
-      //   var list = this.data.list
-      //   console.log(list)
-      //   this.setData({
-      //     list: data
-      //   })
-      // }
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '是否确定删除？',
+      success(res) {
+        if (res.confirm) {
+          const id = e.currentTarget.dataset.id
+          var userInfo = wx.getStorageSync('userInfo');
+          var reBody = {
+            token: userInfo.token,
+            id: id
+          }
+          util.post(util.url.del_sns, reBody, (res) => {
+            if (res.state == 1){
+              wx.showToast({
+                title: '删除成功~',
+                icon: 'none',
+                duration: 1000
+              })
+              that.setData({
+                'themeData.themeList': [],
+                'themeData.page': 1,
+              })
+              that.getThemeList()
+            }else{
+              wx.showToast({
+                title: res.info,
+                icon: 'none',
+                duration: 1000
+              })
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
     })
   },
-
+  click_detail: function (e) {
+    var id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '/pages/community/dongtai_details?id=' + id
+    })
+  },
+  click_fabu: function () {
+    wx.navigateTo({
+      url: '/pages/community/release',
+    })
+  },
+  getShareCode: function (e) {
+    var that = this
+    var id = e.currentTarget.dataset.id
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    var reBody = {
+      token: that.data.userInfo.token,
+      id:id
+    };
+    util.post(util.url.shareCode, reBody, (res) => {
+      wx.hideLoading()
+      if (res.state == 1) {
+        var list = []
+        list.push(res.data)
+        wx.previewImage({
+          current: list[0], // 当前显示图片的http链接
+          urls: list // 需要预览的图片http链接列表
+        })
+        wx.showToast({
+          title: '长按图片保存~',
+          icon: 'none',
+          duration: 5000
+        })
+        var param = {
+          token: that.data.userInfo.token,
+          id: id,
+          type: "share"
+        };
+        util.post(util.url.edit_sns, param, (res) => {})
+      }
+      wx.hideLoading()
+    })
+  },
+  close_share: function (id) {
+    this.setData({
+      'share.state': true
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -156,10 +219,4 @@ Page({
     }
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

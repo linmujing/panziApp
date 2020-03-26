@@ -7,16 +7,30 @@
 </view>
 
 <view class='bg_ff sort df'>
-  <view wx:for='{{sortData.sortList}}' wx:key='{{index}}' class='item' bindtap='click_sort' data-index='{{index}}'>
-    <view wx:if='{{index == sortData.sortList.length-1}}' class='df ai_c'>
+  <view wx:for='{{sortData.sortList}}' wx:key='index' class='item' bindtap='click_sort' data-index='{{index}}'>
+    <view wx:if='{{index == 3}}' class='df ai_c jc_c'>
       <text class='{{sortData.current==index?"active":""}}'>{{item.title}}</text>
       <view>
         <view class="triangle-up {{item.cur==1 ? 'cur_up' : ''}}"></view>
         <view class="triangle-down {{item.cur==2 ? 'cur_down' : ''}}"></view>
       </view>
     </view>
+    <view wx:elif='{{index == 4}}' class='df ai_c jc_c'>
+      <text class='oneline {{sortData.current==index?"active":""}}'>{{selectData.cur===''?item.title:selectData.selectList[selectData.index].name}}</text>
+      <view>
+        <view wx:if='{{selectData.select_state}}' class="triangle-up"></view>
+          <view wx:else class="triangle-down"></view>
+      </view>
+    </view>
     <text wx:else class='{{sortData.current==index?"active":""}}'>{{item.title}}</text>
   </view>
+  <!-- 下拉框 -->
+  <view class='select' wx:if='{{selectData.select_state}}'>
+    <view class='list' wx:for='{{selectData.selectList}}' wx:key='index' bindtap='click_fenlei' data-id='{{item.id}}' data-index='{{index}}'>
+      <view class='{{selectData.cur === item.id ? "active" : ""}}'>{{item.name}}</view>
+    </view>
+  </view>
+  <view class='mask' wx:if='{{selectData.select_state}}' style='height: {{winHeight +"px"}}' bindtap='seletToggle'></view>
 </view>
 
 <!-- 列表 -->
@@ -35,4 +49,18 @@
       </view>
     </view>
   </view>
+  <view class='ta_c w100' wx:if='{{sortData.list.length == 0}}'>暂无数据~</view>
+</view>
+
+<view hidden='{{ad.state}}' class='ad'>
+  <view class='cont' bindtap='click_url' data-type='{{ad.type}}' data-url='{{ad.url}}'>
+    <image mode='widthFix' src="{{ad.img}}" class="w100"></image>
+  </view>
+  <view class='mt_20 ta_c'>
+    <icon type="cancel" size="36" color="#fff" bindtap='close_ad'/>
+  </view>
+</view>
+
+<view class='service_an' bindtap='click_cart'>
+  <text>购物车</text>
 </view>

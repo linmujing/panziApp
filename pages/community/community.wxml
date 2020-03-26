@@ -1,69 +1,96 @@
 <!-- pages/community/community.wxml -->
 <view class="container">
-    <view class="top_nav">
-        <view class='search_box bg_ff'>
-            <view class='search df ai_c'>
-                <image mode='widthFix' src='/img/search.png'></image>
-                <input placeholder="搜索主题关键词" confirm-type='search' placeholder-style='color: #B4B4B4' bindinput="blur_search" bindconfirm='confirm_search' class='w90' />
-            </view>
+    <swiper wx:if='{{banner.length != 0}}' autoplay indicatorDots circular interval='4000' indicator-active-color='#fff'>
+      <view wx:for="{{banner}}" wx:key='index'>
+        <swiper-item class='item'>
+          <image mode='widthFix' src="{{item.img}}" class='w100' bindtap='click_banner' data-type='{{item.type}}' data-url='{{item.url}}'/>
+        </swiper-item>
+      </view>
+    </swiper>
+    <!-- 导航 -->
+    <view class='nav df jc_sb fw_w'>
+      <block wx:for='{{navData}}' wx:key='index'>
+        <view class='w20 mt_10' bindtap='click_nav' data-index='{{index}}'>
+          <image src='{{item.img}}'></image>
+          <view class='ft_12 mt_5'>{{item.title}}</view>
         </view>
-        <view>
-            <!-- <image bind:tap="link_search" mode="widthFix" src="../../img/fangdajing.png" /> -->
-            <image class="dongtai" bind:tap="link_to" mode="widthFix" src="../../img/xiangji.png" />
+      </block>
+    </view>
+    <view class="top_nav">
+        <view class='search_box w100'>
+            <view class='search df ai_c jc_c'>
+                <image mode='widthFix' src='/img/search.png'></image>
+                <input placeholder="搜索主题关键词" confirm-type='search' placeholder-style='color: #B4B4B4' bindinput="blur_search" bindconfirm='confirm_search' class='w30' />
+            </view>
         </view>
     </view>
-    <!-- <scroll-view class="tab" scroll-x="true" scroll-left="{{navScrollLeft}}" scroll-with-animation="{{true}}">
-        <block wx:for="{{goodsData}}" wx:key="{{index}}">
-            <view class="tab_item {{currentTab==index ? 'active' :'' }}" data-current='{{index}}' bindtap='switchNav'>
-                {{item.name}}
+    <view class="df ai_c jc_fe ft_13">
+      <view class="pr_5 pl_5 {{field == 'zan' ? 'color_title' : ''}}" bindtap="click_sort" data-type='{{"zan"}}'>热门</view>
+      <view>|</view>
+      <view class="pr_5 pl_5 {{field == 'addtime' ? 'color_title' : ''}}" bindtap="click_sort" data-type='{{"addtime"}}'>最新</view>
+    </view>
+    <view class="content mt_5">
+      <view class="img_item">
+        <view class="Popular" wx:for="{{col1}}" wx:for-item="dd" wx:for-index="index" wx:key="index">
+          <view bind:tap="link_details" data-id='{{dd.id}}'>
+            <view class="tag">
+              <image wx:if="{{dd.images != ''}}" mode="widthFix" class="Popular_bigPic" src="{{dd.images}}"/>
+              <view wx:if="{{dd.category_name != ''}}" class="tag_t oneline">{{dd.category_name}}</view>
             </view>
-        </block>
-    </scroll-view> -->
-    <view class="content">
-        <view wx:for="{{themeData.themeList}}" wx:for-item="dd" wx:for-index="idx" wx:key="{{index}}">
-            <view class="Popular">
-                <view bind:tap="link_details" data-id='{{dd.id}}'>
-                    <view class="Popular_title">
-                        <view class="pTitle_left">
-                            <image class="Popular_headerImg" src="{{dd.headimgurl}}" />
-                            <view class="">
-                                <view class="Popular_name">{{dd.nickname}}</view>
-                                <view class="Popular_time">{{dd.addtime}}</view>
-                            </view>
-                        </view>
-                        <!-- <view class="pTitle_right">
-                        <view class="guanzhu">+关注</view>
-                        <view bind:tap="close" class="close_btn" data-index='{{index}}'>
-                            <image mode="widthFix" src="../../img/delate.png" />
-                        </view>
-                    </view> -->
-                    </view>
-                    <view class="Popular_content">{{dd.content}}</view>
-                </view>
-                <view class="Popular_picBox">
-                    <view class="picBox" wx:for="{{dd.images}}" wx:key="index1">
-                        <image mode="aspectFill" class="Popular_bigPic" src="{{item}}" data-current='{{index}}' data-id="{{idx}}" bind:tap="handleImagePreview" />
-                        <!-- <image class="Popular_bigPic" wx:for="{{dd.images}}" wx:key="index1" src="{{item}}" data-current='{{index}}' data-id="{{idx}}" bind:tap="handleImagePreview" /> -->
-                    </view>
-                </view>
-                <view class="Popular_foot">
-                    <view class='dianj'>
-                        <button plain="true" open-type="share" data-id="{{dd.id}}" data-index="{{idx}}">
-                            <image mode="widthFix" src="../../img/zhuanfa.png" data-id="{{dd.id}}" />
-                        </button>
-                        <text>{{dd.share}}</text>
-                    </view>
-                    <view class='dianj pinglun' bind:tap="link_details" data-id='{{dd.id}}'>
-                        <image mode="widthFix" src="../../img/huifu.png" />
-                        <text>{{dd.comment}}</text>
-                    </view>
-                    <view class="dianj" bindtap='click_zan' data-index='{{idx}}'>
-                        <view wx:if='{{dd.my_zan}}' class='heart'></view>
-                        <image wx:else mode='widthFix' src='/img/dianzan.png' class='xin'></image>
-                        <text class='oneline'>{{dd.zan}}</text>
-                    </view>
-                </view>
+            <view class="Popular_content oneline">{{dd.content}}</view>
+          </view>
+          <view class="Popular_title ai_c">
+            <view class="pTitle_left">
+              <image class="Popular_headerImg" src="{{dd.headimgurl}}" />
+              <view class="">
+                <view class="Popular_name oneline">{{dd.nickname}}</view>
+              </view>
             </view>
+            <view class="dianj df ai_c" bindtap='click_zan' data-type='{{1}}' data-index='{{index}}'>
+              <image wx:if='{{dd.my_zan}}' src='/img/dianzan2.png' class='xin'></image>
+              <image wx:else src='/img/dianzan.png' class='xin'></image>
+              <text class='oneline color_99 ft_12'>{{dd.zan}}</text>
+            </view>
+          </view>
         </view>
+      </view>
+      <view class="img_item">
+        <view class="Popular" wx:for="{{col2}}" wx:for-item="dd" wx:for-index="index" wx:key="index">
+          <view bind:tap="link_details" data-id='{{dd.id}}'>
+            <view class="tag">
+              <image wx:if="{{dd.images != ''}}" mode="widthFix" class="Popular_bigPic" src="{{dd.images}}"/>
+              <view wx:if="{{dd.category_name != ''}}" class="tag_t">{{dd.category_name}}</view>
+            </view>
+            <view class="Popular_content oneline">{{dd.content}}</view>
+          </view>
+          <view class="Popular_title ai_c">
+            <view class="pTitle_left">
+              <image class="Popular_headerImg" src="{{dd.headimgurl}}" />
+              <view class="">
+                <view class="Popular_name oneline oneline">{{dd.nickname}}</view>
+              </view>
+            </view>
+            <view class="dianj df ai_c" bindtap='click_zan' data-type='{{2}}' data-index='{{index}}'>
+              <image wx:if='{{dd.my_zan}}' src='/img/dianzan2.png' class='xin'></image>
+              <image wx:else src='/img/dianzan.png' class='xin'></image>
+              <text class='oneline color_99 ft_12'>{{dd.zan}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
     </view>
 </view>
+
+<view class="shaitu" bindtap="link_release">
+  <image src='{{shai}}'></image>
+</view>
+
+<view hidden='{{ad.state}}' class='ad'>
+  <view class='cont' bindtap='click_url' data-type='{{ad.type}}' data-url='{{ad.url}}'>
+    <image mode='widthFix' src="{{ad.img}}" class="w100"></image>
+  </view>
+  <view class='mt_20 ta_c'>
+    <icon type="cancel" size="36" color="#fff" bindtap='close_ad'/>
+  </view>
+</view>
+

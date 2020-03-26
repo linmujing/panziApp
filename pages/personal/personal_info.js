@@ -147,9 +147,10 @@ Page({
           };
           util.post(util.url.settel, reqBody, (res) => {
             // console.log(res)
-            if (res.state == 0 || res.state == 1) {
+            if (res.state == 1) {
               that.setData({
-                'userInfo.tel': res.tel
+                'UserInfo.tel': res.tel,
+                'userInfo.tel': res.tel,
               })
               var UserInfo = that.data.UserInfo
               wx.setStorageSync('userInfo', UserInfo);
@@ -215,10 +216,5 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
-  }
 })

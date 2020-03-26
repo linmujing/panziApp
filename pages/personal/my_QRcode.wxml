@@ -3,15 +3,69 @@
   <image mode="widthFix" src='{{bgImg}}' class='w100 bg'></image>
   <image mode="widthFix" src='{{qrImg}}' class='code'></image>
 </view> -->
-<view class='ta_c box'>
+<!-- <view class='ta_c box'>
   <image mode="widthFix" src='{{poster}}' class='w100 bg' bindtap='previewImg'></image>
 </view>
 <view class='canvask'>
-  <canvas canvas-id="shareImg" style="width:650px;height:1080px"></canvas>
+  <canvas canvas-id="shareImg" style="width:650px;height:920px"></canvas>
+</view> 
+<view wx:for="{{carouselData}}" wx:key='index'>
+      <swiper-item class='item'>
+        <image mode='widthFix' src="{{item.img}}" class='w100' bindtap='click_banner' data-type='{{item.type}}' data-url='{{item.url}}'/>
+      </swiper-item>
+    </view>
+-->
+<view class="swiper_box">
+  <swiper indicatorDots circular interval='4000' current='{{current}}' bindchange='change'>
+    <view wx:for="{{qrImg}}" wx:key='index'>
+    <swiper-item class='item'>
+      <image mode='aspectFit' src="{{item.img}}" class="h100 w100"/>
+    </swiper-item>
+    </view>
+  </swiper>
 </view>
-
-<view class='save'>
-  <view bindtap='click_save' data-mode='{{0}}' class='xjdznr df ai_c jc_c'>
-    <text>下载二维码</text>
+<view class='tabbar'>
+  <view class="info">
+    <rich-text class='w100' nodes="{{text}}"></rich-text>
+  </view>
+  <view class="tablist df jc_sb">
+    <view bindtap="my_customer">
+      <image mode="widthFix" src="{{icon.ask1}}"></image>
+      <view>邀请明细</view>
+    </view>
+    <view bindtap='click_notes'>
+      <image mode="widthFix" src="{{icon.ask2}}"></image>
+      <view>邀请规则</view>
+    </view>
+    <view bindtap='click_save'>
+      <image mode="widthFix" src="{{icon.ask3}}"></image>
+      <view>保存到相册</view>
+    </view>
+  </view>
+</view>
+<!-- 弹窗 -->
+<view hidden='{{notes.state}}' class='notes'>
+  <view class='cont'>
+    <view class='head ta_c'>
+      <view class='ft_15'>邀请规则</view>
+    </view>
+    <view class="body ta_j">
+      <rich-text class='w100' nodes="{{notes.txt}}"></rich-text>
+    </view>
+  </view>
+  <view class='mt_20 ta_c'>
+    <icon type="cancel" size="36" color="#fff" bindtap='click_notes'/>
+  </view>
+</view>
+<!-- 授权弹窗 -->
+<view class='popup' hidden='{{down_state}}'>
+  <view class='popup_nr'>
+    <view class='biaoti'>温馨提示</view>
+    <view class='popup_nrs'>为了更好的体验小程序，请前往设置窗口，打开相册授权！</view>
+    <view class='an'>
+      <button open-type="openSetting" bindopensetting="set_callback">
+        <text>打开设置页</text>
+      </button>
+    </view>
   </view>
 </view>

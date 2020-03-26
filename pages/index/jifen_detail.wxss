@@ -5,6 +5,7 @@ swiper{width: 100%;min-height: 700rpx;}
 .tag{color: #fff;background: #FAA8B6;padding: 2rpx 10rpx;font-size: 20rpx;margin-left: 20rpx;}
 .duihuan{position: fixed;bottom: 0;z-index: 1;width: 100%;text-align: center;font-size: 32rpx;line-height: 70rpx;}
 .duihuan .btn_title{border-radius: 0;}
+.duihuan .btn_gray{background: #ccc;}
 
 .tj{padding-bottom: 100rpx;margin-top: 20rpx;}
 .title {text-align: center;padding: 20rpx;}

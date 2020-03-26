@@ -1,0 +1,27 @@
+<!--pages/activity/game.wxml-->
+<image mode='widthFix' src='{{param.bgimage}}' class="w100"></image>
+<view class="share">
+  <image mode='widthFix' src='{{img.jfRank}}' bindtap="click_rank"></image>
+  <button plain="true" open-type="share">
+    <image mode="widthFix" src="{{img.jfShare}}" />
+  </button>
+</view>
+<view class="bottom">
+  <navigator url="game_list?id={{param.id}}"><view class="btn_title">开始闯关</view></navigator>
+  <view class="mt_20 color_5b" bindtap="click_notes">查看游戏规则</view>
+</view>
+
+<!-- 弹窗 -->
+<view hidden='{{notes.state}}' class='notes'>
+  <view class='cont'>
+    <view class='head ta_c'>
+      <view class='ft_15'>游戏规则</view>
+    </view>
+    <view class="body ta_j">
+      <rich-text class='w100' nodes="{{param.rule}}"></rich-text>
+    </view>
+  </view>
+  <view class='mt_20 ta_c'>
+    <icon type="cancel" size="36" color="#fff" bindtap='click_notes'/>
+  </view>
+</view>

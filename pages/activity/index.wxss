@@ -1,0 +1,9 @@
+/* pages/activity/index.wxss */
+/* page{background: #fff;} */
+.blod{font-weight: bold;}
+
+.list{padding: 0 30rpx;}
+.list .item{background: #fff;margin-top: 80rpx;padding: 0 20rpx;border-radius: 8rpx;box-shadow:0px 10rpx 30rpx -5rpx rgba(0,0,0,0.3);min-height: 150rpx;}
+.list .item .info{width: 320rpx;}
+.list .item .img{position: relative;top: -40rpx;}
+.list .item .img image{width: 140rpx;border-radius: 8rpx;}

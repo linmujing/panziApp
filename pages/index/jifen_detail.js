@@ -46,19 +46,65 @@ Page({
 
   },
   click_dui: function (e) {
+    if (this.data.detailData.stock == 0){
+      wx.showToast({
+        title: '库存为0~',
+        icon: 'none',
+        duration: 1000
+      })
+      return
+    }
     var goods_id = this.data.goods_id
     var reqBody = {
       token: this.data.userInfo.token,
       goods_id: goods_id
     };
+    wx.showLoading({
+      title: '正在生成订单',
+      mask: true
+    })
     util.post(util.url.goodsOrder, reqBody, (res) => {
+      // console.log(res)
+      wx.hideLoading()
+      if (res.state == 1) {
+        wx.navigateTo({
+          url: 'order?id=' + res.data.order_id,
+        })
+      }else{
+        wx.showToast({
+          title: res.info,
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    })
+  },
+  click_lotto: function (e) {
+    wx.showLoading({
+      title: '抽奖中',
+      mask: true
+    })
+    if (this.data.detailData.stock == 0) {
+      wx.showToast({
+        title: '库存为0~',
+        icon: 'none',
+        duration: 1000
+      })
+      return
+    }
+    var goods_id = this.data.goods_id
+    var reqBody = {
+      token: this.data.userInfo.token,
+      goods_id: goods_id
+    };
+    util.post(util.url.goods_lotto, reqBody, (res) => {
       // console.log(res)
       wx.hideLoading()
       if (res.state == 1) {
         wx.navigateTo({
           url: 'order?id=' + res.order_id,
         })
-      }else{
+      } else {
         wx.showToast({
           title: res.info,
           icon: 'none',
@@ -85,14 +131,19 @@ Page({
       // console.log(res)
       wx.hideLoading()
       if (res.state == 1) {
-        res.data.goods_content = res.data.goods_content.replace(/\<img/gi, '<img style="width:100%;height:auto" ')
+        if (res.data.goods_content) {
+          res.data.goods_content = res.data.goods_content.replace(/\<img/gi, '<img style="width:100%;height:auto;display: block;" ')
+        }
+        wx.setNavigationBarTitle({
+          title: res.data.goods_name
+        })
         that.setData({
           detailData: res.data,
         })
       }
     })
   },
-  getRecommend: function (id) {
+  getRecommend: function () {
     var that = this
     var reqBody = {
       token: that.data.userInfo.token

@@ -1,5 +1,5 @@
 <!--pages/personal/my_customer.wxml-->
-<view class='list df ai_c jc_sb' wx:for='{{list}}' wx:key='{{index}}'>
+<view class='list df ai_c jc_sb' wx:for='{{list}}' wx:key='index'>
   <view class='df ai_c'>
     <image mode='widthFix' src="{{item.headimgurl}}"/>
     <view class='pl_10'>{{item.nickname}}</view>

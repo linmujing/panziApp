@@ -1,0 +1,49 @@
+/* pages/community/hot_list.wxss */
+page{background: #F7F7F7}
+.card{
+  margin: 0 20rpx;
+  background: #fff;
+  box-shadow:0px 5rpx 15rpx -5rpx rgba(0,0,0,0.3);
+  padding: 40rpx;
+  border-radius: 16rpx;
+  position: relative;
+  top: -40rpx;
+}
+.card .title{font-weight: bold;font-size: 38rpx;}
+
+.content{padding: 0 20rpx;}
+.content .list{
+  /* width: 356rpx; */
+  width: 48%;
+  margin: 1%;
+  display: inline-block;
+  vertical-align: top;
+  overflow: hidden;
+}
+.content .list .item{box-shadow:0px 5rpx 15rpx -5rpx rgba(0,0,0,0.3);background: #fff;margin-bottom: 30rpx;border-radius: 8rpx;}
+.content .list .tag{position: relative;}
+.content .list .tag image{border-radius: 8rpx 8rpx 0 0;}
+.content .list .tag .tag_t{max-width:260rpx;color: #fff;background: rgba(0,0,0,0.4);font-size: 20rpx;position: absolute;bottom: 0;margin: 20rpx;padding: 2rpx 10rpx;border-radius: 20rpx;}
+.content .list .info{font-weight: bold;padding: 20rpx;box-sizing: border-box;font-size: 22rpx;}
+.content .list .headimg{width: 50rpx;height: 50rpx;border-radius: 50%;margin-right: 10rpx;}
+.content .list .name{font-size: 20rpx;width: 150rpx;}
+.content .list.dianj {
+    line-height: 92rpx;
+    width: 100rpx;
+}
+.xin{
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.shaitu {
+  position: fixed;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: 30rpx;
+  width:100%;
+  text-align: center;
+  z-index: 100
+}
+.shaitu image{width: 240rpx;height: 86rpx;}

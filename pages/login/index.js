@@ -11,16 +11,22 @@ Page({
     userInfo: {},
     change: false,
     login_state: false,
-    scene: ''
+    scene: '',
+    qudao: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const scene = decodeURIComponent(options.scene)
+    const scene = decodeURIComponent(options.scene) // 介绍人电话
+    const qudao = decodeURIComponent(options.qudao)
+    const huaxuindent = options.huaxuindent
     this.setData({
-      scene: scene
+      scene: scene,
+      qudao: qudao,
+      huaxuindent: huaxuindent,
+      options: options
     })
     var userInfo = wx.getStorageSync('userInfo');
     if (userInfo) {
@@ -38,9 +44,9 @@ Page({
       }
     } else {
 
-      this.setData({
-        login_state: true,
-      })
+      // this.setData({
+      //   login_state: true,
+      // })
 
     }
   },
@@ -72,9 +78,9 @@ Page({
       }
     } else {
 
-      this.setData({
-        login_state: true,
-      })
+      // this.setData({
+      //   login_state: true,
+      // })
 
     }
   },
@@ -91,9 +97,19 @@ Page({
             icon: 'none',
             duration: 500
           })
-          if (that.data.scene == 'undefined'){
+          if (that.data.scene == 'undefined') {
             that.setData({
               scene: ''
+            })
+          }
+          if (that.data.qudao == 'undefined') {
+            that.setData({
+              qudao: ''
+            })
+          }
+          if (that.data.huaxuindent == 'undefined') {
+            that.setData({
+              huaxuindent: ''
             })
           }
           var reqBody = {
@@ -101,17 +117,22 @@ Page({
             userInfo: userInfo,
             encryptedData: e.detail.encryptedData,
             iv: e.detail.iv,
-            channel: that.data.scene
+            channel: that.data.scene,
+            qudao: that.data.qudao,
+            huaxuindent: that.data.huaxuindent
           };
           util.post(util.url.login, reqBody, (res) => {
-            console.log(res)
             if (res.state == 1) {
               userInfo.token = res.data.token
-              if (res.data.tel == 0 || res.data.tel == ''){
+              userInfo.openid = res.data.openid
+              userInfo.uid = res.data.uid
+              userInfo.session_key = res.data.session_key
+              userInfo.vip = res.data.vip
+              if (res.data.tel == 0 || res.data.tel == '') {
                 that.setData({
                   phone: true
                 })
-              }else{
+              } else {
                 userInfo.tel = res.data.tel
               }
               wx.setStorageSync('userInfo', userInfo);
@@ -123,10 +144,14 @@ Page({
                 that.setData({
                   phone: true
                 })
-              }else{
-                wx.switchTab({
-                  url: '/pages/index/index'
-                })
+              } else {
+                if (that.data.options.back) {
+                  wx.navigateBack()
+                } else {
+                  wx.switchTab({
+                    url: '/pages/index/index'
+                  })
+                }
               }
             }
           })
@@ -163,9 +188,13 @@ Page({
               var userInfo = this.data.userInfo
               // console.log(userInfo)
               wx.setStorageSync('userInfo', userInfo);
-              wx.switchTab({
-                url: '/pages/index/index'
-              })
+              if (that.data.options.back) {
+                wx.navigateBack()
+              } else {
+                wx.switchTab({
+                  url: '/pages/index/index'
+                })
+              }
             }
           })
 
@@ -176,6 +205,11 @@ Page({
           })
         }
       }
+    })
+  },
+  click_login: function () {
+    this.setData({
+      login_state: true,
     })
   },
   /**
@@ -206,10 +240,4 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

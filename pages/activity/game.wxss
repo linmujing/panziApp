@@ -1,0 +1,19 @@
+/* pages/activity/game.wxss */
+page{padding: 0;}
+.share{position: absolute;top:0;right: 30rpx;}
+.share image{width: 60rpx;display: block;}
+.bottom{position: fixed;bottom: 0;left:0;right:0;margin: 40rpx;box-sizing: border-box;text-align: center;}
+.bottom .btn_title{font-size: 36rpx;line-height: 70rpx;}
+
+.notes{position:fixed;background:rgba(0,0,0,0.7);top:0;right:0;left:0;bottom:0;z-index: 10;}
+.notes .cont{background: #fff;width: 620rpx;margin: 0 auto;border-radius: 16rpx;margin-top: 10%;overflow: hidden;}
+.notes .cont .head{background: #FAA4AD;color: #fff;padding: 20rpx;}
+.notes .cont .body{padding: 30rpx;height: 600rpx;overflow-y: scroll;}
+
+.share button {
+    display: flex;
+    border: none;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1;
+}

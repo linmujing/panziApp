@@ -52,14 +52,14 @@
     <text class='qdcocor' bindtap='click_dqsjqd'>确定</text>
   </view>
   <picker-view indicator-style="height:50px;" style="width: 100%;height:240px;"  mode="{{province}}" value="{{value}}" bindchange="bindChange">
-  <picker-view-column>
-    <view wx:for="{{province}}"  wx:key="index" style="line-height: 50px">{{item.pName}}</view>
-  </picker-view-column>
-  <picker-view-column>
-      <view wx:for="{{city}}" wx:key ="index" style="line-height: 50px">{{item.cName}}</view>
+    <picker-view-column>
+      <view wx:for="{{province}}"  wx:key="index" style="line-height: 50px">{{item.cityName}}</view>
     </picker-view-column>
     <picker-view-column>
-      <view wx:for="{{area}}" wx:key ="index" style="line-height: 50px">{{item.xName}}</view>
+      <view wx:for="{{city}}" wx:key ="index" style="line-height: 50px">{{item.cityName}}</view>
     </picker-view-column>
-</picker-view>
+    <picker-view-column>
+      <view wx:for="{{area}}" wx:key ="index" style="line-height: 50px">{{item.cityName}}</view>
+    </picker-view-column>
+  </picker-view>
 </view>

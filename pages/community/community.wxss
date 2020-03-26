@@ -1,20 +1,18 @@
 /* pages/community/community.wxss */
-
 .top_nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20rpx 30rpx;
-    background: #fff;
+    padding: 20rpx 0;
 }
-
+.search_box{background: #E6E5E3;border-radius: 8rpx;padding: 10rpx 0;}
 .top_nav image {
     width: 40rpx;
     vertical-align: middle;
 }
 
 .top_nav .dongtai {
-    margin-left: 40rpx;
+    padding-left: 60rpx;
 }
 
 .tab {
@@ -48,22 +46,28 @@
     padding-bottom: 2rpx;
 }
 
-.content {
-    /* margin-top: 30rpx; */
-    /* background: #fff; */
+.content .img_item {
+  /* width: 356rpx; */
+  width: 48%;
+  margin: 1%;
+  display: inline-block;
+  vertical-align: top;
 }
-
-.content .Popular {
-    background: #fff;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    padding: 30rpx 30rpx 0 30rpx;
-    margin-bottom: 30rpx;
+.content .Popular{
+  box-shadow:0px 5rpx 15rpx -5rpx rgba(0,0,0,0.3);
+  background: #fff;
+  margin-bottom: 30rpx;
+  border-radius: 8rpx;
 }
-
+.content .Popular_bigPic {
+    width: 100%;
+    display: block;
+    border-radius: 8rpx 8rpx 0 0;
+}
 .content .Popular_title {
     display: flex;
     justify-content: space-between;
+    padding: 0 20rpx 20rpx 20rpx;
 }
 
 .content .pTitle_left {
@@ -72,14 +76,15 @@
 }
 
 .content .pTitle_left .Popular_headerImg {
-    width: 120rpx;
-    height: 120rpx;
+    width: 50rpx;
+    height: 50rpx;
     border-radius: 50%;
-    margin-right: 20rpx;
+    margin-right: 10rpx;
 }
 
 .content .pTitle_left .Popular_name {
-    font-weight: bold;
+    font-size: 20rpx;
+    width: 160rpx;
 }
 
 .content .pTitle_left .Popular_time {
@@ -108,14 +113,10 @@
 }
 
 .content .Popular_content {
-    margin: 30rpx 0;
-    font-size: 34rpx;
-    /* overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    white-space: normal; */
+  font-weight: bold;
+  padding: 20rpx;
+  box-sizing: border-box;
+  font-size: 22rpx;
 }
 
 .content .Popular_picBox {
@@ -129,13 +130,6 @@
     overflow: hidden;
     margin: 10rpx;
     border-radius: 10rpx
-}
-
-.content .Popular_bigPic {
-    width: 100%;
-    /* height: 210rpx; */
-    border-radius: 10rpx;
-
 }
 
 .content .Popular_foot {
@@ -167,13 +161,13 @@
     color: #666;
     font-size: 30rpx;
 }
-
 .content .Popular_foot .dianj {
     line-height: 92rpx;
     width: 100rpx;
     /* padding:0 60rpx; */
 }
-
+.content .tag{position: relative;}
+.content .tag .tag_t{max-width:260rpx;color: #fff;background: rgba(0,0,0,0.4);font-size: 20rpx;position: absolute;bottom: 0;margin: 10rpx;padding: 2rpx 10rpx;border-radius: 20rpx;}
 /* .praise { */
 /* width: 50px;
     height: 50px;
@@ -188,6 +182,10 @@
     background: #fff; */
 /* } */
 
+.xin{
+  width: 30rpx;
+  height: 30rpx;
+}
 /* 点赞按钮样式 */
 .hover_praise,
 .changed {
@@ -204,29 +202,29 @@
     color: transparent;
 }
 
-/* 爱心 */
-.heart {
-    position: relative;
-    width: 38rpx;
-    height: 28rpx;
+.container{padding: 20rpx;overflow: hidden;}
+.container swiper{height: 300rpx;}
+.container image{border-radius: 12rpx;}
+.container .item{overflow: hidden;border-radius: 12rpx;width: 100%;height: 100%;}
+
+.nav {
+  padding: 10rpx 20rpx;
+  text-align: center;
 }
 
-.heart:before,
-.heart:after {
-    position: absolute;
-    content: "";
-    left: 16rpx;
-    top: 0;
-    width: 18rpx;
-    height: 28rpx;
-    background: #FDA2B3;
-    border-radius: 16rpx 16rpx 0 0;
-    transform: rotate(-45deg);
-    transform-origin: 0 100%;
+.nav image {
+  width: 90rpx;
+  height: 90rpx;
+  display: block;
+  margin: 0 auto;
 }
-
-.heart:after {
-    left: 0;
-    transform: rotate(45deg);
-    transform-origin: 100% 100%;
+.shaitu {
+  position: fixed;
+  top: auto;
+  left: auto;
+  right: 40rpx;
+  bottom: 180rpx;
+  width:70rpx;
+  z-index: 100
 }
+.shaitu image{width: 70rpx;height: 140rpx;}

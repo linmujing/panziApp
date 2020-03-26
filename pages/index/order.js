@@ -15,8 +15,10 @@ Page({
     addr_state: true,
     info: {},
     totle_cost: 0,
+    totle_price: 0,
     remark: '',
-    type: 0
+    type: 0,
+    goods_img: ''
   },
 
   /**
@@ -25,15 +27,29 @@ Page({
   onLoad: function (options) {
     var userInfo = wx.getStorageSync('userInfo');
     this.setData({
-      userInfo: userInfo,
-      id: options.id
+      userInfo: userInfo
     })
     if (!userInfo) {
       wx.navigateTo({
         url: '/pages/login/index',
       })
     }
-    this.getOrder(options.id)
+    if (options.id){
+      this.setData({
+        id: options.id
+      })
+      this.getOrder(options.id)
+    }else{
+      var info = app.globalData.hfInfo
+      var totle_cost = info.money + info.postage
+      this.setData({
+        info: info,
+        totle_cost: totle_cost.toFixed(2),
+        type: info.type,
+        goods_img: info.goods_img[0]
+      })
+    }
+
     this.getAddrList()
   },
 
@@ -48,7 +64,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log(app.globalData.Select_address)
+    // console.log(app.globalData.Select_address)
     if (app.globalData.Select_address) {
       this.setData({
         addr: app.globalData.Select_address,
@@ -60,6 +76,7 @@ Page({
     var that = this
     wx.showLoading({
       title: '加载中',
+      mask: true
     })
     var reqBody = {
       token: that.data.userInfo.token,
@@ -69,10 +86,15 @@ Page({
       // console.log(res)
       wx.hideLoading()
       if (res.state == 1) {
+        var totle_cost = res.order.money * res.order.num + res.order.postage
+        var totle_price = res.order.money_jf * res.order.num
         that.setData({
           info: res.order,
-          totle_cost: res.order.money,
-          type: res.order.type
+          goods_img: res.order.goods_img,
+          totle_cost: totle_cost.toFixed(2),
+          totle_price: totle_price.toFixed(2),
+          type: res.order.type,
+          num: res.order.num
         })
       }
     })
@@ -104,11 +126,22 @@ Page({
   click_plus: function () {
     var that = this;
     var num = that.data.num;
+    var limit = that.data.info.limit;
+    if (num >= limit && limit != -1){
+      wx.showToast({
+        title: '已经到达该商品上限啦~',
+        icon: 'none',
+        duration: 1000
+      })
+      return false
+    }
     num++;
-    var totle_cost = that.data.info.money * num
+    var totle_cost = that.data.info.money * num + that.data.info.postage
+    var totle_price = that.data.info.money_jf * num
     that.setData({ 
       num: num,
-      totle_cost: totle_cost.toFixed(2)
+      totle_cost: totle_cost.toFixed(2),
+      totle_price: totle_price.toFixed(2),
     })
   },
   //减少数量
@@ -124,10 +157,13 @@ Page({
       return false
     }
     num--;
-    var totle_cost = parseInt(that.data.info.money * num)
+    var totle_cost = (that.data.info.money * num + that.data.info.postage).toFixed(2)
+    var totle_price = (that.data.info.money_jf * num).toFixed(2)
+    console.log(that.data.info.money_jf * num)
     that.setData({
       num: num,
-      totle_cost: totle_cost
+      totle_cost: totle_cost,
+      totle_price: totle_price
     })
   },
   click_tijiao: function (e) {
@@ -141,12 +177,24 @@ Page({
       return false
     }
    if(that.data.type == 1){
-     that.integral()
-   }else{
-     that.payment()
+     if (that.data.info.money_jf > 0){
+       that.pay_goods()
+     }else{
+       that.integral()
+     }
+     
+   } else if (that.data.type == 2){
+     that.create_order()
+   } else if (that.data.type == 3 || that.data.type == 4) {
+     that.lotto()
    }
   },
-  payment: function () {
+  // 积分兑换 + 支付
+  pay_goods: function () {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     var that = this
     var reqBody = {
       token: that.data.userInfo.token,
@@ -157,10 +205,7 @@ Page({
       convert_no: that.data.info.convert_no,
       num: that.data.num
     };
-    wx.showLoading({
-      title: '加载中',
-    })
-    util.post(util.url.pay, reqBody, (res) => {
+    util.post(util.url.pay_goods, reqBody, (res) => {
       wx.hideLoading()
       wx.requestPayment({
         'timeStamp': res.timeStamp,
@@ -186,12 +231,93 @@ Page({
       })
     })
   },
+  // 积分抽奖
+  lotto: function () {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    var that = this
+    var reqBody = {
+      token: that.data.userInfo.token,
+      address_id: that.data.addr.id,
+      remark: that.data.remark,
+      convert_no: that.data.info.convert_no,
+    };
+    util.post(util.url.convert_lotto, reqBody, (res) => {
+      wx.hideLoading()
+      if (res.state == 1) {
+        var popup_state = that.data.popup_state
+        that.setData({
+          popup_state: !popup_state
+        })
+      } else {
+        wx.showToast({
+          title: res.info,
+          icon: 'none'
+        })
+        setTimeout(function () {
+          wx.navigateTo({
+            url: '/pages/personal/my_order',
+          })
+        }, 800)
+      }
+    })
+  },
+  // 汉服提交订单支付
+  payment: function () {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    var that = this
+    var reqBody = {
+      token: that.data.userInfo.token,
+      goods_id: that.data.info.goods_id,
+      address_id: that.data.addr.id,
+      money: that.data.totle_cost,
+      remark: that.data.remark,
+      convert_no: that.data.info.convert_no,
+      num: that.data.num
+    };
+    util.post(util.url.copePay, reqBody, (res) => {
+      wx.hideLoading()
+      wx.requestPayment({
+        'timeStamp': res.timeStamp,
+        'nonceStr': res.nonceStr,
+        'package': res.package,
+        'signType': 'MD5',
+        'paySign': res.paySign,
+        'success': function (res) {
+          wx.showToast({
+            title: "完成订单支付"
+          })
+          var popup_state = that.data.popup_state
+          that.setData({
+            popup_state: !popup_state
+          })
+        },
+        'fail': function (res) {
+          wx.redirectTo({
+            url: '/pages/personal/my_order'
+          })
+
+        }
+      })
+    })
+  },
+  // 积分兑换
   integral: function(){
+    var that = this
     wx.showModal({
       title: '提示',
       content: '是否确认兑换该商品？',
       success(res) {
         if (res.confirm) {
+          wx.showLoading({
+            title: '加载中',
+            mask: true
+          })
           console.log('用户点击确定')
           var reqBody = {
             token: that.data.userInfo.token,
@@ -202,9 +328,6 @@ Page({
             convert_no: that.data.info.convert_no,
             num: that.data.num
           };
-          wx.showLoading({
-            title: '加载中',
-          })
           util.post(util.url.orderConvert, reqBody, (res) => {
             wx.hideLoading()
             if (res.state == 1) {
@@ -212,6 +335,16 @@ Page({
               that.setData({
                 popup_state: !popup_state
               })
+            }else{
+              wx.showToast({
+                title: res.info,
+                icon: 'none'
+              })
+              setTimeout(function(){
+                wx.navigateTo({
+                  url: '/pages/personal/my_order',
+                })
+              },800)
             }
           })
         } else if (res.cancel) {
@@ -233,6 +366,32 @@ Page({
   click_index: function () {
     wx.switchTab({
       url: '/pages/index/index',
+    })
+  },
+  // 汉服生成订单
+  create_order: function(){
+    var info = this.data.info
+    var reqBody = {
+      token: this.data.userInfo.token,
+      goods_id: info.id,
+      goods_nature: info.goods_nature,
+      num: this.data.num
+    };
+    util.post(util.url.goodsOrder_new, reqBody, (res) => {
+      // console.log(res)
+      wx.hideLoading()
+      if (res.state == 1) {
+        this.setData({
+          'info.convert_no': res.data.convert_no
+        })
+        this.payment()
+      } else {
+        wx.showToast({
+          title: res.info,
+          icon: 'none',
+          duration: 1000
+        })
+      }
     })
   },
   /**
@@ -263,10 +422,4 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

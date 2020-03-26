@@ -13,23 +13,34 @@ Page({
         { title: '综合', id: '' },
         { title: '销量', id: 'xl' },
         { title: '新品', id: 'xp' },
-        { title: '价格', id: 'jgx', cur: '' }
+        { title: '价格', id: 'jgx', cur: '' },
+        { title: '分类', id: '' }
       ],
       current: 0,
       page: 1,
       search: '',
       list: [],
-      type: ''
+      type: '',
     },
-
+    selectData: {
+      select_state: false,
+      selectList: [],
+      cur: ''
+    },
+    ad: {
+      img: '',
+      state: true,
+      seat: 3
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
     var userInfo = wx.getStorageSync('userInfo');
-    this.setData({
+    that.setData({
       userInfo: userInfo
     })
     if (!userInfo) {
@@ -37,7 +48,9 @@ Page({
         url: '/pages/login/index',
       })
     }
-    this.getList()
+    that.ad()
+    that.getList()
+    that.goods_classify()
   },
 
   /**
@@ -51,7 +64,65 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
+  },
+  // 广告弹窗
+  ad: function () {
+    var that = this
+    var reqBody = {
+      token: that.data.userInfo.token,
+      seat: that.data.ad.seat
+    };
+    util.post(util.url.ad, reqBody, (res) => {
+      if (res.state == 1) {
+        var data = res.data[0]
+        this.setData({
+          'ad.img': data.img,
+          'ad.state': false,
+          'ad.url': data.url,
+          'ad.type': data.type
+        })
+      } else {
+        this.setData({
+          'ad.state': true
+        })
+      }
+    })
+  },
+  close_ad: function (e) {
+    var that = this
+    var reqBody = {
+      token: that.data.userInfo.token,
+      seat: that.data.ad.seat
+    };
+    util.post(util.url.ad_log, reqBody, (res) => {
+      that.setData({
+        'ad.state': true
+      })
+    })
+  },
+  click_url: function (e) {
+    var that = this
+    //type = 1 外链  2 内链
+    var type = e.currentTarget.dataset.type
+    var url = e.currentTarget.dataset.url
+    var reqBody = {
+      token: that.data.userInfo.token,
+      seat: that.data.ad.seat
+    };
+    util.post(util.url.ad_log, reqBody, (res) => {
+      if (url == '') { return }
+      if (type == 1) {
+        getApp().globalData.webView = url;
+        wx.navigateTo({
+          url: 'webView'
+        })
+      } else {
+        wx.navigateTo({
+          url: url,
+        })
+      }
+    })
   },
   blur_search: function (e) {
     this.setData({
@@ -68,7 +139,7 @@ Page({
   click_sort: function (e) {
     var index = e.currentTarget.dataset.index;
     var data = this.data.sortData.sortList
-    data[data.length - 1].cur = ''
+    data[3].cur = ''
     if (data[index].id == 'jgs') {
       data[index].id = 'jgx'
       data[index].cur = 2
@@ -76,12 +147,18 @@ Page({
       data[index].id = 'jgs'
       data[index].cur = 1
     }
+    if (index == 4){
+      this.seletToggle()
+      return
+    }
     this.setData({
       'sortData.list': [],
       'sortData.page': 1,
       'sortData.current': index,
       'sortData.type': data[index].id,
-      'sortData.sortList': data
+      'sortData.sortList': data,
+      'selectData.select_state': false,
+      'selectData.cur': '',
     })
     this.getList()
   },
@@ -98,6 +175,7 @@ Page({
       pageNum: that.data.sortData.page,
       name: that.data.sortData.search,
       type: that.data.sortData.type,
+      cid: that.data.selectData.cur,
       token: that.data.userInfo.token,
     };
     wx.showLoading({
@@ -117,15 +195,60 @@ Page({
         // 判断上拉加载
         var leg = that.data.sortData.list.length
         if (leg < res.count) {
-          this.setData({
+          that.setData({
             Page_slide: true
           })
         } else {
-          this.setData({
+          that.setData({
             Page_slide: false
           })
         }
+        // 获取列表高度
+        var query = wx.createSelectorQuery();
+        query.select('.product').boundingClientRect(function (res) {
+          that.setData({
+            winHeight: res.height + 80
+          })
+        }).exec();
       }
+    })
+  },
+  goods_classify: function () {
+    var that = this
+    var reqBody = {
+      token: that.data.userInfo.token,
+      type: 2
+    };
+    util.post(util.url.goods_classify, reqBody, (res) => {
+      if (res.state == 1) {
+        that.setData({
+          'selectData.selectList': res.data 
+        })
+      }
+    })
+  },
+  seletToggle: function () {
+    this.setData({
+      'selectData.select_state': !this.data.selectData.select_state
+    })
+  },
+  click_fenlei: function (e) {
+    var id = e.currentTarget.dataset.id;
+    var index = e.currentTarget.dataset.index;
+    this.setData({
+      'selectData.cur': id,
+      'selectData.index': index,
+      'selectData.select_state': false,
+      'sortData.current': 4,
+      'sortData.sortList[3].cur': '',
+      'sortData.list': [],
+      'sortData.page': 1
+    })
+    this.getList()
+  },
+  click_cart: function () {
+    wx.navigateTo({
+      url: '/pages/shopCart/index',
     })
   },
   /**
@@ -166,10 +289,5 @@ Page({
     }
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
-  }
 })

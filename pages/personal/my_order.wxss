@@ -40,6 +40,7 @@
 .order_item .item_title {
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid #eee;
     padding: 20rpx;
 }
 
@@ -47,7 +48,6 @@
     display: flex;
     justify-content: space-between;
     padding: 20rpx;
-    border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
 }
 
@@ -61,18 +61,21 @@
 }
 
 .order_item .item_content .content_left .content_title {
+    max-width: 460rpx;
     margin-bottom: 10rpx;
     font-weight: 600;
     font-size: 30rpx;
 }
 
-.order_item .item_content .content_right>view {
-    margin-bottom: 10rpx;
+.order_item .item_content .content_right{
+    text-align: right;
+    max-width: 200rpx;
 }
 
 .order_item .content_total {
     text-align: right;
-    padding: 20rpx;
+    padding: 0 20rpx;
+    margin-top: 10rpx;
 }
 
 .order_item .content_btn {
@@ -91,7 +94,7 @@
   box-sizing: border-box;
   margin-left: 20rpx;
 }
-.mr{height:30rpx;background:#FAA7B7;color:#fff;border-radius:15rpx;font-size:20rpx;display:inline-block;padding:0 10rpx;line-height:30rpx;padding-right: 20rpx;}
+.mr{height:30rpx;background:#FAA7B7;color:#fff;border-radius:15rpx;font-size:20rpx;display:inline-block;padding:0 10rpx;line-height:30rpx;margin-right: 20rpx;}
 
 .content_btn button{width: 160rpx;text-align: center;padding: 0;border: 1px solid #F4B6C5;color:#FAA7B7;font-size: 28rpx;box-sizing: border-box;margin-left: 20rpx;background: #fff;border-radius: 50rpx;line-height: 62rpx;}
 .content_btn button:after{border:none;border-color:none;}

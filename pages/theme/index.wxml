@@ -16,8 +16,8 @@
 </view>
 <!-- 导航栏 -->
 <view class='nav bg_ff'>
-  <scroll-view scroll-x class='df' scroll-with-animation style="width: auto;">
-    <view wx:for='{{themeData.navList}}' wx:key='index' class='item {{themeData.current==index?"active":""}}' data-index='{{index}}' bindtap='click_nav' data-id='{{item.id}}'>
+  <scroll-view scroll-x enable-flex scroll-with-animation style="width: auto;">
+    <view wx:for='{{themeData.navList}}' wx:key='index' class='item {{themeData.current==item.id?"active":""}}' data-index='{{index}}' bindtap='click_nav' data-id='{{item.id}}'>
       {{item.name}}
     </view>
   </scroll-view>

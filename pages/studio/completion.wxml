@@ -1,0 +1,67 @@
+<!--pages/studio/completion.wxml-->
+<canvas canvas-id="shareImg" style="width:1080px;height:1762px"></canvas>
+<view class='page_bj'>
+  <view class='completion'>
+    <view class='img brr8'>
+      <image class="brr8" mode='widthFix' bindload="imageLoad" src='{{load?hcimg:"../../image/ba1200x1600.jpg"}}'></image>
+    </view>
+    <view class='an'>
+      <text>{{text}}</text>
+    </view>
+    <view class='an brr8 wkdh'>
+      <view class='bc'  bindtap='canvas'>
+        <text>保存图片</text>
+      </view>
+       <button class='fx' id="shareBtn" open-type="share" type="primary" hover-class="other-button-hover">
+        <text>撩朋友来玩</text>
+      </button>
+    </view>
+    <view class='tiaozhuan'>
+      <navigator url="preview?cid={{hcdata.cid}}&hcid={{hcdata.hcid}}&hcimg={{hcdata.hcimg}}&scid={{hcdata.scid}}&yhimgid={{hcdata.yhimgid}}&pagezt=0" class='qjhz' open-type="redirect" hover-class="other-navigator-hover">继续生成</navigator>
+      <navigator url="index" hover-class="other-navigator-hover">返回首页</navigator>
+    </view>
+  </view>
+  <!--  -->
+  <view class='tuijian palr36'>
+    <view class='list'>
+      <button  open-type="getPhoneNumber" plain='true' wx:if='{{!Obtaintel_state}}' class='lunbo brr8' data-url='{{lurl}}' bindgetphonenumber='Obtain_tel'>
+        <image src="{{imgUrls}}" class="slide-image brr8"></image>
+      </button>
+      <view wx:else class='lunbo brr8' data-url='{{lurl}}' bindtap='webviews'>
+        <image src="{{imgUrls}}" class="slide-image brr8"></image>
+      </view>
+    </view>
+  </view>
+  <view class='tuijian'>
+    <view class='list' wx:if="{{tjlist.length>0}}">
+      <swiper class='lunbor brr8' bindchange='onSlideChangeEnd' interval="2000" duration="1200">
+        <block wx:for="{{tjlist}}" wx:key='index'>
+          <swiper-item class='{{swindex==index?"":"xiao"}}'>
+            <image src="{{item}}" mode='aspectFill' class="slide-image brr8" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+  <!--  -->
+  <view class='completion dban' wx:if="{{tjlist.length>0}}">
+    <view data-url="{{url}}" bindtap='webviews' class='an brr8 zxyp'>
+      <text>在线约拍</text>
+    </view>
+  </view>
+</view>
+
+<view class='popup' wx:if="{{page_jz}}"></view>
+
+<!-- 设置 -->
+<view class='set' hidden='{{down_state}}'>
+  <view class='popup_nr'>
+    <view class='biaoti'>温馨提示</view>
+    <view class='popup_nrs'>为了更好的体验小程序，请前往设置窗口，打开相册授权！</view>
+    <view class='an'>
+      <button open-type="openSetting" bindopensetting="set_callback">
+        <text>打开设置页</text>
+      </button>
+    </view>
+  </view>
+</view>

@@ -15,10 +15,10 @@
   <view class='box' style='width: {{ sysW * 7 }}px'>
     <view class='dateBox'>{{ year }} / {{ month}}</view>
     
-    <block wx:for='{{ weekArr }}' wx:key='{{index}}'>
+    <block wx:for='{{ weekArr }}' wx:key='index'>
       <view style='width: {{ sysW }}px; height: {{ sysW }}px; line-height: {{ sysW }}px;'>{{ item }}</view>
     </block>
-    <block wx:for='{{ date }}' wx:key='{{index}}'>
+    <block wx:for='{{ date }}' wx:key='index}}'>
       <!-- <view style='{{ index == 0 ? "margin-left:" + sysW * marLet + "px;" : "" }}width: {{ sysW }}px; height: {{ sysW }}px; line-height: {{ sysW }}px;'><text class='{{ item.day ==  getDate ? "dateOn" : ""}}'>{{ item.day }}</text></view> -->
       <view style='{{ index == 0 ? "margin-left:" + sysW * marLet + "px;" : "" }}width: {{ sysW }}px; height: {{ sysW }}px; line-height: {{ sysW }}px;'><text class='{{item.style}}'>{{ item.day }}</text></view>
     </block>
@@ -34,7 +34,7 @@
 
   <!-- <view class='active' style='width: {{ sysW * 7 }}px'>
     <view class='title'>其他活动</view>
-    <view wx:for='{{active}}' wx:key='{{index}}' class='list df jc_sb ai_c'>
+    <view wx:for='{{active}}' wx:key='index' class='list df jc_sb ai_c'>
       <view class='df ai_c'>
         <image mode='widthFix' src='{{item.img}}'></image>
         <view class='pl_10'>

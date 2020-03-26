@@ -14,7 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -37,6 +37,7 @@ Page({
       })
     }
     this.getJifen()
+    this.isVip()
   },
   getJifen: function () {
     var userInfo = this.data.userInfo
@@ -59,7 +60,6 @@ Page({
   // 跳转所有订单
   link_allOrder(e) {
     var type = e.currentTarget.dataset.type
-    console.log(type)
     wx.navigateTo({
       url: './my_order?type=' + type
     })
@@ -118,7 +118,64 @@ Page({
       url: 'welfare'
     })
   },
+  my_shopcart: function () {
+    wx.navigateTo({
+      url: '/pages/shopCart/index'
+    })
+  },
+  to_trivia: function () {
+    wx.navigateTo({
+      url: 'trivia'
+    })
+  },
+  photos_list: function () {
+    wx.navigateTo({
+      url: '/pages/index/photos_list'
+    })
+  },
 
+  // 跳转盘粉达人
+  my_pfMaster() {
+    var userInfo = wx.getStorageSync('userInfo');
+    var reqBody = {
+      token: userInfo.token
+    };
+    util.post(util.url.check, reqBody, (res) => {
+      if (res.code == 1111) { // 已经通过
+        wx.navigateTo({
+          url: '/pages/personal/audit_status?status=2'
+        })
+      } else if (res.code === 1112) { //未通过
+        wx.navigateTo({
+          url: '/pages/personal/audit_status?status=0'
+        })
+      } else if (res.code === 1113) { //正在审核
+        wx.navigateTo({
+          url: '/pages/personal/audit_status?status=1'
+        })
+      } else {
+        wx.navigateTo({
+          url: '/pages/personal/pf_master'
+        })
+      }
+    })
+  },
+
+  // 判断是否通过审核条件刷新盘粉达人状态
+  isVip() {
+    var that = this
+    var userInfo = wx.getStorageSync('userInfo');
+    var reqBody = {
+      token: userInfo.token
+    };
+    util.post(util.url.check, reqBody, (res) => {
+      if (res.code == 1111) { // 已经通过
+        that.setData({
+          'userInfo.vip': res.data
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -150,7 +207,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  // onShareAppMessage: function () {
 
-  }
+  // }
 })

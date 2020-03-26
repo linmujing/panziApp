@@ -1,5 +1,5 @@
 // pages/personal/add_address.js
-var area = require('../../utils/area_data.js');
+// var area = require('../../utils/area_data.js'); 
 var util = require('../../utils/util.js');
 const app = getApp();
 Page({
@@ -71,11 +71,27 @@ Page({
         'regionr[2].name': data.areas,
       })
     }
-
-    this.setData({
-      province: area.area_data
+    this.getProvince()
+    // this.setData({
+    //   province: area.area_data
+    // })
+  },
+  getProvince: function () {
+    var that = this
+    var reqBody = {
+      token: that.data.userInfo.token
+    };
+    wx.showLoading({
+      title: '加载中',
+      mask: true
     })
-    this.blishuji(2, 0);
+    util.post(util.url.province, reqBody, (res) => {
+      wx.hideLoading()
+      that.setData({
+        province: res
+      })
+      that.blishuji(2, 0);
+    })
   },
   blishuji: function (e, active) { //2级 3级
     if (e == 2) {
@@ -102,6 +118,9 @@ Page({
     var active3 = value[2];
     // console.log(province)
     console.log(value)
+    this.setData({
+      value: value
+    })
     if (active1 != this.data.province_active) {
       var city = this.data.province[active1].child;
       this.setData({
@@ -147,20 +166,20 @@ Page({
     console.log(city)
     console.log(area)
     var regionr = [{
-        name: province.pName,
-        code: province.pId
+        name: province.cityName,
+        code: province.codeid
       },
       {
-        name: city.cName,
-        code: city.cId
+        name: city.cityName,
+        code: city.codeid
       }, {
-        name: area.xName,
-        code: area.xId
+        name: area.cityName,
+        code: area.codeid
       }
     ]
     this.setData({
       regionr,
-      'page_data.contryId': area.xId
+      'page_data.contryId': area.codeid
     })
   },
 
@@ -177,26 +196,6 @@ Page({
   onShow: function () {
 
   },
-  // bindPickerChange: function (e) {
-  //   console.log(e)
-  //   var code = e.detail.code;
-  //   var value = e.detail.value;
-  //   var list = [];
-  //   for (var i = 0; i < code.length; i++) {
-  //     var data = {
-  //       name: value[i],
-  //       id: code[i]
-  //     }
-  //     list[i] = data
-  //   }
-  //   this.setData({
-  //     regionr: list
-  //   })
-  //   this.setData({
-  //     'page_data.contryId': code[2]
-  //   })
-
-  // },
   click_userName: function (e) {
     this.setData({
       'page_data.userName': e.detail.value
@@ -295,7 +294,6 @@ Page({
       consignee: data.userName,
       consignee_tel: data.phoneNum,
       area: data.contryId,
-      // contryId: data.contryId,
       append: data.address,
       type: data.isDefault
     };

@@ -1,0 +1,11 @@
+<view class="container">
+    <view class="info_title">
+        <image class="logo" src="https://vip2.pznrfsy.com/lmj/panziApp/pf_img/pz-logo.png" />
+        <!-- <image class="menu" src="https://vip2.pznrfsy.com/lmj/panziApp/pf_img/menu.png" /> -->
+    </view>
+    <view class="content">
+        <image wx:if="{{status == 1}}" mode="widthFix" src="https://vip2.pznrfsy.com/lmj/panziApp/pf_img/submiting.png" />
+        <image wx:if="{{status == 0}}" mode="widthFix" src="https://vip2.pznrfsy.com/lmj/panziApp/pf_img/noPass.png" />
+        <image wx:if="{{status == 2}}" mode="widthFix" src="https://vip2.pznrfsy.com/lmj/panziApp/pf_img/pass.png" />
+    </view>
+</view>

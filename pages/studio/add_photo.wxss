@@ -1,0 +1,10 @@
+/* pages/studio/add_photo.wxss */
+page{padding-bottom: 0;}
+.page_bj{display:flex;flex-direction:column;height:100%;}
+.add_photo{padding:36rpx;flex:auto;padding-bottom:0;overflow:hidden;}
+.add_photo .img{height:100%; overflow:hidden;}
+.add_photo .img image{display:block;}
+.page_bj .explain{font-size:26rpx;text-align:center;margin-top:10rpx;color:#888;}
+.page_bj .an{margin-top:10rpx;display:flex;justify-content:space-between;padding:0 36rpx 40rpx;}
+.page_bj .an view{display:inline-block;background:#B1825F;width:320rpx;height:88rpx;text-align:center;line-height:88rpx;color:#fff;}
+canvas {width:650rpx;height:710rpx;margin-top:700rpx;}

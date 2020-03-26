@@ -1,9 +1,31 @@
 /* pages/personal/my_QRcode.wxss */
-.box{position: relative;padding: 40rpx 80rpx;}
+page{background: #EEE8DC;}
+.box{position: relative;padding: 50rpx 70rpx;}
 .box .bg{border-radius: 16rpx;box-shadow:0px 10rpx 30rpx -5rpx rgba(0,0,0,0.3);}
 .box .code{position: absolute;bottom: 326rpx;left:97rpx;width: 120rpx;border-radius: 50%;}
 
 .canvask{position:fixed;width:0;height:0;left:auto;top:auto;bottom:-500rpx;right:-500rpx;opacity:0;}
 
-.save{position:fixed;bottom:0;left:0;width: 100%;}
-.xjdznr{height:100rpx;font-size:36rpx;font-weight:500;color:#fff;background:#F2F2F2;background: #FAA7B7;}
+swiper{height: 900rpx;background: transparent;margin-top: 30rpx;}
+.swiper_box .wx-swiper-dot{display:inline-flex;margin-left:-2rpx;justify-content:space-between;}
+.swiper_box .wx-swiper-dot::before{content:'';flex-grow:1;border-radius:50%;}
+.swiper_box .wx-swiper-dot-active::before{background:#FD93B3;border-radius:50%;}
+
+.tabbar{position:fixed;bottom:0;left:0;width: 100%;}
+.tabbar .info{color: #FD7576;text-align: center;}
+.tabbar .tablist{margin: 30rpx 90rpx;text-align: center;}
+.tabbar .tablist image{width: 70rpx;}
+
+.notes{position:fixed;background:rgba(0,0,0,0.7);top:0;right:0;left:0;bottom:0;z-index: 101;}
+.notes .cont{background: #fff;width: 620rpx;margin: 0 auto;border-radius: 16rpx;margin-top: 10%;overflow: hidden;}
+.notes .cont .head{background: #FAA4AD;color: #fff;padding: 20rpx;}
+.notes .cont .body{padding: 30rpx;height: 600rpx;overflow-y: scroll;}
+
+.popup{position:fixed;background:rgba(0,0,0,0.1);top:0;right:0;left:0;bottom:0;z-index: 10}
+.popup .biaoti{height:60rpx;color:#030303;line-height:60rpx;text-align:center;margin-top:40rpx;}
+.popup_nr{position:absolute;top:30%;width:540rpx;background:#fff;left:15%;text-align:center;
+    box-shadow:0rpx 8rpx 40rpx 0rpx rgba(0,0,0,0.1);border-radius:24rpx;}
+.popup_nrs{font-size:28rpx;color:#9B9B9B;margin:32rpx 50rpx 20rpx;}
+.popup .an{border-top:1rpx  solid #ccc;}
+.popup .an button{padding-top:10rpx;font-weight:bold;padding-bottom:10rpx;background:none;color:#FD93B3;font-size:34rpx;}
+.popup .an button::after{border: none;background-color:rgba(0,0,0,0);}

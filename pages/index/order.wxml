@@ -18,16 +18,22 @@
 <view class='info'>
   <view class='df ai_c'>
     <view class='imgb'>
-      <image mode='widthFix' src='{{info.goods_img}}' class='w100'></image>
+      <image mode='widthFix' src='{{goods_img}}' class='w100'></image>
     </view>
     <view class='detail'>
       <view class='twoline'>{{info.goods_name}}</view>
+      <block wx:if='{{info.type == 2}}'>
+        <view wx:if='{{info.goods_nature != ""}}' class='ft_12'>尺码： {{info.goods_nature}}</view>
+      </block>
       <view class='df jc_sb mt_20'>
-        <view class='color_99 ft_12'><text class='color_jf'>{{type == 1 ? '' : '￥'}} {{info.money}}</text> {{type == 1 ? '积分' : ''}}</view>
+        <view class='color_99 ft_12'>
+          <text wx:if='{{info.money_jf>0}}'><text class="color_jf">￥{{info.money_jf}}</text>+</text>
+          <text class='color_jf'>{{type == 1 || type == 3 || type == 4 ? '' : '￥'}} {{info.money}}</text> {{type == 1 || type == 3 || type == 4 ? '积分' : ''}}
+        </view>
         <view class='buy df ai_c'>
-            <view bindtap='click_minus' class='minus'>-</view>
+            <view wx:if='{{type != 3 && type != 4}}' bindtap='click_minus' class='minus'>-</view>
             <text class='num'>{{num}}</text>
-            <view bindtap='click_plus' class='plus'>+</view>
+            <view wx:if='{{type != 3 && type != 4}}' bindtap='click_plus' class='plus'>+</view>
           </view>
       </view>
     </view>
@@ -38,7 +44,7 @@
       <view class='color_99'>普通配送</view>
     </view>
     <view class='df ai_c'>
-      <view class='pr_10'>快递 包邮</view>
+      <view class='pr_10'>快递 {{info.postage > 0 ? info.postage+'元' : '包邮'}}</view>
       <!-- <image mode='widthFix' src='/img/enter_.png' class='jt'></image> -->
     </view>
   </view>
@@ -53,7 +59,9 @@
 
 <view class='tj'>
   <view class='tjdd df ai_c jc_sb'>
-    <view class='color_99'><text class='color_jf'>{{type == 1 ? '' : '￥'}} {{totle_cost}}</text> {{type == 1 ? '积分' : ''}}</view>
+    <view class='color_99'>
+      <text wx:if='{{info.money_jf>0}}'><text class="color_jf">￥{{totle_price}} </text>+</text>
+      <text class='color_jf'>{{type == 1 || type == 3 || type == 4 ? '' : '￥'}} {{totle_cost}}</text> {{type == 1 || type == 3 || type == 4 ? '积分' : ''}}</view>
     <view class='btn_title' bindtap='click_tijiao'>提交订单</view>
   </view>
    <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
@@ -63,7 +71,7 @@
 <!-- 兑换成功弹窗 -->
 <view hidden='{{popup_state}}' class='popup'>
   <view class='box df fd_c jc_sa'>
-    <view class='color_title'>恭喜您，{{type == 1 ? '兑换' : '支付'}}成功!</view>
+    <view class='color_title'>恭喜您，{{type == 1 || type == 3 || type == 4 ? '兑换' : '支付'}}成功!</view>
     <view>
       <image mode='widthFix' src='{{gift}}' class='w50'></image>
       <view class='color_99 ft_12'>订单已交至后台处理</view>

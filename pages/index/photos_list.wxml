@@ -1,47 +1,68 @@
 <!--pages/index/photos_list.wxml-->
-<view wx:if='{{list.length>0}}'>
-  <view class='list' wx:for='{{list}}' wx:key='{{index}}' bindtap='click_photo' data-tel='{{item.MOBILE}}' data-state='{{item.STATUS}}' data-order='{{item.ORDERSN}}'>
-    <view class='name'>姓名：{{item.NAME}}</view>
-    <view class='df jc_sb order'>
-      <view>订单号：{{item.ORDERSN}}</view>
-      <view class='ft_12 color_99'>{{item.TIME}}</view>
-    </view>
-    <view class='state df jc_c'>
-      <view>
-        <view class='df'>
-          <icon type="success" size="30" color='{{item.STATUS >= 1 ? "#F6AFC1" : "#D0D0D0"}}'/>
-          <view class='{{item.STATUS >= 1 ? "line2" : "line"}}'></view>
-        </view>
-        <view class='{{item.STATUS >= 1 ? "color_title" : "color_dd"}} txt' >预定</view>
-      </view>
-      <view>
-        <view class='df jc_sa'>
-          <icon type="success" size="30" color='{{item.STATUS >= 2 ? "#F6AFC1" : "#D0D0D0"}}'/>
-          <view class='{{item.STATUS >= 2 ? "line2" : "line"}}'></view>
-        </view>
-        <view class='{{item.STATUS >= 2 ? "color_title" : "color_dd"}} txt'>拍摄</view>
-      </view>
-      <view>
-        <view class='df jc_sa'>
-          <icon type="success" size="30" color='{{item.STATUS >= 3 ? "#F6AFC1" : "#D0D0D0"}}'/>
-          <view class='{{item.STATUS >= 3 ? "line2" : "line"}}'></view>
-        </view>
-        <view class='{{item.STATUS >= 3 ? "color_title" : "color_dd"}} txt'>选片</view>
-      </view>
-      <view>
-        <view class='df jc_sa'>
-          <icon type="success" size="30" color='{{item.STATUS >= 4 ? "#F6AFC1" : "#D0D0D0"}}'/>
-          <view class='{{item.STATUS >= 4 ? "line2" : "line"}}'></view>
-        </view>
-        <view class='{{item.STATUS >= 4 ? "color_title" : "color_dd"}} txt'>发货</view>
-      </view>
-      <view>
-        <view class='df jc_sa'>
-          <icon type="success" size="30" color='{{item.STATUS == 5 ? "#F6AFC1" : "#D0D0D0"}}'/>
-        </view>
-        <view class='{{item.STATUS == 5 ? "color_title" : "color_dd"}} txt'>取片</view>
-      </view>
-    </view>
+<view class='search_box bg_ff'>
+  <view class='search df ai_c'>
+    <image mode='widthFix' src='/img/search.png'></image>
+    <input placeholder="输入订单号查询" confirm-type='search' placeholder-style='color: #B4B4B4' bindinput="blur_search" bindconfirm='confirm_search' class='w90' />
   </view>
 </view>
-<view wx:else class='ta_c mt_10 color_99'>暂无数据~</view>
+<view wx:if='{{list.length>0}}'>
+  <view class='list' wx:for='{{list}}' wx:key='index'>
+    <view bindtap='click_photo' data-index='{{index}}'>
+      <view class='df jc_sb name'>
+        <view>姓名：{{item.NAME}}</view>
+        <view class='ft_12 color_99'>{{item.TIME}}</view>
+      </view>
+      <view class='order'>
+        <view>订单号：{{item.ORDERSN}}</view>
+      </view>
+      <view class='state df jc_c'>
+        <view>
+          <view class='df'>
+            <icon type="success" size="30" color='{{item.STATUS >= 1 ? "#F6AFC1" : "#D0D0D0"}}'/>
+            <view class='{{item.STATUS >= 1 ? "line2" : "line"}}'></view>
+          </view>
+          <view class='{{item.STATUS >= 1 ? "color_title" : "color_dd"}} txt' >预定</view>
+        </view>
+        <view>
+          <view class='df jc_sa'>
+            <icon type="success" size="30" color='{{item.STATUS >= 2 ? "#F6AFC1" : "#D0D0D0"}}'/>
+            <view class='{{item.STATUS >= 2 ? "line2" : "line"}}'></view>
+          </view>
+          <view class='{{item.STATUS >= 2 ? "color_title" : "color_dd"}} txt'>拍摄</view>
+        </view>
+        <view>
+          <view class='df jc_sa'>
+            <icon type="success" size="30" color='{{item.STATUS >= 3 ? "#F6AFC1" : "#D0D0D0"}}'/>
+            <view class='{{item.STATUS >= 3 ? "line2" : "line"}}'></view>
+          </view>
+          <view class='{{item.STATUS >= 3 ? "color_title" : "color_dd"}} txt'>选片</view>
+        </view>
+        <view>
+          <view class='df jc_sa'>
+            <icon type="success" size="30" color='{{item.STATUS >= 4 ? "#F6AFC1" : "#D0D0D0"}}'/>
+            <view class='{{item.STATUS >= 4 ? "line2" : "line"}}'></view>
+          </view>
+          <view class='{{item.STATUS >= 4 ? "color_title" : "color_dd"}} txt'>发片</view>
+        </view>
+        <view>
+          <view class='df jc_sa'>
+            <icon type="success" size="30" color='{{item.STATUS == 5 ? "#F6AFC1" : "#D0D0D0"}}'/>
+          </view>
+          <view class='{{item.STATUS == 5 ? "color_title" : "color_dd"}} txt'>取片</view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class='df jc_sb ai_c add' wx:if='{{item.STATUS == 2}}'>
+      <view>{{item.dipian == 0 ? '恭喜您获得加送底片1张' : '已成功获得加送底片1张'}}</view>
+      <view class='btn_title {{item.dipian == 0 ? "" : "bg_ccc"}}' bindtap='click_getDp' data-index='{{index}}'>{{item.dipian == 0 ? '立即领取' : '已领取'}}</view>
+    </view> -->
+    <!-- <view class="add" wx:if='{{item.STATUS > 2 && item.dipian == 0}}'>您已错过加送底片的领取时间</view> -->
+    <!-- <view class="add" wx:if='{{item.STATUS > 2 && item.dipian == 1}}'>已成功获得加送底片1张</view> -->
+  </view>
+</view>
+<view wx:else class="ta_c color_99 nodata">
+  <image mode="widthFix" src='{{dpimg}}' class='w100 bg' bindtap='previewImg'></image>
+  <view class="mt_10">您还未在盘子女人坊体验古装拍摄</view>
+  <view>没有底片可下载哦~</view>
+  <view class="btn_title" bindtap="click_btn">立即预约体验</view>
+</view>

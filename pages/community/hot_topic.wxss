@@ -1,0 +1,8 @@
+/* pages/community/hot_topic.wxss */
+.w_10{width: 20rpx;}
+.w_15{width: 32rpx;}
+.gary{color: #8F8A8A;font-weight: bold;}
+.num{color: #E05D5C;}
+
+.list{padding: 30rpx 40rpx;border-bottom: 2rpx solid #BFBFBF;}
+.list .tag{border-radius: 4rpx;display: inline-block;width: 34rpx;height: 34rpx;text-align: center;}

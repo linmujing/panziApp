@@ -1,7 +1,7 @@
 <!--pages/index/jifen_detail.wxml-->
 <view class='banner'>
   <!-- <swiper autoplay circular interval='5000'>
-    <view wx:for="{{detailData.goods_img}}" wx:key='{{index}}'>
+    <view wx:for="{{detailData.goods_img}}" wx:key='index'>
       <swiper-item>
         <image mode='widthFix' src="{{item}}" class='w100'/>
       </swiper-item>
@@ -15,9 +15,11 @@
       <view class='font_blod'>{{detailData.goods_name}}</view>
       <!-- <view class='ft_12 color_5b mt_5'>{{detailData.goods_content}}</view> -->
       <view class='mt_10 df ai_c'>
+        <text wx:if='{{detailData.money>0}}'><text class="color_jifen ft_16">￥{{detailData.money}}</text>+</text>
         <text class='color_jifen ft_16'>{{detailData.cost}} </text>
         <text class='color_5b ft_12 pl_5'>积分</text>
-        <text class='tag'>{{detailData.cid}}</text>
+        <text class='tag'>{{detailData.type == 1 ? '积分商品' : '抽奖商品'}}</text>
+        <text class='tag' wx:if='{{detailData.cid != ""}}'>{{detailData.cid}}</text>
       </view>
     </view>
     <!-- <image mode='widthFix' src='/img/share-1.png' class='zf'></image> -->
@@ -64,8 +66,9 @@
 </view>
 
 
-<view class='duihuan' bindtap='click_dui'>
-  <view class='btn_title'>立即兑换</view>
+<view class='duihuan'>
+  <view wx:if='{{detailData.type == 3}}' class='btn_title {{detailData.stock == 0 ? "btn_gray" : ""}}' bindtap='click_lotto'>抽奖</view>
+  <view wx:else class='btn_title {{detailData.stock == 0 ? "btn_gray" : ""}}' bindtap='click_dui'>立即兑换</view>
   <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
 </view>
 

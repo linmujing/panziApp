@@ -10,7 +10,14 @@ Page({
     isIPX: getApp().globalData.isIPX,
     detailData: {},
     goods_id: '',
-    recommend: []
+    recommend: [],
+    natureIndex: 0,
+    specData: {
+      state: false,
+      info: [],
+      cur: '',
+      type: 1
+    }
   },
 
   /**
@@ -43,28 +50,32 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      natureIndex: 0
+    })
   },
   click_dui: function (e) {
-    var goods_id = this.data.goods_id
-    var reqBody = {
-      token: this.data.userInfo.token,
-      goods_id: goods_id
-    };
-    util.post(util.url.goodsOrder_new, reqBody, (res) => {
-      // console.log(res)
-      wx.hideLoading()
-      if (res.state == 1) {
-        wx.navigateTo({
-          url: 'order?id=' + res.order_id,
-        })
-      } else {
-        wx.showToast({
-          title: res.info,
-          icon: 'none',
-          duration: 1000
-        })
-      }
+    if (this.data.detailData.stock <= 0) {
+      wx.showToast({
+        title: '库存为0~',
+        icon: 'none',
+        duration: 1000
+      })
+      return
+    }
+    var nature = this.data.specData
+    var natureVal = ''
+    if (nature != ''){
+      natureVal = nature.cur
+    }
+    
+    var info = this.data.detailData
+    info.goods_nature = natureVal
+    info.money = info.cost
+    app.globalData.hfInfo = info
+
+    wx.navigateTo({
+      url: 'order',
     })
   },
   click_index: function (e) {
@@ -85,9 +96,15 @@ Page({
       // console.log(res)
       wx.hideLoading()
       if (res.state == 1) {
-        res.data.goods_content = res.data.goods_content.replace(/\<img/gi, '<img style="width:100%;height:auto" ')
+        if (res.data.goods_content){
+          res.data.goods_content = res.data.goods_content.replace(/\<img/gi, '<img style="width:100%;height:auto;display: block;" ')
+        }
+        wx.setNavigationBarTitle({
+          title: res.data.goods_name
+        })
         that.setData({
           detailData: res.data,
+          'specData.info': res.data.nature
         })
       }
     })
@@ -111,6 +128,127 @@ Page({
     wx.navigateTo({
       url: 'hanFu_detail?id=' + id,
     })
+  },
+  bindPickerChange: function (e) {
+    if (e.detail.value == 0){
+      wx.showToast({
+        title: '请选择尺码',
+        icon: 'none',
+        duration: 1000
+      })
+      return
+    }
+    this.setData({
+      natureIndex: e.detail.value
+    })
+    this.click_dui()
+  },
+  click_cart: function () {
+    wx.navigateTo({
+      url: '/pages/shopCart/index',
+    })
+  },
+  click_addCart: function (e) {
+    var that = this
+    var specData = that.data.specData
+    var spec = ''
+    if (specData.info != ''){
+      spec = specData.cur
+    }
+    var reqBody = {
+      token: that.data.userInfo.token,
+      num: 1,
+      goods_id: that.data.goods_id,
+      spec: spec
+    };
+    util.post(util.url.add_car, reqBody, (res) => {
+      if (res.state == 1) {
+        that.hideModal()
+        wx.showToast({
+          title: '添加成功~',
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    })
+  },
+  // 选规格确定
+  click_confirm: function () {
+    var that = this;
+    var specData = that.data.specData;
+    if (specData.cur == '') {
+      wx.showToast({
+        title: '请选择规格~',
+        icon: 'none',
+        duration: 1000
+      })
+      return
+    }
+    // type=1,加入购物车。
+    if (specData.type == 1){
+      that.click_addCart()
+    }else{
+      that.click_dui()
+    }
+  },
+  select: function (e) {
+    var that = this;
+    var val = e.currentTarget.dataset.val;
+    that.setData({
+      'specData.cur': val
+    })
+  },
+  showModal: function (e) {
+    if (this.data.detailData.stock <= 0) {
+      wx.showToast({
+        title: '库存为0~',
+        icon: 'none',
+        duration: 1000
+      })
+      return
+    }
+    var type = e.currentTarget.dataset.type;
+    this.setData({
+      'specData.type': type
+    })
+    // 显示遮罩层
+    var animation = wx.createAnimation({
+      duration: 100,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(800).step()
+    this.setData({
+      animationData: animation.export(),
+      'specData.state': true
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export()
+      })
+    }.bind(this), 200)
+  },
+  hideModal: function () {
+    // 隐藏遮罩层
+    var animation = wx.createAnimation({
+      duration: 100,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(800).step()
+    this.setData({
+      animationData: animation.export(),
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      this.setData({
+        animationData: animation.export(),
+        'specData.state': false
+      })
+    }.bind(this), 200)
   },
   /**
    * 生命周期函数--监听页面隐藏

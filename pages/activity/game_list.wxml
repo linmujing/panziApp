@@ -1,0 +1,5 @@
+<!--pages/activity/game_list.wxml-->
+<view wx:for="{{gameList}}" wx:key="index" class="list">
+  <image mode='widthFix' src='{{item.image}}' class="w100" bindtap="click_h5" data-id='{{item.id}}' data-cid='{{item.cid}}' data-url='{{item.url}}'></image>
+</view>
+<view class="ta_c color_99 mt_20">更多游戏 敬请期待~</view>

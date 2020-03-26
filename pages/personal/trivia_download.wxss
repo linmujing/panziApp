@@ -1,0 +1,56 @@
+/* pages/personal/trivia_download.wxss */
+page{background:#F2F2F2;}
+.blod{font-weight: bold;}
+.blod text{color: #FAA8B6;font-size: 50rpx;}
+.list{padding: 20rpx;}
+.list .items{margin-bottom: 20rpx;position: relative;border-radius: 8rpx;box-shadow:0px 10rpx 30rpx -5rpx rgba(0,0,0,0.3);}
+.list .items .img_box{width:345rpx;height:320rpx;overflow: hidden;}
+.list .items .pho{width: 100%;}
+.list .items .check{position: absolute;bottom: 0;left: 0;padding: 10rpx;width: 100%;box-sizing: border-box;z-index: 1}
+.list .items .lock{width: 32rpx;height: 38rpx;}
+.list .items .mask{position: absolute;bottom: 0;left: 0;top:0;right: 0;background: rgba(255,255,255,0.3)}
+
+.btn_box{position: fixed;bottom: 0;width: 100%;background: #F2F2F2;box-sizing: border-box;z-index: 2}
+.btn_box .btn{width:300rpx;}
+.btn{text-align: center;line-height: 80rpx;border-radius: 10rpx;background: #FAA8B6;color: #fff;font-size: 32rpx;}
+
+.imgPopup{position: fixed;bottom: 0;left: 0;top:0;right: 0;background: #EEEEEE;z-index: 20;}
+.imgPopup .img{width: 100%;height: 85%;padding: 20rpx;box-sizing: border-box;position: relative;}
+.imgPopup .pay_btn{position: fixed;bottom: 0;width: 100%;box-sizing: border-box;z-index: 20;background: #fff;}
+.imgPopup .pay_btn .pbtn{width:180rpx;color: #fff;background: #FAA8B6;padding: 24rpx;text-align: center;}
+.imgPopup .pay_btn .sbtn{width:180rpx;color: #fff;background: #CFA575;padding: 24rpx;text-align: center;}
+.pay_btn .p20{padding: 20rpx}
+.imgPopup .pay_btn .fx{width:210rpx;color: #fff;display:flex;font-size: 28rpx;align-items:center;justify-content:center;background:#CFA575;border-radius: 0;padding-right: 20rpx;padding-left: 20rpx;}
+.imgPopup .pay_btn .fx:after{border:none;}
+
+.tip_box{position: fixed;bottom: 0;left: 0;top:0;right: 0;background: rgba(0,0,0,0.3);z-index: 100}
+.tip_box .body{background: #F3F3F3;width: 80%;border-radius: 16rpx;text-align: center;overflow: hidden;}
+.tip_box .body .title{background: #F7CCD3;font-size: 32rpx;padding: 20rpx;font-weight: bold;}
+.tip_box .body .foot .cancel{width:200rpx;line-height: 70rpx;border-radius: 10rpx;font-size: 32rpx;background: #fff;}
+.tip_box .body .foot .ok{width:200rpx;line-height: 70rpx;border-radius: 10rpx;font-size: 32rpx;background: #FAA8B6;color:#fff;}
+
+.whole{position: absolute;bottom: 0;left: 0;top:0;right: 0;width:100%;height:100%;background: url('https://vip2.pznrfsy.com/lmj/panziApp/watermark.png');background-repeat:repeat;}
+
+.set{position:fixed;background:rgba(0,0,0,0.1);top:0;right:0;left:0;bottom:0;z-index: 500}
+.set .biaoti{height:60rpx;color:#030303;line-height:60rpx;text-align:center;margin-top:40rpx;}
+.set .popup_nr{position:absolute;top:30%;width:540rpx;background:#fff;left:15%;text-align:center;box-shadow:0rpx 8rpx 40rpx 0rpx rgba(0,0,0,0.1);border-radius:24rpx;}
+.set .popup_nrs{font-size:28rpx;color:#9B9B9B;margin:32rpx 50rpx 20rpx;}
+.set .an{border-top:1rpx  solid #ccc;}
+.set .an button{padding-top:10rpx;font-weight:bold;padding-bottom:10rpx;background:none;color:#FD93B3;font-size:34rpx;}
+.set .an button::after{border: none;background-color:rgba(0,0,0,0);}
+
+/* .page_model .imgnrk{height:880rpx;overflow:hidden;width:100%;position:relative;opacity:1;-webkit-transition:opacity 2s ease-in;-moz-transition:opacity 2s ease-in;transition:opacity 2s ease-in;}
+.page_model .imgnrk .opacity{opacity:0;} */
+
+/* checkbox未选中时样式 */
+checkbox .wx-checkbox-input{border-radius: 20rpx;height: 36rpx;width: 36rpx;margin-top: -18rpx;background-color: #CECCCD;} 
+/* checkbox选中时样式 */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {border-radius: 20rpx;height: 36rpx;width: 36rpx;line-height: 36rpx;text-align: center;font-size: 28rpx;color: #fff;transform: translate(-50%, -50%) scale(1);-webkit-transform: translate(-50%, -50%) scale(1);background-color: #FAA8B6;border: 1rpx solid #FAA8B6;
+}
+
+.service_an {position: fixed;top: auto;left: auto;right: 0;bottom: 280rpx;width:120rpx;color: #fff;z-index: 99}
+
+.notes{position:fixed;background:rgba(0,0,0,0.7);top:0;right:0;left:0;bottom:0;z-index: 101;}
+.notes .cont{background: #fff;width: 520rpx;margin: 0 auto;border-radius: 16rpx;margin-top: 10%;overflow: hidden;}
+.notes .cont .head{background: #FAA4AD;color: #fff;padding: 20rpx;}
+.notes .cont .body{padding: 30rpx;height: 500rpx;overflow-y: scroll;}

@@ -1,0 +1,18 @@
+/* pages/activity/ranking.wxss */
+page{background: #FC6A56;}
+image{display: block;}
+.box{margin: 0 40rpx;text-align: center;}
+.box .thead{background: #F3F3F3;border-radius: 16rpx 16rpx 0 0;font-weight: bold;font-size: 32rpx;padding: 20rpx 0;}
+.box .thead view{width: 17.5%;}
+.box .thead view:nth-child(2){width: 40%;}
+.box .thead view:nth-child(4){width: 25%;}
+.box .tbody{background: #fff;border-radius: 0 0 16rpx 16rpx;}
+.box .tbody .list{border-bottom: 1px solid #F2F2F2;padding: 20rpx 0;}
+.box .tbody .list:last-child{border-bottom:0;}
+.box .tbody .list view{width: 17.5%;}
+.box .tbody .list view:nth-child(2){width: 40%;}
+.box .tbody .list view:nth-child(4){width: 25%;color: #E95250;}
+.box .tbody .list .img{width: 60rpx;display: inline-block;}
+.box .tbody .list .headimg{width: 65rpx;border-radius: 50%;}
+.box .tbody .list text{max-width: 200rpx;}
+.box .tbody .list .num{font-weight: bold;font-size: 32rpx;}

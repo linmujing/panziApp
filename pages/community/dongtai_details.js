@@ -9,12 +9,18 @@ Page({
     userInfo: {},
     focus: false,
     show: false,
+    current: 0,
     comment_reply: '',
     details: [],
     comment: [],
     page: 1,
     comment_id: '',
     Page_slide: true,
+    // 分享朋友圈
+    share: {
+      img: '',
+      state: true
+    },
   },
 
   /**
@@ -37,9 +43,64 @@ Page({
     // 评论回复列表
     that.getComment()
   },
+  change(e) {
+    this.setData({
+      current: e.detail.current
+    })
+  },
+  getShareCode: function (id) {
+    var that = this
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    var reBody = {
+      token: that.data.userInfo.token,
+      id: that.data.options.id
+    };
+    util.post(util.url.shareCode, reBody, (res) => {
+      if (res.state == 1) {
+        var list = []
+        list.push(res.data)
+        wx.previewImage({
+          current: list[0], // 当前显示图片的http链接
+          urls: list // 需要预览的图片http链接列表
+        })
+        wx.showToast({
+          title: '长按图片保存~',
+          icon: 'none',
+          duration: 5000
+        })
+        var param = {
+          token: that.data.userInfo.token,
+          id: that.data.options.id,
+          type: "share"
+        };
+        util.post(util.url.edit_sns, param, (res) => {
+          if (res.state == 1) {
+            var arr = that.data.details
+            ++arr.share
+            that.setData({
+              details: arr
+            })
+          }
+        })
+      }
+      wx.hideLoading()
+    })
+  },
+  close_share: function (id) {
+    this.setData({
+      'share.state': true
+    })
+  },
   // 动态详情
   getDetail: function (id) {
     var that = this
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     var reBody = {
       token: that.data.userInfo.token,
       id: that.data.options.id
@@ -50,11 +111,16 @@ Page({
           details: res.data,
         })
       }
+      wx.hideLoading()
     })
   },
   // 评论回复列表
   getComment: function (id) {
     var that = this
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
     var reqBody = {
       token: that.data.userInfo.token,
       id: that.data.options.id,
@@ -149,6 +215,13 @@ Page({
       show: true
     })
   },
+  submitInfo: function (e) {
+    // 这样我们就可以获取到form_id了
+    console.log(e.detail.formId);
+    this.setData({
+      fid: e.detail.formId
+    })
+  },
   send_msg: function () {
     var that = this
     var comment_id = that.data.comment_id
@@ -160,11 +233,36 @@ Page({
     };
     util.post(util.url.add_content, reqBody, (res) => {
       if (res.state == 1) {
+        wx.showToast({
+          title: '评论成功~',
+          icon: "none",
+          duration: 1000
+        })
         this.setData({
           comment: [],
           page: 1
         })
         that.getComment()
+        // that.sendFid()
+      }else{
+        wx.showToast({
+          title: res.info,
+          icon: "none",
+          duration: 1000
+        })
+      }
+    })
+  },
+  sendFid: function () {
+    var that = this
+    var fid = that.data.fid
+    var reqBody = {
+      token: that.data.userInfo.token,
+      fid: fid
+    };
+    util.post(util.url.sendFid, reqBody, (res) => {
+      if (res.state == 1) {
+        console.log(res)
       }
     })
   },
@@ -174,6 +272,11 @@ Page({
       comment_reply: msg
     })
     this.send_msg()
+  },
+  click_index: function () {
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -231,19 +334,17 @@ Page({
    */
   onShareAppMessage: function (res) {
     console.log(res)
-    if (res.from === 'button') {
+    // if (res.from === 'button') {
       // 来自页面内转发按钮
 
       var that = this
-      var index = res.target.dataset.index;
-      var id = res.target.dataset.id
-      console.log(index)
+      // var index = res.target.dataset.index;
+      var id = that.data.options.id
+      console.log(that.data.options)
       var list = that.data.details
       console.log(list)
-        ++list.share
 
       var userInfo = wx.getStorageSync('userInfo');
-      var id = res.target.dataset.id
 
       var reBody = {
         token: userInfo.token,
@@ -253,16 +354,16 @@ Page({
       util.post(util.url.edit_sns, reBody, (res) => {
         console.log(res)
         if (res.state == 1) {
-          // var data = res.data
+          ++list.share
           that.setData({
             details: list
           })
         }
       })
-    }
+    // }
     return {
       title: this.data.detailData,
-      path: 'pages/community/dongtai_details'
+      path: 'pages/community/dongtai_details?id=' + this.data.options.id
     }
   }
 })

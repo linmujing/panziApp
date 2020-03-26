@@ -11,3 +11,6 @@
     <view>{{item.title}}</view>
   </view>
 </view>
+<view class="df jc_c">
+  <view class="btn_title" bindtap="click_web">查看更多城市门店</view>
+</view>

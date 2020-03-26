@@ -1,0 +1,25 @@
+<!--pages/studio/share.wxml-->
+<view class='share'>
+  <image mode='widthFix bottom' src='../../image/share_bj.jpg'></image>
+  <view class='share_nr'>
+    <image class='share_scbj' style='height:{{scbjh}}px' src='../../image/share_scbj.png'>
+      <view class='material'>
+        <image mode='widthFix' src='{{hcimg}}'></image>
+      </view>
+    </image>
+    <view class='share_an' bindtap='click_huanzhuan'>
+      <image mode='widthFix' src='../../image/share_an.png'></image>
+    </view>
+    <view class='dibu_bt'>
+      <image mode='widthFix' src='../../image/share_bt.png'></image>
+    </view>
+    <view class='list'>
+      <view class='li' bindtap='click_material' data-scid="{{item.id}}" data-scimg="{{item.oimg}}" data-cid="{{item.cid}}" wx:key="index" wx:for="{{list}}">
+        <image mode='widthFix' src='{{item.himg}}'></image>
+      </view>
+    </view>
+    <view class='dibu_lg'>
+      <image mode='widthFix' src='../../image/share_lg.png'></image>
+    </view>
+  </view>
+</view>

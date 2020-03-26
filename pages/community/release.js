@@ -1,8 +1,4 @@
 var util = require('../../utils/util.js');
-import {
-  $init,
-  $digest
-} from '../../utils/common.util'
 Page({
 
   /**
@@ -14,39 +10,104 @@ Page({
     position: "我的位置",
     slecte: false,
     pics: [],
-    baseUrl: 'https://vip2.pznrfsy.com'
+    baseUrl: 'https://vip2.pznrf.cn',
+    baseUrl2: 'https://panzisns.oss-cn-shanghai.aliyuncs.com',
+    // 提示
+    notes: {
+      txt: '',
+      state: false
+    },
+    label: [],
+    current: 0,
+    showMore: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    $init(this)
+    this.setData({
+      options: options
+    })
+    this.getNotes()
+    this.getCategory()
   },
-
+  listToggle: function () {
+    this.setData({
+      showMore: !this.data.showMore
+    })
+  },
+  getCategory() {
+    var userInfo = wx.getStorageSync('userInfo');
+    var reBody = {
+      token: userInfo.token,
+    };
+    util.post(util.url.category, reBody, (res) => {
+      if (res.state == 1) {
+        var label = res.data.list
+        this.setData({
+          label: label
+        })
+        if (this.data.options.id) {
+          for (var i = 0; i < label.length; i++) {
+            if (label[i].id == this.data.options.id) {
+              this.setData({
+                current: i
+              })
+            }
+          }
+        }
+      }
+    })
+  },
+  getNotes() {
+    var userInfo = wx.getStorageSync('userInfo');
+    var reBody = {
+      token: userInfo.token,
+    };
+    util.post(util.url.notes, reBody, (res) => {
+      if (res.state == 1) {
+        this.setData({
+          'notes.txt': res.data
+        })
+      }
+    })
+  },
+  close_notes: function () {
+    this.setData({
+      'notes.state': true
+    })
+  },
   release() {
     var userInfo = wx.getStorageSync('userInfo');
     var value = this.data.content
     var images = this.data.images
-    if (value == '' && images.length == 0){
+    var category_id = this.data.label[this.data.current].id
+    if (value == '') {
       wx.showToast({
         title: '说点什么吧~',
-        icon: "none",
-        duration: 800
+        icon: "none"
       })
       return
     }
+    if (images.length == 0) {
+      wx.showToast({
+        title: '还没有上传图片哦~',
+        icon: "none"
+      })
+      return
+    }
+    // console.log(images)
     var reBody = {
       token: userInfo.token,
       images: images,
       content: value,
-      category_id: 3
+      category_id: category_id
     }
     wx.showLoading({
       title: '加载中',
     })
     util.post(util.url.add_sns, reBody, (res) => {
-      // console.log(res)
       wx.hideLoading()
       if (res.state == 1) {
         wx.showToast({
@@ -58,25 +119,35 @@ Page({
           wx.switchTab({
             url: '/pages/community/community',
           })
-        }, 500)
+        }, 600)
+      } else {
+        wx.showToast({
+          title: res.info,
+          icon: 'none',
+          duration: 1000
+        })
       }
     })
   },
+  select: function (e) {
+    var that = this;
+    var id = e.currentTarget.dataset.id;
+    var index = e.currentTarget.dataset.index;
+    that.setData({
+      current: index
+    })
 
+  },
   // 获取文字
   handleContentInput(e) {
     const value = e.detail.value
     this.data.content = value
     // this.data.contentCount = value.length //计算已输入的正文字数
-    $digest(this)
   },
-
-  // 上传图片
   uploadImg: function () {
     var that = this;
     var images = that.data.images;
-    console.log(images)
-    if (images.length == 9){
+    if (images.length == 9) {
       wx.showToast({
         title: '已经到达上限了~',
         icon: 'none',
@@ -91,50 +162,86 @@ Page({
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // console.log(res.tempFilePaths)
+        var arr = res.tempFilePaths
         wx.showLoading({
           title: '加载中',
+          mask: true
         })
-        var userInfo = wx.getStorageSync('userInfo');
-        var token = userInfo.token
-        for (var i = 0; i < res.tempFilePaths.length; i++) {
-          const uploadTask = wx.uploadFile({
-            url: 'https://vip2.pznrfsy.com/index/sns/upload_imgs?token=' + token, //这个方法就是后台处理上传的方法
-            filePath: res.tempFilePaths[i], //获取到上传的图片
-            name: 'file',
-            success: function (info) {
-              var data = info.data
-              images.push(data)
-              // console.log(data)
-              that.setData({
-                images: images
-              })
-            }
-          })
-          uploadTask.onProgressUpdate((res) => {
-            if (res.progress == 100) {
-              wx.hideLoading()
-            }
-          })
-        }
+        that.uploadFile(0, arr)
       },
-      complete: function (res) { }
     })
   },
+  uploadFile: function (i, arr) {
+    var that = this
+    var arr = arr
+    console.log(arr)
+    var images = that.data.images;
+    var userInfo = wx.getStorageSync('userInfo');
+    var token = userInfo.token
+    var all_n = arr.length;
+    wx.setKeepScreenOn({
+      keepScreenOn: true
+    })
+    if (i < all_n) {
+      const uploadTask = wx.uploadFile({
+        url: util.urlFront + 'sns/upload_img_oss?token=' + token, //这个方法就是后台处理上传的方法
+        filePath: arr[i], //获取到上传的图片
+        name: 'file',
+        success: function (info) {
+          var data = JSON.parse(info.data)
+          if (data.state == 1) {
+            images.push(data.url)
+            // console.log(images)
+            that.setData({
+              images: images
+            })
+            wx.showLoading({
+              title: '第' + (i + 1) + '张上传成功',
+              mask: true
+            })
+            that.uploadFile(i + 1, arr)
+          } else {
+            wx.showLoading({
+              title: '第' + (i + 1) + '张上传失败',
+              mask: true
+            })
+            that.uploadFile(i + 1, arr)
+          }
+        }
+      })
+      uploadTask.onProgressUpdate((res) => {
+        wx.showLoading({
+          title: i + '/' + all_n + '上传至' + res.progress + '%',
+          mask: true
+        })
+      })
+    } else {
+      wx.hideLoading()
+      wx.showToast({
+        title: '上传完成',
+        icon: 'none',
+        duration: 1000
+      })
+    }
 
+  },
   // 删除图片
   removeImage(e) {
     const idx = e.target.dataset.idx
-    this.data.images.splice(idx, 1)
-    $digest(this)
+    const list = this.data.images
+    list.splice(idx, 1)
+    this.setData({
+      images: list
+    })
   },
 
   // 预览图片
   handleImagePreview(e) {
     var idx = e.target.dataset.idx
-    var images = this.data.images
+    var img = this.data.images
     var list = []
-    for (var i = 0; i < images.length;i++){
-      list.push(this.data.baseUrl + images[i])
+    for (var i = 0; i < img.length; i++) {
+      list.push(this.data.baseUrl2 + img[i])
     }
     wx.previewImage({
       current: list[idx], //当前预览的图片
@@ -243,115 +350,7 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  // onShareAppMessage: function () {
 
-  }
+  // }
 })
-
-
-// 图片选择功能
-// chooseImage(e) {
-//   wx.chooseImage({
-//     // count: 3,    
-//     sizeType: ['original', 'compressed'], //可选择原图或压缩后的图片
-//     sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
-//     success: res => {
-//       // console.log(res)
-//       var imgs = res.tempFilePaths
-//       console.log(imgs)
-//       const images = this.data.images.concat(res.tempFilePaths)
-//       // const images = this.data.images.concat(res.tempFilePaths)
-//       // 限制最多只能留下9张照片
-//       this.data.images = images.length <= 9 ? images : images.slice(0, 9)
-//       console.log(this.data.images)
-//       $digest(this)
-
-//       for (var i = 0; i < this.data.images.length; i++) {
-//         console.log(this.data.images[i])
-//         var userInfo = wx.getStorageSync('userInfo');
-//         var reqBody = {
-//           token: userInfo.token,
-//           file: this.data.images[i]
-//           // file: images
-//         }
-//         util.post(util.url.upload_img, reqBody, (res) => {
-//           console.log(res)
-//           if (res.state == 1) {
-//             var data = res.src
-//             this.setData({
-//               images: data
-//             })
-//           }
-//         })
-//       }
-
-
-//       // var userInfo = wx.getStorageSync('userInfo');
-//       // var reqBody = {
-//       //   token: userInfo.token,
-//       //   file: this.data.images
-//       //   // file: images
-//       // }
-//       // util.post(util.url.upload_img, reqBody, (res) => {
-//       //   console.log(res)
-//       //   if (res.state == 1) {
-//       //     var data = res.src
-//       //     this.setData({
-//       //       images: data
-//       //     })
-//       //   }
-//       // })
-
-
-
-//       // var images = this.data.images
-//       // console.log(images)
-//       // var images = that.data.images
-//       // for (var i = 0; i < imgs.length; i++) {
-
-//       //   // wx.getFileSystemManager().readFileSync({
-
-//       //   wx.getFileSystemManager().readFile({
-//       //     filePath: imgs[i],
-//       //     // filePath: res.tempFilePaths[0], //选择图片返回的相对路径
-//       //     encoding: 'base64', //编码格式
-
-//       //     success: res => { //成功的回调
-//       //       console.log(res)
-//       //       // console.log('data:image/png;base64,' + res.data)
-//       //       var img = 'data:image/png;base64,' + res.data
-//       //       // console.log(img, typeof (img))
-//       //       const images = this.data.images.concat(img)
-//       //       images.push(img)
-
-//       //       // console.log(images)
-
-//       //       // var userInfo = wx.getStorageSync('userInfo');
-//       //       // var reqBody = {
-//       //       //   token: userInfo.token,
-//       //       //   file: images
-//       //       // }
-//       //       // util.post(util.url.upload_img, reqBody, (res) => {
-//       //       //   console.log(res)
-//       //       //   if (res.state == 1) {
-//       //       //     var data = res.src
-//       //       //     this.setData({
-//       //       //       images: data
-//       //       //     })
-//       //       //   }
-//       //       // })
-//       //     }
-//       //   })
-//       // }
-//     }
-//   })
-// },
-
-
-//启动上传等待中...
-// wx.showToast({
-//   title: '正在上传...',
-//   icon: 'loading',
-//   mask: true,
-//   duration: 2000
-// })

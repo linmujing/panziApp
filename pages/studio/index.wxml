@@ -1,0 +1,168 @@
+<!--pages/studio/index.wxml-->
+<view class='program_tab' wx:if='{{page_state}}'>
+  <image mode='widthFix'bindtap='click_gfsjk' src='/image/indextbtabl.png'></image>
+  <image mode='widthFix' src='/image/indextbtabr.png'></image>
+</view>
+<view class='page_bj'>
+  <swiper class='banner' indicator-dots="false" circular="false" autoplay="true" interval="2000" duration="1200">
+    <block wx:for="{{banner}}" wx:key='index'>
+      <swiper-item data-sty='{{item.type}}' wx:if="{{item.type==1}}">
+        <image src="{{item.srcurl?item.srcurl:'../../image/ba750x360.jpg'}}" lazy-load mode="widthFix" class="slide-image product_image {{item.load?'loaded':''}}" data-index='{{index}}' data-type='banner' bindload="imageLoad" width="355" height="150" />
+      </swiper-item>
+      <swiper-item data-sty='{{item.type}}' wx:elif="{{item.type==2}}">
+        <view class="" bindtap='webview' data-url="{{item.hrefurl}}">
+          <image src="{{item.srcurl?item.srcurl:'../../image/ba750x360.jpg'}}" lazy-load  mode="widthFix" class="slide-image product_image {{item.load?'loaded':''}}" data-index='{{index}}' data-type='banner' bindload="imageLoad" width="355"
+            height="150" />
+        </view>
+      </swiper-item>
+      <swiper-item data-sty='{{item.type}}' wx:elif="{{item.type==3}}">
+        <navigator url="classification?title={{item.title}}&cid={{item.hrefurl}}">
+          <image src="{{item.srcurl?item.srcurl:'../../image/ba750x360.jpg'}}" lazy-load mode="widthFix" class="slide-image product_image {{item.load?'loaded':''}}" data-index='{{index}}' data-type='banner' bindload="imageLoad" width="355" height="150" />
+
+        </navigator>
+      </swiper-item>
+      <swiper-item data-sty='{{item.type}}' wx:elif="{{item.type==4}}">
+        <navigator data-id="{{item.id}}" bindtap='remen' url="material?scid={{item.hrefurl}}&scimg={{item.scimg}}&cid={{item.cid}}">
+          <image src="{{item.srcurl?item.srcurl:'../../image/ba750x360.jpg'}}" lazy-load mode="widthFix" class="slide-image product_image {{item.load?'loaded':''}}" data-index='{{index}}' data-type='banner' bindload="imageLoad" width="355" height="150" />
+        </navigator>
+      </swiper-item>
+      <swiper-item data-sty='{{item.type}}' wx:elif="{{item.type==5}}">
+        <view wx:if='{{Obtaintel_state}}' class="" bindtap='webview' data-url="{{item.hrefurl}}">
+          <image src="{{item.srcurl?item.srcurl:'../../image/ba750x360.jpg'}}" lazy-load mode="widthFix" class="slide-image product_image {{item.load?'loaded':''}}" data-index='{{index}}' data-type='banner' bindload="imageLoad" width="355"
+            height="150" />
+        </view>
+        <button wx:else open-type="getPhoneNumber" bindgetphonenumber='Obtain_tel' data-url="{{item.hrefurl}}">
+          <image src="{{item.srcurl?item.srcurl:'../../image/ba750x360.jpg'}}" lazy-load mode="widthFix" class="slide-image product_image {{item.load?'loaded':''}}" data-index='{{index}}' data-type='banner' bindload="imageLoad" width="355"
+            height="150" />
+        </button>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='biaoti flexzy' wx:if="{{hotlist.length>0}}">
+    <view class='left'>
+      <text class='f32 active'>最新热门</text>
+    </view>
+    <view class='right'>
+      <navigator url="classification?title=最新热门&type=1">
+        <image mode='aspectFit' src='../../image/more.png'></image>
+      </navigator>
+    </view>
+  </view>
+  <view class='hot flexzyc' wx:if="{{hotlist.length>0}}">
+    <view class='list' wx:for="{{hotlist}}" wx:if='{{index<4}}' wx:key='index'>
+      <navigator data-id='{{item.id}}' data-title='{{item.gname}}' bindtap='remen' class='img brrb50' url="material?scid={{item.id}}&scimg={{item.oimg}}&cid={{item.cid}}">
+        <!-- <image class="brrb50 {{hotlist_zt?'':'product_image'}} {{item.load?'loaded':''}}" data-index='{{index}}' data-type='hot' bindload="imageLoad" mode="aspectFill" src="{{item.load?item.himg:''}}"></image> -->
+        <image class="brrb50  product_image {{item.load?'loaded':''}}" data-index='{{index}}' data-type='hot' bindload="imageLoad" src="{{item.load?item.himg:''}}"></image>
+      </navigator>
+      <view class='flexy'>
+        <view class='jine'>
+          <view class='f18 brr30 df ai_c' wx:if="{{hotlist_zt && item.status==1}}">
+            <image mode='widthFix' src='/img/diamond.png' class="w_11"></image>
+            <text>{{item.price}}</text>
+          </view>
+          <!-- <text class='f18 brr30' wx:if="{{item.status==1}}">¥{{item.price}}</text> -->
+        </view>
+      </view>
+      <view class='mingcheng'>
+        <text class='f22'>{{item.gname}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='tuijian'>
+    <view class='list  {{item.type==2?"palr10":"palr2"}}' wx:for="{{tjlist}}" wx:key='index'>
+      <view class="lunbo product_image {{item.load?'loaded':''}}" wx:if='{{item.type==2}}' bindtap='webview' data-url="{{item.url}}">
+        <image src="{{item.img}}" data-index='{{index}}' data-type='tjlist' bindload="imageLoad" lazy-load='true' mode="aspectFill" class="slide-image brr8"></image>
+      </view>
+      <view wx:if='{{item.type==1 || item.type==3}}' class='biaoti palr20'>
+        <view class='left'>
+          <text class='f32 active'>{{item.cname}}</text>
+        </view>
+      </view>
+      <view wx:if='{{item.type==1}}' class='imli'>
+        <view class='left img1'>
+          <navigator class='img' data-id="{{item.list[0].id}}"  data-title='{{item.list[0].gname}}' bindtap='remen' url="material?scid={{item.list[0].id}}&scimg={{item.list[0].oimg}}&cid={{item.id}}">
+            <image class="product_image {{item.load?'loaded':''}}" data-index='{{index}}' data-type='tjlist' bindload="imageLoad" mode="aspectFill" src='{{item.list[0].eimg?item.list[0].eimg:"../../image/ba400x400.jpg"}}'></image>
+          </navigator>
+          <view class='bt_je flexzy'>
+            <text class='bt f26'>{{item.list[0].gname}}</text>
+            <!-- <image class='img' wx:if="{{xitong=='ios' && item.list[0].status==1}}" src='../../image/star.png'></image> -->
+            <view class='jine f18 df ai_c' wx:if='{{item.list[0].status==1}}'>
+              <image mode='widthFix' src='/img/diamond.png' class="w_11"></image>
+              <text>{{item.list[0].price}}</text>
+            </view>
+          </view>
+        </view>
+        <view class='right'>
+          <view class='right_nr'>
+            <view class='img2'>
+              <navigator class='img' data-id="{{item.list[1].id}}" data-title='{{item.list[1].gname}}' bindtap='remen' url="material?scid={{item.list[1].id}}&scimg={{item.list[1].oimg}}&cid={{item.id}}">
+                <image class="product_image {{item.load?'loaded':''}}" data-index='{{index}}' data-type='tjlist' bindload="imageLoad" mode="aspectFill" src='{{item.list[1].eimg?item.list[1].eimg:"../../image/ba400x400.jpg"}}'></image>
+              </navigator>
+              <view class='bt_je flexzy'>
+                <text class='bt f26'>{{item.list[1].gname}}</text>
+                <!-- <image class='img' wx:if="{{xitong=='ios' && item.list[1].status==1}}" src='../../image/star.png'></image> -->
+                <view class='jine f18 df ai_c' mode='aspectFill' wx:if='{{item.list[1].status==1}}'>
+                  <image mode='widthFix' src='/img/diamond.png' class="w_11"></image>
+                  <text>{{item.list[1].price}}</text>
+                </view>
+              </view>
+            </view>
+             <navigator class='img3' url="classification?title={{item.cname}}&cid={{item.id}}">
+              <view class='img'>
+                <image class="product_image {{item.load?'loaded':''}}" data-index='{{index}}' data-type='tjlist' bindload="imageLoad" mode="aspectFill" src='{{item.list[2].eimg?item.list[2].eimg:"../../image/ba400x400.jpg"}}'></image>
+              </view>
+              <view class='gengduo flexzy'>
+                <text class='f24'>更多({{item.count}})>></text>
+              </view>
+            </navigator>
+          </view>
+
+        </view>
+      </view>
+      <view wx:if='{{item.type==3}}' class='imli'>
+        <view class='left img1' bindtap='webview' data-url="{{item.url}}">
+          <view class='img'>
+            <image class="product_image {{item.load?'loaded':''}}" data-index='{{index}}' data-type='tjlist' bindload="imageLoad" mode='aspectFill' src='{{item.list[0]?item.list[0]:"../../image/ba400x400.jpg"}}'></image>
+          </view>
+        </view>
+        <view class='right'>
+          <view class='right_nr'>
+            <view class='img2' bindtap='webview' data-url="{{item.url}}">
+              <view class='img'>
+                <image class="product_image {{item.load?'loaded':''}}" data-index='{{index}}' data-type='tjlist' bindload="imageLoad" mode="aspectFill" src='{{item.list[1]?item.list[1]:"../../image/ba400x400.jpg"}}'></image>
+              </view>
+            </view>
+            <view class='img3' bindtap='webview' data-url="{{item.url}}">
+              <view class='img'>
+                <image class="product_image {{item.load?'loaded':''}}" data-index='{{index}}' data-type='tjlist' bindload="imageLoad" mode="aspectFill" src='{{item.list[2]?item.list[2]:"../../image/ba400x400.jpg"}}'></image>
+              </view>
+              <view class='bt_je flexzy'>
+                <text></text>
+                <text class='zxyp f24'>在线约拍</text>
+              </view>
+            </view>
+
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='ttpt_logo'>
+    <view class='tp'>
+      <image mode="aspectFit" src='../../image/ttpt_logo.png'></image>
+    </view>
+  </view>
+</view>
+<view class='popup' wx:if='{{guanggao_zt}}' bindtap='close_popup'>
+  <view class='advertisement'><image bindtap='webview' data-url="{{guanggao.jump_url}}" mode='widthFix' src='{{guanggao.img_url}}'></image></view>
+</view>
+<view class="tabbar df jc_sa">
+  <view class="w40" bindtap="click_index">
+    <image mode='widthFix' src='../../image/home.png'></image>
+    <view>首页</view>
+  </view>
+  <navigator class="w40" url='order'>
+    <image mode='widthFix' src='../../image/personal.png'></image>
+    <view>我的</view>
+  </navigator>
+</view>

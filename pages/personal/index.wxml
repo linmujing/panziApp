@@ -1,25 +1,26 @@
 <view class="container" wx:if="{{!login_state}}">
     <view class="person_info">
         <view class="info_title">
-            <view bind:tap="link_setting">设置</view>
+            <view bind:tap="link_setting">账号设置</view>
             <!-- <image mode="widthFix" class="" src="/img/mesg.png" /> -->
         </view>
         <view class="info_details">
             <image mode="widthFix" class="personInfo_bg" src="/img/person_topPic.png" />
             <view class="details_left">
                 <image src="{{userInfo.avatarUrl}}" />
+                <image wx:if="{{userInfo.vip == 1}}" class="pf_logo" mode="widthFix" src="../../img/pf-logo.png" />
             </view>
             <view class="details_right">
                 <view class="user_info_name df ai_fe">
-                  <view class='ft_16'>{{userInfo.nickName}}</view>
-                  <view class='vip ft_10 df ai_c'>
-                    <image mode="widthFix" src="/img/v.png"></image>
-                    <text class='num'>{{userInfo.grade}}</text>
-                    <text wx:if='{{userInfo.grade == 1}}'>水晶会员</text>
-                    <text wx:if='{{userInfo.grade == 2}}'>黄金会员</text>
-                    <text wx:if='{{userInfo.grade == 3}}'>白金会员</text>
-                    <text wx:if='{{userInfo.grade == 4}}'>钻石会员</text>
-                  </view>
+                    <view class='ft_16'>{{userInfo.nickName}}</view>
+                    <view class='vip ft_10 df ai_c'>
+                        <image mode="widthFix" src="/img/v.png"></image>
+                        <text class='num'>{{userInfo.grade}}</text>
+                        <text wx:if='{{userInfo.grade == 1}}'>水晶会员</text>
+                        <text wx:if='{{userInfo.grade == 2}}'>黄金会员</text>
+                        <text wx:if='{{userInfo.grade == 3}}'>白金会员</text>
+                        <text wx:if='{{userInfo.grade == 4}}'>钻石会员</text>
+                    </view>
                 </view>
                 <view class="qiandao" bindtap='link_task'>
                     <image mode="widthFix" src="/img/qiandao.png" />
@@ -65,6 +66,20 @@
             </view>
             <image mode="widthFix" src="../../img/enter_.png" />
         </view> -->
+        <view class="my_list_item" bindtap='my_shopcart'>
+            <view>
+                <image mode="widthFix" src="/img/car.png" />
+                <text>购物车</text>
+            </view>
+            <image mode="widthFix" src="/img/enter_.png" />
+        </view>
+        <view class="my_list_item" bind:tap="my_pfMaster">
+            <view>
+                <image mode="widthFix" src="/img/master-icon.png" />
+                <text>盘粉达人认证</text>
+            </view>
+            <image mode="widthFix" src="/img/enter_.png" />
+        </view>
         <view class="my_list_item" bindtap='my_integral'>
             <view>
                 <image mode="widthFix" src="/img/center-02.jpg" />
@@ -75,7 +90,7 @@
         <view class="my_list_item" bind:tap="link_release">
             <view>
                 <image mode="widthFix" src="/img/center-03.jpg" />
-                <text>我发布的</text>
+                <text>我的晒图</text>
             </view>
             <image mode="widthFix" src="/img/enter_.png" />
         </view>
@@ -88,15 +103,30 @@
         </view> -->
         <view class="my_list_item" bind:tap="to_QRcode">
             <view>
-                <image mode="widthFix" src="/img/code.png" />
-                <text>我的二维码</text>
+                <image mode="widthFix" src="/img/center-08.png" />
+                <text>推荐（盘子）给好友</text>
+            </view>
+            <text class="color_title ft_12 pl_20">邀请可得积分奖励</text>
+            <image class="enter" src="/img/enter_.png" />
+        </view>
+        <!-- <view class="my_list_item" bindtap='my_customer'>
+            <view>
+                <image mode="widthFix" src="/img/center-05.jpg" />
+                <text>我的客户</text>
+            </view>
+            <image mode="widthFix" src="/img/enter_.png" />
+        </view> -->
+        <view class="my_list_item" bindtap='to_trivia'>
+            <view>
+                <image mode="widthFix" src="/img/center-07.jpg" />
+                <text>我的花絮</text>
             </view>
             <image mode="widthFix" src="/img/enter_.png" />
         </view>
-        <view class="my_list_item" bindtap='my_customer'>
+        <view class="my_list_item" bindtap='photos_list'>
             <view>
-                <image mode="widthFix" src="/img/center-05.jpg" />
-                <text bind:tap="to">我的客户</text>
+                <image mode="widthFix" src="/img/center-07.jpg" />
+                <text>底片下载</text>
             </view>
             <image mode="widthFix" src="/img/enter_.png" />
         </view>

@@ -24,7 +24,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getTheme()
+    
   },
 
   /**
@@ -38,7 +38,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var cid = getApp().globalData.themeId
+    if (cid != undefined) {
+      this.setData({
+        'themeData.current': cid,
+        'themeData.cid': cid,
+        'themeData.search': '',
+        'themeData.themeList': [],
+        'themeData.page': 1,
+        Page_slide: true
+      })
+    }
+    this.getTheme()
+    getApp().globalData.themeId = undefined
   },
   blur_search: function (e) {
     this.setData({
@@ -58,7 +70,7 @@ Page({
     var index = e.currentTarget.dataset.index;
     var id = e.currentTarget.dataset.id;
     this.setData({
-      'themeData.current': index,
+      'themeData.current': id,
       'themeData.search': '',
       'themeData.themeList': [],
       'themeData.page': 1,
@@ -93,7 +105,6 @@ Page({
   },
   getThemeList: function () {
     var that = this
-    console.log(that.data.themeData.page)
     var reqBody = {
       pageNum: that.data.themeData.page,
       seach: that.data.themeData.search,
@@ -103,7 +114,7 @@ Page({
       title: '加载中',
     })
     util.post(util.url.themeList, reqBody, (res) => {
-      console.log(res)
+      // console.log(res)
       wx.hideLoading()
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
@@ -113,7 +124,6 @@ Page({
         }
         var list = that.data.themeData.themeList
         list = list.concat(res.data);
-        console.log(list)
         that.setData({
           'themeData.themeList': list,
           'themeData.page': that.data.themeData.page + 1
@@ -137,7 +147,6 @@ Page({
     var that = this
     var index = e.currentTarget.dataset.index;
     var list = that.data.themeData.themeList
-    console.log(list)
     var type = 'add'
     if (list[index].check) {
       type = 'del'
@@ -205,10 +214,5 @@ Page({
     }
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
-  }
 })

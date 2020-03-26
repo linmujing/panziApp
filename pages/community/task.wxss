@@ -1,0 +1,11 @@
+/* pages/community/task.wxss */
+page{padding-bottom: 0}
+swiper{height: 450rpx;}
+.news{padding: 0 30rpx;overflow: hidden}
+.list .item{padding-top: 20rpx;position: relative;width:100%;
+}
+.list .item .pbox{position: relative;display: inline-block;}
+.list .item image{width: 70rpx;height: 70rpx;border-radius: 50%;}
+
+.list .item .info{width: 650rpx;border-bottom: 1rpx solid #EEEEEE;padding-bottom: 20rpx;margin-left: 30rpx;}
+.list .item .info .txt{margin-top: 12rpx;}

@@ -1,21 +1,26 @@
 /* pages/personal/my_fabu.wxss */
-.container {}
+.nodata{padding: 120rpx;}
+.nodata .btn_title{margin-top: 80rpx;line-height: 80rpx;font-size: 34rpx;}
 
 .list_item {
     background: #fff;
     margin-top: 30rpx;
-    padding: 0 30rpx;
 }
-
+.list_item .audit text{
+  background: #F7B1BD;
+  color: #fff;
+  padding: 4rpx 20rpx;
+  font-size: 24rpx;
+  border-radius: 30rpx 0 0 30rpx;
+}
 .list_item .item_details {
     display: flex;
-    padding: 30rpx 0;
+    padding: 0 30rpx 30rpx;
     border-bottom: 1px solid #eee;
 }
 
 .img_box {
-    width: 210rpx;
-    height: 210rpx;
+    width: 180rpx;
     overflow: hidden;
     margin-right: 30rpx;
 }
@@ -33,7 +38,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 30rpx 0;
+    padding: 30rpx;
 }
 
 .list_item .item_foot .btn_box {
@@ -43,14 +48,17 @@
 
 .list_item .item_foot .btn {
     padding: 10rpx 20rpx;
-
     border-radius: 8rpx;
+    margin-right: 20rpx;
 }
 
 .list_item .item_foot .delate {
     border: 1px solid #ccc;
 }
-
+.list_item .item_foot .share{
+  background: #F7B1BD;
+  color: #fff;
+}
 .list_item .item_foot .time {
     color: #999;
 }
@@ -58,3 +66,5 @@
 .list_item .item_foot .More {
     margin-left: 30rpx;
 }
+/* 弹窗 */
+.notes{position:fixed;background:#000;top:0;right:0;left:0;bottom:0;z-index: 1000;}

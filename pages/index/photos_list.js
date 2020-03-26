@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: []
+    list: [],
+    search: '',
+    dpimg: app.globalData.imgUrl + 'noDp.png',
   },
 
   /**
@@ -24,6 +26,7 @@ Page({
       })
     }
     this.getList()
+    this.ad(7)
   },
 
   /**
@@ -39,10 +42,23 @@ Page({
   onShow: function () {
 
   },
+  ad: function (num) {
+    util.appointment(num, (res) => {
+      this.setData({
+        ad: res.data[0]
+      })
+    });
+  },
+  click_btn: function () {
+    var ad = this.data.ad
+    util.click_url(ad.type, ad.url)
+  },
   getList: function () {
     var that = this
     var reqBody = {
       token: that.data.userInfo.token
+      // token: 'df9f16b25033103a001b1d84ffe92441'
+
     };
     wx.showLoading({
       title: '加载中',
@@ -59,10 +75,14 @@ Page({
     })
   },
   click_photo: function (e) {
-    var tel = e.currentTarget.dataset.tel;
-    var state = e.currentTarget.dataset.state;
-    var order = e.currentTarget.dataset.order;
-    if (state != 5){
+    var that = this
+    var index = e.currentTarget.dataset.index;
+    var data = that.data.list
+    var tel = data[index].MOBILE;
+    var state = data[index].STATUS;
+    var order = data[index].ORDERSN;
+    var ems = data[index].KDDH;
+    if (state < 4){
       wx.showToast({
         title: '订单还未完成哦~',
         icon: 'none',
@@ -71,10 +91,57 @@ Page({
       return
     }
     wx.navigateTo({
-      url: 'my_photos?tel=' +tel + '&order=' + order,
+      url: 'my_photos?tel=' +tel + '&order=' + order + '&ems=' + ems,
     })
   },
-  
+  blur_search: function (e) {
+    this.setData({
+      search: e.detail.value
+    })
+  },
+  confirm_search: function () {
+    var tel = this.data.userInfo.tel
+    var order = this.data.search
+    // var order = '2019071500055'
+    // var tel = '18774092987'
+    wx.navigateTo({
+      url: 'my_photos?tel=' + tel + '&order=' + order + '&ems=' + '',
+    })
+  },
+  click_getDp: function (e) {
+    var that = this
+    var index = e.currentTarget.dataset.index;
+    var data = that.data.list
+    var order = data[index].ORDERSN;
+    var dipian = data[index].dipian;
+    if (dipian != 0){return}
+    var reqBody = {
+      token: that.data.userInfo.token,
+      erpindent: order
+    };
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    util.post(util.url.addnegative, reqBody, (res) => {
+      if (res.state == 1) {
+        wx.showToast({
+          title: '领取成功~',
+          icon: 'none'
+        })
+        setTimeout(function () {
+          wx.hideLoading()
+          that.getList()
+        }, 1000)
+      }else{
+        wx.hideLoading()
+        wx.showToast({
+          title: res.info,
+          icon: 'none'
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */
@@ -103,10 +170,5 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
-  }
 })

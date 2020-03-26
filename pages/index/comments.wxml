@@ -1,6 +1,6 @@
 <!--pages/index/comments.wxml-->
 <view class='comments df jc_sb fw_w'>
-  <view wx:for='{{list}}' wx:key='{{index}}' class='item' bindtap='click_detail' data-id='{{item.id}}'>
+  <view wx:for='{{list}}' wx:key='index' class='item' bindtap='click_detail' data-id='{{item.id}}'>
     <view class='imgb'>
         <image mode='widthFix' src="{{item.img}}" class='w100'/>
     </view>

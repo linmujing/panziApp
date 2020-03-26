@@ -16,3 +16,166 @@
 .popup .popup_input .code text{width: 130rpx;padding: 10rpx 0;display: inline-block;font-size:24rpx;color: #FD93B3}
 .popup .an .btn{font-weight:bold;color:#FD93B3;font-size:34rpx;line-height: 90rpx;}
 
+.popup .an .qx{font-weight:bold;color:#999;font-size:34rpx;line-height: 90rpx;}
+
+
+page{padding-bottom: 0}
+.person_info {
+    height: 330rpx;
+}
+.person_info .info_title {
+    display: flex;
+    padding-right: 20rpx;
+    position: absolute;
+    top: 20rpx;
+    right: 0;
+    color: #fff;
+}
+
+.person_info .info_title image {
+    width: 40rpx;
+    margin-left: 20rpx;
+}
+
+.person_info .personInfo_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.person_info .info_details {
+    display: flex;
+    align-items: center;
+    padding: 60rpx 0 0 30rpx;
+    overflow: hidden;
+}
+
+.person_info .info_details .details_left {
+    margin-right: 20rpx;
+}
+
+.person_info .info_details .details_right {
+    color: #fff;
+}
+.person_info .info_details .details_right .vip{
+  margin-left: 10rpx;
+  border: 2rpx solid #fff;
+  border-radius: 30rpx;
+  padding: 0 10rpx;
+}
+.person_info .info_details .details_right .vip .num{
+  font-size: 16rpx;
+  position: relative;
+  left: -5rpx;
+  top: 6rpx;
+}
+.person_info .info_details .details_right .vip image{
+  width: 20rpx;
+}
+.person_info .info_details .details_left image {
+    width: 140rpx;
+    height: 140rpx;
+    border-radius: 50%;
+}
+
+.person_info .info_details .qiandao {
+    margin-top: 20rpx;
+}
+
+.person_info .info_details .qiandao image {
+    width: 160rpx;
+}
+
+.person_info .info_details .VIP_center {
+    position: absolute;
+    right: 28rpx;
+    top: 157rpx;
+}
+
+.person_info .info_details .VIP_center image {
+    width: 135rpx;
+    padding: 40rpx 0 0 40rpx;
+}
+.my_order {
+    background: #fff;
+    border-radius: 20rpx;
+    margin: 0 30rpx;
+    padding: 20rpx;
+    box-shadow: 0px 0px 9px 0px #ccc;
+}
+
+.my_order .order_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20rpx;
+}
+
+.my_order .order_title .title_left {
+    font-size: 34rpx;
+}
+
+.my_order .look_all {
+    font-size: 26rpx;
+    color: #666;
+}
+
+.my_order .look_all image {
+    width: 12rpx;
+}
+
+.my_order .order_list {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20rpx;
+}
+
+.my_order .order_list>view {
+    text-align: center;
+}
+
+.my_order .order_list>view view {
+    font-size: 24rpx;
+    margin-top: 10rpx;
+    color: #666;
+}
+
+.my_order .order_list image {
+    width: 50rpx;
+    height: 45rpx;
+}
+
+.my_list {
+    background: #fff;
+    margin: 20rpx 30rpx;
+    border-radius: 30rpx;
+    padding: 20rpx;
+    box-shadow: 0px 0px 9px 0px #ccc;
+}
+
+.my_list .my_list_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 30rpx;
+    font-weight: 500;
+    padding: 20rpx;
+}
+
+.my_list .my_list_item>view {
+    display: flex;
+    align-items: center;
+}
+
+.my_list .my_list_item>view image {
+    width: 40rpx;
+    margin-right: 15rpx;
+    /* vertical-align: middle; */
+}
+
+.my_list .my_list_item image {
+    width: 15rpx;
+}

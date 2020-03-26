@@ -1,0 +1,108 @@
+<!--pages/personal/download_detail.wxml-->
+<checkbox-group bindchange="checkboxChange">
+  <view class='list df jc_sb fw_w'>
+    <view wx:for='{{lists}}' wx:key='index' class='items'>
+      <view class='img_box' bindtap='previewImg' data-index='{{index}}'>
+        <image lazy-load mode='aspectFill' class="pho" src='{{item.pics}}' data-index='{{index}}'></image>
+      </view>
+      <view wx:if='{{!item.num>0}}' class="mask" bindtap='previewImg' data-index='{{index}}'></view>
+      <view wx:if='{{!item.num>0}}' class='check df jc_sb ai_c'>
+        <!-- <checkbox value='{{index}}' checked='{{item.check}}' /> -->
+        <image class="lock" src="../../img/lock.png" />
+      </view>
+    </view> 
+  </view>
+</checkbox-group>
+<!-- <view class='btn_box df jc_sb'>
+  <view class='btn' bindtap='select_all'>全选</view>
+  <view class='btn' bindtap='show_tip' data-type='{{1}}'>付费下载</view>
+</view> -->
+<!-- 点击图片弹窗 -->
+<view class="imgPopup" hidden="{{preview.state}}">
+<!-- <swiper class='h100' current='{{current}}' style="height: {{winHeight +'px'}}">
+    <view wx:for="{{lists}}" wx:key='index'>
+      <swiper-item>
+        <view class="img" bindtap="close_imgPopup">
+          <image mode='aspectFit' src="{{item.pics}}" class="h100 w100"/>
+          <view wx:if='{{!item.num>0}}' class="whole"></view>
+        </view>
+        <view class="pay_btn">
+          <view wx:if='{{item.num>0}}' class="btn w100" bindtap='save_gqImg'>高清图下载（{{item.num}}次）</view>
+          <view wx:else class="df jc_sb ai_c">
+            <view>
+            <view class="blod ft_16">高清图：<text>￥{{money}}</text></view>
+            <view class="ft_12 color_5b">付费一次可下载高清图10次</view>
+            </view>
+            <view class="btn paybtn" bindtap='show_tip' data-type='{{2}}' data-index='{{index}}'>付费下载</view>
+          </view>
+        </view>
+      </swiper-item>
+    </view>
+  </swiper> -->
+  <view class="img" bindtap="close_imgPopup">
+    <image mode='aspectFit' src="{{preview.img}}" class="h100 w100"/>
+    <view wx:if='{{!preview.num>0}}' class="whole"></view>
+  </view>
+  <view class="pay_btn">
+    <!-- <view wx:if='{{preview.num>0}}' class="btn w100" bindtap='save_gqImg'>高清图下载（{{preview.num}}次）</view> -->
+    <view wx:if='{{preview.num>0}}' class="p20" bindtap='save_gqImg'>
+      <view class="btn w100">高清图下载</view>
+    </view>
+    <view wx:else class="df jc_sb ai_c">
+      <view class="pl_10 pb_5">
+       <view class="blod ft_16">高清图：<text>￥{{money}}</text></view>
+       <view wx:if='{{zlnum>0}}' class="ft_11 color_5b">拥有免费下载机会{{zlnum}}次</view>
+      </view>
+      <view class="df">
+        <view wx:if='{{zlnum>0}}' class='sbtn' bindtap='click_unlock'>立即解锁</view>
+        <button wx:else class='fx' open-type="share" type="primary" hover-class="other-button-hover">
+          <text>分享解锁下载</text>
+        </button>
+        <view class="pbtn" bindtap='show_tip' data-type='{{2}}'>付费解锁下载</view>
+      </view>
+      
+    </view>
+  </view>
+</view>
+<!-- 提示弹窗 -->
+<view class="tip_box df ai_c jc_c" hidden="{{tip.state}}">
+  <view class="body">
+    <view class="title">付费下载</view>
+    <view class="mt_20 color_title">支付￥{{tip.price}}</view>
+    <view class="mt_10">下载高清花絮照</view>
+    <view class="df jc_sa mt_20 foot pb_10">
+      <view bindtap="cancel_tip" class="cancel">取消</view>
+      <view bindtap="create_order" class="ok">确认</view>
+    </view>
+  </view>
+</view>
+
+<view class='service_an' bindtap='click_notes'>
+  <image mode='widthFix' src='{{rule.img}}'></image>
+</view>
+<!-- 弹窗 -->
+<view hidden='{{rule.state}}' class='notes'>
+  <view class='cont'>
+    <view class='head ta_c'>
+      <view class='ft_15'>下载规则</view>
+    </view>
+    <view class="body ta_j">
+      <rich-text class='w100' nodes="{{rule.text}}"></rich-text>
+    </view>
+  </view>
+  <view class='mt_20 ta_c'>
+    <icon type="cancel" size="36" color="#fff" bindtap='click_notes'/>
+  </view>
+</view>
+<!-- 设置 -->
+<view class='set' hidden='{{down_state}}'>
+  <view class='popup_nr'>
+    <view class='biaoti'>温馨提示</view>
+    <view class='popup_nrs'>为了更好的体验小程序，请前往设置窗口，打开相册授权！</view>
+    <view class='an'>
+      <button open-type="openSetting" bindopensetting="set_callback">
+        <text>打开设置页</text>
+      </button>
+    </view>
+  </view>
+</view>

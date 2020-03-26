@@ -1,0 +1,20 @@
+<!--pages/studio/classification.wxml-->
+<view class='page_bj'>
+  <view class='classification'>
+    <view class='list' wx:if='{{array.length>0}}' wx:key='index' wx:for="{{array}}">
+      <view class='list_nr'>
+        <navigator class='img brr8 {{item.load?"":"imgh"}}' data-title='{{item.gname}}' data-id='{{item.id}}' bindtap='click_amount' url="material?scid={{item.id}}&scimg={{item.oimg}}&cid={{cid?cid:item.cid}}" >
+          <image class='brr8 product_image {{item.load?"loaded":""}}' data-index='{{index}}' bindload="imageLoad" src='{{item.load?item.mimg:"../../image/ba320x432.jpg"}}'></image>
+        </navigator>
+        <view class='flexzy'>
+          <text class='title f28'>{{item.gname}}</text>
+          <image class='img' wx:if="{{xitong=='ios'&&item.status==1}}" src='../../image/star.png'></image>
+          <view wx:elif="{{item.status==1}}" class='price f18 df ai_c'>
+            <image mode='widthFix' src='/img/diamond.png' class="w_11"></image>
+            <text>{{item.price}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

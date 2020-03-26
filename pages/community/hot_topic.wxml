@@ -1,0 +1,17 @@
+<!--pages/community/hot_topic.wxml-->
+<image mode='widthFix' src='{{img}}' class="w100"></image>
+<view class="pt_10 pl_20 color_5b ft_13">实时话题，每分钟更新一次</view>
+<view class="bg_ff mt_10">
+  <view class="list df jc_sb ai_c" wx:for='{{list}}' wx:key='index' bindtap="click_list" data-id='{{item.id}}'>
+    <view class="df ai_c">
+      <image wx:if='{{index == 0}}' mode='widthFix' src='/img/top.png' class="w_10"></image>
+      <text wx:else class="gary {{index < 4 ? 'num' : ''}}">{{index}}</text>
+      <text class="pl_20">{{item.name}}</text>
+      <text class="pl_20 color_99 ft_11">{{item.number}}人参与</text>
+    </view>
+    <view>
+      <!-- <image mode='widthFix' src="{{index == 1 ? '/img/fei.png' : '/img/hot.png'}}" class="w_15"></image> -->
+      <text class="tag color_ff ft_12" style="background: {{item.color}}">{{item.title2}}</text>
+    </view>
+  </view>
+</view>

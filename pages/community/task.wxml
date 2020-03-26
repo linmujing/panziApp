@@ -1,0 +1,28 @@
+<!--pages/community/task.wxml-->
+<swiper wx:if='{{banner.length != 0}}' autoplay indicatorDots circular interval='4000' indicator-active-color='#fff'>
+  <view wx:for="{{banner}}" wx:key='index'>
+    <swiper-item class='item'>
+      <image mode='widthFix' src="{{item.img}}" class='w100' bindtap='click_banner' data-type='{{item.type}}' data-url='{{item.url}}'/>
+    </swiper-item>
+  </view>
+</swiper>
+<view class='news mt_10 bg_ff'>
+  <view class='list'>
+    <view wx:for='{{msgData}}' wx:key='index' class='item'>
+      <view class='df'>
+        <view class='pbox'>
+          <image mode='widthFix' src='{{item.img}}'></image>
+        </view>
+        <view class='info df jc_sb ai_c'>
+          <view>
+            <view class='blod ft_15'>{{item.title}}</view>
+            <view class='color_99 ft_13 txt oneline'>{{item.info}}</view>
+          </view>
+          <view>
+            <text class="{{item.receive ? 'color_title' : 'color_99' }} ft_13">{{item.receive ? '已发放' : '未完成' }}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,33 @@
+/* pages/shopCart/index.wxss */
+page{background: #F1F1F1;padding-bottom: 0;}
+.top{position: absolute;top:0;z-index:-1;background: #F6AFC1;border-radius: 0 0 60rpx 60rpx;width: 100%;height: 300rpx;}
+.list{overflow: hidden;margin-bottom: 100rpx;}
+.list .item{background: #fff;margin-bottom: 20rpx;padding: 20rpx;position: relative;width:100%;box-sizing: border-box;}
+.list .gimg{width: 160rpx;}
+.list .info{width:450rpx;}
+.list .info .title{font-weight: bold;font-size: 30rpx;}
+.list .info .minus{width: 50rpx;height: 50rpx;line-height: 50rpx;border-radius:8rpx 0 0 8rpx;border: 1rpx solid #ddd;text-align: center;}
+.list .info .plus{width: 50rpx;height: 50rpx;line-height: 50rpx;border-radius:0 8rpx 8rpx 0;border: 1rpx solid #ddd;text-align: center;}
+.list .info .num{width: 50rpx;height: 50rpx;line-height: 50rpx;border-top: 1rpx solid #ddd;border-bottom: 1rpx solid #ddd;text-align: center;font-size: 24rpx;}
+
+.list .active{margin-left:-160rpx;}
+
+.del{position:absolute;width:160rpx;top:0;bottom:0;left:auto;right:-160rpx;background: #F89FB5;color: #fff;}
+
+.bottom{position: fixed;bottom: 0;width: 100%;font-size: 32rpx;background: #fff;line-height: 100rpx;z-index: 10;}
+.bottom .ck{margin-left: 20rpx;}
+.bottom .ck text{position: relative;top: -5rpx;}
+.bottom .btn{width:200rpx;text-align: center;background: #F89FB5;color: #fff;}
+
+/* checkbox未选中时样式 */
+.container checkbox .wx-checkbox-input{border-radius: 20rpx;height: 36rpx;width: 36rpx;margin-top: -18rpx;background-color: #fff;} 
+/* checkbox选中时样式 */
+.container checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {border-radius: 20rpx;height: 36rpx;width: 36rpx;line-height: 36rpx;text-align: center;font-size: 28rpx;color: #fff;transform: translate(-50%, -50%) scale(1);-webkit-transform: translate(-50%, -50%) scale(1);background-color: #F89FB5;border: 1rpx solid #F89FB5;}
+
+.commodity_screen {width: 100%;height: 100%;position: fixed;top: 0;left: 0;background: #000;opacity: 0.6;overflow: hidden;z-index: 99;color: #fff;}
+.commodity_attr_box {width: 100%;overflow: hidden;position: fixed;bottom: 0;left: 0;z-index: 999;background: #fff;padding-top: 20rpx;}
+.spec{padding: 30rpx;box-sizing: border-box;}
+.tag{margin-top: 20rpx;font-size: 24rpx;height: 500rpx;overflow-y: scroll;}
+.tag .tag_btn{color: #999;border: 2rpx solid #999;border-radius: 40rpx;padding: 8rpx 20rpx;margin-bottom: 20rpx;margin-right: 20rpx;}
+.tag .active{color: #fff;border: 2rpx solid #FDA2B3;background: #FDA2B3;}
+.spec .btn_title{font-size: 32rpx;text-align: center;margin-top: 40rpx;line-height: 70rpx;font-weight: bold;}

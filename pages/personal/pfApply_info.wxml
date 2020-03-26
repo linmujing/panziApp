@@ -1,0 +1,69 @@
+<!-- pages/personal/pfApply_info.wxml -->
+<view class="">
+    <view class="info_title">
+        <image class="logo" src="https://vip2.pznrfsy.com/lmj/panziApp/pf_img/pz-logo.png" />
+        <image class="menu" src="https://vip2.pznrfsy.com/lmj/panziApp/pf_img/menu.png" />
+    </view>
+    <view class="">
+        <image mode="widthFix" src="https://vip2.pznrfsy.com/lmj/panziApp/pf_img/info-title.jpg" />
+    </view>
+    <view class="info_wrap">
+        <view class="info_content">
+            <view class="info_name">
+                <view class="name_title title">*你的名字</view>
+                <input type="text" placeholder="请输入名字" bindblur='bindBlurName' bindconfirm='bindBlurName' />
+            </view>
+            <view class="info_sex">
+                <view class="sex_title title">*你的性别</view>
+                <radio-group class="radio-group" bindchange="radioChange">
+                    <radio class="radio" wx:for-items="{{items}}" wx:key="name" value="{{item.id}}" checked="{{item.checked}}" color="#eee">
+                        <text>{{item.value}}</text>
+                    </radio>
+                </radio-group>
+            </view>
+            <view class="info_data">
+                <view class="section">
+                    <view class="section__title title">*出生日期</view>
+                    <picker mode="date" value="{{birth}}" start="1930-01-01" end="2030-12-31" bindchange="bindDateChange">
+                        <view class="picker">
+                            {{birth}}
+                            <image mode="widthFix" src="../../img/drop-down.png" />
+                        </view>
+                    </picker>
+                </view>
+            </view>
+            <view class="info_phone">
+                <view class="phone_title title">*你的手机号码</view>
+                <input class="tel_inp" type="number" bindinput="bindBlurTel" placeholder="请输入手机号码" />
+                <view class="code_wrap">
+                    <!-- <view class="get_phone" bind:tap="getCode">获取验证码</view> -->
+                    <input type="number" bindinput="bindBlurCode" placeholder="请输入验证码" />
+                    <view class="send {{flag == true ?'send_':''}}" bindtap='getCode'>
+                        {{code}}
+                    </view>
+                </view>
+            </view>
+            <view class="write_name">
+                <view class="write_title title">*认证证件信息</view>
+                <view class="upload_card">
+                    <view class="front" bindtap="uploadFrontImg" data-sign='1'>
+                        <image mode="widthFix" src="../../img/add-icon.png" />
+                        <view class="text">身份证正面</view>
+                        <canvas class="showPic" canvas-id='front'></canvas>
+                        <!-- <image class="showPic" mode="aspectFill" src="{{frontImg}}" /> -->
+                    </view>
+                    <view class="back" bindtap="uploadFrontImg" data-sign='2'>
+                        <image mode="widthFix" src="../../img/add-icon.png" />
+                        <view class="text">身份证背面</view>
+                        <canvas class="showPic" canvas-id='back'></canvas>
+                        <!-- <image class="showPic" mode="aspectFill" src="{{backImg}}" /> -->
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="upload_btn">
+            <view class="cancel" bind:tap="cancel">取消</view>
+            <view class="preserve" bind:tap="preserve">保存</view>
+        </view>
+    </view>
+</view>

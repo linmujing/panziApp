@@ -1,0 +1,10 @@
+<!--pages/personal/assist.wxml-->
+<view class="box">
+  <view class="ft_16 bold">@ {{info.nickname}}</view>
+  <view class="mt_10">{{info.text1}}</view>
+  <view class="mt_5">{{info.text2}}</view>
+  <view>
+    <image mode="widthFix" class="w100" src="{{info.image}}"></image>
+  </view>
+  <view class="btn" bindtap="assist">给她助力</view>
+</view>

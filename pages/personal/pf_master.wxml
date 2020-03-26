@@ -1,0 +1,29 @@
+<view class="container">
+    <view class="title_img">
+        <image src="https://vip2.pznrfsy.com/lmj/panziApp/pf_img/pf-titlePic.png" mode="widthFix" />
+    </view>
+    <view class="apply_content">
+        <view class="apply_title">
+            <image src="https://vip2.pznrfsy.com/lmj/panziApp/pf_img/apply-title.png" mode="widthFix" />
+        </view>
+        <view class="apply_details">
+            <view class="apply_item" wx:for="{{applyData}}" wx:key="index">
+                <image src="{{item.img}}" mode="widthFix" />
+                <view class="completed" wx:if="{{item.status === 1}}">已完成</view>
+                <view class="no_complete" wx:if="{{item.status === 0}}">未完成</view>
+            </view>
+        </view>
+    </view>
+    <view class="privilege_content">
+        <view class="privilege_title">
+            <image mode="widthFix" src="https://vip2.pznrfsy.com/lmj/panziApp/pf_img/privilege-title.png" />
+        </view>
+        <view class="privilege_pic">
+            <image mode="widthFix" src="https://vip2.pznrfsy.com/lmj/panziApp/pf_img/privilege-pic.png" />
+        </view>
+    </view>
+    <view class="apply_btn">
+        <image class="clicked" wx:if="{{show}}" src="https://vip2.pznrfsy.com/lmj/panziApp/pf_img/pf-btn.png" bind:tap="apply_info" />
+        <view wx:else class="no_click">立即申请</view>
+    </view>
+</view>
