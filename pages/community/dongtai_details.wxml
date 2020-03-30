@@ -2,7 +2,10 @@
     <view class="details_top">
         <view class="details_title">
             <view class="title_left">
-                <image src="{{details.headimgurl}}" />
+                <view class="title_left_headimg">
+                    <image src="{{details.headimgurl}}" />
+                    <image wx:if="{{details.vip == 1}}" class="pf_logo" mode="widthFix" src="../../img/pf-logo.png" />
+                </view>
                 <view class="title_info">
                     <view>{{details.nickname}}</view>
                     <view>{{details.addtime}}</view>
@@ -15,12 +18,12 @@
         </view>
     </view>
     <view wx:if='{{details.images != ""}}' class="swiper_box">
-      <swiper indicatorDots circular interval='4000' current='{{current}}' bindchange='change'>
-        <swiper-item class='item' wx:for="{{details.images}}" wx:key='index'>
-          <image mode='aspectFit' src="{{item}}" class="h100 w100"/>
-        </swiper-item>
-      </swiper>
-      <view class="pages">{{(current+1)+ '/' +details.images.length}}</view>
+        <swiper indicatorDots circular interval='4000' current='{{current}}' bindchange='change'>
+            <swiper-item class='item' wx:for="{{details.images}}" wx:key='index'>
+                <image mode='aspectFit' src="{{item}}" class="h100 w100" />
+            </swiper-item>
+        </swiper>
+        <view class="pages">{{(current+1)+ '/' +details.images.length}}</view>
     </view>
     <view class="details_content">
         <view class="content_text">{{details.content}}</view>
@@ -42,22 +45,23 @@
                 </view>
             </view>
             <view class="df">
-              <!-- <view class="share pr_20">
+                <!-- <view class="share pr_20">
                   <button plain="true" open-type="share" data-id="{{details.id}}">
                       <image mode="widthFix" src="../../img/wx.png" />
                   </button>
               </view> -->
-              <view class="share df ai_c" bindtap="getShareCode">
-                  <image mode="widthFix" src="../../img/pyq.png" />
-                  <text class="ft_11 color_99">生成分享图</text>
-              </view>
+                <view class="share df ai_c" bindtap="getShareCode">
+                    <image mode="widthFix" src="../../img/pyq.png" />
+                    <text class="ft_11 color_99">生成分享图</text>
+                </view>
             </view>
         </view>
         <view class="main_content">
             <view class="main_list">
                 <view class="list_item" wx:for="{{comment}}" wx:key="index" wx:for-index="idx">
                     <view class="item_left">
-                        <image src="{{item.headimgurl}}" />
+                        <image class="headimg" src="{{item.headimgurl}}" />
+                        <image wx:if="{{item.vip == 1}}" class="pf_logo" mode="widthFix" src="../../img/pf-logo.png" />
                     </view>
                     <view class="item_right">
                         <view class="item_name">{{item.name}}</view>
@@ -71,9 +75,9 @@
                             <view class="item_time color_99 ft_12">{{item.addtime}}</view>
                             <view class="item_btn">
                                 <view class="" data-id="{{item.uid}}" bind:tap="on_input">
-                                  <!-- <form bindsubmit="submitInfo" report-submit='true' class='pinglun w100 df jc_c'>
+                                    <!-- <form bindsubmit="submitInfo" report-submit='true' class='pinglun w100 df jc_c'>
                                     <button form-type="submit"> -->
-                                      <text class='ft_14'>评论</text>
+                                    <text class='ft_14'>评论</text>
                                     <!-- </button>  
                                   </form> -->
                                 </view>
@@ -101,9 +105,8 @@
 <view class="inp" wx:if="{{show}}">
     <input placeholder="评论" confirm-type='send' placeholder-style='color: #B4B4B4' bindblur='bindBlur' focus="{{focus}}" bindconfirm='confirm_send' />
 </view>
-
 <view hidden='{{share.state}}' class='notes'>
-  <view class='cont ta_j w100 h100' bindtap="close_share">
-    <image mode='aspectFit' src="{{share.img}}" class="h100 w100"/>
-  </view>
+    <view class='cont ta_j w100 h100' bindtap="close_share">
+        <image mode='aspectFit' src="{{share.img}}" class="h100 w100" />
+    </view>
 </view>
