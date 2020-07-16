@@ -8,7 +8,7 @@ Page({
    */
   data: {
     isIPX: getApp().globalData.isIPX,
-    src: getApp().globalData.webView
+    src: getApp().globalData.webView,
   },
 
   /**
@@ -61,5 +61,26 @@ Page({
    */
   onReachBottom: function () {
 
+  },
+
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function (res) {
+    var userInfo = wx.getStorageSync('userInfo');
+
+    return {
+      title: '盘子女人坊官方',
+      path: 'pages/index/webView?uid=' + userInfo.uid,
+      imageUrl: getApp().globalData.jfBgImg
+    }
+
+    // var userInfo = this.data.userInfo
+    // return {
+    //   title: '盘子女人坊官方',
+    //   // path: 'pages/index/webView?tel=' + userInfo.tel
+    //   path: 'pages/community/community?scene=' + userInfo.tel
+    // }
   }
 })

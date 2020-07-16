@@ -9,25 +9,36 @@ Page({
   },
 
   onLoad: function (options) {
+    console.log(options)
+    // const scene = decodeURIComponent(options.scene) // 介绍人电话
+    // const qudao = decodeURIComponent(options.qudao)
     this.ctx = wx.createCameraContext();
 
     wx.getSystemInfo({
       success: res => {
-        this.setData({ height: res.windowHeight * 0.8 });
+        this.setData({
+          height: res.windowHeight * 0.8
+        });
       }
     });
   },
 
   stopScan: function () {
-    this.setData({ scanStatus: 'none' });
+    this.setData({
+      scanStatus: 'none'
+    });
   },
 
   onShow: function () {
-    this.setData({ msg: '请点击识别图片' });
+    this.setData({
+      msg: '请点击识别图片'
+    });
   },
 
   error: function (e) {
-    this.setData({ msg: '打开摄像头失败，请点击“立即体验' });
+    this.setData({
+      msg: '打开摄像头失败，请点击“立即体验'
+    });
   },
 
   searchPhoto: function (filePath) {
@@ -45,18 +56,22 @@ Page({
         console.log(msg)
 
         if (msg.state != 1) {
-          this.setData({ msg: '未识别到目标，请点击屏幕继续识别' });
+          this.setData({
+            msg: '未识别到目标，请点击屏幕继续识别'
+          });
         } else {
-          this.setData({ msg: '识别成功' });
+          this.setData({
+            msg: '识别成功'
+          });
           setTimeout(() => {
             console.info('go to webar');
             if (msg.data.type == 1) {
               wx.navigateTo({
-                url: '/pages/login/video_test?tel=' + msg.data.tel+'&order=' + msg.data.order
+                url: '/pages/login/video_test?tel=' + msg.data.tel + '&order=' + msg.data.order
               })
             } else if (msg.data.type == 2) {
               wx.navigateTo({
-                url: '/pages/login/photo_test?tel=' + msg.data.tel +'&order=' + msg.data.order
+                url: '/pages/login/photo_test?tel=' + msg.data.tel + '&order=' + msg.data.order
               })
             }
           }, 500);
@@ -64,7 +79,9 @@ Page({
       },
       fail: err => {
         this.status = false;
-        this.setData({ msg: JSON.stringify(err) });
+        this.setData({
+          msg: JSON.stringify(err)
+        });
       }
     });
   },
@@ -78,12 +95,16 @@ Page({
     this.ctx.takePhoto({
       quality: 'normal',
       success: res => {
-        this.setData({ msg: '识别中...' });
+        this.setData({
+          msg: '识别中...'
+        });
         this.searchPhoto(res.tempImagePath)
       },
       fail: err => {
         this.stopScan();
-        this.setData({ msg: '未识别到目标' });
+        this.setData({
+          msg: '未识别到目标'
+        });
       }
     });
   }

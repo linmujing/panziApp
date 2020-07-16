@@ -1,0 +1,2 @@
+<!-- pages/webH5/onlinePhoto.wxml -->
+<web-view bindmessage="bindmessage" src="{{src}}"></web-view>

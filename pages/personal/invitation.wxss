@@ -1,0 +1,16 @@
+/* pages/personal/invitation.wxss */
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 50rpx 30rpx;
+}
+
+.er_code {
+    width: 480rpx;
+    margin: 0 auto;
+}
+
+.gift {
+    text-align: center;
+}

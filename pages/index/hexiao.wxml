@@ -1,0 +1,29 @@
+<view class="container">
+    <view class="customer" bind:tap="link_details" data-status="0">
+        <image mode="widthFix" src="../../img/customer.png" />
+    </view>
+    <view class="Business" bind:tap="link_details" data-status="1">
+        <image mode="widthFix" src="../../img/Business.png" />
+    </view>
+</view>
+<view class="login" wx:if="{{login}}">
+    <view class="login_box">
+        <view class="center_wrap">
+            <view class="login_title">情输入您的账户及密码</view>
+            <view class="inp_wrap">
+                <view class="name">
+                    账户
+                    <input type="text" bindinput="blur_account" />
+                </view>
+                <view class="password">
+                    密码
+                    <input type="text" bindinput="blur_password" />
+                </view>
+            </view>
+            <view class="login_btn" bind:tap="login">登录查询</view>
+        </view>
+        <view class="close_btn" bind:tap="close">
+            <image mode="widthFix" src="../../img/hexiao-close.png" />
+        </view>
+    </view>
+</view>

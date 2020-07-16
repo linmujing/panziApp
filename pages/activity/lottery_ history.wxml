@@ -1,0 +1,30 @@
+<view class="cj_page" wx:if="{{type === 'cj'}}">
+    <view class="cj_content">
+        <view class="title">
+            <view class="">抽奖记录</view>
+            <view class="">消耗积分</view>
+        </view>
+        <view class="item_list" wx:for="{{cjData.cjList}}" wx:key="index">
+            <view class="item_left">
+                <view class="name">{{item.goods_name}}</view>
+                <view class="time">{{item.time}}</view>
+            </view>
+            <view class="item_right">-{{item.cost}}</view>
+        </view>
+    </view>
+</view>
+<view class="zj_page" wx:if="{{type === 'zj'}}">
+    <view class="cj_content">
+        <view class="title">
+            <view class="">中奖记录</view>
+            <view class="">奖品</view>
+        </view>
+        <view class="item_list" wx:for="{{zjData.zjList}}" wx:key="index">
+            <view class="item_left">
+                <view class="name">幸运抽奖</view>
+                <view class="time">{{item.time}}</view>
+            </view>
+            <view class="item_right">{{item.goods_name}}</view>
+        </view>
+    </view>
+</view>

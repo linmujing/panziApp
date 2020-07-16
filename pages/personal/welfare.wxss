@@ -1,1 +1,8 @@
 /* pages/personal/welfare.wxss */
+.cont {
+    overflow-x: hidden;
+}
+
+.active {
+    padding: 30rpx;
+}

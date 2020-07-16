@@ -1,0 +1,216 @@
+/* pages/index/hexiao_details.wxss */
+page {
+    background: #EFEFEF;
+}
+
+.container>view {
+    margin-top: 20rpx;
+    background: #fff;
+    height: 48vh;
+}
+
+.code_box {}
+
+.code_wrap {
+    position: relative;
+    top: 80rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FBBCCD;
+    border-radius: 35rpx;
+    width: 85%;
+    height: 450rpx;
+}
+
+.code_box .title {
+    position: absolute;
+    top: -30rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #F8A6BC;
+    color: #fff;
+    border-radius: 30rpx;
+    text-align: center;
+    width: 280rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+}
+
+.code_pic image {
+    width: 256rpx;
+}
+
+.code_wrap .content {
+    position: absolute;
+    top: 70rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 88%;
+    color: #fff;
+    z-index: 50;
+}
+
+.code_wrap .content .code_pic {
+    text-align: center;
+}
+
+.cardInfo_box {}
+
+.cardInfo_wrap {
+    position: relative;
+    top: 70rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid #FBBCCD;
+    /* background: #FBBCCD; */
+    border-radius: 35rpx;
+    width: 85%;
+    height: 400rpx;
+}
+
+.cardInfo_title {
+    height: 60rpx;
+    line-height: 60rpx;
+    color: #fff;
+    background: #F8A6BC;
+    border-top-left-radius: 35rpx;
+    border-top-right-radius: 35rpx;
+    text-align: center;
+}
+
+.cardInfo_details {
+    /* width: 88%; */
+    margin: 10rpx auto;
+    padding: 0 30rpx;
+    height: 330rpx;
+    overflow: scroll;
+}
+
+.info_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #EFEFEF;
+    padding: 30rpx 0;
+    color: #AEADAE;
+}
+
+/***********************************/
+
+.business>view {
+    margin-top: 20rpx;
+    background: #fff;
+    height: 48vh;
+}
+
+.business_title {
+    width: 370rpx;
+    margin: auto;
+    padding-top: 30rpx;
+    color: #999;
+    font-size: 28rpx;
+}
+
+.inp_wrap {
+    position: relative;
+    top: 20rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FBBCCD;
+    border-radius: 35rpx;
+    width: 85%;
+    height: 400rpx;
+}
+
+.center_wrap {
+    position: absolute;
+    top: 50rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.switch_btn {
+    display: flex;
+    align-items: center;
+    width: 500rpx;
+    height: 65rpx;
+    line-height: 65rpx;
+    border-radius: 65rpx;
+    background: #FDD5DF;
+    margin: auto;
+}
+
+.switch_btn>view {
+    width: 50%;
+    text-align: center;
+    color: #fff;
+    transition: all .3s;
+}
+
+.switch_btn>view.active {
+    background: #F397B0;
+    border-radius: 65rpx;
+}
+
+.inp_content {
+    margin: 40rpx auto;
+}
+
+.inp_content>view {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    margin-top: 15rpx;
+}
+
+.inp_content>view input {
+    background: #fff;
+    border-radius: 6rpx;
+    color: #000;
+    margin-left: 10rpx;
+    padding-left: 10rpx;
+    width: 350rpx;
+    height: 60rpx;
+}
+
+/* .hx_btn {
+    width: 120rpx;
+    height: 40rpx;
+    text-align: center;
+    line-height: 40rpx;
+    border-radius: 8rpx;
+    background: #F397B0;
+    color: #fff;
+} */
+
+.inp_tips {
+    color: #fff;
+    font-size: 26rpx;
+}
+
+.buyData {}
+
+.buy_wrap {
+    position: relative;
+    top: 50rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 35rpx;
+    width: 85%;
+    height: 380rpx;
+    border: 1px solid #FBBCCD;
+}
+
+.buy_title {
+    height: 60rpx;
+    line-height: 60rpx;
+    color: #fff;
+    background: #F8A6BC;
+    border-top-left-radius: 34rpx;
+    border-top-right-radius: 34rpx;
+    text-align: center;
+}
+
+.buy_content {
+    margin: 0 30rpx;
+}

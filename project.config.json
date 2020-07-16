@@ -9,7 +9,10 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
 		"checkInvalidKey": true,
 		"checkSiteMap": false,
 		"uploadWithSourceMap": true,
@@ -17,7 +20,10 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
@@ -46,6 +52,10 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 0,
 			"list": [
@@ -55,6 +65,27 @@
 					"pathName": "pages/login/index",
 					"query": "scene=18874903450",
 					"scene": 1047
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/login/test",
+					"query": "id=123",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "pages/index/webView",
+					"pathName": "pages/index/webView",
+					"query": "tel=888",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/login/index",
+					"pathName": "pages/login/webview",
+					"query": "scene=88888",
+					"scene": null
 				}
 			]
 		}

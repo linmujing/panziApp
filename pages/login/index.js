@@ -19,14 +19,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log('login:' + options)
     const scene = decodeURIComponent(options.scene) // 介绍人电话
     const qudao = decodeURIComponent(options.qudao)
+    const uid = decodeURIComponent(options.uid)
+
     const huaxuindent = options.huaxuindent
     this.setData({
       scene: scene,
       qudao: qudao,
       huaxuindent: huaxuindent,
-      options: options
+      options: options,
+      uid: uid
     })
     var userInfo = wx.getStorageSync('userInfo');
     if (userInfo) {
@@ -94,6 +98,7 @@ Page({
         if (userInfo) {
           wx.showToast({
             title: '登录中……',
+            // title: that.data.uid,
             icon: 'none',
             duration: 500
           })
@@ -107,6 +112,11 @@ Page({
               qudao: ''
             })
           }
+          // else {
+          //   that.setData({
+          //     qudao: "20200512"
+          //   })
+          // }
           if (that.data.huaxuindent == 'undefined') {
             that.setData({
               huaxuindent: ''
@@ -140,11 +150,24 @@ Page({
                 login_state: false,
                 userInfo: userInfo
               })
+
               if (!userInfo.tel) {
                 that.setData({
                   phone: true
                 })
               } else {
+                if (that.data.qudao == "20200512") {
+                  wx.navigateTo({
+                    url: '/pages/login/webview?scene=' + that.data.scene + '&type=1'
+                  })
+                  return
+                }
+                if (that.data.qudao == "bbnw") {
+                  wx.navigateTo({
+                    url: '/pages/webH5/onlinePhoto?scene=' + that.data.scene + '&type=2' + '&uid=' + that.data.uid
+                  })
+                  return
+                }
                 if (that.data.options.back) {
                   wx.navigateBack()
                 } else {
@@ -153,6 +176,7 @@ Page({
                   })
                 }
               }
+
             }
           })
 

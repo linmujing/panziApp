@@ -1,4 +1,4 @@
-<!--pages/index/order.wxml-->
+<!-- pages/index/order.wxml -->
 <view class='addr df ai_c jc_sb'>
   <image mode='widthFix' src='/img/location.png' class='loc'></image>
   <view wx:if='{{addr_state}}' bindtap='select_addr' class='txt ft_16 color_99'>请添加收货地址</view>
@@ -27,14 +27,20 @@
       </block>
       <view class='df jc_sb mt_20'>
         <view class='color_99 ft_12'>
-          <text wx:if='{{info.money_jf>0}}'><text class="color_jf">￥{{info.money_jf}}</text>+</text>
-          <text class='color_jf'>{{type == 1 || type == 3 || type == 4 ? '' : '￥'}} {{info.money}}</text> {{type == 1 || type == 3 || type == 4 ? '积分' : ''}}
+          <text wx:if='{{info.money_jf>0}}'>
+            <text class="color_jf">￥{{info.money_jf}}</text>
+            +
+          </text>
+          <text class='color_jf'>
+            {{type == 1 || type == 3 || type == 4 ? '' : '￥'}} {{info.money}}
+          </text>
+          {{type == 1 || type == 3 || type == 4 ? '积分' : ''}}
         </view>
         <view class='buy df ai_c'>
-            <view wx:if='{{type != 3 && type != 4}}' bindtap='click_minus' class='minus'>-</view>
-            <text class='num'>{{num}}</text>
-            <view wx:if='{{type != 3 && type != 4}}' bindtap='click_plus' class='plus'>+</view>
-          </view>
+          <view wx:if='{{type != 3 && type != 4}}' bindtap='click_minus' class='minus'>-</view>
+          <text class='num'>{{num}}</text>
+          <view wx:if='{{type != 3 && type != 4}}' bindtap='click_plus' class='plus'>+</view>
+        </view>
       </view>
     </view>
   </view>
@@ -49,25 +55,29 @@
     </view>
   </view>
   <view class='df ai_c mt_10'>
-   <view class='tit'>订单备注</view>
-   <input class='w70' placeholder="选填，请先和商家确认" placeholder-style='color: #999' bindinput="blur_remark"/>
+    <view class='tit'>订单备注</view>
+    <input class='w70' placeholder="选填，请先和商家确认" placeholder-style='color: #999' bindinput="blur_remark" />
   </view>
   <!-- <view class='mt_20 ta_r ft_12'>
     <text class='color_99'>共2件 </text> 小计： <text class='color_jf ft_16'>2000 </text><text class='color_99'> 积分</text>
   </view> -->
 </view>
-
 <view class='tj'>
   <view class='tjdd df ai_c jc_sb'>
     <view class='color_99'>
-      <text wx:if='{{info.money_jf>0}}'><text class="color_jf">￥{{totle_price}} </text>+</text>
-      <text class='color_jf'>{{type == 1 || type == 3 || type == 4 ? '' : '￥'}} {{totle_cost}}</text> {{type == 1 || type == 3 || type == 4 ? '积分' : ''}}</view>
+      <text wx:if='{{info.money_jf>0}}'>
+        <text class="color_jf">￥{{totle_price}}</text>
+        +
+      </text>
+      <text class='color_jf'>
+        {{type == 1 || type == 3 || type == 4 ? '' : '￥'}} {{totle_cost}}
+      </text>
+      {{type == 1 || type == 3 || type == 4 ? '积分' : ''}}
+    </view>
     <view class='btn_title' bindtap='click_tijiao'>提交订单</view>
   </view>
-   <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
+  <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
 </view>
-
-
 <!-- 兑换成功弹窗 -->
 <view hidden='{{popup_state}}' class='popup'>
   <view class='box df fd_c jc_sa'>

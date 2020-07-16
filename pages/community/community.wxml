@@ -1,4 +1,4 @@
-<!-- pages/community/community.wxml -->
+<view bind:tap="test">测试</view>
 <view class="container">
   <swiper wx:if='{{banner.length != 0}}' autoplay indicatorDots circular interval='4000' indicator-active-color='#fff'>
     <view wx:for="{{banner}}" wx:key='index'>
@@ -31,6 +31,10 @@
     <view>|</view>
     <view class="pr_5 pl_5 {{field == 'addtime' ? 'color_title' : ''}}" bindtap="click_sort" data-type='{{"addtime"}}'>
       最新
+    </view>
+    <view>|</view>
+    <view class="pr_5 pl_5 {{field == 'vip' ? 'color_title' : ''}}" bindtap="click_sort" data-type='{{"vip"}}'>
+      推荐
     </view>
   </view>
   <view class="content mt_5">
@@ -74,10 +78,12 @@
         </view>
         <view class="Popular_title ai_c">
           <view class="pTitle_left">
-            <image class="Popular_headerImg" src="{{dd.headimgurl}}" />
-            <view class="">
-              <view class="Popular_name oneline oneline">{{dd.nickname}}</view>
+            <view class="pTitle_left_headerImg">
+              <image class="Popular_headerImg" src="{{dd.headimgurl}}" />
+              <image wx:if="{{dd.vip == 1}}" class="pf_logo" mode="widthFix" src="../../img/pf-logo.png" />
+              <!-- <view class=""></view> -->
             </view>
+            <view class="Popular_name oneline oneline">{{dd.nickname}}</view>
           </view>
           <view class="dianj df ai_c" bindtap='click_zan' data-type='{{2}}' data-index='{{index}}'>
             <image wx:if='{{dd.my_zan}}' src='/img/dianzan2.png' class='xin'></image>

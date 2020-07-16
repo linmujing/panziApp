@@ -33,7 +33,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+
   },
   getList: function () {
     var that = this
@@ -56,12 +56,20 @@ Page({
     })
   },
   click_next: function (e) {
+    console.log(e.currentTarget.dataset.id)
     var that = this
     var param = JSON.stringify(e.currentTarget.dataset.param)
+    var id = e.currentTarget.dataset.id
     getApp().globalData.jfBgImg = e.currentTarget.dataset.param.bgimage;
-    wx.navigateTo({
-      url: 'game?param=' + param
-    })
+    if (id === 2) { //大转盘
+      wx.navigateTo({
+        url: 'lottery'
+      })
+    } else {
+      wx.navigateTo({
+        url: 'game?param=' + param
+      })
+    }
   },
 
   /**

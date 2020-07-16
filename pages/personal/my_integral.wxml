@@ -1,7 +1,21 @@
-<!--pages/personal/my_integral.wxml-->
-<view class='jf'>
-  <view class='font'>{{userInfo.integral}}</view>
-  <view class='ft_13 mt_5'>当前可用积分</view>
+<!-- pages/personal/my_integral.wxml -->
+<view class="top_title">
+  <view class="add_jf" bind:tap="add_jf">赚取积分</view>
+  <view class="jf_gz" bind:tap="look_gz">规则说明</view>
+</view>
+<view class="jf_wrap">
+  <view class='jf'>
+    <view class='font'>{{userInfo.integral}}</view>
+    <view class='ft_13 mt_5'>当前可用积分</view>
+  </view>
+  <view class="expire_jf">
+    <view class="" wx:if="{{have_expire}}">
+      <view class='font'>{{expire_jf.data}}</view>
+      <view class='ft_13 mt_5'>即将过期积分</view>
+      <view class="expire_time">过期时间：{{expire_jf.time}}</view>
+    </view>
+    <view class="" wx:else>暂无过期积分</view>
+  </view>
 </view>
 <view class='list df ai_c jc_sb' wx:for='{{list}}' wx:key='index'>
   <view>

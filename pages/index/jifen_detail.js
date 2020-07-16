@@ -10,7 +10,7 @@ Page({
     isIPX: getApp().globalData.isIPX,
     detailData: {},
     goods_id: '',
-    recommend: []
+    recommend: [],
   },
 
   /**
@@ -46,7 +46,7 @@ Page({
 
   },
   click_dui: function (e) {
-    if (this.data.detailData.stock == 0){
+    if (this.data.detailData.stock == 0) {
       wx.showToast({
         title: '库存为0~',
         icon: 'none',
@@ -70,7 +70,7 @@ Page({
         wx.navigateTo({
           url: 'order?id=' + res.data.order_id,
         })
-      }else{
+      } else {
         wx.showToast({
           title: res.info,
           icon: 'none',
@@ -198,7 +198,7 @@ Page({
     if (res.from === 'button') {
       // 来自页面内转发按钮
       // console.log("111", res);
-    }else{
+    } else {
       // console.log("222", res);
     }
     return {

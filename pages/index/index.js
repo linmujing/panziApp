@@ -94,6 +94,17 @@ Page({
       }, 2000)
     }
   },
+
+  // 修大师
+  // click_ps() {
+  //   const url = 'https://vip2.pznrfsy.com/bin/ps-monster/index.html'
+  //   getApp().globalData.webView = url;
+  //   wx.navigateTo({
+  //     url: '/pages/index/webView'
+  //   })
+  // },
+
+
   // 广告弹窗
   ad: function () {
     var userInfo = wx.getStorageSync('userInfo');
@@ -145,7 +156,6 @@ Page({
     //type = 1 外链  2 内链
     var type = e.currentTarget.dataset.type
     var url = e.currentTarget.dataset.url
-    console.log(type)
     if (url == '') {
       return
     }
@@ -180,6 +190,7 @@ Page({
         }
       })
     } else {
+      console.log(url)
       wx.navigateTo({
         url: url,
       })
@@ -277,15 +288,18 @@ Page({
     })
   },
   recCare: function () {
+    console.log(111)
     var that = this;
     var reqBody = {
       p: 1,
       num: 5
     };
     util.post(util.url.recCare, reqBody, (res) => {
+      console.log(res)
       if (res.state == 1002) {
         that.setData({
-          zxList: res.data
+          zxList: res.data,
+          urlType: res.url //百变女王
         })
       }
     })
@@ -294,6 +308,7 @@ Page({
   click_nav: function (e) {
     var id = e.currentTarget.dataset.id;
     var title = e.currentTarget.dataset.title;
+    var urlType = this.data.urlType;
     switch (id) {
       case 2:
         wx.navigateTo({
@@ -336,9 +351,15 @@ Page({
         })
         break
       case 10:
-        wx.navigateTo({
-          url: '/pages/studio/index',
-        })
+        if (urlType === 2) { //百变女王换脸
+          wx.navigateTo({
+            url: '/pages/webH5/onlinePhoto'
+          })
+        } else {
+          wx.navigateTo({
+            url: '/pages/studio/index',
+          })
+        }
         break
       case 11:
         wx.navigateTo({
@@ -415,16 +436,26 @@ Page({
     var cid = e.currentTarget.dataset.cid;
     var scimg = e.currentTarget.dataset.scimg;
     var scid = e.currentTarget.dataset.scid;
+    var urlType = this.data.urlType;
 
     var title = e.currentTarget.dataset.title;
     wx.setStorage({
       key: "title",
       data: title
     })
-
-    wx.navigateTo({
-      url: '/pages/studio/material?scid=' + scid + '&scimg=' + scimg + '&cid=' + cid
-    })
+    // 百变女王H5
+    if (urlType === 2) {
+      wx.navigateTo({
+        url: '/pages/webH5/onlinePhoto'
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/studio/material?scid=' + scid + '&scimg=' + scimg + '&cid=' + cid
+      })
+    }
+    // wx.navigateTo({
+    //   url: '/pages/studio/material?scid=' + scid + '&scimg=' + scimg + '&cid=' + cid
+    // })
   },
   click_zxgList: function (e) {
     var cid = e.currentTarget.dataset.cid;

@@ -1,4 +1,4 @@
-<!--pages/index/my_photos.wxml-->
+<!-- pages/index/my_photos.wxml -->
 <!-- <view wx:if='{{video.url != ""}}' class='title'>
   <view>视频</view>
 </view>
@@ -11,39 +11,40 @@
     <view class='num'>下载次数：{{video.count}}/{{video.number}}</view>
     <view class='btn' hidden='{{preview.btn_state}}' bindtap='save_video' data-url='{{video.url}}' data-num='{{video.count}}'>视频下载</view>
   </view>
-</view> --> 
-<view class="movie df ai_c jc_c" bindtap="click_myMovie">请点击，查看您的微电影 <view class="icon">></view></view>
+</view> -->
+<view class="movie df ai_c jc_c" bindtap="click_myMovie">
+  请点击，查看您的微电影
+  <view class="icon">></view>
+</view>
 <!-- 瀑布流 -->
 <view class='title mt_20'>
   <view>图片</view>
 </view>
 <checkbox-group bindchange="checkboxChange">
   <view class='container'>
-      <view wx:if="{{index % 2 != 0 }}" wx:for="{{imgData}}" wx:key="index" class='img_box'>
-        <image src='{{item.img}}'  mode='widthFix' bindtap='previewImg' data-index='{{index}}'></image>
-        <view class='check'>
-            <checkbox value='{{index}}' checked='{{item.check}}' />
-          </view>
+    <view wx:if="{{index % 2 != 0 }}" wx:for="{{imgData}}" wx:key="index" class='img_box'>
+      <image src='{{item.img}}' mode='widthFix' bindtap='previewImg' data-index='{{index}}'></image>
+      <view class='check'>
+        <checkbox value='{{index}}' checked='{{item.check}}' />
       </view>
-      <view wx:if="{{index % 2 == 0 }}" wx:for="{{imgData}}" wx:key="index" class='img_box'>
-        <image src='{{item.img}}' mode='widthFix' bindtap='previewImg' data-index='{{index}}'></image> 
-        <view class='check'>
-            <checkbox value='{{index}}' checked='{{item.check}}' />
-          </view>
+    </view>
+    <view wx:if="{{index % 2 == 0 }}" wx:for="{{imgData}}" wx:key="index" class='img_box'>
+      <image src='{{item.img}}' mode='widthFix' bindtap='previewImg' data-index='{{index}}'></image>
+      <view class='check'>
+        <checkbox value='{{index}}' checked='{{item.check}}' />
       </view>
-  </view> 
+    </view>
+  </view>
 </checkbox-group>
-
 <view class='upload df jc_sb' hidden='{{preview.btn_state}}'>
   <checkbox-group bindchange="checkboxAll">
     <label class='ck'>
-      <checkbox checked="{{allCheck}}" color='#F89FB5'/>
+      <checkbox checked="{{allCheck}}" color='#F89FB5' />
       <text>全选</text>
     </label>
   </checkbox-group>
   <view class='btn' bindtap='savePic'>普通图保存</view>
 </view>
-
 <view hidden='{{preview.preview_state}}' class='preview'>
   <swiper class='h100' current='{{current}}'>
     <view wx:for="{{imgData}}" wx:key='index'>
@@ -70,45 +71,45 @@
     </view>
   </view> -->
 </view>
-
 <!-- 弹窗 -->
 <view hidden='{{survey.popup_state}}' class='popup'>
   <view class='box'>
     <view class='tit'>
       <view class='ft_16'>整体评分</view>
       <view class='mt_5'>
-        <block wx:for="{{total.one}}" wx:key='index'> 
-          <image mode='widthFix' src='/img/star.png' class='star'></image> 
-        </block> 
-        <block wx:for="{{total.two}}" wx:key='index'> 
-          <image mode='widthFix' src='/img/kstar.png' class='star'></image> 
-        </block> 
+        <block wx:for="{{total.one}}" wx:key='index'>
+          <image mode='widthFix' src='/img/star.png' class='star'></image>
+        </block>
+        <block wx:for="{{total.two}}" wx:key='index'>
+          <image mode='widthFix' src='/img/kstar.png' class='star'></image>
+        </block>
       </view>
     </view>
     <view class='df jc_sb fw_w mt_5'>
-      <view wx:for="{{gradeList}}" wx:for-index="indexs"  wx:key="indexs">
+      <view wx:for="{{gradeList}}" wx:for-index="indexs" wx:key="indexs">
         <view class='mt_5'>{{item.title}}</view>
         <view class='mt_5'>
-          <block wx:for="{{item.one}}" wx:for-index="index"  wx:key="index"> 
-            <image mode='widthFix' catchtap='in_xin' id='{{index+1}}' data-index='{{indexs}}' data-in='use_sc2' src='/img/star.png' class='star2'></image> 
-          </block> 
-          <block wx:for="{{item.two}}" wx:key="index"> 
-            <image mode='widthFix' catchtap='in_xin' id='{{index+1}}' data-index='{{indexs}}' data-in='use_sc' src='/img/kstar.png' class='star2'></image> 
-          </block> 
+          <block wx:for="{{item.one}}" wx:for-index="index" wx:key="index">
+            <image mode='widthFix' catchtap='in_xin' id='{{index+1}}' data-index='{{indexs}}' data-in='use_sc2' src='/img/star.png' class='star2'></image>
+          </block>
+          <block wx:for="{{item.two}}" wx:key="index">
+            <image mode='widthFix' catchtap='in_xin' id='{{index+1}}' data-index='{{indexs}}' data-in='use_sc' src='/img/kstar.png' class='star2'></image>
+          </block>
         </view>
       </view>
     </view>
     <view class='mt_10'>
-     <view>您是否愿意再次光临或介绍朋友来盘子女人坊呢?</view>
+      <view>您是否愿意再次光临或介绍朋友来盘子女人坊呢?</view>
       <radio-group bindchange="radioChange" class="df jc_sa mt_5">
         <label wx:for="{{radioData}}" wx:key='index'>
-          <radio value="{{item.value}}" checked="{{item.checked}}" color='#F9A1B7'/>{{item.name}}
+          <radio value="{{item.value}}" checked="{{item.checked}}" color='#F9A1B7' />
+          {{item.name}}
         </label>
       </radio-group>
     </view>
     <view class='mt_10'>
       <view>有没有觉得不错或者特别不好的地方呢？</view>
-      <input maxlength='200' placeholder="请在这里留下您宝贵的意见..." class='textarea' bindinput="blur_advise"/>
+      <input maxlength='200' placeholder="请在这里留下您宝贵的意见..." class='textarea' bindinput="blur_advise" />
     </view>
     <view class='btn'>
       <view class='btn_title' bindtap='click_submit'>点击提交</view>
@@ -116,10 +117,9 @@
     <view class='mt_10 ft_12'>期待小主的再次光临，小盘定当好生伺候小主!</view>
   </view>
   <view class='ta_c'>
-    <icon type="cancel" size="36" color="#fff" bindtap='click_close'/>
+    <icon type="cancel" size="36" color="#fff" bindtap='click_close' />
   </view>
 </view>
-
 <view class='set' hidden='{{down_state}}'>
   <view class='popup_nr'>
     <view class='biaoti'>温馨提示</view>
@@ -131,7 +131,21 @@
     </view>
   </view>
 </view>
-
 <view class='service_an' bindtap='judgeWifiGq'>
   <text>一键下载高清图</text>
+</view>
+<!-- 底片弹窗 -->
+<view hidden='{{notes.state}}' class='notes'>
+  <view class='cont'>
+    <view class='head ta_c'>
+      <view class='ft_15'>温馨提示</view>
+    </view>
+    <view class="body ta_j">
+      <!-- <rich-text class='w100' nodes="{{notes.txt}}"></rich-text> -->
+      {{notes.txt}}
+    </view>
+  </view>
+  <view class='mt_20 ta_c'>
+    <icon type="cancel" size="36" color="#fff" bindtap='close_notes' />
+  </view>
 </view>

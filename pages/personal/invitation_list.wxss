@@ -1,0 +1,22 @@
+/* pages/personal/invitation_list.wxss */
+
+.item {
+    background: #fff;
+    /* width: 100%; */
+    margin: 20rpx;
+    padding: 10rpx;
+}
+
+.item view {
+    margin: 10rpx 0;
+    font-size: 30rpx;
+
+}
+
+.item view text {
+    color: red;
+}
+
+.item view #already {
+    color: green;
+}

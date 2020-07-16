@@ -1,0 +1,19 @@
+<!-- pages/personal/invitation.wxml -->
+<view class="container" wx:if="{{hasOrder}}">
+    <view class="">
+        邀约人：
+        <text class="">{{invitate_info.name}}</text>
+    </view>
+    <view class="store">
+        门店：
+        <text class="">{{invitate_info.outlet}}</text>
+    </view>
+</view>
+<view class="er_code">
+    <image mode="widthFix" src="{{invitate_info.code_img}}" />
+</view>
+<view class="gift" wx:if="{{invitate_info.prize}}">
+    礼品：
+    <text>{{invitate_info.prize}}</text>
+</view>
+<view class="link" wx:if="{{!hasOrder}}"></view>
