@@ -298,16 +298,18 @@ Page({
               success: function () {},
               fail: function () {
                 wx.showToast({
-                  title: '下载失败',
-                  icon: "none"
+                  title: '下载失败,请切换网络再试',
+                  icon: "none",
+                  duration: 2000
                 })
               }
             })
           },
           fail: function (res) {
             wx.showToast({
-              title: '下载失败',
-              icon: "none"
+              title: '下载失败,请切换网络再试',
+              icon: "none",
+              duration: 2000
             })
           }
         })
@@ -327,8 +329,9 @@ Page({
       },
       fail: function () {
         wx.showToast({
-          title: '下载失败',
-          icon: 'none'
+          title: '下载失败,请切换网络再试',
+          icon: 'none',
+          duration: 2000
         })
         wx.getSetting({
           success(res) {

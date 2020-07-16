@@ -1,7 +1,7 @@
 <!--pages/index/myMovies.wxml-->
 <view class="nav">
     <view class='tab df'>
-        <block wx:for="{{tabArr}}" wx:key="{{index}}">
+        <block wx:for="{{tabArr}}" wx:key="index">
             <view class="{{currentTab==index ? 'active' :'' }}" data-current='{{index}}' bindtap='switchNav' data-type='{{item.type}}'>
                 {{item.name}}
             </view>
