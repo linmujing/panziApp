@@ -1,6 +1,6 @@
-<!--pages/activity/index.wxml-->
+<!-- pages/activity/index.wxml -->
 <view class='list'>
-  <view wx:for="{{gameData}}" wx:key="index" class="item df jc_sb" bindtap="click_next" data-param='{{item}}'>
+  <view wx:for="{{gameData}}" wx:key="index" class="item df jc_sb" bindtap="click_next" data-param='{{item}}' data-id='{{item.id}}'>
     <view class="df">
       <view class="img">
         <image mode='widthFix' src='{{item.image}}'></image>

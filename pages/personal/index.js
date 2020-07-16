@@ -14,8 +14,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // console.log(options)
+    // const scene = decodeURIComponent(options.scene) // 介绍人电话
+    // const qudao = decodeURIComponent(options.qudao)
   },
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -69,6 +73,15 @@ Page({
       url: './order_comment'
     })
   },
+
+  // 跳转外呼邀约
+  link_invitation() {
+    wx.navigateTo({
+      url: './invitation_list'
+    })
+  },
+
+
   // 跳转设置
   link_setting() {
     wx.navigateTo({

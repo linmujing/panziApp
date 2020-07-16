@@ -1,0 +1,5 @@
+<!-- pages/webH5/psPay.wxml -->
+<view class="btn">
+    <button type="primary" plain="true" bind:tap="payment">支付</button>
+</view>
+<!-- <web-view src="{{src}}" /> -->

@@ -22,6 +22,12 @@ Page({
       })
       console.log(this.data.source)
     }
+    // 大转盘抽奖
+    if (options.types) {
+      this.setData({
+        types: options.types
+      })
+    }
     var userInfo = wx.getStorageSync('userInfo');
     this.setData({
       userInfo: userInfo
@@ -49,7 +55,7 @@ Page({
   },
   click_delAddr: function (e) {
     var id = e.currentTarget.dataset.id;
-    var that = this 
+    var that = this
     wx.showModal({
       title: '提示',
       content: '确认删除该地址吗？',
@@ -76,10 +82,10 @@ Page({
       }
     })
   },
-  click_xjdz: function(e){
-    var mode = e.currentTarget.dataset.mode; 
+  click_xjdz: function (e) {
+    var mode = e.currentTarget.dataset.mode;
     var url = ''
-    if(mode == 0){
+    if (mode == 0) {
       var count = this.data.count;
       if (count >= 5) {
         wx.showToast({
@@ -90,7 +96,7 @@ Page({
         return
       }
       url = 'add_address'
-    }else{
+    } else {
       var index = e.currentTarget.dataset.index;
       var info = this.data.list[index]
       url = 'add_address?info=' + JSON.stringify(info)
@@ -99,7 +105,7 @@ Page({
       url: url
     })
   },
-  getList: function(){
+  getList: function () {
     var reqBody = {
       token: this.data.userInfo.token
     };
@@ -117,15 +123,21 @@ Page({
       wx.hideLoading()
     })
   },
-  select_addr: function(e){
-      if (this.data.source == 1000) {
-        console.log('选择地址')
-        var index = e.currentTarget.dataset.index;
-        var datar = this.data.list[index];
-        app.globalData.Select_address = datar;
-        wx.navigateBack();
-        return
-      }
+  select_addr: function (e) {
+    if (this.data.source == 1000) {
+      console.log('选择地址')
+      var index = e.currentTarget.dataset.index;
+      var datar = this.data.list[index];
+      app.globalData.Select_address = datar;
+      wx.navigateBack();
+      return
+    }
+    // 大转盘抽奖选择地址
+    if (this.data.types == 666) {
+      app.globalData.Select_address = datar;
+      wx.navigateBack();
+      return
+    }
   },
   /**
    * 生命周期函数--监听页面隐藏

@@ -1,18 +1,16 @@
-<!--index.wxml-->
+<!-- index.wxml -->
 <!-- <camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 200px;"></camera> -->
 <!-- <button bindtap="test">上传照片</button>
 <image wx:if="{{src}}" mode="widthFix" src="{{src}}" class="w100"></image> -->
 <!-- <view>
   <navigator url="/pages/login/test"><button type="primary">识别体验</button></navigator>
 </view> -->
-
 <!-- <button bindtap="h5">测试</button> -->
-
 <view class='carouse2 bg_ff'>
   <swiper autoplay indicatorDots circular interval='4000' indicator-active-color='#fff'>
     <view wx:for="{{carouselData}}" wx:key='index'>
       <swiper-item class='item'>
-        <image mode='widthFix' src="{{item.img}}" class='w100' bindtap='click_banner' data-type='{{item.type}}' data-url='{{item.url}}'/>
+        <image mode='widthFix' src="{{item.img}}" class='w100' bindtap='click_banner' data-type='{{item.type}}' data-url='{{item.url}}' />
       </swiper-item>
     </view>
   </swiper>
@@ -26,6 +24,11 @@
     </view>
   </block>
 </view>
+<!-- 修大师 -->
+<!-- <view class="ps_ds">
+  <view class="title">修大师</view>
+  <image mode="widthFix" src='../../img/ps_enter.jpg' class='img' bind:tap="click_ps"></image>
+</view> -->
 <!-- 在线照相馆 -->
 <view class="bg_ff">
   <view class="title">
@@ -91,7 +94,7 @@
     <view class='df jc_sb fw_w'>
       <view wx:for='{{wzrylist.list}}' wx:key='index' class='item' bindtap='click_themeDetail' data-id='{{item.id}}'>
         <view class='imgb'>
-          <image mode='widthFix' src="{{item.fm_img}}" class='w100'/>
+          <image mode='widthFix' src="{{item.fm_img}}" class='w100' />
         </view>
         <view class='txt'>
           <view class='oneline'>
@@ -119,12 +122,12 @@
     <view class='df jc_sb fw_w'>
       <view wx:for='{{movieList.list}}' wx:key='index' class='item' bindtap='click_star' data-id='{{item.id}}' data-type='{{2}}'>
         <view class='imgb'>
-          <image mode='widthFix' src="{{item.fm_img}}" class='w100'/>
+          <image mode='widthFix' src="{{item.fm_img}}" class='w100' />
         </view>
         <view class='txt'>
           <view class='oneline'>
-            <text>{{item.title}} | </text>
-            <text> 【{{item.name}}】</text>
+            <text>{{item.title}} |</text>
+            <text>【{{item.name}}】</text>
           </view>
           <!-- <image mode='widthFix' src='/img/right_arrow.png' class='icon'></image> -->
         </view>
@@ -146,19 +149,19 @@
       <view class="fonts" style="transform: translateX(-{{slide.marqueeDistance}}px)">
         <view class="ft_14">{{slide.text}}</view>
         <view style="margin-right:{{slide.marquee_margin}}px;"></view>
-        <view class="ft_14" style="margin-right:{{slide.marquee_margin}}px;">{{slide.text}}</view>  
+        <view class="ft_14" style="margin-right:{{slide.marquee_margin}}px;">{{slide.text}}</view>
       </view>
     </view>
   </view>
   <view class='experiencer df jc_sb fw_w'>
     <view wx:for='{{starList}}' wx:key='index' class='item' bindtap='click_star' data-id='{{item.id}}' data-type='{{1}}'>
       <view class='imgb'>
-        <image mode='widthFix' src="{{item.fm_img}}" class='w100'/>
+        <image mode='widthFix' src="{{item.fm_img}}" class='w100' />
       </view>
       <view class='txt'>
         <view class='oneline'>
-          <text>{{item.title}} | </text>
-          <text> 【{{item.name}}】</text>
+          <text>{{item.title}} |</text>
+          <text>【{{item.name}}】</text>
         </view>
         <image mode='widthFix' src='/img/right_arrow.png' class='icon'></image>
       </view>
@@ -180,7 +183,7 @@
   <view class='hot_topic df jc_sb fw_w'>
     <view wx:for='{{hotList}}' wx:key='index' class='item' bindtap='click_theme' data-id='{{item.id}}'>
       <view class='imgb'>
-        <image mode='widthFix' src="{{item.image}}" class='w100'/>
+        <image mode='widthFix' src="{{item.image}}" class='w100' />
       </view>
       <view class='txt df jc_c'>
         <view class='oneline'>{{item.name}}</view>
@@ -204,7 +207,7 @@
   <view class='week df jc_sb fw_w'>
     <view wx:for='{{weekData.weekList}}' wx:key='index' class='item' bindtap='click_kepian' data-id='{{item.id}}'>
       <view class='imgb'>
-        <image mode='widthFix' src="{{item.fm_img}}" class='w100'/>
+        <image mode='widthFix' src="{{item.fm_img}}" class='w100' />
       </view>
       <view class='txt ta_c'>
         <image mode='widthFix' src='{{weekData.week_logo}}'></image>
@@ -227,9 +230,9 @@
   <view class='vlist mt_10' wx:for='{{videoData.list}}' wx:key='index'>
     <view class='block'>
       <!-- <view class='ta_c'> -->
-        <!-- <view class='ft_16'>{{item.title}}</view> -->
-        <!-- <view class='ft_12 mt_10'>| {{item.info}} |</view> -->
-        <!-- <view class='arrow'></view> -->
+      <!-- <view class='ft_16'>{{item.title}}</view> -->
+      <!-- <view class='ft_12 mt_10'>| {{item.info}} |</view> -->
+      <!-- <view class='arrow'></view> -->
       <!-- </view> -->
       <view id="{{index}}" class="cover" style="display: {{ _index == index ? 'none' : 'block' }};" bindtap="videoPlay">
         <!-- 视频图层 -->
@@ -253,7 +256,7 @@
 <view class="store_box bg_ff mt_5">
   <view class="title">
     <text class="bold">全国门店</text>
-    <text class="color_99 pl_10">全国224家旗舰店均可体验</text>
+    <text class="color_99 pl_10">全国200余家旗舰店均可体验</text>
   </view>
   <view class='pl_10 pr_10'>
     <image mode='widthFix' src='{{storeData.img}}' class='w100 brr8' bindtap='click_nav' data-id='{{2}}'></image>
@@ -280,8 +283,8 @@
   <view class='comments df jc_sb fw_w'>
     <view wx:for='{{commentsList}}' wx:key='index' class='item' bindtap='comments_detail' data-id='{{item.id}}'>
       <view class='imgb'>
-         <image mode='widthFix' src="{{item.img}}" class='w100'/>
-         <view class="tag">#晒九州，赢积分#</view>
+        <image mode='widthFix' src="{{item.img}}" class='w100' />
+        <view class="tag">#晒九州，赢积分#</view>
       </view>
       <view class='txt'>
         <view class='twoline'>{{item.content}}</view>
@@ -299,19 +302,16 @@
     </view>
   </view>
 </view>
-
 <view class='service_an'>
   <button open-type="contact">
     <image mode='widthFix' src='{{service}}'></image>
   </button>
 </view>
-
 <view hidden='{{ad.state}}' class='ad'>
   <view class='cont' bindtap='click_url' data-type='{{ad.type}}' data-url='{{ad.url}}'>
     <image mode='widthFix' src="{{ad.img}}" class="w100"></image>
   </view>
   <view class='mt_20 ta_c'>
-    <icon type="cancel" size="36" color="#fff" bindtap='close_ad'/>
+    <icon type="cancel" size="36" color="#fff" bindtap='close_ad' />
   </view>
 </view>
-

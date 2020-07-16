@@ -1,4 +1,4 @@
-<!--pages/personal/welfare.wxml-->
-<view class='cont'>
-    <rich-text class='w100' nodes="{{info}}"></rich-text>  
-  </view>
+<!-- pages/personal/welfare.wxml -->
+<view class="cont {{jf_gz ? 'active':''}}">
+  <rich-text class='w100' nodes="{{info}}"></rich-text>
+</view>

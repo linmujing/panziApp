@@ -66,6 +66,13 @@
             </view>
             <image mode="widthFix" src="../../img/enter_.png" />
         </view> -->
+        <view class="my_list_item" bind:tap="link_invitation">
+            <view>
+                <image mode="widthFix" src="/img/center-06.jpg" />
+                <text>邀约订单</text>
+            </view>
+            <image mode="widthFix" src="/img/enter_.png" />
+        </view>
         <view class="my_list_item" bindtap='my_shopcart'>
             <view>
                 <image mode="widthFix" src="/img/car.png" />

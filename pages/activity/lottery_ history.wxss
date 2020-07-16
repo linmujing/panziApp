@@ -1,0 +1,65 @@
+/* pages/activity/lottery_ history.wxss */
+page {
+    background: #fff !important;
+}
+
+.cj_page {
+    position: relative;
+    top: 0;
+    left: 0;
+    background: url('http://vip2.pznrfsy.com/lmj/panziApp/lottery/cj-page.jpg') center no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 1334rpx;
+}
+
+.cj_content {
+    width: 94%;
+    margin: 0 auto;
+    position: absolute;
+    top: 435rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cj_content .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 120rpx;
+    padding: 0 30rpx;
+    border-bottom: 1px solid #ccc;
+    font-size: 32rpx;
+}
+
+.item_list {
+    height: 120rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 30rpx;
+    border-bottom: 1px solid #ccc;
+}
+
+.item_list .item_left .name {
+    font-size: 32rpx;
+}
+
+.item_list .item_left .time {
+    font-size: 22rpx;
+    color: #ccc;
+}
+
+.item_list .item_right {
+    color: #F4946A;
+}
+
+.zj_page {
+    position: relative;
+    top: 0;
+    left: 0;
+    background: url('http://vip2.pznrfsy.com/lmj/panziApp/lottery/zj-page.jpg') center no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 1334rpx;
+}

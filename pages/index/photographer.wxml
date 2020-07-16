@@ -1,0 +1,159 @@
+<view class="photographer">
+    <view class="left_menu">
+        <scroll-view scroll-y="true" style="height: {{winHeight+'px'}}">
+            <view class="menu_item {{isyf ? 'active':''}}" bind:tap="yfTap">研发中心</view>
+            <view class="menu_item {{currentTab==index ? 'active' :'' }}" data-current='{{index}}' wx:for="{{storeList}}" wx:key="id" data-id="{{item.id}}" bindtap='switchNav'>
+                {{item.name}}
+            </view>
+        </scroll-view>
+    </view>
+    <view class="right_content">
+        <view class="detail">
+            <!-- 摄影师 -->
+            <view class="level1">
+                <view class="item_title">{{level1[0].level}}</view>
+                <view class="detail_item" wx:for="{{level1}}" wx:key="id">
+                    <view class="content">
+                        <view class="name">{{item.title}}</view>
+                        <view class="level">{{item.level}}</view>
+                        <view class="line"></view>
+                    </view>
+                    <view class="header_img">
+                        <image mode="widthFix" src="{{baseUrl + item.tximg}}" />
+                    </view>
+                </view>
+            </view>
+            <view class="level1">
+                <view class="item_title">{{level2[0].level}}</view>
+                <view class="detail_item" wx:for="{{level2}}" wx:key="id">
+                    <view class="content">
+                        <view class="name">{{item.title}}</view>
+                        <view class="level">{{item.level}}</view>
+                        <view class="line"></view>
+                    </view>
+                    <view class="header_img">
+                        <image mode="widthFix" src="{{baseUrl + item.tximg}}" />
+                    </view>
+                </view>
+            </view>
+            <view class="level1">
+                <view class="item_title">{{level3[0].level}}</view>
+                <view class="detail_item" wx:for="{{level3}}" wx:key="id">
+                    <view class="content">
+                        <view class="name">{{item.title}}</view>
+                        <view class="level">{{item.level}}</view>
+                        <view class="line"></view>
+                    </view>
+                    <view class="header_img">
+                        <image mode="widthFix" src="{{baseUrl + item.tximg}}" />
+                    </view>
+                </view>
+            </view>
+            <view class="level1">
+                <view class="item_title">{{level4[0].level}}</view>
+                <view class="detail_item" wx:for="{{level4}}" wx:key="id">
+                    <view class="content">
+                        <view class="name">{{item.title}}</view>
+                        <view class="level">{{item.level}}</view>
+                        <view class="line"></view>
+                    </view>
+                    <view class="header_img">
+                        <image mode="widthFix" src="{{baseUrl + item.tximg}}" />
+                    </view>
+                </view>
+            </view>
+            <!-- 化妆师 -->
+            <view class="level1">
+                <view class="item_title">{{dresser1[0].dresser}}</view>
+                <view class="detail_item" wx:for="{{dresser1}}" wx:key="id">
+                    <view class="content">
+                        <view class="name">{{item.title}}</view>
+                        <view class="level">{{item.level}}</view>
+                        <view class="line"></view>
+                    </view>
+                    <view class="header_img">
+                        <image mode="widthFix" src="{{baseUrl + item.tximg}}" />
+                    </view>
+                </view>
+            </view>
+            <view class="level1">
+                <view class="item_title">{{dresser2[0].dresser}}</view>
+                <view class="detail_item" wx:for="{{dresser2}}" wx:key="id">
+                    <view class="content">
+                        <view class="name">{{item.title}}</view>
+                        <view class="level">{{item.level}}</view>
+                        <view class="line"></view>
+                    </view>
+                    <view class="header_img">
+                        <image mode="widthFix" src="{{baseUrl + item.tximg}}" />
+                    </view>
+                </view>
+            </view>
+            <view class="level1">
+                <view class="item_title">{{dresser3[0].dresser}}</view>
+                <view class="detail_item" wx:for="{{dresser3}}" wx:key="id">
+                    <view class="content">
+                        <view class="name">{{item.title}}</view>
+                        <view class="level">{{item.level}}</view>
+                        <view class="line"></view>
+                    </view>
+                    <view class="header_img">
+                        <image mode="widthFix" src="{{baseUrl + item.tximg}}" />
+                    </view>
+                </view>
+            </view>
+            <view class="level1">
+                <view class="item_title">{{dresser4[0].dresser}}</view>
+                <view class="detail_item" wx:for="{{dresser4}}" wx:key="id">
+                    <view class="content">
+                        <view class="name">{{item.title}}</view>
+                        <view class="level">{{item.level}}</view>
+                        <view class="line"></view>
+                    </view>
+                    <view class="header_img">
+                        <image mode="widthFix" src="{{baseUrl + item.tximg}}" />
+                    </view>
+                </view>
+            </view>
+            <view class="level1">
+                <view class="item_title">{{dresser5[0].dresser}}</view>
+                <view class="detail_item" wx:for="{{dresser5}}" wx:key="id">
+                    <view class="content">
+                        <view class="name">{{item.title}}</view>
+                        <view class="level">{{item.level}}</view>
+                        <view class="line"></view>
+                    </view>
+                    <view class="header_img">
+                        <image mode="widthFix" src="{{baseUrl + item.tximg}}" />
+                    </view>
+                </view>
+            </view>
+            <view class="level1">
+                <view class="item_title">{{dresser6[0].dresser}}</view>
+                <view class="detail_item" wx:for="{{dresser6}}" wx:key="id">
+                    <view class="content">
+                        <view class="name">{{item.title}}</view>
+                        <view class="level">{{item.level}}</view>
+                        <view class="line"></view>
+                    </view>
+                    <view class="header_img">
+                        <image mode="widthFix" src="{{baseUrl + item.tximg}}" />
+                    </view>
+                </view>
+            </view>
+            <view class="level1">
+                <view class="item_title">{{dresser7[0].dresser}}</view>
+                <view class="detail_item" wx:for="{{dresser7}}" wx:key="id">
+                    <view class="content">
+                        <view class="name">{{item.title}}</view>
+                        <view class="level">{{item.level}}</view>
+                        <view class="line"></view>
+                    </view>
+                    <view class="header_img">
+                        <image mode="widthFix" src="{{baseUrl + item.tximg}}" />
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

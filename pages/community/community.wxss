@@ -1,3 +1,9 @@
+.test {
+    width: 230rpx;
+    height: 60rpx;
+    border: 1px solid #000;
+}
+
 /* pages/community/community.wxss */
 .top_nav {
     display: flex;
@@ -97,9 +103,9 @@
 
 .content .pTitle_left .pTitle_left_headerImg .pf_logo {
     position: absolute;
-    right: 0rpx;
-    bottom: 0rpx;
-    width: 32rpx;
+    right: 4rpx;
+    bottom: 5rpx;
+    width: 24rpx;
 }
 
 .content .pTitle_left .Popular_name {

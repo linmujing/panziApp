@@ -1,0 +1,80 @@
+<view class="container" wx:if="{{Identity == 0}}">
+    <view class="code_box">
+        <view class="code_wrap">
+            <view class="title">亲爱的小主</view>
+            <view class="content">
+                <view class="code_pic">
+                    <image mode="widthFix" src="{{code_img}}" bindlongpress="saveImage" />
+                </view>
+                <view class="">
+                    核销字符:
+                    <text class="number">{{hx_code}}</text>
+                </view>
+                <view class="">以上是您的订单产品核销码，请妥善保存。</view>
+            </view>
+        </view>
+    </view>
+    <view class="cardInfo_box">
+        <view class="cardInfo_wrap">
+            <view class="cardInfo_title">联名卡产品内容</view>
+            <view class="cardInfo_details">
+                <view class="info_item" wx:for="{{cardList}}" wx:key="index">
+                    <view class="goods_name">{{item.name}}</view>
+                    <view class="goods_status" wx:if="{{item.status == '未核销'}}">未核销</view>
+                    <view class="goods_status" wx:if="{{item.status == '已核销'}}">已核销</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="business" wx:if="{{Identity == 1}}">
+    <view class="inp_box">
+        <view class="business_title">
+            <view>亲爱的盘子女人坊合作商户</view>
+            <view>欢迎您的到来，祝生活愉快！</view>
+        </view>
+        <view class="inp_wrap">
+            <view class="center_wrap">
+                <view class="switch_btn">
+                    <view class="{{currentTab==1 ? 'active' :'' }}" data-cur="1" bind:tap="switchNav">
+                        手动输入
+                    </view>
+                    <view class="{{currentTab==2 ? 'active' :'' }}" data-cur="2" bind:tap="switchNav">
+                        手机扫码
+                    </view>
+                </view>
+                <view class="inp_content">
+                    <view class="tel_box">
+                        手机号码
+                        <input type="number" bindinput="blur_tel" />
+                    </view>
+                    <view class="code_box">
+                        核销字符
+                        <input type="text" bindinput="blur_code" bindconfirm="handleCheck" />
+                    </view>
+                </view>
+                <!-- <view class="hx_btn" bind:tap="hx_click">核销</view> -->
+                <view class="inp_tips">请提供客户购买联名卡产品时的手机号码</view>
+            </view>
+        </view>
+    </view>
+    <view class="buyData">
+        <view class="buy_wrap">
+            <view class="buy_title">购买本商户数据</view>
+            <view class="buy_content">
+                <view class="info_item">
+                    <view>已购买产品客户总数</view>
+                    <view>{{buyData.buy}}</view>
+                </view>
+                <view class="info_item">
+                    <view>已核销该产品客户数</view>
+                    <view>{{buyData.already}}</view>
+                </view>
+                <view class="info_item">
+                    <view>未核销该产品客户数</view>
+                    <view>{{buyData.without}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

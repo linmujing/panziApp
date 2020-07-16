@@ -1,4 +1,4 @@
-<!--pages/personal/my_QRcode.wxml-->
+<!-- pages/personal/my_QRcode.wxml -->
 <!-- <view class='ta_c box'>
   <image mode="widthFix" src='{{bgImg}}' class='w100 bg'></image>
   <image mode="widthFix" src='{{qrImg}}' class='code'></image>
@@ -13,14 +13,13 @@
       <swiper-item class='item'>
         <image mode='widthFix' src="{{item.img}}" class='w100' bindtap='click_banner' data-type='{{item.type}}' data-url='{{item.url}}'/>
       </swiper-item>
-    </view>
--->
+    </view> -->
 <view class="swiper_box">
   <swiper indicatorDots circular interval='4000' current='{{current}}' bindchange='change'>
     <view wx:for="{{qrImg}}" wx:key='index'>
-    <swiper-item class='item'>
-      <image mode='aspectFit' src="{{item.img}}" class="h100 w100"/>
-    </swiper-item>
+      <swiper-item class='item'>
+        <image mode='aspectFit' src="{{item.img}}" class="h100 w100" />
+      </swiper-item>
     </view>
   </swiper>
 </view>
@@ -54,7 +53,7 @@
     </view>
   </view>
   <view class='mt_20 ta_c'>
-    <icon type="cancel" size="36" color="#fff" bindtap='click_notes'/>
+    <icon type="cancel" size="36" color="#fff" bindtap='click_notes' />
   </view>
 </view>
 <!-- 授权弹窗 -->

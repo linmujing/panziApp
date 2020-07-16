@@ -1,2 +1,2 @@
-<!--pages/index/webView.wxml-->
-<web-view src="{{src}}"></web-view>
+<!-- pages/index/webView.wxml -->
+<web-view bindmessage="bindmessage" src="{{src}}"></web-view>

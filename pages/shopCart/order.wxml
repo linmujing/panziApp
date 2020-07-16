@@ -1,4 +1,4 @@
-<!--pages/shopCart/order.wxml-->
+<!-- pages/shopCart/order.wxml -->
 <view class='addr df ai_c jc_sb'>
   <image mode='widthFix' src='/img/location.png' class='loc'></image>
   <view wx:if='{{addr_state}}' bindtap='select_addr' class='txt ft_16 color_99'>请添加收货地址</view>
@@ -16,25 +16,27 @@
   <image mode='widthFix' src='/img/enter_.png' class='jt'></image>
 </view>
 <view class='info'>
-<block wx:for='{{list}}' wx:key='index'>
-  <view class='list df ai_c'>
-    <view class='imgb'>
-      <image mode='widthFix' src='{{item.goods_img}}' class='w100'></image>
-    </view>
-    <view class='detail'>
-      <view class='twoline'>{{item.goods_name}}</view>
-      <view wx:if='{{item.goods_nature != ""}}' class='ft_12 color_99'>尺码： {{item.goods_nature}}</view>
-      <view class='df jc_sb mt_20'>
-        <view class='color_99 ft_12'>
-          <text class='color_jf'>￥{{item.money}}</text>
+  <block wx:for='{{list}}' wx:key='index'>
+    <view class='list df ai_c'>
+      <view class='imgb'>
+        <image mode='widthFix' src='{{item.goods_img}}' class='w100'></image>
+      </view>
+      <view class='detail'>
+        <view class='twoline'>{{item.goods_name}}</view>
+        <view wx:if='{{item.goods_nature != ""}}' class='ft_12 color_99'>
+          尺码： {{item.goods_nature}}
         </view>
-        <view class='buy df ai_c'>
-          <text class='num'>X {{item.num}}</text>
+        <view class='df jc_sb mt_20'>
+          <view class='color_99 ft_12'>
+            <text class='color_jf'>￥{{item.money}}</text>
+          </view>
+          <view class='buy df ai_c'>
+            <text class='num'>X {{item.num}}</text>
+          </view>
         </view>
       </view>
     </view>
-  </view>
-</block>
+  </block>
   <view class='df jc_sb ai_c mt_10'>
     <view class='df'>
       <view class='tit'>配送方式</view>
@@ -45,21 +47,24 @@
     </view>
   </view>
   <view class='df ai_c mt_10'>
-   <view class='tit'>订单备注</view>
-   <input class='w70' placeholder="选填，请先和商家协商一致" placeholder-style='color: #999' bindinput="blur_remark"/>
+    <view class='tit'>订单备注</view>
+    <input class='w70' placeholder="选填，请先和商家协商一致" placeholder-style='color: #999' bindinput="blur_remark" />
   </view>
-  <view class="ta_r mt_10">共{{goodscount}}件商品 小计：<text class="color_jf">￥{{totle_price}}</text></view>
+  <view class="ta_r mt_10">
+    共{{goodscount}}件商品 小计：
+    <text class="color_jf">￥{{totle_price}}</text>
+  </view>
 </view>
-
 <view class='tj'>
   <view class='tjdd df ai_c jc_sb'>
-    <view class='color_99'>合计：<text class="color_jf">￥{{totle_price}} </text></view>
+    <view class='color_99'>
+      合计：
+      <text class="color_jf">￥{{totle_price}}</text>
+    </view>
     <view class='btn_title' bindtap='click_tijiao'>提交订单</view>
   </view>
-   <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
+  <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>
 </view>
-
-
 <!-- 兑换成功弹窗 -->
 <view hidden='{{popup_state}}' class='popup'>
   <view class='box df fd_c jc_sa'>
@@ -74,4 +79,3 @@
     </view>
   </view>
 </view>
-

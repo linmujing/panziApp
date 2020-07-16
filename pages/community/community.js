@@ -177,6 +177,16 @@
        })
      }
    },
+
+   test() {
+     const url = 'https://vip2.pznrfsy.com/bin/changeQueen/index.html'
+     getApp().globalData.webView = url;
+     wx.navigateTo({
+       url: '/pages/webH5/onlinePhoto'
+     })
+   },
+
+
    getBanner: function () {
      var that = this
      var reqBody = {

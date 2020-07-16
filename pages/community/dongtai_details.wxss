@@ -24,9 +24,9 @@
 
 .title_left_headimg .pf_logo {
     position: absolute;
-    right: -6rpx;
-    bottom: 5rpx;
-    width: 42rpx;
+    right: -2rpx;
+    bottom: 6rpx;
+    width: 36rpx;
 }
 
 .swiper_box {

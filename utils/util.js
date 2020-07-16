@@ -20,7 +20,29 @@ const urlFront2 = 'https://kpgl.pznrfsy.com/index/';
 const urlFront3 = 'https://ceshi.pznrfsy.com/panzimall/';
 const urlFront4 = 'https://zxg2.pznrfsy.com/index/'
 const urlFront5 = 'http://kpgls.90cxkj.com/index/'
+const urlFront6 = 'https://vip2.pznrfsy.com/index.php/'
 const url = {
+  payment: urlFront6 + '/index/photoshop/payment/',
+  invite_list: urlFront6 + 'index/player/invite_list/', //邀约历史记录
+  invite: urlFront6 + 'index/player/invite/', //邀约信息
+  // dragon: urlFront6 + 'index/dragon/index',
+  dial_list: urlFront6 + 'index/dial/dial_list', //转盘
+  dial_log: urlFront6 + 'index/dial/dial_log', //转盘
+  dial_prize: urlFront6 + 'index/dial/dial_prize', //转盘
+  getcj: urlFront6 + 'index/dial/dial', //转盘抽奖
+  cjtest: urlFront6 + 'index/dial/ceshi', //转盘抽奖测试
+
+  zplotto: urlFront6 + 'index/integral/convert_goods_lotto', //转盘抽奖提交订单
+  expire: urlFront6 + 'index/player/expire/', //积分过期提醒
+
+  photoList: urlFront6 + 'index/photography/cameristnavyfzx',
+  photoStoreList: urlFront6 + 'index/photography/camerismendian',
+
+  invitation: urlFront6 + 'index/invitation/share',
+  invitationLogin: urlFront6 + 'index/invitation/index',
+
+  exchange: urlFront6 + 'index/exchange/index',
+  camera: urlFront6 + 'index/camera/index',
 
   test_uploadImg: urlFront5 + 'api/upload_img', // 测试
   test_sborder: urlFront5 + 'api/sborder', // 测试
@@ -69,6 +91,10 @@ const url = {
   apply: urlFront + 'panfen/apply', // 盘粉达人提交信息
   send_sms: urlFront + 'panfen/send_sms', // 盘粉达人获取验证码
 
+  verification: urlFront + 'verification/user', // 核销：是否是客户
+  shopLogin: urlFront + 'verification/shop', // 核销：是否是客户
+  businessInfo: urlFront + 'verification/info', // 核销：商户信息
+  hxcheck: urlFront + 'verification/check', // 核销：商户信息
 
   wx_gqlist: urlFront2 + 'index/wx_gqlist',
   wx_list: urlFront2 + 'index/wx_lists',
@@ -129,6 +155,7 @@ const url = {
   checkIn: urlFront + 'sign/sign',
   signRecord: urlFront + 'sign/sign_record',
   welfare: urlFront + 'sign/welfare',
+  welfare2: urlFront + 'sign/welfare2', //积分规则的富文本
 
   index: urlFront + 'Content/column',
   gywm: urlFront + 'Content/gywm',

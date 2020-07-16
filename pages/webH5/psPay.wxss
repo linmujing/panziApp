@@ -1,0 +1,11 @@
+/* pages/webH5/psPay.wxss */
+.btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn button {
+    width: 320rpx;
+}

@@ -27,19 +27,22 @@ Page({
   onLoad: function (options) {
     var userInfo = wx.getStorageSync('userInfo');
     this.setData({
-      userInfo: userInfo
+      userInfo: userInfo,
+      // types: options.types,
+      // orderId: options.id,
     })
     if (!userInfo) {
       wx.navigateTo({
         url: '/pages/login/index',
       })
     }
-    if (options.id){
+    if (options.id) {
       this.setData({
         id: options.id
       })
       this.getOrder(options.id)
-    }else{
+    } else {
+      console.log(info)
       var info = app.globalData.hfInfo
       var totle_cost = info.money + info.postage
       this.setData({
@@ -64,7 +67,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // console.log(app.globalData.Select_address)
     if (app.globalData.Select_address) {
       this.setData({
         addr: app.globalData.Select_address,
@@ -72,6 +74,7 @@ Page({
       })
     }
   },
+
   getOrder: function (id) {
     var that = this
     wx.showLoading({
@@ -106,8 +109,8 @@ Page({
     };
     util.post(util.url.addrList, reqBody, (res) => {
       if (res.state == 1) {
-        for (var i = 0; i < res.info.length; i++){
-          if(res.info[i].type == 1){
+        for (var i = 0; i < res.info.length; i++) {
+          if (res.info[i].type == 1) {
             that.setData({
               addr: res.info[i],
               addr_state: false
@@ -127,7 +130,7 @@ Page({
     var that = this;
     var num = that.data.num;
     var limit = that.data.info.limit;
-    if (num >= limit && limit != -1){
+    if (num >= limit && limit != -1) {
       wx.showToast({
         title: '已经到达该商品上限啦~',
         icon: 'none',
@@ -138,7 +141,7 @@ Page({
     num++;
     var totle_cost = that.data.info.money * num + that.data.info.postage
     var totle_price = that.data.info.money_jf * num
-    that.setData({ 
+    that.setData({
       num: num,
       totle_cost: totle_cost.toFixed(2),
       totle_price: totle_price.toFixed(2),
@@ -166,9 +169,11 @@ Page({
       totle_price: totle_price
     })
   },
+
   click_tijiao: function (e) {
     var that = this
-    if (that.data.addr_state){
+
+    if (that.data.addr_state) {
       wx.showToast({
         title: '请选择收货地址~',
         icon: 'none',
@@ -176,18 +181,22 @@ Page({
       })
       return false
     }
-   if(that.data.type == 1){
-     if (that.data.info.money_jf > 0){
-       that.pay_goods()
-     }else{
-       that.integral()
-     }
-     
-   } else if (that.data.type == 2){
-     that.create_order()
-   } else if (that.data.type == 3 || that.data.type == 4) {
-     that.lotto()
-   }
+    if (that.data.type == 1) {
+      if (that.data.info.money_jf > 0) {
+        that.pay_goods()
+      } else {
+        that.integral() // 积分兑换
+      }
+
+    } else if (that.data.type == 2) {
+      that.create_order() // 汉服生成订单
+    } else if (that.data.type == 3 || that.data.type == 4) {
+      that.lotto() // 积分抽奖
+    }
+    // if (that.data.types == 8080) {
+    //   console.log(111)
+    //   that.zplotto() //转盘抽奖
+    // }
   },
   // 积分兑换 + 支付
   pay_goods: function () {
@@ -231,6 +240,41 @@ Page({
       })
     })
   },
+
+  // 转盘抽奖提交
+  zplotto() {
+    wx.showLoading({
+      title: '加载中',
+      mask: true
+    })
+    var that = this
+    var reqBody = {
+      token: that.data.userInfo.token,
+      address_id: that.data.addr.id,
+      remark: that.data.remark,
+      convert_no: that.data.orderId
+    };
+    util.post(util.url.zplotto, reqBody, (res) => {
+      wx.hideLoading()
+      if (res.state == 1) {
+        var popup_state = that.data.popup_state
+        that.setData({
+          popup_state: !popup_state
+        })
+      } else {
+        wx.showToast({
+          title: res.info,
+          icon: 'none'
+        })
+        setTimeout(function () {
+          wx.navigateTo({
+            url: '/pages/personal/my_order',
+          })
+        }, 800)
+      }
+    })
+  },
+
   // 积分抽奖
   lotto: function () {
     wx.showLoading({
@@ -243,6 +287,7 @@ Page({
       address_id: that.data.addr.id,
       remark: that.data.remark,
       convert_no: that.data.info.convert_no,
+      // order_id: that.data.orderId
     };
     util.post(util.url.convert_lotto, reqBody, (res) => {
       wx.hideLoading()
@@ -307,7 +352,7 @@ Page({
     })
   },
   // 积分兑换
-  integral: function(){
+  integral: function () {
     var that = this
     wx.showModal({
       title: '提示',
@@ -335,16 +380,16 @@ Page({
               that.setData({
                 popup_state: !popup_state
               })
-            }else{
+            } else {
               wx.showToast({
                 title: res.info,
                 icon: 'none'
               })
-              setTimeout(function(){
+              setTimeout(function () {
                 wx.navigateTo({
                   url: '/pages/personal/my_order',
                 })
-              },800)
+              }, 800)
             }
           })
         } else if (res.cancel) {
@@ -369,7 +414,7 @@ Page({
     })
   },
   // 汉服生成订单
-  create_order: function(){
+  create_order: function () {
     var info = this.data.info
     var reqBody = {
       token: this.data.userInfo.token,

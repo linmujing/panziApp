@@ -1,0 +1,66 @@
+<!-- pages/activity/lottery.wxml -->
+<view class="container">
+    <view class="top_title">
+        <view class="my_jf">
+            我的积分：
+            <text class="jf_num">{{myjf}}</text>
+        </view>
+        <view class="gz_btn" bind:tap="openGz">活动规则</view>
+    </view>
+    <view class="lottery_title">
+        <image mode="widthFix" src="../../img/lottery-title.png" />
+    </view>
+    <view class="lottery">
+        <view id="luckdraw_box">
+            <view id="luckdraw_back">
+                <image style='transform:rotate({{ change_angle}}deg)' mode="scaleToFill" src="../../img/Turntable.png"></image>
+            </view>
+            <view id="luckdraw_pointer" bindtap='getCj'>
+                <image mode="scaleToFill" src="../../img/pointer.png"></image>
+            </view>
+        </view>
+    </view>
+    <view class="lottery_btn">
+        <view class="">
+            <image bind:tap="linkHistory" data-type="cj" mode="widthFix" src="../../img/record-btn.png" />
+        </view>
+        <view class="">
+            <image bind:tap="linkHistory" data-type="zj" mode="widthFix" src="../../img/myPrize-btn.png" />
+        </view>
+    </view>
+    <view class="footer_tips">
+        <image mode="widthFix" src="../../img/lb.png" />
+        <view class="bar_text" animation="{{animationData}}">
+            恭喜{{content.name}}抽中了{{content.goods_name}}
+        </view>
+        <!-- <view class="text">恭喜***抽中了阿玛尼粉底液</view> -->
+    </view>
+</view>
+<!-- 规则 -->
+<view class="gz_page" wx:if="{{gzShow}}">
+    <view class="gz_content">
+        <image class="gz_pic" src="http://vip2.pznrfsy.com/lmj/panziApp/lottery/cj-gz.png" />
+        <image class="close_btn" bind:tap="closeGz" mode="widthFix" src="../../img/close-btn.png" />
+    </view>
+</view>
+<!-- 中奖弹窗 -->
+<view class="prize_pop" wx:if="{{prizeShow}}">
+    <view class="prize_content">
+        <image class="gift_bg" mode="widthFix" src="../../img/gift-bg.png" />
+        <view class="prize_box">
+            <image wx:if="{{hasPrize}}" class="gift" mode="widthFix" src="../../img/gift.png" />
+            <image wx:else class="no_gift" mode="widthFix" src="../../img/no-gift.png" />
+            <view class="prize_text" wx:if="{{hasPrize}}">
+                恭喜您获得
+                <text class="prize_name">{{result_val}}</text>
+            </view>
+            <view class="prize_btn">
+                <image bind:tap="again_prize" class="again_btn" mode="widthFix" src="../../img/again-btn.png" />
+                <image bind:tap="receive_prize" wx:if="{{isPrize}}" class="receive_btn" mode="widthFix" src="../../img/receive-btn.png" />
+            </view>
+        </view>
+        <view class="prize_close" bind:tap="prize_close">
+            <image mode="widthFix" src="../../img/gift-close.png" />
+        </view>
+    </view>
+</view>

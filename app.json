@@ -1,23 +1,31 @@
 {
   "pages": [
-    
     "pages/index/index",
-    
+    "pages/webH5/psPay",
+    "pages/shopCart/order",
+    "pages/personal/invitation_list",
+    "pages/personal/invitation",
+    "pages/shopCart/index",
+    "pages/index/order",
+    "pages/activity/lottery",
+    "pages/activity/lottery_ history",
+    "pages/personal/add_address",
+    "pages/index/photographer",
+    "pages/index/hexiao_details",
+    "pages/index/my_photos",
     "pages/login/index",
     "pages/login/test",
-
     "pages/index/webView",
     "pages/index/video",
     "pages/index/hanFu",
     "pages/index/hanFu_client",
     "pages/index/hanFu_detail",
-    "pages/index/order",
+    "pages/personal/assist",
     "pages/index/showcase",
     "pages/index/message",
     "pages/index/star",
     "pages/index/star_detail",
     "pages/index/photos_list",
-    "pages/index/my_photos",
     "pages/index/store",
     "pages/index/store_detail",
     "pages/index/jifen_mall",
@@ -25,7 +33,6 @@
     "pages/index/comments",
     "pages/index/comments_detail",
     "pages/index/myMovies",
-
     "pages/studio/index",
     "pages/studio/classification",
     "pages/studio/material",
@@ -36,18 +43,14 @@
     "pages/studio/share",
     "pages/studio/completion",
     "pages/studio/payment",
-
     "pages/theme/index",
     "pages/theme/detail",
-
     "pages/personal/index",
     "pages/personal/welfare",
     "pages/personal/trivia",
     "pages/personal/trivia_download",
-    "pages/personal/assist",
     "pages/personal/about_us",
     "pages/personal/address",
-    "pages/personal/add_address",
     "pages/personal/my_order",
     "pages/personal/my_customer",
     "pages/personal/my_integral",
@@ -61,26 +64,22 @@
     "pages/personal/pfApply_info",
     "pages/personal/audit_status",
     "pages/personal/pf_master",
-
-    "pages/community/community",
-    "pages/community/hot_list",
     "pages/community/hot_topic",
+    "pages/community/hot_list",
+    "pages/community/community",
     "pages/community/dongtai_details",
     "pages/community/release",
-    "pages/community/task",
     "pages/community/search",
     "pages/community/searchLink",
-
-    "pages/shopCart/index",
-    "pages/shopCart/order",
-
+    "pages/community/task",
     "pages/activity/index",
     "pages/activity/ranking",
     "pages/activity/webView",
     "pages/activity/game",
-    "pages/activity/game_list"
-
-    
+    "pages/activity/game_list",
+    "pages/login/webview",
+    "pages/webH5/webview",
+    "pages/webH5/onlinePhoto"
 
   ],
   "navigateToMiniProgramAppIdList": [

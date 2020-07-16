@@ -1,0 +1,201 @@
+/* pages/activity/lottery.wxss */
+.container {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.top_title {
+    display: flex;
+    justify-content: space-between;
+    margin: 10rpx 30rpx;
+}
+
+.lottery_title {
+    text-align: center;
+    margin: 30rpx 0;
+}
+
+.lottery_title image {
+    width: 377rpx;
+    height: 108rpx;
+}
+
+#luckdraw_box {
+    width: 682rpx;
+    height: 682rpx;
+    margin: 0 auto;
+    position: relative;
+    /* top: 300rpx */
+}
+
+#luckdraw_back {
+    width: 100%;
+    height: 100%;
+}
+
+#luckdraw_back image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+}
+
+#luckdraw_pointer {
+    width: 159rpx;
+    height: 178rpx;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* left: 178.5rpx;
+    top: 132.5rpx; */
+    z-index: 99;
+}
+
+#luckdraw_pointer image {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.lottery_btn {
+    display: flex;
+    justify-content: space-around;
+    margin: 50rpx 0;
+}
+
+.lottery_btn image {
+    width: 172rpx;
+    height: 46rpx;
+}
+
+.footer_tips {
+    background: #FFF2E9;
+    width: 550rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    margin: 0 auto;
+    color: #4B4A48;
+    overflow: hidden;
+}
+
+.footer_tips image {
+    width: 48rpx;
+    margin-left: 50rpx;
+}
+
+.footer_tips .bar_text {
+    flex: 1;
+    margin-left: 12rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.gz_page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .6);
+    z-index: 999;
+}
+
+.gz_content {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 575rpx;
+    height: 999rpx;
+}
+
+.gz_pic {
+    width: 575rpx;
+    height: 1049rpx;
+}
+
+.gz_content .close_btn {
+    position: absolute;
+    top: -25rpx;
+    right: -25rpx;
+    width: 56rpx;
+}
+
+.prize_pop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .6);
+    z-index: 99;
+}
+
+.prize_content {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 567rpx;
+    height: 575rpx;
+}
+
+.prize_content .gift_bg {
+    width: 567rpx;
+    height: 575rpx;
+}
+
+.prize_box {
+    position: absolute;
+    top: 96rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.prize_box .gift {
+    width: 249rpx;
+    height: 193rpx;
+}
+
+.prize_box .no_gift {
+    width: 294rpx;
+    height: 229rpx;
+}
+
+.prize_box .prize_text {
+    font-size: 36rpx;
+    font-weight: bold;
+}
+
+.prize_box .prize_btn {
+    margin-top: 30rpx;
+}
+
+.prize_box .prize_btn image {
+    width: 460rpx;
+    height: 60rpx;
+}
+
+.prize_box .prize_btn .again_btn {
+    margin-bottom: 10rpx;
+}
+
+.prize_close {
+    position: absolute;
+    bottom: -100rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.prize_close image {
+    width: 72rpx;
+}

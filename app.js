@@ -7,7 +7,7 @@ App({
     wx.getSystemInfo({
       success: res => {
         wx.setStorageSync('xitong', res.platform);
-        
+
         this.globalData.equipment = res
         // 根据 model 进行判断
         if (res.model.search('iPhone X') != -1) {

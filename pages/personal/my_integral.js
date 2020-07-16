@@ -7,9 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[],
+    list: [],
     Page_slide: true,
     page: 1,
+    expire_jf: {
+      data: null,
+      time: ""
+    }
   },
 
   /**
@@ -27,8 +31,18 @@ Page({
     }
     this.getJifen()
     this.getList()
+    this.jfTime()
   },
-
+  add_jf() {
+    wx.navigateTo({
+      url: '/pages/personal/my_QRcode'
+    })
+  },
+  look_gz() {
+    wx.navigateTo({
+      url: 'welfare?type=jf'
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -81,11 +95,37 @@ Page({
           page: that.data.page + 1,
           Page_slide: true
         })
-      }else{
+      } else {
         that.setData({
           Page_slide: false
         })
       }
+    })
+  },
+
+  // 过期积分
+  jfTime: function () {
+    var userInfo = this.data.userInfo
+    var reqBody = {
+      token: userInfo.token
+    };
+    wx.showLoading({
+      title: '加载中',
+    })
+    util.post(util.url.expire, reqBody, (res) => {
+      console.log(res)
+      if (res.state == 1) {
+        this.setData({
+          have_expire: true,
+          'expire_jf.data': res.data,
+          'expire_jf.time': res.time
+        })
+      } else {
+        this.setData({
+          have_expire: false
+        })
+      }
+      wx.hideLoading()
     })
   },
   /**
@@ -125,5 +165,5 @@ Page({
     }
   },
 
- 
+
 })

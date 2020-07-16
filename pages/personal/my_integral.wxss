@@ -1,4 +1,45 @@
 /* pages/personal/my_integral.wxss */
-.jf{background: #F6AFC1;padding: 60rpx;text-align: center;color: #fff;}
-.font{font-size: 48rpx;}
-.list{padding: 20rpx 50rpx;border-bottom: 2rpx solid #E9E9E9;}
+.top_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #F6AFC1;
+    padding: 20rpx;
+}
+
+.top_title view {
+    color: #fff;
+    /* padding: 12rpx 20rpx 0 0; */
+}
+
+.jf_wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #F6AFC1;
+    padding: 60rpx;
+}
+
+.jf {
+    text-align: center;
+    color: #fff;
+}
+
+.expire_jf {
+    color: #fff;
+    text-align: center;
+}
+
+.expire_time {
+    margin-top: 8rpx;
+    font-size: 22rpx;
+}
+
+.font {
+    font-size: 48rpx;
+}
+
+.list {
+    padding: 20rpx 50rpx;
+    border-bottom: 2rpx solid #E9E9E9;
+}

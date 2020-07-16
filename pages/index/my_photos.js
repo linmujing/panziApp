@@ -20,23 +20,51 @@ Page({
     },
     order: '',
     survey: {
-      popup_state: true,
+      popup_state: false,
     },
     total: {
       one: 0,
       two: 5
     },
-    gradeList: [
-      { title: '摄影服务', one: 0, two: 5 },
-      { title: '化妆服务', one: 0, two: 5 },
-      { title: '数码服务', one: 0, two: 5 },
-      { title: '选片体验', one: 0, two: 5 },
-      { title: '产品品质', one: 0, two: 5 },
-      { title: '服务态度', one: 0, two: 5 },
+    gradeList: [{
+        title: '摄影服务',
+        one: 0,
+        two: 5
+      },
+      {
+        title: '化妆服务',
+        one: 0,
+        two: 5
+      },
+      {
+        title: '数码服务',
+        one: 0,
+        two: 5
+      },
+      {
+        title: '选片体验',
+        one: 0,
+        two: 5
+      },
+      {
+        title: '产品品质',
+        one: 0,
+        two: 5
+      },
+      {
+        title: '服务态度',
+        one: 0,
+        two: 5
+      },
     ],
-    radioData: [
-      { name: '是', value: 1 },
-      { name: '否', value: 2 }
+    radioData: [{
+        name: '是',
+        value: 1
+      },
+      {
+        name: '否',
+        value: 2
+      }
     ],
     intro: '',
     advise: '',
@@ -46,7 +74,11 @@ Page({
     number: 0,
     down_state: true,
     video_state: true,
-    current: 0
+    current: 0,
+    notes: {
+      txt: "因底片占用空间大，为防止遗失，请您在收到产品后，90天内完成底片下载，感谢您的配合，谢谢！",
+      state: false
+    }
   },
 
   /**
@@ -68,6 +100,11 @@ Page({
     that.getList()
   },
 
+  close_notes: function () {
+    this.setData({
+      'notes.state': true
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -99,7 +136,7 @@ Page({
       }
     })
   },
-  getList: function(){
+  getList: function () {
     var that = this
     var reqBody = {
       order: that.data.options.order,
@@ -133,7 +170,7 @@ Page({
         }
         // var list = that.data.imgData
         // list = list.concat(res.data.list);
-        if (that.data.page == 1){
+        if (that.data.page == 1) {
           that.setData({
             video: res.data.video,
             number: res.data.number
@@ -146,13 +183,13 @@ Page({
           allCheck: false,
           content: res.data.content
         })
-      }else{
+      } else {
         wx.showToast({
           title: res.msg,
           icon: "none",
           duration: 1000,
-          success(res){
-            setTimeout(function(){
+          success(res) {
+            setTimeout(function () {
               wx.navigateBack();
             }, 1000)
           }
@@ -161,7 +198,7 @@ Page({
     })
   },
   // 分页
-  paging: function(){
+  paging: function () {
     wx.showLoading({
       title: '加载中',
       mask: true
@@ -169,11 +206,11 @@ Page({
     var that = this
     var imgData = that.data.imgData
     var imgDatas = that.data.imgDatas
-    if (imgData.length == imgDatas.length){
+    if (imgData.length == imgDatas.length) {
       this.setData({
         Page_slide: false
       })
-    }else{
+    } else {
       that.setData({
         Page_slide: true,
         imgData: imgDatas.slice(0, imgData.length + 10),
@@ -191,7 +228,7 @@ Page({
     for (var i = 0; i < imgData.length; i++) {
       imgData[i].check = false
       for (var j = 0; j < checkArr.length; j++) {
-        if (checkArr[j] == i){
+        if (checkArr[j] == i) {
           imgData[i].check = true
           imgArr.push(imgData[i].img)
         }
@@ -219,11 +256,11 @@ Page({
       if (!allCheck) {
         imgData[i].check = true
         lists.push(imgData[i].img)
-      }else{
+      } else {
         imgData[i].check = false
         lists = []
       }
-      
+
     }
     this.setData({
       allCheck: !allCheck,
@@ -232,7 +269,7 @@ Page({
     })
   },
   // 预览图片
-  previewImg: function(e){
+  previewImg: function (e) {
     var that = this
     var index = e.currentTarget.dataset.index
     var imgData = that.data.imgData
@@ -244,7 +281,7 @@ Page({
       'preview.num': imgData[index].count,
       current: index
     })
-    
+
     // var lists = []
     // for (var i = 0; i < imgData.length; i++) {
     //   lists.push(imgData[i].img)
@@ -272,7 +309,7 @@ Page({
         var temp = res.tempFilePath
         wx.saveImageToPhotosAlbum({
           filePath: temp,
-          success: function () { },
+          success: function () {},
           fail: function () {
             wx.showToast({
               title: '第' + index + '下载失败',
@@ -297,18 +334,18 @@ Page({
       })
       if (res.progress == 100) {
         callback(res.progress);
-        var count = that.data.percent_n;//统计下载多少次了
+        var count = that.data.percent_n; //统计下载多少次了
         that.setData({
           percent_n: count + 1
         })
-        if (that.data.percent_n == total) {//判断是否下载完成
-          that.setData({//完成后，清空percent-N,防止多次下载后，出错
+        if (that.data.percent_n == total) { //判断是否下载完成
+          that.setData({ //完成后，清空percent-N,防止多次下载后，出错
             percent_n: 0
           })
         }
       }
     })
-    
+
   },
   // 保存缩略图
   savePic: function () {
@@ -340,7 +377,7 @@ Page({
         })
       }
     })
-    
+
   },
   down_thumbnail: function (i) {
     var that = this
@@ -459,7 +496,7 @@ Page({
     var index = index
     var url = imgData[index].url
     var num = imgData[index].count
-    if (num == that.data.number){
+    if (num == that.data.number) {
       wx.showToast({
         title: that.data.content,
         icon: "none",
@@ -489,7 +526,7 @@ Page({
                   icon: 'none'
                 })
                 that.downloadgqnum(url, 0)
-                ++imgData[index].count
+                  ++imgData[index].count
                 that.setData({
                   imgData: imgData
                 })
@@ -562,7 +599,7 @@ Page({
                 console.log(res)
                 wx.saveVideoToPhotosAlbum({
                   filePath: temp,
-                  success: function () { },
+                  success: function () {},
                   fail: function () {
                     wx.showToast({
                       title: '下载失败',
@@ -590,7 +627,7 @@ Page({
                 wx.hideLoading()
               }
             })
-          }else{
+          } else {
             wx.showToast({
               title: '下载失败',
               icon: 'none'
@@ -672,7 +709,7 @@ Page({
         })
       }
     })
-    
+
   },
   dow_temp: function (i) {
     var that = this
@@ -728,7 +765,7 @@ Page({
           mask: true
         })
       })
-      
+
     } else {
       wx.showToast({
         title: '下载完成',
@@ -828,7 +865,7 @@ Page({
           videoContext.play();
           wx.hideLoading()
         }, 500)
-      }else{
+      } else {
         wx.showToast({
           title: res.msg,
           icon: 'none'

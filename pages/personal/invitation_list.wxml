@@ -1,0 +1,26 @@
+<!-- pages/personal/invitation_list.wxml -->
+<view class="container">
+    <view class="item" wx:for="{{themeData.themeList}}" wx:key="index" bind:tap="click_details" data-id="{{item.Id}}">
+        <view class="name">
+            邀约人：
+            <text>{{item.name}}</text>
+        </view>
+        <view class="store">
+            邀约门店：
+            <text>{{item.outlet}}</text>
+        </view>
+        <view class="time">
+            邀约时间：
+            <text>{{item.invitationtime}}</text>
+        </view>
+        <view class="isHx">
+            是否核销：
+            <text wx:if="{{item.verificationtime}}" id="already">已核销</text>
+            <text wx:else>未核销</text>
+        </view>
+        <view class="gift" wx:if="{{item.prize}}">
+            礼品：
+            <text>{{item.prize}}</text>
+        </view>
+    </view>
+</view>
