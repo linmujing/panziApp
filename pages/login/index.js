@@ -47,12 +47,17 @@ Page({
         })
       }
     } else {
-
       // this.setData({
       //   login_state: true,
       // })
-
     }
+  },
+
+  // 拒绝登录
+  reject_login() {
+    wx.switchTab({
+      url: '/pages/index/index'
+    })
   },
 
   /**

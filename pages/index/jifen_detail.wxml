@@ -15,10 +15,14 @@
       <view class='font_blod'>{{detailData.goods_name}}</view>
       <!-- <view class='ft_12 color_5b mt_5'>{{detailData.goods_content}}</view> -->
       <view class='mt_10 df ai_c'>
-        <text wx:if='{{detailData.money>0}}'>
+        <view class="df" wx:if='{{detailData.money>0}}'>
+          <view class="color_jifen ft_16">￥{{detailData.money}}</view>
+          <view>+</view>
+        </view>
+        <!-- <text class="df" wx:if='{{detailData.money>0}}'>
           <text class="color_jifen ft_16">￥{{detailData.money}}</text>
-          +
-        </text>
+          <text>+</text>
+        </text> -->
         <text class='color_jifen ft_16'>{{detailData.cost}}</text>
         <text class='color_5b ft_12 pl_5'>积分</text>
         <text class='tag'>{{detailData.type == 1 ? '积分商品' : '抽奖商品'}}</text>

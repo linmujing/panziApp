@@ -1,4 +1,4 @@
-<view bind:tap="test">测试</view>
+<!-- <view bind:tap="test">测试</view> -->
 <view class="container">
   <swiper wx:if='{{banner.length != 0}}' autoplay indicatorDots circular interval='4000' indicator-active-color='#fff'>
     <view wx:for="{{banner}}" wx:key='index'>

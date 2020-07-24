@@ -1,5 +1,4 @@
-<!-- pages/login/index.wxml -->
-<view bindtap="click_login">
+<view bindtap="click_login" hidden="{{true}}">
     <view class="person_info">
         <view class="info_title">
             <view>设置</view>
@@ -102,6 +101,7 @@
         </view>
     </view>
 </view>
+<view class="login_btn" bindtap="click_login">点击登录账户</view>
 <view class='popup {{phone===true && !userInfo.tel?"active":""}}'>
     <view class='popup_nr'>
         <view class='biaoti'>温馨提示</view>
@@ -122,7 +122,8 @@
         <text>登录</text>
       </button> -->
             <view class="qx">
-                <navigator open-type="exit" target="miniProgram">拒绝</navigator>
+                <!-- <navigator open-type="exit" target="miniProgram">拒绝</navigator> -->
+                <view class="reject_btn" bind:tap="reject_login">拒绝</view>
             </view>
             <view>
                 <button open-type="getUserInfo" bindgetuserinfo="click_userInfo">

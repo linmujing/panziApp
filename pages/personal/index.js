@@ -35,11 +35,11 @@ Page({
     this.setData({
       userInfo: userInfo
     })
-    if (!userInfo) {
-      wx.navigateTo({
-        url: '/pages/login/index',
-      })
-    }
+    // if (!userInfo) {
+    //   wx.navigateTo({
+    //     url: '/pages/login/index',
+    //   })
+    // }
     this.getJifen()
     this.isVip()
   },

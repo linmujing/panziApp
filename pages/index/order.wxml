@@ -26,7 +26,17 @@
         <view wx:if='{{info.goods_nature != ""}}' class='ft_12'>尺码： {{info.goods_nature}}</view>
       </block>
       <view class='df jc_sb mt_20'>
-        <view class='color_99 ft_12'>
+        <view class='df ai_c color_99 ft_12'>
+          <view wx:if='{{info.money_jf>0}}' class="df ai_c">
+            <view class="color_jf">￥{{info.money_jf}}</view>
+            <view>+</view>
+          </view>
+          <view class='color_jf'>
+            {{type == 1 || type == 3 || type == 4 ? '' : '￥'}} {{info.money}}
+          </view>
+          {{type == 1 || type == 3 || type == 4 ? '积分' : ''}}
+        </view>
+        <!-- <view class='df color_99 ft_12'>
           <text wx:if='{{info.money_jf>0}}'>
             <text class="color_jf">￥{{info.money_jf}}</text>
             +
@@ -35,7 +45,7 @@
             {{type == 1 || type == 3 || type == 4 ? '' : '￥'}} {{info.money}}
           </text>
           {{type == 1 || type == 3 || type == 4 ? '积分' : ''}}
-        </view>
+        </view> -->
         <view class='buy df ai_c'>
           <view wx:if='{{type != 3 && type != 4}}' bindtap='click_minus' class='minus'>-</view>
           <text class='num'>{{num}}</text>
@@ -64,7 +74,17 @@
 </view>
 <view class='tj'>
   <view class='tjdd df ai_c jc_sb'>
-    <view class='color_99'>
+    <view class='color_99 df ai_c'>
+      <view wx:if='{{info.money_jf>0}}' class="df ai_c">
+        <view class="color_jf">￥{{totle_price}}</view>
+        <view>+</view>
+      </view>
+      <view class='color_jf'>
+        {{type == 1 || type == 3 || type == 4 ? '' : '￥'}} {{totle_cost}}
+      </view>
+      {{type == 1 || type == 3 || type == 4 ? '积分' : ''}}
+    </view>
+    <!-- <view class='color_99'>
       <text wx:if='{{info.money_jf>0}}'>
         <text class="color_jf">￥{{totle_price}}</text>
         +
@@ -73,7 +93,7 @@
         {{type == 1 || type == 3 || type == 4 ? '' : '￥'}} {{totle_cost}}
       </text>
       {{type == 1 || type == 3 || type == 4 ? '积分' : ''}}
-    </view>
+    </view> -->
     <view class='btn_title' bindtap='click_tijiao'>提交订单</view>
   </view>
   <view class="{{isIPX ? 'navi-bar-view-IPX':''}}"></view>

@@ -1,21 +1,88 @@
 /* pages/index/jifen_detail.wxss */
-swiper{width: 100%;min-height: 700rpx;}
-.info{padding: 20rpx;}
-.font_blod{font-weight: bold}
-.tag{color: #fff;background: #FAA8B6;padding: 2rpx 10rpx;font-size: 20rpx;margin-left: 20rpx;}
-.duihuan{position: fixed;bottom: 0;z-index: 1;width: 100%;text-align: center;font-size: 32rpx;line-height: 70rpx;}
-.duihuan .btn_title{border-radius: 0;}
-.duihuan .btn_gray{background: #ccc;}
 
-.tj{padding-bottom: 100rpx;margin-top: 20rpx;}
-.title {text-align: center;padding: 20rpx;}
-.title view:first-child {font-weight: bold;font-size: 30rpx;}
-.title view:last-child {font-size: 14rpx;color: #5A5A5A;}
-.product{margin: 20rpx;}
-.product .item{width: 346rpx;background: #fff;border-radius: 8rpx;margin-bottom: 20rpx;overflow: hidden;box-shadow:0px 10rpx 30rpx -5rpx rgba(0,0,0,0.3);}
-.product .item>image{width: 100%;}
-.product .item .txtBox{padding: 10rpx;}
-.product .item .txtBox image{width: 40rpx;}
+swiper {
+  width: 100%;
+  min-height: 700rpx;
+}
+
+.info {
+  padding: 20rpx;
+}
+
+.font_blod {
+  font-weight: bold
+}
+
+.tag {
+  color: #fff;
+  background: #FAA8B6;
+  padding: 2rpx 10rpx;
+  font-size: 20rpx;
+  margin-left: 20rpx;
+}
+
+.duihuan {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+  font-size: 32rpx;
+  line-height: 70rpx;
+}
+
+.duihuan .btn_title {
+  border-radius: 0;
+}
+
+.duihuan .btn_gray {
+  background: #ccc;
+}
+
+.tj {
+  padding-bottom: 100rpx;
+  margin-top: 20rpx;
+}
+
+.title {
+  text-align: center;
+  padding: 20rpx;
+}
+
+.title view:first-child {
+  font-weight: bold;
+  font-size: 30rpx;
+}
+
+.title view:last-child {
+  font-size: 14rpx;
+  color: #5A5A5A;
+}
+
+.product {
+  margin: 20rpx;
+}
+
+.product .item {
+  width: 346rpx;
+  background: #fff;
+  border-radius: 8rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  box-shadow: 0px 10rpx 30rpx -5rpx rgba(0, 0, 0, 0.3);
+}
+
+.product .item>image {
+  width: 100%;
+}
+
+.product .item .txtBox {
+  padding: 10rpx;
+}
+
+.product .item .txtBox image {
+  width: 40rpx;
+}
 
 .share button {
   padding: 0 20rpx;
@@ -24,7 +91,19 @@ swiper{width: 100%;min-height: 700rpx;}
   width: 100%;
   height: 100%;
 }
-.share button:after {border: none;}
-.zf{width: 40rpx;}
-.ms{font-size: 36rpx;font-weight: bold;padding-left: 16rpx;border-left: 10rpx solid #FAA8B6;margin: 50rpx 0 30rpx 0;}
 
+.share button:after {
+  border: none;
+}
+
+.zf {
+  width: 40rpx;
+}
+
+.ms {
+  font-size: 36rpx;
+  font-weight: bold;
+  padding-left: 16rpx;
+  border-left: 10rpx solid #FAA8B6;
+  margin: 50rpx 0 30rpx 0;
+}
