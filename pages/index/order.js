@@ -192,6 +192,8 @@ Page({
       that.create_order() // 汉服生成订单
     } else if (that.data.type == 3 || that.data.type == 4) {
       that.lotto() // 积分抽奖
+    } else if (that.data.type == 5) {
+      that.live_order() // 直播商品生成订单
     }
     // if (that.data.types == 8080) {
     //   console.log(111)
@@ -424,6 +426,31 @@ Page({
     };
     util.post(util.url.goodsOrder_new, reqBody, (res) => {
       // console.log(res)
+      wx.hideLoading()
+      if (res.state == 1) {
+        this.setData({
+          'info.convert_no': res.data.convert_no
+        })
+        this.payment()
+      } else {
+        wx.showToast({
+          title: res.info,
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    })
+  },
+  // 直播商品生成订单
+  live_order: function () {
+    var info = this.data.info
+    var reqBody = {
+      token: this.data.userInfo.token,
+      goods_id: info.id,
+      goods_nature: info.goods_nature,
+      num: this.data.num
+    };
+    util.post(util.url.live_order, reqBody, (res) => {
       wx.hideLoading()
       if (res.state == 1) {
         this.setData({

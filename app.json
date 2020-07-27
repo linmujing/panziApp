@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/webH5/psPay",
     "pages/shopCart/order",
@@ -33,6 +34,8 @@
     "pages/index/comments",
     "pages/index/comments_detail",
     "pages/index/myMovies",
+    "pages/live/index",
+    "pages/live/live_shop",
     "pages/studio/index",
     "pages/studio/classification",
     "pages/studio/material",
@@ -111,6 +114,12 @@
         "selectedIconPath": "img/_tab2.png"
       },
       {
+        "text": "直播",
+        "pagePath": "pages/live/index",
+        "iconPath": "img/tab6.png",
+        "selectedIconPath": "img/_tab6.png"
+      },
+      {
         "text": "晒图",
         "pagePath": "pages/community/community",
         "iconPath": "img/tab3.png",
@@ -132,5 +141,12 @@
   },
   "requiredBackgroundModes": [
     "location"
-  ]
+  ],
+  "plugins": {
+    "live-player-plugin": {
+        "version": "1.1.3", 
+        "provider": "wx2b03c6e691cd7370" 
+    }
+  }
+  
 }

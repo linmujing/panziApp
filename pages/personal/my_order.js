@@ -137,7 +137,7 @@ Page({
     var index = e.currentTarget.dataset.index;
     var list = this.data.list[index]
     console.log(list.type)
-    if (list.type == 2){
+    if (list.type == 2 || list.type == 5){
       wx.navigateTo({
         url: '/pages/shopCart/order?id=' + list.convert_no,
       })

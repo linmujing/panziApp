@@ -1,0 +1,24 @@
+<!--pages/live/index.wxml-->
+<!-- <view class="listbox df jc_sb fw_w">
+  <view class="list" wx:for='{{list}}' wx:key='index' bindtap="click_live" data-id='{{item.roomid}}'>
+    <image mode='widthFix' src='{{item.share_img}}' class="w100"></image>
+    <view class="info df fd_c jc_sb w100 h100">
+      <view class="state">
+        <view wx:if='{{item.live_status == 101}}' class="zbz">● 直播中</view>
+        <view wx:elif='{{item.live_status == 102}}' class="start">即将开始</view>
+        <view wx:else class="">直播结束</view>
+      </view>
+      <subscribe room-id="{{item.roomid}}" width="100" height="30" font-size="12" background-color="#FD93B3"></subscribe>
+      <view class="ibottom">
+        <view>{{item.name}}</view>
+        <view class="ft_12 mt_5">主播：{{item.anchor_name}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="color_99 ft_12 ta_c mt_10">没有更多啦~</view> -->
+
+<view class="live">
+  <image mode='aspectFit' src='{{list[0].img}}' bindtap="click_live" data-id='{{list[0].roomid}}'></image>
+</view>
+

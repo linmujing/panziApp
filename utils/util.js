@@ -129,6 +129,8 @@ const url = {
   pay: urlFront + 'shop/pay',
   copePay: urlFront + 'shop/copePay', // 汉服提交支付
 
+  live_order: urlFront + 'shop/goods_index_streaming', // 直播商品生成订单
+
   my_log: urlFront + 'shop/zp_log',
   my_prize: urlFront + 'shop/zp_prize',
   wheelSurf: urlFront + 'shop/goods_zp',
@@ -200,6 +202,8 @@ const url = {
   slicesCat: urlFront + 'Content/slicesCat',
   slicesList: urlFront + 'Content/slicesList',
   slicesInfo: urlFront + 'Content/slicesInfo',
+
+  streaming_List: urlFront + 'streaming/streaming_List',
 
   // 在线照相馆接口
   // getPhone: urlFront4 + 'homes/getPhone',

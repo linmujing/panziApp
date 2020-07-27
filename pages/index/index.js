@@ -48,6 +48,13 @@ Page({
       interval: 20 // 时间间隔
     }
   },
+  click_live: function (e) {
+    let roomId = e.currentTarget.dataset.id 
+    // let customParams = encodeURIComponent(JSON.stringify({ path: 'pages/index/index', pid: 1 })) 
+    wx.navigateTo({
+        url: `plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id=5`
+    })
+  },
   onLoad: function () {
     // this.ctx = wx.createCameraContext()//创建摄像头对象
 
@@ -222,6 +229,7 @@ Page({
       wx.stopPullDownRefresh() //停止下拉刷新
       wx.hideLoading()
       if (res.state == 1) {
+        wx.setStorageSync('vstatus', res.video_status);
         that.setData({
           carouselData: res.banner,
           navData: res.data,
