@@ -75,7 +75,7 @@ Page({
     app.globalData.hfInfo = info
 
     wx.navigateTo({
-      url: 'order',
+      url: '/pages/index/order',
     })
   },
   getInfo: function () {
@@ -131,6 +131,7 @@ Page({
     })
   },
   showModal: function (e) {
+    console.log(1212121)
     if (this.data.detailData.stock <= 0) {
       wx.showToast({
         title: '库存为0~',

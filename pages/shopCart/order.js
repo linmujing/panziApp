@@ -115,6 +115,11 @@ Page({
   },
   click_tijiao: function (e) {
     var that = this
+    var type = that.data.list[0].type
+    if(type == 5){
+      that.payment()
+      return
+    }
     if (that.data.addr_state) {
       wx.showToast({
         title: '请选择收货地址~',
@@ -158,10 +163,16 @@ Page({
           })
         },
         'fail': function (res) {
-          wx.redirectTo({
-            url: '/pages/personal/my_order'
+          wx.showToast({
+            title: '支付失败~',
+            icon: 'none',
+            duration: 1000
           })
-
+          setTimeout(function(){
+            wx.redirectTo({
+              url: '/pages/personal/my_order'
+            })
+          },1000)
         }
       })
     })

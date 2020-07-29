@@ -2,7 +2,7 @@
 <!-- 导航 -->
 <view class="nav">
     <view class='tab'>
-        <block wx:for="{{tabArr}}" wx:key="{{index}}">
+        <block wx:for="{{tabArr}}" wx:key="index">
             <view class="{{currentTab==index ? 'active' :'' }}" data-current='{{index}}' bindtap='switchNav' data-type='{{item.type}}'>
                 {{item.name}}
             </view>

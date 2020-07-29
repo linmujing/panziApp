@@ -1,5 +1,5 @@
 <!-- pages/shopCart/order.wxml -->
-<view class='addr df ai_c jc_sb'>
+<view wx:if='{{list[0].type != 5}}' class='addr df ai_c jc_sb'>
   <image mode='widthFix' src='/img/location.png' class='loc'></image>
   <view wx:if='{{addr_state}}' bindtap='select_addr' class='txt ft_16 color_99'>请添加收货地址</view>
   <view wx:else class='txt' bindtap='select_addr'>

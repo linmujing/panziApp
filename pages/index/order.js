@@ -172,7 +172,10 @@ Page({
 
   click_tijiao: function (e) {
     var that = this
-
+    if(that.data.type == 5){
+      that.live_order() // 直播商品生成订单
+      return
+    }
     if (that.data.addr_state) {
       wx.showToast({
         title: '请选择收货地址~',
@@ -192,8 +195,6 @@ Page({
       that.create_order() // 汉服生成订单
     } else if (that.data.type == 3 || that.data.type == 4) {
       that.lotto() // 积分抽奖
-    } else if (that.data.type == 5) {
-      that.live_order() // 直播商品生成订单
     }
     // if (that.data.types == 8080) {
     //   console.log(111)
