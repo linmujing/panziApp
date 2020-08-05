@@ -1,7 +1,7 @@
 {
   "pages": [
-    
     "pages/index/index",
+    "pages/index/my_photos",
     "pages/webH5/psPay",
     "pages/shopCart/order",
     "pages/personal/invitation_list",
@@ -13,7 +13,7 @@
     "pages/personal/add_address",
     "pages/index/photographer",
     "pages/index/hexiao_details",
-    "pages/index/my_photos",
+    
     "pages/login/index",
     "pages/login/test",
     "pages/index/webView",
@@ -144,7 +144,7 @@
   ],
   "plugins": {
     "live-player-plugin": {
-        "version": "1.1.3", 
+        "version": "1.1.4", 
         "provider": "wx2b03c6e691cd7370" 
     }
   }

@@ -16,6 +16,10 @@
   请点击，查看您的微电影
   <view class="icon">></view>
 </view>
+<view class="movie df ai_c jc_c" bindtap="getCoupon" id="red">
+  马上进入P图高手，领取50元立减金
+  <view class="icon">></view>
+</view>
 <!-- 瀑布流 -->
 <view class='title mt_20'>
   <view>图片</view>

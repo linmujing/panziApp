@@ -143,6 +143,7 @@ Page({
               userInfo.uid = res.data.uid
               userInfo.session_key = res.data.session_key
               userInfo.vip = res.data.vip
+              userInfo.unionId = res.data.unionId //优惠券
               if (res.data.tel == 0 || res.data.tel == '') {
                 that.setData({
                   phone: true
@@ -183,6 +184,7 @@ Page({
               }
 
             }
+
           })
 
         } else {

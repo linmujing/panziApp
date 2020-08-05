@@ -87,6 +87,13 @@
 					"pathName": "pages/login/webview",
 					"query": "scene=88888",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "qudao=123",
+					"scene": null
 				}
 			]
 		}

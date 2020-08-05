@@ -21,7 +21,11 @@ const urlFront3 = 'https://ceshi.pznrfsy.com/panzimall/';
 const urlFront4 = 'https://zxg2.pznrfsy.com/index/'
 const urlFront5 = 'http://kpgls.90cxkj.com/index/'
 const urlFront6 = 'https://vip2.pznrfsy.com/index.php/'
+const urlFront7 = 'https://ps.pznrfsy.com/index.php'
 const url = {
+  acquire: urlFront7 + '/index/yixiu/acquire/',
+
+
   payment: urlFront6 + '/index/photoshop/payment/',
   invite_list: urlFront6 + 'index/player/invite_list/', //邀约历史记录
   invite: urlFront6 + 'index/player/invite/', //邀约信息

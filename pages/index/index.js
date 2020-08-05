@@ -38,6 +38,15 @@ Page({
       state: true,
       seat: 1
     },
+    // P图高手nav图
+    ptgs_navList: [{
+      img: 'http://vip2.pznrfsy.com/bin/panziApp/nav-01.JPG',
+    }, {
+      img: 'http://vip2.pznrfsy.com/bin/panziApp/nav-02.JPG',
+    }, {
+      img: 'http://vip2.pznrfsy.com/bin/panziApp/nav-03.JPG',
+    }],
+
     //初始化数据
     slide: {
       text: '张天爱 宋祖儿 安以轩 蒋梦婕 王智等众多明星倾力推荐',
@@ -49,10 +58,10 @@ Page({
     }
   },
   click_live: function (e) {
-    let roomId = e.currentTarget.dataset.id 
+    let roomId = e.currentTarget.dataset.id
     // let customParams = encodeURIComponent(JSON.stringify({ path: 'pages/index/index', pid: 1 })) 
     wx.navigateTo({
-        url: `plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id=5`
+      url: `plugin-private://wx2b03c6e691cd7370/pages/live-player-plugin?room_id=5`
     })
   },
   onLoad: function () {
@@ -102,15 +111,24 @@ Page({
     }
   },
 
-  // 修大师
-  // click_ps() {
-  //   const url = 'https://vip2.pznrfsy.com/bin/ps-monster/index.html'
-  //   getApp().globalData.webView = url;
-  //   wx.navigateTo({
-  //     url: '/pages/index/webView'
-  //   })
-  // },
-
+  // 跳转P图高手
+  click_ptgs() {
+    wx.navigateToMiniProgram({
+      appId: 'wx670c2bb8bbc0d58f',
+      path: 'pages/index/index',
+      // extraData: {
+      //   foo: 'bar'
+      // },
+      envVersion: 'release',
+      success(res) {
+        // 打开成功
+        console.log(res)
+      },
+      fail(res) {
+        console.log(res)
+      }
+    })
+  },
 
   // 广告弹窗
   ad: function () {
@@ -136,6 +154,8 @@ Page({
       }
     })
   },
+
+  // 弹窗跳转
   click_url: function (e) {
     var that = this
     var reqBody = {
@@ -163,14 +183,17 @@ Page({
     //type = 1 外链  2 内链
     var type = e.currentTarget.dataset.type
     var url = e.currentTarget.dataset.url
-    if (url == '') {
+    if (url == '' && type !== 99) {
       return
     }
+
     if (type == 1) {
       getApp().globalData.webView = url;
       wx.navigateTo({
         url: 'webView'
       })
+    } else if (type === 99) { //跳转P图高手
+      that.click_ptgs()
     } else if (type == 4) {
       // 跳转盘粉达人
       var userInfo = wx.getStorageSync('userInfo');
@@ -197,11 +220,11 @@ Page({
         }
       })
     } else {
-      console.log(url)
       wx.navigateTo({
         url: url,
       })
     }
+
   },
   // 点击cover播放，其它视频结束
   videoPlay: function (e) {
@@ -296,14 +319,12 @@ Page({
     })
   },
   recCare: function () {
-    console.log(111)
     var that = this;
     var reqBody = {
       p: 1,
       num: 5
     };
     util.post(util.url.recCare, reqBody, (res) => {
-      console.log(res)
       if (res.state == 1002) {
         that.setData({
           zxList: res.data,
@@ -375,8 +396,24 @@ Page({
         })
         break
       case 12:
-        wx.navigateTo({
-          url: '/pages/personal/trivia',
+        // wx.navigateTo({
+        //   url: '/pages/personal/trivia',
+        // })
+        // 跳转P图高手
+        wx.navigateToMiniProgram({
+          appId: 'wx670c2bb8bbc0d58f',
+          path: 'pages/index/index',
+          // extraData: {
+          //   foo: 'bar'
+          // },
+          envVersion: 'release',
+          success(res) {
+            // 打开成功
+            console.log(res)
+          },
+          fail(res) {
+            console.log(res)
+          }
         })
         break
       case 13:

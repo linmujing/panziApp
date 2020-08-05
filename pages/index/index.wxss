@@ -387,6 +387,23 @@
   white-space: nowrap;
 }
 
+.zxBox .item_ps {
+  width: 630rpx;
+  height: 400rpx;
+  position: relative;
+  margin-right: 20rpx;
+  display: inline-block;
+  box-shadow: 0px 15rpx 15rpx -5rpx rgba(0, 0, 0, 0.3);
+}
+
+.zxBox .item_ps .img {
+  width: 630rpx;
+  height: 400rpx;
+  border-radius: 8rpx;
+  display: block;
+}
+
+
 .zxBox .item {
   width: 260rpx;
   height: 400rpx;
@@ -402,6 +419,8 @@
   border-radius: 8rpx;
   display: block;
 }
+
+
 
 .zxBox .info {
   position: absolute;

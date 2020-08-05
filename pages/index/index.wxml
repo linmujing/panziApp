@@ -25,7 +25,26 @@
     </view>
   </block>
 </view>
-<!-- 修大师 -->
+<!-- P图高手 -->
+<view class="bg_ff">
+  <view class="title">
+    <text class="bold">P图高手</text>
+    <text class="color_99 pl_10">一对一在线修图</text>
+  </view>
+  <view class="zxBox" wx:if='{{ptgs_navList.length>0}}'>
+    <scroll-view scroll-x enable-flex scroll-with-animation style="width: auto;">
+      <view wx:for="{{ptgs_navList}}" wx:key='index' class="item_ps">
+        <image mode="aspectFill" src='{{item.img}}' class='img'></image>
+        <view class="info df fd_c jc_sb" bindtap="click_ptgs">
+        </view>
+      </view>
+    </scroll-view>
+    <view class="more df jc_c ai_c" bindtap='click_nav' data-id='{{12}}'>
+      <image src='/img/index1.png'></image>
+      <text class="pl_5">提供一对一照片精修服务</text>
+    </view>
+  </view>
+</view>
 <!-- <view class="ps_ds">
   <view class="title">修大师</view>
   <image mode="widthFix" src='../../img/ps_enter.jpg' class='img' bind:tap="click_ps"></image>

@@ -123,6 +123,62 @@ Page({
       url: '/pages/index/myMovies',
     })
   },
+
+  // 跳转P图高手
+  click_ptgs(){
+    wx.navigateToMiniProgram({
+      appId: 'wx670c2bb8bbc0d58f',
+      path: 'pages/index/index',
+      envVersion: 'release',
+      success(res) {
+        // 打开成功
+        console.log(res)
+      },
+      fail(res) {
+        console.log(res)
+      }
+    })
+  },
+
+ // 领取优惠券
+ getCoupon: function () {
+  var that = this
+  var userInfo = wx.getStorageSync('userInfo');
+  console.log(userInfo)
+  var reqBody = {
+    token: userInfo.token,
+    discount: 1,
+    unionId: userInfo.unionId,
+    // unionId: "",
+    tel: userInfo.tel
+  };
+  util.post(util.url.acquire, reqBody, (res) => {
+    if (res.state == 1) {
+      wx.showToast({
+        title: res.info,
+        icon: "none",
+        duration: 2000,
+      })
+      setTimeout(function(){
+        that.click_ptgs()
+      },2000)
+    }else if (res.state == -1) {
+      wx.clearStorageSync()
+      wx.redirectTo({
+        url: '/pages/login/index',
+      })
+    }
+    else{
+      wx.showToast({
+        title: res.info,
+        icon: "none",
+        duration: 1000,
+      })
+    }
+  })
+},
+
+
   yzsurvey: function () {
     var that = this
     var reqBody = {
