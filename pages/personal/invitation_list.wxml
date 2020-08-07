@@ -1,5 +1,58 @@
 <!-- pages/personal/invitation_list.wxml -->
-<view class="container">
+<view class="list">
+    <view class="item" wx:for="{{themeData.themeList}}" wx:key="index" bind:tap="click_details" data-id="{{item.Id}}">
+        <image wx:if='{{item.type == 1}}' mode='widthFix' src="{{quan.img1}}"></image>
+        <image wx:elif='{{item.type == 2 || item.type == 3}}' mode='widthFix' src="{{quan.img2}}"></image>
+        <view class="df jc_sb">
+            <view>{{item.outlet}}</view>
+            <view>{{item.prize}}</view>
+            <view>{{item.invitationtime}}</view>
+        </view>
+    </view>
+</view>
+
+<view class="btn">
+    <view class="btn_title lh_30" bindtap="click_info">再次兑换</view>
+</view>
+
+<view hidden="{{info_state}}" class="info">
+    <image mode='widthFix' src="{{quan.img}}"></image>
+    <view class="form">
+        <view class="df jc_c ai_c">
+            <view>预约姓名</view>
+            <input bindinput="blur_name"></input>
+        </view>
+        <view class="df jc_c ai_c mt_10">
+            <view>联系方式</view>
+            <input type='number' bindinput="blur_tel"></input>
+        </view>
+        <view class="mt_10">
+            <picker bindchange="bindPickerChange" value="{{mindex}}" range="{{menDian}}" range-key='mendian'>
+                <view class="df jc_c ai_c">
+                    <view>预约门店</view>
+                    <view class="picker">{{menDian[mindex].mendian}}</view>
+                </view>
+            </picker>
+        </view>
+        <view class="mt_10">
+            <picker mode="date" value="{{date}}" start="{{date}}" bindchange="bindDateChange">
+                <view class="df jc_c ai_c">
+                    <view>预约时间</view>
+                    <view class="picker">{{date}}</view>
+                </view>
+            </picker>
+        </view>
+        <view class="df jc_c ai_c mt_10">
+            <view>兑换券码</view>
+            <input bindinput="blur_code"></input>
+        </view>
+    </view>
+    <view class="df jc_sa mt_30">
+        <view class="btn_default lh_30" bindtap="click_info">取消</view>
+        <view class="btn_title lh_30" bindtap="click_dui">立即兑换，开始预约</view>
+    </view>
+</view>
+<!-- <view class="container">
     <view class="item" wx:for="{{themeData.themeList}}" wx:key="index" bind:tap="click_details" data-id="{{item.Id}}">
         <view class="name">
             邀约人：
@@ -23,4 +76,4 @@
             <text>{{item.prize}}</text>
         </view>
     </view>
-</view>
+</view> -->

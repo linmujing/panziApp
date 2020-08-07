@@ -120,6 +120,8 @@ const url = {
   myjifen: urlFront + 'Player/myjifen',
   myjunior: urlFront + 'Player/myjunior',
   addnegative: urlFront + 'Player/addnegative',
+  code_mendian: urlFront + 'Player/code_mendian',
+  code_add: urlFront + 'Player/code_add',
 
   province: urlFront + 'integral/inquire',
   addrList: urlFront + 'shop/profile',

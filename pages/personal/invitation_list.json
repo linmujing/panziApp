@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
-  "enablePullDownRefresh": true
+  "navigationBarTitleText": "兑换中心",
+  "navigationBarBackgroundColor": "#F6AFC1",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }
