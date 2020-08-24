@@ -80,6 +80,7 @@ const url = {
   goods_pay: urlFront + 'picture/goods_pay', // 付费
   hxDownload: urlFront + 'picture/download', // 下载高清图
   hxDownloadSucc: urlFront + 'picture/download_success', // 下载成功
+  Players: urlFront + 'Player/download_log', // 下载完成回调记录
 
   getMovies: urlFront + 'picture/video_index', // 获取我的视频列表
   getMoviesAR: urlFront + 'picture/video_index_ar', // 获取我的视频列表

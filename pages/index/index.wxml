@@ -6,7 +6,6 @@
   <navigator url="/pages/login/test"><button type="primary">识别体验</button></navigator>
 </view> -->
 <!-- <button bindtap="click_live">测试</button> -->
-
 <view class='carouse2 bg_ff'>
   <swiper autoplay indicatorDots circular interval='4000' indicator-active-color='#fff'>
     <view wx:for="{{carouselData}}" wx:key='index'>
@@ -19,12 +18,13 @@
 <!-- 导航 -->
 <view class='nav df jc_sb fw_w bg_ff'>
   <block wx:for='{{navData}}' wx:key='index'>
-    <view class='w20 mt_10' bindtap='click_nav' data-id='{{item.id}}' data-title='{{item.title}}'>
+    <view class='w20 mt_10' bindtap='click_nav' data-appid='{{item.appId}}' data-type='{{item.type}}' data-url='{{item.url}}' data-title='{{item.title}}'>
       <image src='{{item.title_img}}'></image>
       <view class='ft_12 mt_5'>{{item.title}}</view>
     </view>
   </block>
 </view>
+<!-- <view bind:tap="click_gfsjk">test</view> -->
 <!-- P图高手 -->
 <view class="bg_ff">
   <view class="title">
@@ -35,8 +35,7 @@
     <scroll-view scroll-x enable-flex scroll-with-animation style="width: auto;">
       <view wx:for="{{ptgs_navList}}" wx:key='index' class="item_ps">
         <image mode="aspectFill" src='{{item.img}}' class='img'></image>
-        <view class="info df fd_c jc_sb" bindtap="click_ptgs">
-        </view>
+        <view class="info df fd_c jc_sb" bindtap="click_ptgs"></view>
       </view>
     </scroll-view>
     <view class="more df jc_c ai_c" bindtap='click_nav' data-id='{{12}}'>

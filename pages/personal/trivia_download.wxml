@@ -77,11 +77,11 @@
   </view>
 </view>
 
-<view class='service_an' bindtap='click_notes'>
+<!-- <view class='service_an' bindtap='click_notes'>
   <image mode='widthFix' src='{{rule.img}}'></image>
-</view>
+</view> -->
 <!-- 弹窗 -->
-<view hidden='{{rule.state}}' class='notes'>
+<!-- <view hidden='{{rule.state}}' class='notes'>
   <view class='cont'>
     <view class='head ta_c'>
       <view class='ft_15'>下载规则</view>
@@ -93,7 +93,7 @@
   <view class='mt_20 ta_c'>
     <icon type="cancel" size="36" color="#fff" bindtap='click_notes'/>
   </view>
-</view>
+</view> -->
 <!-- 设置 -->
 <view class='set' hidden='{{down_state}}'>
   <view class='popup_nr'>

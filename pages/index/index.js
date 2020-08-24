@@ -130,6 +130,26 @@ Page({
     })
   },
 
+  // 跳转古风手机壳活动页
+  click_gfsjk() {
+    wx.navigateToMiniProgram({
+      appId: 'wxfcbb2540dc0ea331',
+      // path: 'pages/index/index',
+      path: 'pages/active/qixi_active',
+      // extraData: {
+      //   foo: 'bar'
+      // },
+      envVersion: 'release',
+      success(res) {
+        // 打开成功
+        console.log(res)
+      },
+      fail(res) {
+        console.log(res)
+      }
+    })
+  },
+
   // 广告弹窗
   ad: function () {
     var userInfo = wx.getStorageSync('userInfo');
@@ -183,7 +203,7 @@ Page({
     //type = 1 外链  2 内链
     var type = e.currentTarget.dataset.type
     var url = e.currentTarget.dataset.url
-    if (url == '' && type !== 99) {
+    if (url == '' && type !== 99 && type !== 98) {
       return
     }
 
@@ -192,10 +212,11 @@ Page({
       wx.navigateTo({
         url: 'webView'
       })
+    } else if (type === 98) { //跳转古风手机壳活动
+      that.click_gfsjk()
     } else if (type === 99) { //跳转P图高手
       that.click_ptgs()
-    } else if (type == 4) {
-      // 跳转盘粉达人
+    } else if (type == 4) { // 跳转盘粉达人
       var userInfo = wx.getStorageSync('userInfo');
       var reqBody = {
         token: userInfo.token
@@ -333,11 +354,53 @@ Page({
       }
     })
   },
+
   // 导航列表
   click_nav: function (e) {
+    var that = this
+    //type = 1 内链  2 外链
+    var type = e.currentTarget.dataset.type
+    var url = e.currentTarget.dataset.url
+
     var id = e.currentTarget.dataset.id;
     var title = e.currentTarget.dataset.title;
-    var urlType = this.data.urlType;
+    var urlType = that.data.urlType;
+    console.log(id)
+
+    if (type === 1) {
+      wx.navigateTo({
+        url: url,
+      })
+    } else if (type === 3) { //跳转小程序
+      console.log(e)
+      var appId = e.currentTarget.dataset.appid
+      console.log(appId)
+      if (appId) {
+        wx.navigateToMiniProgram({
+          appId: appId,
+          path: 'pages/index/index',
+          // extraData: {
+          //   foo: 'bar'
+          // },
+          envVersion: 'release',
+          success(res) {
+            // 打开成功
+            console.log(res)
+          },
+          fail(res) {
+            console.log(res)
+          }
+        })
+      }
+    } else if (type === 2) {
+      getApp().globalData.webView = url;
+      wx.navigateTo({
+        url: 'webView'
+      })
+    }
+    // var id = e.currentTarget.dataset.id;
+    // var title = e.currentTarget.dataset.title;
+    // var urlType = this.data.urlType;
     switch (id) {
       case 2:
         wx.navigateTo({
@@ -375,6 +438,7 @@ Page({
         })
         break
       case 9:
+        console.log(999)
         wx.navigateTo({
           url: '/pages/index/jifen_mall',
         })
